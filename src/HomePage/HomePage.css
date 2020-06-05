@@ -2,11 +2,11 @@
 .hero {
   display: flex;
   flex-direction: column;
-  background-image: linear-gradient(rgb(143, 238, 241), rgba(255, 255, 255, 0.002));
+  background-image: linear-gradient(rgb(190, 190, 190), rgba(255, 255, 255, 0.002));
   
   
 }
-.signup{
+.get-started{
   margin-bottom: 50px;
 }
 .dashboard-image {

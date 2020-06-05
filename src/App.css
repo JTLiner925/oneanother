@@ -2,6 +2,7 @@
   text-align: center;
 }
 footer{
+  margin-top: 50px;
   display: flex;
   justify-content: space-evenly;
 }

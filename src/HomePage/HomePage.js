@@ -23,7 +23,7 @@ export default class HomePage extends Component {
             next.Join oneAnother, the app that allows you to do everything
             imaginable for your church small group in one location!
           </p>
-          <Link className='signup' to="/signup">Get Started</Link>
+          <Link className='get-started' to="/signup">Get Started</Link>
           <img className='dashboard-image' src={dashboard} alt='dashboard screenshot' />
         </div>
         <section className='slider'>
