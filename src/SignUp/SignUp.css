@@ -3,6 +3,7 @@
   margin-top: 30px;
   display: flex;
   flex-direction: column;
+  width: 100%;
   max-width: 500px;
   align-items: flex-start;
   justify-content: center;
@@ -14,7 +15,7 @@
   border-top: 10px solid var(--accent-color);
 }
 
-input {
+#email-input, #password-input, #first-name-input, #last-name-input, #address-input, #bio-input {
   width: 40%;
   padding: 1em;
   border-radius: 0px;

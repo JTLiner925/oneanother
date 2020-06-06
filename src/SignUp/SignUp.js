@@ -11,7 +11,7 @@ export default function SignUp() {
       <label htmlFor="email-input">Email:</label>
       <input id="email-input" type="email" />
       <label htmlFor="password-input">Password:</label>
-      <input htmlFor="password-input" type="password" />
+      <input id="password-input" type="password" />
       <a href="#">Forgot Password</a>
 
       <label htmlFor="first-name-input">First Name</label>

@@ -4,17 +4,18 @@ import './LogIn.css'
 
 export default function LogIn() {
   return (
+    
     <form className="container">
-    <h1>Welcome Back! <span role='img' aria-label='wave' className="wave">👋🏾</span></h1>
+    <h1 className='welcome'>Welcome Back! <span role='img' aria-label='wave' className="wave">👋🏾</span></h1>
 
     Email:
-    <input type="email" />
+    <input className='email-input' type="email" />
 
     Password:
-    <input type="password" />
+    <input className='password-input' type="password" />
     <a href="#">Forgot Password</a>
-    <Link to='/dashboard'><button className="login">Login</button></Link>
-    <Link to='/signup'><button className="signup">Sign Up</button></Link>
+    <Link className='links' to='/dashboard'><button className="login">Login</button></Link>
+    <Link className='links' to='/signup'><button className="signup">Sign Up</button></Link>
     
     
     <p className="disclaimer">This is a demo! Please do not enter any personal information.</p>

@@ -1,6 +1,8 @@
-header{
+.App__header {
   display: flex;
+  
   justify-content: space-between;
+  flex: 1;
   align-items: center;
-  padding:0 40px;
+  padding: 0 40px;
 }

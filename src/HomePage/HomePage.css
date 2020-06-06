@@ -24,7 +24,11 @@
 }
 .feature{
   display: flex;
-  height: 400px;
+  height: 400px;  
+}
+.features{
+  display: flex;
+  flex-direction: column;
 }
 .feature-pic{
   width: 40%;
