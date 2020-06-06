@@ -8,6 +8,11 @@ import Dashboard from './Dashboard/Dashboard'
 import "./App.css";
 
 class App extends Component {
+
+  signUp = (formData) => {
+    console.log(formData)
+  }
+
   render() {
     return (
     <main className='App'>
@@ -16,7 +21,11 @@ class App extends Component {
       ))}
       <Route exact path='/' component={HomePage} />
       <Route  path='/login' component={LogIn} />
-      <Route  path='/signup' component={SignUp} />
+      <Route  path='/signup' render={() => {
+        return (
+          <SignUp onSignUp={this.signUp}></SignUp>
+        )
+      }} />
       {['/dashboard', '/creategroup'].map((path) =>(
         <Route key={path} exact path = {path} component={Dashboard} />
       ))}
