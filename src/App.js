@@ -12,7 +12,10 @@ class App extends Component {
   signUp = (formData) => {
     console.log(formData)
   }
-
+  
+  logIn = (formData) => {
+    console.log(formData)
+  }
   render() {
     return (
     <main className='App'>
@@ -20,7 +23,11 @@ class App extends Component {
         <Route key={path} exact path = {path} component={HomeNav} />
       ))}
       <Route exact path='/' component={HomePage} />
-      <Route  path='/login' component={LogIn} />
+      <Route  path='/login' render={() => {
+        return (
+          <LogIn onLogIn={this.logIn}></LogIn>
+        )
+      }} />
       <Route  path='/signup' render={() => {
         return (
           <SignUp onSignUp={this.signUp}></SignUp>
