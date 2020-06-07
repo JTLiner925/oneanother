@@ -27,10 +27,10 @@ export default class SignUp extends Component {
       <input id="password-input" type="password" name='password'  onChange={this.changeHandler}required />
       <a href="#">Forgot Password</a>
 
-      <label htmlFor="first-name-input" required>
+      <label htmlFor="first-name-input" >
         First Name
       </label>
-      <input id="first-name-input" name='first_name' onChange={this.changeHandler}></input>
+      <input id="first-name-input" name='first_name' onChange={this.changeHandler}required></input>
 
       <label htmlFor="last-name-input">Last Name</label>
       <input id="last-name-input" name='last_name' onChange={this.changeHandler}></input>

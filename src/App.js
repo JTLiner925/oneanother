@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { Route } from 'react-router-dom'
 import HomeNav from './HomeNav/HomeNav'
+import Footer from './Footer/Footer'
 import HomePage from './HomePage/HomePage'
 import LogIn from './LogIn/LogIn'
 import SignUp from './SignUp/SignUp'
@@ -33,15 +34,10 @@ class App extends Component {
           <SignUp onSignUp={this.signUp}></SignUp>
         )
       }} />
-      {['/dashboard', '/creategroup'].map((path) =>(
+      {['/dashboard', '/bible', '/invite', '/groupinfo'].map((path) =>(
         <Route key={path} exact path = {path} component={Dashboard} />
       ))}
-
-        <footer>
-          <p>GitHub</p>
-          <p>Portfolio</p>
-          <p>LinkedIn</p>
-        </footer>
+        <Route path='/*' component={Footer} />
       </main>
     );
   }
