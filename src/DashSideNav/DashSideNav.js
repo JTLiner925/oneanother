@@ -22,20 +22,20 @@ export default function DashSideNav() {
             <input type="radio" id="group-three" />
             Group 3
           </label>
-          <Link to="./startgroup">
+          <Link to="./creategroup">
             <h3>Start/Join Group</h3>
           </Link>
         </div>
         <ul>
-          <li>Invite Others</li>
+          <Link to='/invite'><li>Invite Others</li></Link>
           <li>Group Info</li>
-          <li>Create Event</li>
+          <Link to='createevent'><li>Create Event</li></Link>
           <li>Events Calender</li>
           <li>Upcoming Event</li>
           <li>Upcoming Event</li>
-          <li>Bible</li>
+          <Link to='bible'><li>Bible</li></Link>
           <li>Chat</li>
-          <li>Prayer Requests</li>
+          <Link to='prayerrequests'><li>Prayer Requests</li></Link>
         </ul>
       </div>
     </div>

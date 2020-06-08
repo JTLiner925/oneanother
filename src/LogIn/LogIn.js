@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { Link } from "react-router-dom";
 import "./LogIn.css";
 
 export default class LogIn extends Component {
@@ -27,7 +28,6 @@ export default class LogIn extends Component {
           type="email"
           name="email"
           onChange={this.changeHandler}
-          required
         />
         Password:
         <input
@@ -35,19 +35,19 @@ export default class LogIn extends Component {
           type="password"
           name="password"
           onChange={this.changeHandler}
-          required
         />
         <a href="#">Forgot Password</a>
-        <button type="submit" className="login">
+        <Link to='/dashboard'><button type="submit" className="login">
           Login
-        </button>
-        <button type="submit" className="signup">
+        </button></Link>
+        <Link to='/signup'><button type="submit" className="signup">
           Sign Up
-        </button>
+        </button></Link>
         <p className="disclaimer">
           This is a demo! Please do not enter any personal information.
         </p>
       </form>
+
     );
   }
 }

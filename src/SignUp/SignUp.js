@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { Link } from 'react-router-dom';
 // import { FontAwesomeIcon } from '@fontawesome/react-fontawesome';
 // import { fas } from '@fontawesome/free-solid-svg-icons'
 import "./SignUp.css";
@@ -46,7 +47,7 @@ export default class SignUp extends Component {
       <input id="bio-input" name='bio' onChange={this.changeHandler}></input>
 
       <div className="buttons">
-          <button type='submit' className="signup">Sign Up</button>
+         <Link to='/dashboard'><button type='submit' className="signup">Sign Up</button></Link> 
    
       </div>
     </form>

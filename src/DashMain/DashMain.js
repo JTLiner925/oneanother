@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from 'react-router-dom'
 import "./DashMain.css";
 
 export default function DashMain() {
@@ -6,7 +7,7 @@ export default function DashMain() {
     <div className="main-body">
       <nav className="main-nav">
         <h2>Group Name</h2>
-        <p>Profile</p>
+       <Link to='/signup'><p>Profile</p></Link> 
       </nav>
       <div className="event-alert">
         <h3>Event Heading</h3>
