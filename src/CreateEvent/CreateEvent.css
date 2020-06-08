@@ -1,0 +1,25 @@
+
+.main-nav  {
+  display: flex;
+  justify-content: space-between;
+  padding-left: 40px;
+  padding-right: 40px;
+  background-color: #aaa9a9
+}
+.main-body {
+  display: flex;
+  flex-direction: column;
+  
+}
+.join-form, .create-form{
+  flex-direction: column;
+}
+.lesson{
+  flex-direction: column;
+}
+@media screen and (min-width: 650px){
+  .main-body{
+    flex: 4;
+  }
+ 
+}

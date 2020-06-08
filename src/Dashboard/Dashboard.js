@@ -5,10 +5,28 @@ import DashMain from '../DashMain/DashMain'
 import Bible from '../Bible/Bible'
 import Invite from '../Invite/Invite'
 import GroupInfo from '../GroupInfo/GroupInfo'
+import CreateGroup from '../CreateGroup/CreateGroup'
+import CreateEvent from '../CreateEvent/CreateEvent'
+import PrayerRequests from '../PrayerRequests/PrayerRequests'
 import './Dashboard.css'
 
 export default class Dashboard extends Component {
   invite = (formData) => {
+    console.log(formData)
+  }
+  createGroup = (formData) => {
+    console.log(formData)
+  }
+  joinGroup = (formData) => {
+    console.log(formData)
+  }
+  createEvent = (formData) => {
+    console.log(formData)
+  }
+  prayerRequest = (formData) => {
+    console.log(formData)
+  }
+  prayerEncourage = (formData) => {
     console.log(formData)
   }
   render(){
@@ -29,7 +47,26 @@ export default class Dashboard extends Component {
           <GroupInfo onInvite={this.invite}></GroupInfo>
         )
      }} />
-      
+     <Route path='/creategroup' render={() => {
+       return (
+         <CreateGroup 
+         onCreateGroup={this.createGroup}
+         onJoinGroup={this.joinGroup}
+         ></CreateGroup>
+       )
+     }} />
+      <Route path='/createevent' render={() => {
+        return (
+          <CreateEvent onCreateEvent={this.createEvent}></CreateEvent>
+        )
+     }} />
+     <Route path='/prayerrequests' render={() => {
+        return (
+          <PrayerRequests 
+          onPrayerRequest={this.prayerRequest}
+          onPrayerEncourage={this.prayerEncourage}></PrayerRequests>
+        )
+     }} />
       
     </section>
     )}

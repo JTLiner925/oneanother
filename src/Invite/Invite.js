@@ -13,12 +13,12 @@ export default class Invite extends Component {
   };
   render() {
     return (
-      // <div className="main-body">
-      //   <nav className="main-nav">
-      //     <h2>Group Name</h2>
-      //     <p>Profile</p>
-      //   </nav>
-        <form className="invite-form" onSubmit={this.submitHandler}>
+      <div className="main-body">
+        <nav className="main-nav">
+          <h2>Group Name</h2>
+          <p>Profile</p>
+        </nav>
+        <form className="form-template" onSubmit={this.submitHandler}>
           <h3>Invite your friends!!</h3>
           <div>
             <label htmlFor="first-name">
@@ -37,7 +37,7 @@ export default class Invite extends Component {
             Send Invite
           </button>
         </form>
-      // </div>
+       </div>
     );
   }
 }

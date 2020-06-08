@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import { Link } from "react-router-dom";
 // import { FontAwesomeIcon } from '@fontawesome/react-fontawesome';
 // import { fas } from '@fontawesome/free-solid-svg-icons'
 import "./SignUp.css";
