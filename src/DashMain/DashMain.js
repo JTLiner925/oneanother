@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom'
 import "./DashMain.css";
 
 export default function DashMain() {
+ 
   return (
     <div className="main-body">
       <nav className="main-nav">
@@ -17,7 +18,7 @@ export default function DashMain() {
         <div className="box-dash bible-box-dash">
           <h3>Bible</h3>
           <p>Scripture Reference</p>
-          <p>Passage</p>
+          <p>Passage</p>          
         </div>
         <div className="box-dash question-box">
           <h3>Questions</h3>

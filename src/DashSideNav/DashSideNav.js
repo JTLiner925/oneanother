@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import "./DashSideNav.css";
 
 export default function DashSideNav() {
+  
   return (
     <div className="side-nav-body">
       <Link to="./dashboard">
@@ -37,6 +38,7 @@ export default function DashSideNav() {
           <li>Chat</li>
           <Link to='prayerrequests'><li>Prayer Requests</li></Link>
         </ul>
+
       </div>
     </div>
   );
