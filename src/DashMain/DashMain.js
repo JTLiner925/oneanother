@@ -1,13 +1,15 @@
-import React from "react";
+import React, { Component } from "react";
 import { Link } from 'react-router-dom'
 import "./DashMain.css";
 
-export default function DashMain() {
- 
+export default class DashMain extends Component {
+
+ render(){
   return (
     <div className="main-body">
       <nav className="main-nav">
         <h2>Group Name</h2>
+
        <Link to='/signup'><p>Profile</p></Link> 
       </nav>
       <div className="event-alert">
@@ -16,6 +18,7 @@ export default function DashMain() {
       </div>
       <div className="row-one-dash">
         <div className="box-dash bible-box-dash">
+          
           <h3>Bible</h3>
           <p>Scripture Reference</p>
           <p>Passage</p>          
@@ -49,4 +52,4 @@ export default function DashMain() {
       </div>
     </div>
   );
-}
+}}
