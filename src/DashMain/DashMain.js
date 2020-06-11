@@ -53,7 +53,7 @@ export default class DashMain extends Component {
           <h3>Chat</h3>
           {store.chat.map(user =>
             <Chat 
-            key={user.map(id => store.chat[id] )}
+            key={user.id}
             user_name={user.user_name}
             comment={user.comment}
             />)}
