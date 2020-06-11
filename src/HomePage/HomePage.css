@@ -1,13 +1,22 @@
-
+html, body {
+  height: 100%;
+}
 .hero {
   display: flex;
   flex-direction: column;
-  background-image: linear-gradient(rgb(190, 190, 190), rgba(255, 255, 255, 0.002));
-  
-  
+  background-image: linear-gradient(
+    rgb(190, 190, 190),
+    rgba(255, 255, 255, 0.002)
+  );
 }
-.get-started{
+/* .signup{
+  height: 40px;
+} */
+.get-started {
   margin-bottom: 50px;
+}
+.get-started, .intro-text {
+  text-align: center;
 }
 .dashboard-image {
   display: flex;
@@ -15,27 +24,30 @@
   height: 400px;
   margin: 0 auto;
 }
-.slider{
+.slider {
   text-align: center;
   font-size: 36px;
   margin-top: 50px;
   height: 400px;
-  background-image: linear-gradient(to bottom right, rgb(61, 61, 61), rgb(146, 145, 145));
+  background-image: linear-gradient(
+    to bottom right,
+    rgb(61, 61, 61),
+    rgb(146, 145, 145)
+  );
 }
-.feature{
+.bible, .chat, .prayer, .sign-up {
   display: flex;
-  height: 400px;  
+  height: 90%;
 }
-.features{
+.features {
   display: flex;
   flex-direction: column;
 }
-.feature-pic{
+.feature-pic {
   width: 50%;
-  height: 100%;
+  /* height: 100%; */
 }
-.feature-text{
+.feature-text {
   width: 50%;
-  padding:40px;
+  padding: 40px;
 }
-

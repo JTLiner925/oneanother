@@ -29,6 +29,7 @@ export default class Dashboard extends Component {
   prayerEncourage = (formData) => {
     console.log(formData)
   }
+  
   render(){
   return (
     <section id='dash-body'>

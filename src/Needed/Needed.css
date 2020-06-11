@@ -1,0 +1,9 @@
+/* .item:checked {
+  text-decoration: line-through;
+} */
+input[type=checkbox] + label{
+  text-decoration: none;
+}
+input[type=checkbox]:checked + label{
+  text-decoration: line-through;
+}
