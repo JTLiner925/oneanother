@@ -9,25 +9,16 @@ export default class DashMain extends Component {
   state={
     store: STORE,
   }
-  scriptLoaded = () => {
-    // console.log(window)
-    window.logos.biblia.init();
-    let element = document.getElementById('biblia')
-    // element.appendChild('<biblia:bible layout="normal" resource="leb" width="400" height="600" startingReference="Ge1.1"></biblia:bible>')
-  }
-  componentDidMount() {
-    console.log(window)
-    const script = document.createElement("script");
-    script.src = "//biblia.com/api/logos.biblia.js";
-    script.async = true;
-    script.onload = () => this.scriptLoaded();
-  
-    document.body.appendChild(script);
-  }
+  // componentDidMount= () => {
+  //   this.setState({
+  //      this.props.handlePassage
+  //   })
+  // }
  render(){
    const { store } = this.state
   return (
     <div className="main-body">
+      
       <nav className="main-nav">
         <h2>Group Name</h2>
 
@@ -41,9 +32,10 @@ export default class DashMain extends Component {
         <div className="box-dash bible-box-dash">
 
         <div id='biblia'></div>
-          <h3>Bible</h3>
+        {this.props.passage}
+          {/* <h3>Bible</h3>
           <p>Scripture Reference</p>
-          <p>Passage</p>          
+          <p>Passage</p>           */}
         </div>
         <div className="box-dash question-box">
           <h3>Questions</h3>

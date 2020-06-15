@@ -41,10 +41,10 @@ export default class SignUp extends Component {
         need to code in an image selection
       </div>
       <label htmlFor="address-input" >Address</label>
-      <input id="address-input" name='address' onChange={this.changeHandler}></input>
+      <input id="address-input" name='user_address' onChange={this.changeHandler}></input>
 
       <label htmlFor="bio-input">Tell us about yourself!</label>
-      <input id="bio-input" name='bio' onChange={this.changeHandler}></input>
+      <input id="bio-input" name='user_bio' onChange={this.changeHandler}></input>
 
       <div className="buttons">
          <Link to='/dashboard'><button type='submit' className="signup">Sign Up</button></Link> 

@@ -38,7 +38,7 @@ export default function DashSideNav() {
           <li>Chat</li>
           <Link to='prayerrequests'><li>Prayer Requests</li></Link>
         </ul>
-
+        
       </div>
     </div>
   );
