@@ -15,6 +15,7 @@ export default class DashMain extends Component {
   //   })
   // }
  render(){
+  const { passage } = this.props.passage
    const { store } = this.state
   return (
     <div className="main-body">
@@ -32,10 +33,10 @@ export default class DashMain extends Component {
         <div className="box-dash bible-box-dash">
 
         <div id='biblia'></div>
-        {this.props.passage}
-          {/* <h3>Bible</h3>
-          <p>Scripture Reference</p>
-          <p>Passage</p>           */}
+        {/* <div>{JSON.stringify(this.props.passage)}</div> */}
+          <h3>{this.props.passage.canonical}</h3>
+          <p>{this.props.passage.passages}</p>
+                  
         </div>
         <div className="box-dash question-box">
           <h3>Questions</h3>

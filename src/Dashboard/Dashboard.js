@@ -24,29 +24,33 @@ export default class Dashboard extends Component {
     })
   }
  
-  componentWillMount() {
-    fetch(config.API_ENDPOINT, {
-      mode: 'no-cors',
+  componentDidMount() {
+    console.log(config)
+    let url = new URL(config.API_ENDPOINT);
+    
+    url.searchParams.set('q', 'john+1:1-10')
+    url.searchParams.set('include-passage-reference', true)
+    url.searchParams.set('include-verse-number', true)
+    url.searchParams.set('include-first-verse-number', true)
+    url.searchParams.set('include-footnotes', true)
+    url.searchParams.set('include-footnote-body', true)
+    url.searchParams.set('include-heading', true)
+    url.searchParams.set('include-short-copyright', true)
+    url.searchParams.set('indent-using', 'tab')
+    const options = {
+      // mode: 'no-cors',
       method: "GET",
-      params: {
-        'q': '',
-        'include-passage-reference': true,
-        'include-verse-number': true,
-        'include-first-verse-number': true,
-        'include-footnotes': true,
-        'include-footnote-body': true,
-        'include-heading': true,
-        'include-short-copyright': true,
-        'indent-using': 'tab', 
-      },
+      
       headers: {
-        "content-type": "application/json",
-        Authorization: `Bearer ${config.API_KEY}`,
-      },
-    })
+        
+        'Authorization': `Token ${config.API_KEY}`,
+      
+    }}
+  fetch(url, options)
     .then(res => {
+      console.log(res)
       if (!res.ok) {
-        return res.json().then(error => Promise.reject(error))
+        throw new Error('Something went wrong, please try again later.');
       }
       return res.json()
     })
@@ -77,13 +81,14 @@ export default class Dashboard extends Component {
   };
 
   render() {
+    console.log(this.state.passage)
     return (
       <section id="dash-body">
         <Route path="/*" component={DashSideNav} />
         <Route path="/dashboard" render={() => {
           return <DashMain
               passage = {this.state.passage}
-              onGetPassage={this.componentWillMount}
+              
           ></DashMain>}} />
         <Route path="/bible" component={Bible} />
 
