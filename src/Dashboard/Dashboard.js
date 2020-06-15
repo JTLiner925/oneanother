@@ -39,7 +39,7 @@ export default class Dashboard extends Component {
         'indent-using': 'tab', 
       },
       headers: {
-        "content-type": "application/json",
+        // "content-type": "application/json",
         Authorization: `Bearer ${config.API_KEY}`,
       },
     })
