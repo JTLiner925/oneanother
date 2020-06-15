@@ -33,8 +33,10 @@ export default class DashSideNav extends Component {
               <li>Create Event</li>
             </Link>
             <li>Events Calender</li>
-            <li>Upcoming Event</li>
-            <li>Upcoming Event</li>
+            {store.events.map((event, i) => (
+              <li key={i} name='lesson_title'>{event.lesson_title}</li>
+            ))}
+
             <Link to="bible">
               <li>Bible</li>
             </Link>

@@ -6,6 +6,7 @@ import DashMain from "../DashMain/DashMain";
 import Bible from "../Bible/Bible";
 import Invite from "../Invite/Invite";
 import GroupInfo from "../GroupInfo/GroupInfo";
+import store from '../Store';
 import CreateGroup from "../CreateGroup/CreateGroup";
 import CreateEvent from "../CreateEvent/CreateEvent";
 import PrayerRequests from "../PrayerRequests/PrayerRequests";
@@ -25,10 +26,10 @@ export default class Dashboard extends Component {
   }
  
   componentDidMount() {
-    console.log(config)
+   
     let url = new URL(config.API_ENDPOINT);
     
-    url.searchParams.set('q', 'john+1:1-10')
+    url.searchParams.set('q', store.events[1].bible_passage )
     url.searchParams.set('include-passage-reference', true)
     url.searchParams.set('include-verse-number', true)
     url.searchParams.set('include-first-verse-number', true)
