@@ -1,15 +1,59 @@
 import React, { Component } from "react";
 import { Link } from 'react-router-dom';
+import store from '../Store'
+import config from '../config'
 // import { FontAwesomeIcon } from '@fontawesome/react-fontawesome';
 // import { fas } from '@fontawesome/free-solid-svg-icons'
 import "./SignUp.css";
 
 export default class SignUp extends Component {
-
-  submitHandler = (e) => {
-   
+  // constructor(props) {
+  //   super(props);
+  //   this.state = {
+  //     user_email:"",
+  //     user_password:"",
+  //     first_name:"",
+  //     last_name:"",
+  //     user_address:"",
+  //     user_bio:""
+  //   };
+  // }
+  // addUser()
+  submitHandler = (e) => {   
     e.preventDefault()
+    // const one_another_user = (({user_email, user_password, first_name, last_name, user_address, user_bio}) => ({user_email, user_password, first_name, last_name, user_address, user_bio}))(this.state);
+    // const store = this.props.store.one_another_user
     this.props.onSignUp(this.state)
+  //   const options = {
+  //     method: 'POST',
+  //     body: JSON.stringify(one_another_user),
+  //     headers: {
+  //        'Authorization': `Token ${config.API_KEY}`
+  //     }
+  //   }
+  //   fetch(store, options)
+  //   .then(res => {
+  //     if(!res.ok) {
+  //       throw new Error('Something went wrong, please try again later');
+  //     }
+  //     return res.json();
+  //   })
+  //   .then(data => {
+  //     this.setState({
+  //       user_email:"",
+  //     user_password:"",
+  //     first_name:"",
+  //     last_name:"",
+  //     user_address:"",
+  //     user_bio:""
+  //     });
+  //     this.props.handleAdd(one_another_user);
+  //   })
+  //   .catch(err => {
+  //     this.setState({
+  //       error: err.message
+  //     });
+  //   });
   }
   changeHandler = (e) => {
     this.setState({
@@ -22,9 +66,9 @@ export default class SignUp extends Component {
     <form className="signup-container" onSubmit={this.submitHandler}>
       <h1>Sign up</h1>
       <label htmlFor="email-input">Email:</label>
-      <input id="email-input" type="email" name='email'  onChange={this.changeHandler}required />
+      <input id="email-input" type="email" name='user_email'  onChange={this.changeHandler}required />
       <label htmlFor="password-input">Password:</label>
-      <input id="password-input" type="password" name='password'  onChange={this.changeHandler}required />
+      <input id="password-input" type="password" name='user_password'  onChange={this.changeHandler}required />
       <a href="#">Forgot Password</a>
 
       <label htmlFor="first-name-input" >
