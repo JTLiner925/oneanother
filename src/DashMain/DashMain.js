@@ -1,21 +1,20 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import "./DashMain.css";
+import ApiContext from "../ApiContext";
 import STORE from "../Store";
 import Needed from "../Needed/Needed";
 import Chat from "../Chat/Chat";
 
 export default class DashMain extends Component {
+ 
   state = {
     store: STORE,
   };
-  // componentDidMount= () => {
-  //   this.setState({
-  //      this.props.handlePassage
-  //   })
-  // }
+  static contextType = ApiContext;
+  
   render() {
-    const { passage } = this.props.passage;
+    console.log(this.props)
     const { store } = this.state;
     return (
       <div className="main-body">
@@ -26,14 +25,7 @@ export default class DashMain extends Component {
             <p>{store.one_another_users[0].first_name}</p>
           </Link>
         </nav>
-        {store.events.map((event, i) => (
         
-          <div className="event-alert">
-          <h3>Stories of Hope...</h3>
-    <p>{event.lesson_title}</p>
-        </div>
-        
-        ))}
         <div className="event-alert">
           <h3>Stories of Hope...</h3>
           <p>{store.events[1].lesson_title}</p>

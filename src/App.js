@@ -5,6 +5,7 @@ import Footer from './Footer/Footer'
 import HomePage from './HomePage/HomePage'
 import LogIn from './LogIn/LogIn'
 import SignUp from './SignUp/SignUp'
+
 import Dashboard from './Dashboard/Dashboard'
 import "./App.css";
 
@@ -34,7 +35,7 @@ class App extends Component {
           <SignUp onSignUp={this.signUp}></SignUp>
         )
       }} />
-      {['/dashboard', '/bible', '/invite', '/groupinfo', '/creategroup', '/createevent', '/prayerrequests'].map((path) =>(
+      {['/dashboard', '/bible', '/invite', '/groupinfo', '/creategroup', '/createevent', '/prayerrequests', '/dashboard/:event_id'].map((path) =>(
         <Route key={path} exact path = {path} component={Dashboard} />
       ))}
         <Route path='/*' component={Footer} />

@@ -6,7 +6,8 @@ import DashMain from "../DashMain/DashMain";
 import Bible from "../Bible/Bible";
 import Invite from "../Invite/Invite";
 import GroupInfo from "../GroupInfo/GroupInfo";
-import store from '../Store';
+import ApiContext from "../ApiContext";
+import store from "../Store";
 import CreateGroup from "../CreateGroup/CreateGroup";
 import CreateEvent from "../CreateEvent/CreateEvent";
 import PrayerRequests from "../PrayerRequests/PrayerRequests";
@@ -14,52 +15,49 @@ import "./Dashboard.css";
 
 export default class Dashboard extends Component {
   state = {
-    passage: '',
-    error: null
-  }
-
-  setPassage = passage => {
+    passage:'',
+    groups: [],
+    events: [],
+    error: null,
+  };
+  setPassage = (passage) => {
     this.setState({
       passage,
-      error: null
-    })
-  }
- 
+      error: null,
+    });
+  };
   componentDidMount() {
-   
     let url = new URL(config.API_ENDPOINT);
-    
-    url.searchParams.set('q', store.events[1].bible_passage )
-    url.searchParams.set('include-passage-reference', true)
-    url.searchParams.set('include-verse-number', true)
-    url.searchParams.set('include-first-verse-number', true)
-    url.searchParams.set('include-footnotes', true)
-    url.searchParams.set('include-footnote-body', true)
-    url.searchParams.set('include-heading', true)
-    url.searchParams.set('include-short-copyright', true)
-    url.searchParams.set('indent-using', 'tab')
+
+    url.searchParams.set("q", store.events[1].bible_passage);
+    url.searchParams.set("include-passage-reference", true);
+    url.searchParams.set("include-verse-number", true);
+    url.searchParams.set("include-first-verse-number", true);
+    url.searchParams.set("include-footnotes", true);
+    url.searchParams.set("include-footnote-body", true);
+    url.searchParams.set("include-heading", true);
+    url.searchParams.set("include-short-copyright", true);
+    url.searchParams.set("indent-using", "tab");
     const options = {
-      // mode: 'no-cors',
       method: "GET",
-      
+
       headers: {
-        
-        'Authorization': `Token ${config.API_KEY}`,
-      
-    }}
-  fetch(url, options)
-    .then(res => {
-      console.log(res)
-      if (!res.ok) {
-        throw new Error('Something went wrong, please try again later.');
-      }
-      return res.json()
-    })
-    .then(this.setPassage)
-    .catch(error => {
-      console.error(error)
-      this.setState({ error })
-    })
+        Authorization: `Token ${config.API_KEY}`,
+      },
+    };
+    fetch(url, options)
+      .then((res) => {
+        console.log(res);
+        if (!res.ok) {
+          throw new Error("Something went wrong, please try again later.");
+        }
+        return res.json();
+      })
+      .then(this.setPassage)
+      .catch((error) => {
+        console.error(error);
+        this.setState({ error });
+      });
   }
 
   invite = (formData) => {
@@ -81,18 +79,20 @@ export default class Dashboard extends Component {
     console.log(formData);
   };
 
-  render() {
-    console.log(this.state.passage)
+  
+  handleAddEvent = () => {};
+  handleAddGroup = () => {};
+  renderMainRoutes() {
     return (
-      <section id="dash-body">
-        <Route path="/*" component={DashSideNav} />
-        <Route path="/dashboard" render={() => {
-          return <DashMain
-              passage = {this.state.passage}
-              
-          ></DashMain>}} />
+      <>
+        {["/dashboard", "/dashboard/:event_id"].map((path) => (
+          <Route exact key={path} path={path} 
+          render={() => {
+            return <DashMain passage={this.state.passage}></DashMain>
+          }} 
+          />
+        ))}
         <Route path="/bible" component={Bible} />
-
         <Route
           path="/invite"
           render={() => {
@@ -117,23 +117,48 @@ export default class Dashboard extends Component {
           }}
         />
         <Route
-          path="/createevent"
+            path="/createevent"
+            render={() => {
+              return (
+                <CreateEvent onCreateEvent={this.createEvent}></CreateEvent>
+              );
+            }}
+          />
+          <Route
+            path="/prayerrequests"
+            render={() => {
+              return (
+                <PrayerRequests
+                  onPrayerRequest={this.prayerRequest}
+                  onPrayerEncourage={this.prayerEncourage}
+                ></PrayerRequests>
+              );
+            }}
+          />
+      </>
+    );
+  }
+  render() {
+    const value = {
+      groups: this.state.groups,
+      events: this.state.events,
+      addEvent: this.handleAddEvent,
+      addGroup: this.handleAddGroup,
+    };
+    console.log(this.state.passage);
+    return (
+      <ApiContext.Provider value={value}>
+        <section id="dash-body">
+        {['/dashboard', '/bible', '/invite', '/groupinfo', '/creategroup', '/createevent', '/prayerrequests', '/dashboard/:event_id'].map((path) => (
+          <Route exact key={path} path={path} 
           render={() => {
-            return <CreateEvent onCreateEvent={this.createEvent}></CreateEvent>;
-          }}
-        />
-        <Route
-          path="/prayerrequests"
-          render={() => {
-            return (
-              <PrayerRequests
-                onPrayerRequest={this.prayerRequest}
-                onPrayerEncourage={this.prayerEncourage}
-              ></PrayerRequests>
-            );
-          }}
-        />
-      </section>
+            return <DashSideNav />
+          }} 
+          />
+        ))}
+          <main className="Dash__main">{this.renderMainRoutes()}</main>
+        </section>
+      </ApiContext.Provider>
     );
   }
 }

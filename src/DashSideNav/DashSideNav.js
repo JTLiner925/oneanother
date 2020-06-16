@@ -1,12 +1,17 @@
 import React, { Component } from "react";
-import { Link } from "react-router-dom";
+import { NavLink, Link } from "react-router-dom";
 import store from "../Store";
+import ApiContext from "../ApiContext";
+import { countEventsForGroup } from '../helpers';
 import "./DashSideNav.css";
 
 export default class DashSideNav extends Component {
-  
+  static contextType = ApiContext;
+
   render() {
-    return (
+    const { groups = [], events = [] } = this.context;
+    console.log(events)
+        return (
       <div className="side-nav-body">
         <Link to="./dashboard">
           <h2>oneAnother</h2>
@@ -33,9 +38,21 @@ export default class DashSideNav extends Component {
               <li>Create Event</li>
             </Link>
             <li>Events Calender</li>
-            {store.events.map((event, i) => (
-              <li key={i} name='lesson_title'>{event.lesson_title}</li>
+            {store.events.map((event) => (
+              <li key={event.id}>
+                <NavLink 
+                  className='event-link'  
+                  to={`/dashboard/${event.id}`}>
+                    {event.lesson_title}
+                </NavLink>
+                
+              </li>
             ))}
+            
+            
+            {/* {store.events.map((event, i) => (
+              <li key={i} name='lesson_title'>{event.lesson_title}</li>
+            ))} */}
 
             <Link to="bible">
               <li>Bible</li>
