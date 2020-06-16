@@ -39,7 +39,7 @@ chat: [
   
 ],
 one_another_users: [
-  {id:'1', user_email:'jtliner925@gmail.com', user_password:'jtlagleel', first_name:'JT', last_name:'Liner', user_address:'309 Tallwood Dr. Georgetown, TX 78628', user_bio:'Man, this is a really long story, how much time do you have?', group_name:['A-Team', 'DMI', 'DBG']},
+  {id:'1', user_email:'jtliner925@gmail.com', user_password:'jtlagleel', first_name:'JT', last_name:'Liner', user_address:'309 Tallwood Dr. Georgetown, TX 78628', user_bio:'Man, this is a really long story, how much time do you have?', group_id:['1', '2', '3']},
 ],
 groups: [
 {id:'1', name:'A-Team', pitch:'RRBC small group. We encourage, support and serve oneAnother', leader_name:'Ray Flores', phone:'512-555-1234', location:'Cake House', time_date:'Tuesdays @ 6pm', more_info:'Don\'t be late!'},

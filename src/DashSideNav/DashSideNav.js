@@ -2,28 +2,55 @@ import React, { Component } from "react";
 import { NavLink, Link } from "react-router-dom";
 import store from "../Store";
 import ApiContext from "../ApiContext";
-import { countEventsForGroup } from '../helpers';
+import { findGroupsForUser } from '../helpers';
 import "./DashSideNav.css";
 
 export default class DashSideNav extends Component {
   static contextType = ApiContext;
 
   render() {
-    const { groups = [], events = [] } = this.context;
-    console.log(events)
+    const userGroup = parseInt(store.one_another_users[0].group_id);
+    const { groups = [] } = store;
+    const groupsForUser = findGroupsForUser(groups, userGroup)
+    console.log(findGroupsForUser(groups, userGroup))
         return (
       <div className="side-nav-body">
-        <Link to="./dashboard">
+        <Link to="/dashboard">
           <h2>oneAnother</h2>
         </Link>
         <div className="side-nav">
           <div className="nav-group">
-            {store.one_another_users[0].group_name.map((gn, i) => (
+            <ul>
+              {groups.map((group) => (
+              <li key={group.id}>
+                <NavLink
+                  className='group-link'
+                  to={`/dashboard/group/${group.id}`}
+                  >
+                    <span></span>
+                    {group.name}
+                </NavLink>
+              </li>
+              ))}
+            {/* {groupsForUser.map((group) =>(
+            <NavLink 
+                  className='group-link'  
+                  to={`/dashboard/${group.id}`}>
+                    {group.name}
+                </NavLink>
+            // {groupsForUser.map((group) =>(
+            //   <li key={group.id}>
+            //     hey
+            //     {group.id}
+            //   </li>
+            ))} */}
+            </ul>
+            {/* {store.one_another_users[0].group_id.map((gn, i) => (
               <label key={i}>
                 <input  type="radio" id="group-one" />
                 {gn}
               </label>
-            ))}
+            ))} */}
 
             <Link to="./creategroup">
               <h3>Start/Join Group</h3>

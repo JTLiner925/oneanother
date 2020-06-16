@@ -35,7 +35,7 @@ class App extends Component {
           <SignUp onSignUp={this.signUp}></SignUp>
         )
       }} />
-      {['/dashboard', '/bible', '/invite', '/groupinfo', '/creategroup', '/createevent', '/prayerrequests', '/dashboard/:event_id'].map((path) =>(
+      {['/dashboard', '/bible', '/invite', '/groupinfo', '/creategroup', '/createevent', '/prayerrequests', '/dashboard/:event_id', '/dashboard/group/:group_id'].map((path) =>(
         <Route key={path} exact path = {path} component={Dashboard} />
       ))}
         <Route path='/*' component={Footer} />

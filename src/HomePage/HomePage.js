@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import './HomePage.css'
+import Carousel from 'nuka-carousel';
 import dashboard from '../images/dashboard-ex.jpg'
 import bible from '../images/bible.jpg'
 import chat from '../images/chat.jpg'
@@ -26,9 +27,19 @@ export default class HomePage extends Component {
           <Link className='get-started' to="/signup"><button className='signup sign-up'>Get Started</button></Link>
           <img className='dashboard-image' src={dashboard} alt='dashboard screenshot' />
         </div>
-        <section className='slider'>
-          Slider
-        </section>
+        <Carousel className='slider' >
+          <div>
+          <p>this is the first slide</p>
+            <img className='feature-pic' src={bible} alt='first pic'></img>
+            
+          </div>
+        <img src="http://placehold.it/1000x400/ffffff/c0392b/&text=slide1" alt='pic1'/>
+        <img src="http://placehold.it/1000x400/ffffff/c0392b/&text=slide2"alt='pic2'/>
+        <img src="http://placehold.it/1000x400/ffffff/c0392b/&text=slide3"alt='pic3'/>
+        <img src="http://placehold.it/1000x400/ffffff/c0392b/&text=slide4"alt='pic4'/>
+        <img src="http://placehold.it/1000x400/ffffff/c0392b/&text=slide5"alt='pic5'/>
+        <img src="http://placehold.it/1000x400/ffffff/c0392b/&text=slide6"alt='pic6'/>
+      </Carousel>
         <section className='features'>
           <div className='feature bible'>
             <img className='feature-pic' src={prayer} alt='bible' />

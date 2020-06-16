@@ -26,6 +26,7 @@ export default class Dashboard extends Component {
       error: null,
     });
   };
+  
   componentDidMount() {
     let url = new URL(config.API_ENDPOINT);
 
@@ -85,7 +86,7 @@ export default class Dashboard extends Component {
   renderMainRoutes() {
     return (
       <>
-        {["/dashboard", "/dashboard/:event_id"].map((path) => (
+        {["/dashboard", "/dashboard/:event_id", '/dashboard/group/:group_id'].map((path) => (
           <Route exact key={path} path={path} 
           render={() => {
             return <DashMain passage={this.state.passage}></DashMain>
@@ -149,7 +150,7 @@ export default class Dashboard extends Component {
     return (
       <ApiContext.Provider value={value}>
         <section id="dash-body">
-        {['/dashboard', '/bible', '/invite', '/groupinfo', '/creategroup', '/createevent', '/prayerrequests', '/dashboard/:event_id'].map((path) => (
+        {['/dashboard', '/bible', '/invite', '/groupinfo', '/creategroup', '/createevent', '/prayerrequests', '/dashboard/:event_id', '/dashboard/group/:group_id'].map((path) => (
           <Route exact key={path} path={path} 
           render={() => {
             return <DashSideNav />

@@ -19,7 +19,7 @@ export default class DashMain extends Component {
     return (
       <div className="main-body">
         <nav className="main-nav">
-          <h2>{store.one_another_users[0].group_name[0]}</h2>
+          <h2>{store.one_another_users[0].group_id[0]}</h2>
 
           <Link to="/signup">
             <p>{store.one_another_users[0].first_name}</p>
