@@ -1,11 +1,13 @@
-import React from "react";
+import React, { Component } from "react";
 import './Chat.css'
 
-export default function Chat(props) {
+export default class Chat extends Component {
+  //need post request
+  render(){
   return (
-    <div className="Chat" key={props.id}>
-      <p>{props.user_name}</p>
-      <p className='chat'>{props.comment}</p>
+    <div className="Chat" key={this.props.id}>
+      <p>{this.props.user_name}</p>
+      <p className='chat'>{this.props.comment}</p>
     </div>
   );
-}
+}}

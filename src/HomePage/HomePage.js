@@ -27,11 +27,10 @@ export default class HomePage extends Component {
           <Link className='get-started' to="/signup"><button className='signup sign-up'>Get Started</button></Link>
           <img className='dashboard-image' src={dashboard} alt='dashboard screenshot' />
         </div>
-        <Carousel className='slider' >
-          <div>
-          <p>this is the first slide</p>
-            <img className='feature-pic' src={bible} alt='first pic'></img>
-            
+        <Carousel className='carousel'>
+          <div className='slide'>
+          <p>this is the Bible slide</p>
+            {/* <img  className='slide-img'src={bible} alt='first pic'></img>         */}
           </div>
         <img src="http://placehold.it/1000x400/ffffff/c0392b/&text=slide1" alt='pic1'/>
         <img src="http://placehold.it/1000x400/ffffff/c0392b/&text=slide2"alt='pic2'/>

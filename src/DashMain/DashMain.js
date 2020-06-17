@@ -5,6 +5,11 @@ import ApiContext from "../ApiContext";
 import STORE from "../Store";
 import Needed from "../Needed/Needed";
 import Chat from "../Chat/Chat";
+import { getPrayersForGroup } from '../helpers';
+import BibleCard from '../BibleCard/BibleCard';
+import Prayer from '../Prayer/Prayer'
+import Questions from '../Questions/Questions'
+import SimpleCalendar from '../SimpleCalendar/SimpleCalendar'
 
 export default class DashMain extends Component {
  
@@ -14,8 +19,12 @@ export default class DashMain extends Component {
   static contextType = ApiContext;
   
   render() {
-    console.log(this.props)
+    
     const { store } = this.state;
+    const groupId = parseInt(store.groups[0].id);
+    const prayers  = store.prayers;
+    const prayersForGroup = getPrayersForGroup(prayers, groupId)
+    console.log(getPrayersForGroup(prayers, groupId))
     return (
       <div className="main-body">
         <nav className="main-nav">
@@ -33,19 +42,20 @@ export default class DashMain extends Component {
         <div className="row-one-dash">
           <div className="box-dash bible-box-dash">
             <div id="biblia"></div>
+            <BibleCard 
+            lesson_title={store.events[1].lesson_title}
+            canonical={this.props.passage.canonical}
+            passage={this.props.passage.passages}
+            />
             {/* <div>{JSON.stringify(this.props.passage)}</div> */}
-            <h3>{store.events[1].lesson_title}</h3>
-            <h3>{this.props.passage.canonical}</h3>
-            <p>{this.props.passage.passages}</p>
           </div>
           <div className="box-dash question-box">
             <h3>Questions</h3>
-
-            <ul>
+            
               {store.events[1].questions.map((question, i) => (
-                <li key={i}>{question}</li>
+                <Questions key={i} question={question} />
               ))}
-            </ul>
+            
           </div>
           <div className="box-dash chat-box">
             <h3>Chat</h3>
@@ -61,8 +71,14 @@ export default class DashMain extends Component {
         <div className="row-two-dash">
           <div className="box-dash prayer-box">
             <h3>Prayer Requests</h3>
-            <p>List of Prayer Requests</p>
-            <p>John 3:16 and I hope you know Gal. 2:20</p>
+            {store.prayers.map((prayer) => (
+              
+                <Prayer 
+                  key={prayer.id}
+                  request={prayer.request}
+                />
+              
+            ))}
           </div>
           <div className="box-dash need-box">
             <h3>Needed Items</h3>
@@ -74,8 +90,7 @@ export default class DashMain extends Component {
           </div>
           <div className="box-dash calendar-box">
             <h3>Event Calendar</h3>
-            <p>this will be a calendar with dates highlighted to show event.</p>
-            <p>more text about the box</p>
+            <SimpleCalendar />
           </div>
         </div>
       </div>

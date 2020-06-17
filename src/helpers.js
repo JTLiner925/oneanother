@@ -12,3 +12,6 @@ export const getEventsForGroup = (events = [], groupId) =>
 
 export const countEventsForGroup = (events = [], groupId) => 
 events.filter((event) => event.group_id === groupId).length;
+
+export const getPrayersForGroup = (prayers = [], groupId) =>
+!groupId ? prayers : prayers.filter((prayer) => prayer.group_id === groupId) 
