@@ -69,7 +69,7 @@ export default class DashSideNav extends Component {
               <li key={event.id}>
                 <NavLink 
                   className='event-link'  
-                  to={`/dashboard/${event.id}`}>
+                  to={`/dashboard/${event.bible_passage}`}>
                     {event.lesson_title}
                 </NavLink>
                 

@@ -1,10 +1,45 @@
 import React, { Component } from "react";
+import store from '../Store'
 import './CreateEvent.css'
+import ApiContext from '../ApiContext'
 
 export default class CreateEvent extends Component {
+  static defaultProps = {
+    history: {
+      push: () => {},
+    },
+  };
+  static contextType = ApiContext;
+
   submitHandler = (e) => {
     e.preventDefault();
-    this.props.onCreateEvent(this.state);
+    const newEvent = {
+      announcements: e.target['announcements'].value,
+      needed_items: e.target['needed_items'].value,
+      time_date: e.target['time_date'].value,
+      lesson_title: e.target['lesson_title'].value,
+      bible_passage: e.target['bible_passage'].value,
+      questions: e.target['questions'].value,
+    }
+    fetch(store.events, {
+      method: 'POST',
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify(newEvent)
+    })
+    .then((res) => {
+      if (!res.ok) return res.json().then((e) => Promise.reject(e));
+      return res.json();
+    })
+    .then((event) => {
+      this.context.addEvent(event);
+      this.props.history.push(`/`);
+    })
+    .catch((error) => {
+      console.error({ error });
+    });
+    // this.props.onCreateEvent(this.state);
   };
   changeHandler = (e) => {
     this.setState({
