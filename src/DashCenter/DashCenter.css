@@ -1,0 +1,6 @@
+@media screen and (min-width: 650px){
+.center-section{
+  display: flex;
+  width: 50%;
+}
+}

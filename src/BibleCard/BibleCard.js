@@ -4,10 +4,10 @@ import "./BibleCard.css";
 export default class BibleCard extends Component {
   render() {
     return (
-      <div>
+      <div className='bible-text'>
         <h3>{this.props.lesson_title}</h3>
         <h3>{this.props.canonical}</h3>
-        <p>{this.props.passage}</p>
+        <p >{this.props.passage}</p>
       </div>
     );
   }

@@ -20,19 +20,38 @@
 
 .main-body {
   display: flex;
-  flex-direction: column;
-  /* flex: 1; */
+  flex-direction: row;
   align-content: center;
 }
 .main-group{
   display: flex;
   flex-direction: column;
-  /* flex: 5; */
 }
-
+.bible-box-dash{
+overflow: scroll;
+}
+.chat-box{
+padding-left: 0;
+}
+.chat-input-container{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  height: 30px;
+  width: 100%;
+  margin: auto;
+}
+.chat-input{
+  width: 90%;  
+}
+.Chat-comp{
+overflow: scroll;
+}
 .box-dash{
   width: 100%;
   padding: 10px;
+  padding-bottom: 0;
   background-color: #e2e0e0;
   box-shadow: 0 1px 8px 0 rgba(0, 0, 0, 0.2);
   overflow: scroll;
@@ -45,16 +64,26 @@
   .main-body{
     flex: 4;
   }
+  .main{
+    display: flex;
+    width: 100%;
+  }
   .row-one-dash, .row-two-dash{
     display: flex;
+    flex-direction: column;
     
   }
-  .row-one-dash {
-    height: 500px;
+  .center-section{
+    display: flex;
+    width: 70%;
   }
-  .row-two-dash{
+  .row-one-dash, .row-two-dash {
+    width: 45%;
+    height: auto;
+  }
+  /* .row-two-dash{
     height: 300px;
-  }
+  } */
   .box-dash{
     margin: 20px;
     background-color: #e2e0e0;

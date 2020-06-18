@@ -8,6 +8,7 @@ export default class Chat extends Component {
     <div className="Chat" key={this.props.id}>
       <p>{this.props.user_name}</p>
       <p className='chat'>{this.props.comment}</p>
+      
     </div>
   );
 }}

@@ -166,6 +166,7 @@ export default class Dashboard extends Component {
           />
         ))}
           <main className="Dash__main">{this.renderMainRoutes()}</main>
+          
         </section>
       </ApiContext.Provider>
     );
