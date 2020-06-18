@@ -1,6 +1,14 @@
+.bible-box-dash{
+  overflow: scroll;
+  }
 @media screen and (min-width: 650px){
-.center-section{
-  display: flex;
-  width: 50%;
+.row-one-dash, .row-two-dash{
+    display: flex;
+    flex-direction: column;
+    
+  }
+.center-section {
+  
 }
+ 
 }

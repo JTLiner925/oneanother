@@ -1,9 +1,9 @@
-.main-nav  {
+.main-nav {
   display: flex;
   justify-content: space-between;
   padding-left: 40px;
   padding-right: 40px;
-  background-color: #aaa9a9
+  background-color: #aaa9a9;
 }
 .event-alert {
   display: flex;
@@ -23,33 +23,12 @@
   flex-direction: row;
   align-content: center;
 }
-.main-group{
+.main-group {
   display: flex;
   flex-direction: column;
 }
-.bible-box-dash{
-overflow: scroll;
-}
-.chat-box{
-padding-left: 0;
-}
-.chat-input-container{
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: center;
-  height: 30px;
-  width: 100%;
-  margin: auto;
-}
-.chat-input{
-  width: 90%;  
-}
-.Chat-comp{
-overflow: scroll;
-}
-.box-dash{
-  width: 100%;
+
+.box-dash {
   padding: 10px;
   padding-bottom: 0;
   background-color: #e2e0e0;
@@ -60,31 +39,31 @@ overflow: scroll;
   text-align: center;
 }
 
-@media screen and (min-width: 650px){
-  .main-body{
+@media screen and (min-width: 650px) {
+  .main-body {
     flex: 4;
   }
-  .main{
+  .main {
     display: flex;
     width: 100%;
+    justify-content: space-evenly;
   }
-  .row-one-dash, .row-two-dash{
+
+  .center-section {
     display: flex;
-    flex-direction: column;
-    
+    width: 60%;
+    justify-content: space-evenly;
   }
-  .center-section{
-    display: flex;
-    width: 70%;
+  .right-side {
+    width: 40%;
   }
-  .row-one-dash, .row-two-dash {
+  .row-one-dash,
+  .row-two-dash {
     width: 45%;
     height: auto;
   }
-  /* .row-two-dash{
-    height: 300px;
-  } */
-  .box-dash{
+
+  .box-dash {
     margin: 20px;
     background-color: #e2e0e0;
     border-radius: 10px;
