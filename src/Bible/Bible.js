@@ -64,23 +64,7 @@ export default function DashMain() {
         </div>
         </div>
       </div>
-      {/* <div className="row-two">
-        <div className="box prayer-box">
-          <h3>Prayer Requests</h3>
-          <p>List of Prayer Requests</p>
-          <p>this will be dynamic</p>
-        </div>
-        <div className="box need-box">
-          <h3>Needed Items</h3>
-          <p>Items to bring to group</p>
-          <p>Please don't forget your items!</p>
-        </div>
-        <div className="box calendar-box">
-          <h3>Event Calendar</h3>
-          <p>this will be a calendar with dates highlighted to show event.</p>
-          <p>more text about the box</p>
-        </div>
-      </div> */}
+      
     </div>
   );
 }

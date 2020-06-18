@@ -23,11 +23,21 @@ export default class Invite extends Component {
           <div>
             <label htmlFor="first-name">
               First Name
-              <input id="first-name" name="first_name_invite"onChange={this.changeHandler} required></input>
+              <input
+                id="first-name"
+                name="first_name_invite"
+                onChange={this.changeHandler}
+                required
+              ></input>
             </label>
             <label htmlFor="email-invite">
               Email
-              <input id="email-invite" name="email_invite" onChange={this.changeHandler} required></input>
+              <input
+                id="email-invite"
+                name="email_invite"
+                onChange={this.changeHandler}
+                required
+              ></input>
             </label>
             <button type="submit" className="add-invite">
               Invite More
@@ -37,7 +47,7 @@ export default class Invite extends Component {
             Send Invite
           </button>
         </form>
-       </div>
+      </div>
     );
   }
 }

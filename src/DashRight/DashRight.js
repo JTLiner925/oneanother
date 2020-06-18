@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import store from "../Store";
-import ApiContext from "../ApiContext";
+// import ApiContext from "../ApiContext";
 import Prayer from "../Prayer/Prayer";
 import Chat from "../Chat/Chat";
 import SimpleCalendar from "../SimpleCalendar/SimpleCalendar";
