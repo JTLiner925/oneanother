@@ -1,19 +1,24 @@
 import React, { Component } from "react";
 import store from "../Store";
-// import ApiContext from "../ApiContext";
+import ApiContext from "../ApiContext";
 import BibleCard from "../BibleCard/BibleCard";
 import Questions from "../Questions/Questions";
 import Needed from "../Needed/Needed";
 
 export default class DashCenter extends Component {
+  static contextType = ApiContext;
   render() {
+    
+    let { eventId } =  this.context
+    
+    console.log(eventId)
     return (
       <div className="center-section">
         <div className="row-one-dash">
           <div className="box-dash bible-box-dash">
             <div id="biblia"></div>
             <BibleCard
-              lesson_title={store.events[1].lesson_title}
+              lesson_title={eventId?store.events[eventId].lesson_title:'Bible Passage'}
               canonical={this.props.passage.canonical}
               passage={this.props.passage.passages}
             />

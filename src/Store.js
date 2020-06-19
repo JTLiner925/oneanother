@@ -38,12 +38,12 @@ const STORE = {
       comment: "alright, what about you?",
     },
     {
-      id: "1",
+      id: "4",
       user_name: "bob",
       user_avatar: "",
       comment: "Fine, what are you guys doing this weekend?",
     },
-    { id: "2", user_name: "steve", user_avatar: "", comment: "nada" },
+    { id: "5", user_name: "steve", user_avatar: "", comment: "nada" },
     { id: "3", user_name: "joe", user_avatar: "", comment: "my text" },
   ],
   one_another_users: [

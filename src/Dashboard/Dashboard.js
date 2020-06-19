@@ -15,9 +15,11 @@ import "./Dashboard.css";
 
 export default class Dashboard extends Component {
   state = {
-    passage:'',
+    passage: "",
     groups: [],
     events: [],
+    groupId: "",
+    eventId: "",
     error: null,
   };
   setPassage = (passage) => {
@@ -26,11 +28,22 @@ export default class Dashboard extends Component {
       error: null,
     });
   };
-  
+
   componentDidMount() {
+    let i = window.location.search;
+    let x = new URLSearchParams(i);
+    console.log(x);
+    for (let [key, value] of x) {
+      this.setState({
+        [key]: value,
+      });
+    }
+  }
+
+  handleBiblePassage = (eventId) => {
     let url = new URL(config.API_ENDPOINT);
 
-    url.searchParams.set("q", store.events[1].bible_passage);
+    url.searchParams.set("q", store.events[eventId].bible_passage);
     url.searchParams.set("include-passage-reference", true);
     url.searchParams.set("include-verse-number", true);
     url.searchParams.set("include-first-verse-number", true);
@@ -54,12 +67,16 @@ export default class Dashboard extends Component {
         }
         return res.json();
       })
-      .then(this.setPassage)
+      .then((passage) => {this.setPassage(passage)
+      this.setState({
+        eventId:eventId
+      })
+      })
       .catch((error) => {
         console.error(error);
         this.setState({ error });
       });
-  }
+  };
 
   invite = (formData) => {
     console.log(formData);
@@ -80,25 +97,31 @@ export default class Dashboard extends Component {
     console.log(formData);
   };
 
-  
   handleAddEvent = (event) => {
     this.setState({
-      events: [this.state.events, event]
-    })
+      events: [this.state.events, event],
+    });
   };
   handleAddGroup = (group) => {
     this.setState({
-      groups: [this.state.groups, group]
-    })
+      groups: [this.state.groups, group],
+    });
   };
   renderMainRoutes() {
     return (
       <>
-        {["/dashboard", "/dashboard/:bible_passage", '/dashboard/group/:group_id'].map((path) => (
-          <Route exact key={path} path={path} 
-          render={() => {
-            return <DashMain passage={this.state.passage}></DashMain>
-          }} 
+        {[
+          "/dashboard",
+          "/dashboard/:bible_passage",
+          "/dashboard/group/:group_id",
+        ].map((path) => (
+          <Route
+            exact
+            key={path}
+            path={path}
+            render={() => {
+              return <DashMain passage={this.state.passage}></DashMain>;
+            }}
           />
         ))}
         <Route path="/bible" component={Bible} />
@@ -126,47 +149,69 @@ export default class Dashboard extends Component {
           }}
         />
         <Route
-            path="/createevent"
-            render={() => {
-              return (
-                <CreateEvent onCreateEvent={this.createEvent}></CreateEvent>
-              );
-            }}
-          />
-          <Route
-            path="/prayerrequests"
-            render={() => {
-              return (
-                <PrayerRequests
-                  onPrayerRequest={this.prayerRequest}
-                  onPrayerEncourage={this.prayerEncourage}
-                ></PrayerRequests>
-              );
-            }}
-          />
+          path="/createevent"
+          render={() => {
+            return <CreateEvent onCreateEvent={this.createEvent}></CreateEvent>;
+          }}
+        />
+        <Route
+          path="/prayerrequests"
+          render={() => {
+            return (
+              <PrayerRequests
+                onPrayerRequest={this.prayerRequest}
+                onPrayerEncourage={this.prayerEncourage}
+              ></PrayerRequests>
+            );
+          }}
+        />
       </>
     );
   }
   render() {
+    let i = window.location.search;
+    let x = new URLSearchParams(i);
+    console.log(x);
+    for (let [key, value] of x) {
+      if(key === 'eventId'){
+        if(value !== this.state.eventId){
+          this.handleBiblePassage(value)
+        }
+      }
+    }
     const value = {
       groups: this.state.groups,
       events: this.state.events,
+      groupId: this.state.groupId,
+      eventId: this.state.eventId,
       addEvent: this.handleAddEvent,
       addGroup: this.handleAddGroup,
     };
-    console.log(this.state.passage);
+    console.log(this.state);
     return (
       <ApiContext.Provider value={value}>
         <section id="dash-body">
-        {['/dashboard', '/bible', '/invite', '/groupinfo', '/creategroup', '/createevent', '/prayerrequests', '/dashboard/:bible_passage', '/dashboard/group/:group_id'].map((path) => (
-          <Route exact key={path} path={path} 
-          render={() => {
-            return <DashSideNav />
-          }} 
-          />
-        ))}
+          {[
+            "/dashboard",
+            "/bible",
+            "/invite",
+            "/groupinfo",
+            "/creategroup",
+            "/createevent",
+            "/prayerrequests",
+            "/dashboard/:bible_passage",
+            "/dashboard/group/:group_id",
+          ].map((path) => (
+            <Route
+              exact
+              key={path}
+              path={path}
+              render={() => {
+                return <DashSideNav />;
+              }}
+            />
+          ))}
           <main className="Dash__main">{this.renderMainRoutes()}</main>
-          
         </section>
       </ApiContext.Provider>
     );

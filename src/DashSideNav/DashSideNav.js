@@ -9,10 +9,19 @@ export default class DashSideNav extends Component {
   static contextType = ApiContext;
 
   render() {
+    let i = window.location.search;
+    let x = new URLSearchParams(i);
+    console.log(x);
+    let y;
+    for (let [key, value] of x) {
+      if(key === 'groupId'){
+        y = `?groupId=${value}`
+      }
+    }
     const userGroup = parseInt(store.one_another_users[0].group_id);
     const { groups = [] } = store;
     const groupsForUser = findGroupsForUser(groups, userGroup);
-    console.log(findGroupsForUser(groups, userGroup));
+    // console.log(findGroupsForUser(groups, userGroup));
     return (
       <div className="side-nav-body">
         <Link to="/dashboard">
@@ -25,7 +34,7 @@ export default class DashSideNav extends Component {
                 <li key={group.id}>
                   <NavLink
                     className="group-link"
-                    to={`/dashboard/group/${group.id}`}
+                    to={`/dashboard?groupId=${group.id}`}
                   >
                     <span></span>
                     {group.name}
@@ -46,16 +55,18 @@ export default class DashSideNav extends Component {
               <li>Create Event</li>
             </Link>
             <li>Events Calender</li>
-            {store.events.map((event) => (
+            {store.events.map((event) => {
+              let id = +(event.id) - 1;
+              return(
               <li key={event.id}>
                 <NavLink
                   className="event-link"
-                  to={`/dashboard/${event.bible_passage}`}
+                  to={y?`${y}&eventId=${id}`:'/dashboard'}
                 >
                   {event.lesson_title}
                 </NavLink>
               </li>
-            ))}
+            )})}
 
             <Link to="bible">
               <li>Bible</li>

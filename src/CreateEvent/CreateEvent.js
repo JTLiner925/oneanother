@@ -1,7 +1,7 @@
 import React, { Component } from "react";
-import store from "../Store";
-import "./CreateEvent.css";
-import ApiContext from "../ApiContext";
+import store from '../Store'
+import './CreateEvent.css'
+import ApiContext from '../ApiContext'
 
 export default class CreateEvent extends Component {
   static defaultProps = {
@@ -14,31 +14,31 @@ export default class CreateEvent extends Component {
   submitHandler = (e) => {
     e.preventDefault();
     const newEvent = {
-      announcements: e.target["announcements"].value,
-      needed_items: e.target["needed_items"].value,
-      time_date: e.target["time_date"].value,
-      lesson_title: e.target["lesson_title"].value,
-      bible_passage: e.target["bible_passage"].value,
-      questions: e.target["questions"].value,
-    };
+      announcements: e.target['announcements'].value,
+      needed_items: e.target['needed_items'].value,
+      time_date: e.target['time_date'].value,
+      lesson_title: e.target['lesson_title'].value,
+      bible_passage: e.target['bible_passage'].value,
+      questions: e.target['questions'].value,
+    }
     fetch(store.events, {
-      method: "POST",
+      method: 'POST',
       headers: {
         "content-type": "application/json",
       },
-      body: JSON.stringify(newEvent),
+      body: JSON.stringify(newEvent)
     })
-      .then((res) => {
-        if (!res.ok) return res.json().then((e) => Promise.reject(e));
-        return res.json();
-      })
-      .then((event) => {
-        this.context.addEvent(event);
-        this.props.history.push(`/`);
-      })
-      .catch((error) => {
-        console.error({ error });
-      });
+    .then((res) => {
+      if (!res.ok) return res.json().then((e) => Promise.reject(e));
+      return res.json();
+    })
+    .then((event) => {
+      this.context.addEvent(event);
+      this.props.history.push(`/`);
+    })
+    .catch((error) => {
+      console.error({ error });
+    });
     // this.props.onCreateEvent(this.state);
   };
   changeHandler = (e) => {
@@ -48,59 +48,60 @@ export default class CreateEvent extends Component {
   };
   render() {
     return (
-      <div className="main-body">
-        <nav className="main-nav">
-          <h2>Group Name</h2>
-          <p>Profile</p>
-        </nav>
-        <form
-          className="form-template event-form"
-          onSubmit={this.submitHandler}
-        >
-          <h3>Create New Event</h3>
-          <div>
-            <label htmlFor="Announcements">
-              Announcements
-              <input
-                id="Announcements"
-                name="Announcements"
-                onChange={this.changeHandler}
-              ></input>
-            </label>
-          </div>
-          <div>
-            <label htmlFor="needed-items">
-              Needed Items
-              <input
-                id="needed-items"
-                name="needed_items"
-                onChange={this.changeHandler}
-              ></input>
-            </label>
-          </div>
-          <div>
-            <label htmlFor="date">
-              Date
-              <input
-                id="date"
-                name="date"
-                onChange={this.changeHandler}
-              ></input>
-            </label>
-          </div>
-          <div>
-            <label htmlFor="time">
-              Time
-              <input
-                id="time"
-                name="time"
-                onChange={this.changeHandler}
-              ></input>
-            </label>
-          </div>
-          <div className="lesson">
-            <h3>Lesson</h3>
+      <div className='main-body'>
+        
+          <nav className="main-nav">
+            <h2>Group Name</h2>
+            <p>Profile</p>
+          </nav>
+          <form
+            className="form-template event-form"
+            onSubmit={this.submitHandler}
+          >
+            <h3>Create New Event</h3>
             <div>
+              <label htmlFor="Announcements">
+                Announcements
+                <input
+                  id="Announcements"
+                  name="Announcements"
+                  onChange={this.changeHandler}
+                ></input>
+              </label>
+            </div>
+            <div>
+              <label htmlFor="needed-items">
+                Needed Items
+                <input
+                  id="needed-items"
+                  name="needed_items"
+                  onChange={this.changeHandler}
+                ></input>
+              </label>
+            </div>
+            <div>
+              <label htmlFor="date">
+                Date
+                <input
+                  id="date"
+                  name="date"
+                  onChange={this.changeHandler}
+                ></input>
+              </label>
+              </div>
+              <div>
+              <label htmlFor="time">
+                Time
+                <input
+                  id="time"
+                  name="time"
+                  onChange={this.changeHandler}
+                ></input>
+              </label>
+            </div>
+            <div className='lesson'>
+              <h3>Lesson</h3>
+              <div>
               <label htmlFor="lesson-title">
                 Lesson Title
                 <input
@@ -109,8 +110,8 @@ export default class CreateEvent extends Component {
                   onChange={this.changeHandler}
                 ></input>
               </label>
-            </div>
-            <div>
+              </div>
+              <div>
               <label htmlFor="lesson-summary">
                 Lesson Summary
                 <input
@@ -119,8 +120,8 @@ export default class CreateEvent extends Component {
                   onChange={this.changeHandler}
                 ></input>
               </label>
-            </div>
-            <div>
+              </div>
+              <div>
               <label htmlFor="bible-passage">
                 Bible Passage
                 <input
@@ -129,11 +130,11 @@ export default class CreateEvent extends Component {
                   onChange={this.changeHandler}
                 ></input>
               </label>
-            </div>
-          </div>
-          <div>
-            <h3>Questions</h3>
-            <div>
+              </div>
+              </div>
+              <div>
+                <h3>Questions</h3>
+              <div>
               <label htmlFor="question">
                 Question
                 <input
@@ -143,15 +144,16 @@ export default class CreateEvent extends Component {
                 ></input>
               </label>
               <button type="submit" className="add-another-question">
-                Add Another Question
-              </button>
+              Add Another Question
+            </button>
+              </div>
             </div>
-          </div>
-          <button type="submit" className="create-event">
+            <button type="submit" className="create-event">
             Create Event
           </button>
-        </form>
-      </div>
+          </form>
+        </div>
+      
     );
   }
 }
