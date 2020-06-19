@@ -7,28 +7,29 @@ import DashCenter from "../DashCenter/DashCenter";
 import DashRight from "../DashRight/DashRight";
 
 export default class DashMain extends Component {
-  state = {
-    store: STORE,
-  };
+  // state = {
+  //   store: STORE,
+  // };
   static contextType = ApiContext;
 
   render() {
-    const { store } = this.state;
-
+    // const { store } = this.state;
+    let  { groupId, userId, eventId } = this.context
+    console.log(userId)
     return (
       <div className="main-body">
         <nav className="main-nav">
-          <h2>{store.one_another_users[0].group_id[0]}</h2>
+          <h2>{groupId?STORE.groups[groupId].name:'Select Group'}</h2>
 
           <Link to="/signup">
-            <p>{store.one_another_users[0].first_name}</p>
+            <p>{userId?STORE.one_another_users[userId].first_name:'joker'}</p>
           </Link>
         </nav>
 
         <div className="event-alert">
           <div className="votd-container"></div>
           <h3>Stories of Hope...</h3>
-          <p>{store.events[1].lesson_title}</p>
+          <p>{eventId?STORE.events[eventId].lesson_title:STORE.events[1].lesson_title}</p>
         </div>
         <div className="main">
           {[

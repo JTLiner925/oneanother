@@ -131,6 +131,10 @@ const STORE = {
       lesson_title: "The Sinful Woman",
       bible_passage: "Luke7:36-50",
       questions: [
+        "Is there a sin to avoid?",
+        "Is there a promise to claim?",
+        "Is there an example to follow?",
+        "Is there a command to obey?",
         "What did you like/dislike about the story?",
         "What does this say about God/man?",
         "Where do you see yourself in the story?",
@@ -177,6 +181,10 @@ const STORE = {
       lesson_title: "Forgiveness",
       bible_passage: "Matthew18:21-35",
       questions: [
+        "Is there a sin to avoid?",
+        "Is there a promise to claim?",
+        "Is there an example to follow?",
+        "Is there a command to obey?",
         "What did you like/dislike about the story?",
         "What does this say about God/man?",
         "Where do you see yourself in the story?",
@@ -215,6 +223,10 @@ const STORE = {
       lesson_title: "Who is Jesus?",
       bible_passage: "Mark2:1-12",
       questions: [
+        "Is there a sin to avoid?",
+        "Is there a promise to claim?",
+        "Is there an example to follow?",
+        "Is there a command to obey?",
         "What did you like/dislike about the story?",
         "What does this say about God/man?",
         "Where do you see yourself in the story?",
@@ -238,6 +250,10 @@ const STORE = {
       lesson_title: "Crucifixion",
       bible_passage: "Luke23:32-50",
       questions: [
+        "Is there a sin to avoid?",
+        "Is there a promise to claim?",
+        "Is there an example to follow?",
+        "Is there a command to obey?",
         "What did you like/dislike about the story?",
         "What does this say about God/man?",
         "Where do you see yourself in the story?",

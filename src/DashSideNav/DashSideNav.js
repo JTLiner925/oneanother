@@ -18,9 +18,14 @@ export default class DashSideNav extends Component {
         y = `?groupId=${value}`
       }
     }
-    const userGroup = parseInt(store.one_another_users[0].group_id);
-    const { groups = [] } = store;
-    const groupsForUser = findGroupsForUser(groups, userGroup);
+    let a = '/dashboard'
+    // for (let [key, value] of x) {
+    //   if(key === '')
+    // }
+    
+    // const userGroup = parseInt(store.one_another_users[0].group_id);
+    // const { groups = [] } = store;
+    // const groupsForUser = findGroupsForUser(groups, userGroup);
     // console.log(findGroupsForUser(groups, userGroup));
     return (
       <div className="side-nav-body">
@@ -30,17 +35,21 @@ export default class DashSideNav extends Component {
         <div className="side-nav">
           <div className="nav-group">
             <ul>
-              {groups.map((group) => (
+              {store.groups.map((group) => {
+                let id = +(group.id) - 1;
+                return (
+                
                 <li key={group.id}>
                   <NavLink
                     className="group-link"
-                    to={`/dashboard?groupId=${group.id}`}
+                    to={`/dashboard?groupId=${id}`}
                   >
                     <span></span>
                     {group.name}
                   </NavLink>
                 </li>
-              ))}
+              )}
+              )}
             </ul>
             <Link to="./creategroup">
               <h3>Start/Join Group</h3>

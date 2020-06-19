@@ -16,8 +16,10 @@ import "./Dashboard.css";
 export default class Dashboard extends Component {
   state = {
     passage: "",
+    users: [],
     groups: [],
     events: [],
+    userId:'',
     groupId: "",
     eventId: "",
     error: null,
@@ -36,9 +38,13 @@ export default class Dashboard extends Component {
     for (let [key, value] of x) {
       this.setState({
         [key]: value,
+        
+        
       });
     }
   }
+
+  
 
   handleBiblePassage = (eventId) => {
     let url = new URL(config.API_ENDPOINT);
@@ -102,6 +108,11 @@ export default class Dashboard extends Component {
       events: [this.state.events, event],
     });
   };
+  handleGroup = (groupId) => {
+    this.setState({
+      groupId: this.state[groupId]
+    })
+  }
   handleAddGroup = (group) => {
     this.setState({
       groups: [this.state.groups, group],
@@ -176,16 +187,20 @@ export default class Dashboard extends Component {
       if(key === 'eventId'){
         if(value !== this.state.eventId){
           this.handleBiblePassage(value)
+          
         }
       }
     }
     const value = {
+      users: this.state.users,
       groups: this.state.groups,
       events: this.state.events,
+      userId: this.state.userId,
       groupId: this.state.groupId,
       eventId: this.state.eventId,
       addEvent: this.handleAddEvent,
       addGroup: this.handleAddGroup,
+      handleGroup: this.handleGroup,
     };
     console.log(this.state);
     return (
