@@ -7,53 +7,12 @@ import config from '../config'
 import "./SignUp.css";
 
 export default class SignUp extends Component {
-  // constructor(props) {
-  //   super(props);
-  //   this.state = {
-  //     user_email:"",
-  //     user_password:"",
-  //     first_name:"",
-  //     last_name:"",
-  //     user_address:"",
-  //     user_bio:""
-  //   };
-  // }
+ state = {}
   // addUser()
   submitHandler = (e) => {   
     e.preventDefault()
-    // const one_another_user = (({user_email, user_password, first_name, last_name, user_address, user_bio}) => ({user_email, user_password, first_name, last_name, user_address, user_bio}))(this.state);
-    // const store = this.props.store.one_another_user
     this.props.onSignUp(this.state)
-  //   const options = {
-  //     method: 'POST',
-  //     body: JSON.stringify(one_another_user),
-  //     headers: {
-  //        'Authorization': `Token ${config.API_KEY}`
-  //     }
-  //   }
-  //   fetch(store, options)
-  //   .then(res => {
-  //     if(!res.ok) {
-  //       throw new Error('Something went wrong, please try again later');
-  //     }
-  //     return res.json();
-  //   })
-  //   .then(data => {
-  //     this.setState({
-  //       user_email:"",
-  //     user_password:"",
-  //     first_name:"",
-  //     last_name:"",
-  //     user_address:"",
-  //     user_bio:""
-  //     });
-  //     this.props.handleAdd(one_another_user);
-  //   })
-  //   .catch(err => {
-  //     this.setState({
-  //       error: err.message
-  //     });
-  //   });
+  
   }
   changeHandler = (e) => {
     this.setState({
@@ -61,7 +20,7 @@ export default class SignUp extends Component {
     })
   }
   render(){
-    
+    console.log(this.props, this.state)
   return (
     <form className="signup-container" onSubmit={this.submitHandler}>
       <h1>Sign up</h1>
@@ -91,7 +50,7 @@ export default class SignUp extends Component {
       <input id="bio-input" name='user_bio' onChange={this.changeHandler}></input>
 
       <div className="buttons">
-         <Link to='/dashboard'><button type='submit' className="signup">Sign Up</button></Link> 
+         <button type='submit' className="signup">Sign Up</button>
    
       </div>
     </form>

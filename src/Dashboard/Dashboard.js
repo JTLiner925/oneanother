@@ -34,7 +34,7 @@ export default class Dashboard extends Component {
   componentDidMount() {
     let i = window.location.search;
     let x = new URLSearchParams(i);
-    console.log(x);
+    // console.log(x);
     for (let [key, value] of x) {
       this.setState({
         [key]: value
@@ -66,7 +66,7 @@ export default class Dashboard extends Component {
     };
     fetch(url, options)
       .then((res) => {
-        console.log(res);
+        // console.log(res);
         if (!res.ok) {
           throw new Error("Something went wrong, please try again later.");
         }
@@ -113,12 +113,13 @@ export default class Dashboard extends Component {
     })
   }
   handleGroup = (groupId) => {
-    console.log(groupId)
+    // console.log(groupId)
     this.setState({
       groupId: groupId,
     })
   }
   handleUser = (userId) => {
+    // console.log(userId)
     this.setState({
       userId:userId,
     })
@@ -192,7 +193,7 @@ export default class Dashboard extends Component {
   render() {
     let i = window.location.search;
     let x = new URLSearchParams(i);
-    console.log(x);
+    // console.log(x);
     
     for (let [key, value] of x) {
       if(key === 'groupId'){
@@ -221,7 +222,7 @@ export default class Dashboard extends Component {
       handleUser: this.handleUser,
       handleEvent: this.handleEvent
     };
-    console.log(this.state);
+    // console.log(this.state);
     return (
       <ApiContext.Provider value={value}>
         <section id="dash-body">

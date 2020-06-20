@@ -34,8 +34,7 @@ export default class DashSideNav extends Component {
     // console.log(findGroupsForUser(groups, userGroup));
     const { groupId }  = this.context
     const { events = [] } = this.context;
-    const eventsForGroups = getEventsForGroup(events, groupId)
-    console.log(this.props)
+    // console.log(this.props)
     return (
       <div className="side-nav-body">
         <Link to="/dashboard">

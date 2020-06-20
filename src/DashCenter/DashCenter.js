@@ -11,7 +11,7 @@ export default class DashCenter extends Component {
     
     let { eventId } =  this.context
     
-    console.log(eventId)
+    // console.log(eventId)
     return (
       <div className="center-section">
         <div className="row-one-dash">

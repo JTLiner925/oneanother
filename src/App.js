@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Route } from "react-router-dom";
+import { Route, withRouter } from "react-router-dom";
 import HomeNav from "./HomeNav/HomeNav";
 import Footer from "./Footer/Footer";
 import HomePage from "./HomePage/HomePage";
@@ -10,14 +10,46 @@ import Dashboard from "./Dashboard/Dashboard";
 import "./App.css";
 
 class App extends Component {
+  state = {};
   signUp = (formData) => {
     console.log(formData);
+    fetch("http://localhost:8000/api/users/signup", {
+      headers: {
+        "Content-Type": "application/json",
+      },
+      method: "POST",
+      body: JSON.stringify(formData),
+    })
+      .then((res) => {
+        this.logIn(formData)
+      })
+      .catch((error) => {
+        console.log(error);
+      });
   };
 
   logIn = (formData) => {
     console.log(formData);
+    fetch("http://localhost:8000/api/users/login", {
+      headers: {
+        "Content-Type": "application/json",
+      },
+      method: "POST",
+      body: JSON.stringify(formData),
+    })
+      .then((res) => {
+       return res.json()
+      })
+      .then((userData) => {
+        window.localStorage.setItem('token', userData.token)
+        this.props.history.push('/dashboard')
+      })
+      .catch((error) => {
+        console.log(error);
+      });
   };
   render() {
+    console.log(this.props, window)
     return (
       <main className="App">
         {["/", "/login", "/signup"].map((path) => (
@@ -55,4 +87,4 @@ class App extends Component {
   }
 }
 
-export default App;
+export default withRouter(App);

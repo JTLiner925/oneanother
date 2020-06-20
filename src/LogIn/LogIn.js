@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import "./LogIn.css";
 
 export default class LogIn extends Component {
+  state = {}
   submitHandler = (e) => {
     e.preventDefault();
     this.props.onLogIn(this.state);
@@ -26,24 +27,24 @@ export default class LogIn extends Component {
         <input
           className="email-input"
           type="email"
-          name="email"
+          name="user_email"
           onChange={this.changeHandler}
         />
         Password:
         <input
           className="password-input"
           type="password"
-          name="password"
+          name="user_password"
           onChange={this.changeHandler}
         />
         <a href="#">Forgot Password</a>
-        <Link to="/dashboard">
+        
           <button type="submit" className="login">
             Login
           </button>
-        </Link>
+        
         <Link to="/signup">
-          <button type="submit" className="signup">
+          <button className="signup">
             Sign Up
           </button>
         </Link>
