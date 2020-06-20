@@ -190,7 +190,7 @@ const STORE = {
         "Where do you see yourself in the story?",
         "How can you apply this passage to your life?",
       ],
-      group_id: "1",
+      group_id: "2",
     },
     {
       id: "4",
@@ -213,7 +213,7 @@ const STORE = {
         "Where do you see yourself in the story?",
         "How can you apply this passage to your life?",
       ],
-      group_id: "1",
+      group_id: "2",
     },
     {
       id: "5",
@@ -232,7 +232,7 @@ const STORE = {
         "Where do you see yourself in the story?",
         "How can you apply this passage to your life?",
       ],
-      group_id: "1",
+      group_id: "2",
     },
     {
       id: "6",
@@ -259,7 +259,7 @@ const STORE = {
         "Where do you see yourself in the story?",
         "How can you apply this passage to your life?",
       ],
-      group_id: "1",
+      group_id: "0",
     },
     {
       id: "7",
@@ -282,7 +282,7 @@ const STORE = {
         "Where do you see yourself in the story?",
         "How can you apply this passage to your life?",
       ],
-      group_id: "1",
+      group_id: "0",
     },
   ],
 };

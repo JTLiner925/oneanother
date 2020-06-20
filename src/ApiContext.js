@@ -4,7 +4,7 @@ export default React.createContext({
   users: [],
   groups: [],
   events: [],
-  userId: [],
+  userId: '',
   eventId: '',
   groupId: '',
   addEvent: () => {},

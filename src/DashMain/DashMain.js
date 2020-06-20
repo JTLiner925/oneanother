@@ -14,9 +14,12 @@ export default class DashMain extends Component {
 
   render() {
     // const { store } = this.state;
-    let  { groupId, userId, eventId } = this.context
-    console.log(userId)
+    // let  { groupId, userId, eventId } = this.context
+    // console.log(userId)
+    
     return (
+      <ApiContext.Consumer>
+      {({ groupId, userId, eventId }) => (
       <div className="main-body">
         <nav className="main-nav">
           <h2>{groupId?STORE.groups[groupId].name:'Select Group'}</h2>
@@ -75,6 +78,9 @@ export default class DashMain extends Component {
           ))}
         </div>
       </div>
-    );
+      )}
+      </ApiContext.Consumer>
+    )
+    
   }
 }

@@ -2,10 +2,15 @@ import React, { Component } from "react";
 import { NavLink, Link } from "react-router-dom";
 import store from "../Store";
 import ApiContext from "../ApiContext";
-import { findGroupsForUser } from "../helpers";
+import { getEventsForGroup } from "../helpers";
 import "./DashSideNav.css";
 
 export default class DashSideNav extends Component {
+  static defaultProps = {
+    match: {
+      params: {},
+    },
+  };
   static contextType = ApiContext;
 
   render() {
@@ -18,7 +23,7 @@ export default class DashSideNav extends Component {
         y = `?groupId=${value}`
       }
     }
-    let a = '/dashboard'
+  
     // for (let [key, value] of x) {
     //   if(key === '')
     // }
@@ -27,6 +32,10 @@ export default class DashSideNav extends Component {
     // const { groups = [] } = store;
     // const groupsForUser = findGroupsForUser(groups, userGroup);
     // console.log(findGroupsForUser(groups, userGroup));
+    const { groupId }  = this.context
+    const { events = [] } = this.context;
+    const eventsForGroups = getEventsForGroup(events, groupId)
+    console.log(this.props)
     return (
       <div className="side-nav-body">
         <Link to="/dashboard">
@@ -66,7 +75,8 @@ export default class DashSideNav extends Component {
             <li>Events Calender</li>
             {store.events.map((event) => {
               let id = +(event.id) - 1;
-              return(
+              if(event.group_id === groupId){
+                return(
               <li key={event.id}>
                 <NavLink
                   className="event-link"
@@ -75,7 +85,8 @@ export default class DashSideNav extends Component {
                   {event.lesson_title}
                 </NavLink>
               </li>
-            )})}
+            )}
+            })}
 
             <Link to="bible">
               <li>Bible</li>

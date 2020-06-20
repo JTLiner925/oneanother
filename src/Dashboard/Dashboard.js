@@ -37,8 +37,7 @@ export default class Dashboard extends Component {
     console.log(x);
     for (let [key, value] of x) {
       this.setState({
-        [key]: value,
-        
+        [key]: value
         
       });
     }
@@ -108,9 +107,20 @@ export default class Dashboard extends Component {
       events: [this.state.events, event],
     });
   };
-  handleGroup = (groupId) => {
+  handleEvent = (eventId) => {
     this.setState({
-      groupId: this.state[groupId]
+      eventId:eventId,
+    })
+  }
+  handleGroup = (groupId) => {
+    console.log(groupId)
+    this.setState({
+      groupId: groupId,
+    })
+  }
+  handleUser = (userId) => {
+    this.setState({
+      userId:userId,
     })
   }
   handleAddGroup = (group) => {
@@ -183,7 +193,14 @@ export default class Dashboard extends Component {
     let i = window.location.search;
     let x = new URLSearchParams(i);
     console.log(x);
+    
     for (let [key, value] of x) {
+      if(key === 'groupId'){
+        if(value !== this.state.groupId){
+          this.handleGroup(value)
+        }
+      }
+      // for(let [key, value] )
       if(key === 'eventId'){
         if(value !== this.state.eventId){
           this.handleBiblePassage(value)
@@ -201,6 +218,8 @@ export default class Dashboard extends Component {
       addEvent: this.handleAddEvent,
       addGroup: this.handleAddGroup,
       handleGroup: this.handleGroup,
+      handleUser: this.handleUser,
+      handleEvent: this.handleEvent
     };
     console.log(this.state);
     return (
