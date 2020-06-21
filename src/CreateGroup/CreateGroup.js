@@ -3,6 +3,7 @@ import "./CreateGroup.css";
 import STORE from "../Store";
 
 export default class CreateGroup extends Component {
+  state = {}
   submitHandler = (e) => {
     e.preventDefault();
     this.props.onCreateGroup(this.state);
@@ -18,7 +19,7 @@ export default class CreateGroup extends Component {
     });
   };
   render() {
-    console.log(STORE.groups)
+    console.log(this.props, this.state)
     return (
       <div className="main-body">
         <nav className="main-nav">
@@ -63,7 +64,7 @@ export default class CreateGroup extends Component {
               Group Name
               <input
                 id="name"
-                name="name"
+                name="group_name"
                 onChange={this.changeHandler}
               ></input>
             </label>
@@ -78,22 +79,32 @@ export default class CreateGroup extends Component {
               ></input>
             </label>
           </div>
-          <div>
+          {/* <div>
             <label htmlFor="leader">
               Leader
               <input
                 id="leader"
-                name="leader_name"
+                name="group_leader"
                 onChange={this.changeHandler}
               ></input>
             </label>
           </div>
           <div>
+            <label htmlFor="leader">
+              Leader
+              <input
+                id="leader"
+                name="group_leader"
+                onChange={this.changeHandler}
+              ></input>
+            </label>
+          </div> */}
+          <div>
             <label htmlFor="phone">
               Phone Number
               <input
                 id="phone"
-                name="phone"
+                name="leader_phone"
                 onChange={this.changeHandler}
               ></input>
             </label>
@@ -103,7 +114,7 @@ export default class CreateGroup extends Component {
               Location
               <input
                 id="location"
-                name="location"
+                name="group_location"
                 onChange={this.changeHandler}
               ></input>
             </label>

@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Route } from "react-router-dom";
+import { Route, withRouter } from "react-router-dom";
 import config from "../config";
 import DashSideNav from "../DashSideNav/DashSideNav";
 import DashMain from "../DashMain/DashMain";
@@ -12,8 +12,7 @@ import CreateGroup from "../CreateGroup/CreateGroup";
 import CreateEvent from "../CreateEvent/CreateEvent";
 import PrayerRequests from "../PrayerRequests/PrayerRequests";
 import "./Dashboard.css";
-
-export default class Dashboard extends Component {
+class Dashboard extends Component {
   state = {
     passage: "",
     users: [],
@@ -42,8 +41,6 @@ export default class Dashboard extends Component {
       });
     }
   }
-
-  
 
   handleBiblePassage = (eventId) => {
     let url = new URL(config.API_ENDPOINT);
@@ -86,8 +83,27 @@ export default class Dashboard extends Component {
   invite = (formData) => {
     console.log(formData);
   };
+
   createGroup = (formData) => {
     console.log(formData);
+    fetch("http://localhost:8000/api/groups/creategroup", {
+      headers: {
+        "Content-Type": "application/json",
+      },
+      method: "POST",
+      body: JSON.stringify(formData),
+    })
+      .then((res) => {
+        console.log(res)
+        return res.json()
+        
+      })
+       .then(() => {
+        this.props.history.push('/dashboard')
+       })
+      .catch((error) => {
+        console.log(error);
+      });
   };
   joinGroup = (formData) => {
     console.log(formData);
@@ -252,3 +268,5 @@ export default class Dashboard extends Component {
     );
   }
 }
+
+export default withRouter(Dashboard)
