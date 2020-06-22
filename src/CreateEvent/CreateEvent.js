@@ -4,6 +4,7 @@ import './CreateEvent.css'
 import ApiContext from '../ApiContext'
 
 export default class CreateEvent extends Component {
+  state={}
   static defaultProps = {
     history: {
       push: () => {},
@@ -13,33 +14,33 @@ export default class CreateEvent extends Component {
 
   submitHandler = (e) => {
     e.preventDefault();
-    const newEvent = {
-      announcements: e.target['announcements'].value,
-      needed_items: e.target['needed_items'].value,
-      time_date: e.target['time_date'].value,
-      lesson_title: e.target['lesson_title'].value,
-      bible_passage: e.target['bible_passage'].value,
-      questions: e.target['questions'].value,
-    }
-    fetch(store.events, {
-      method: 'POST',
-      headers: {
-        "content-type": "application/json",
-      },
-      body: JSON.stringify(newEvent)
-    })
-    .then((res) => {
-      if (!res.ok) return res.json().then((e) => Promise.reject(e));
-      return res.json();
-    })
-    .then((event) => {
-      this.context.addEvent(event);
-      this.props.history.push(`/`);
-    })
-    .catch((error) => {
-      console.error({ error });
-    });
-    // this.props.onCreateEvent(this.state);
+    this.props.onCreateEvent(this.state);
+    // const newEvent = {
+    //   announcements: e.target['announcements'].value,
+    //   needed_items: e.target['needed_items'].value,
+    //   time_date: e.target['time_date'].value,
+    //   lesson_title: e.target['lesson_title'].value,
+    //   bible_passage: e.target['bible_passage'].value,
+    //   questions: e.target['questions'].value,
+    // }
+    // fetch(store.events, {
+    //   method: 'POST',
+    //   headers: {
+    //     "content-type": "application/json",
+    //   },
+    //   body: JSON.stringify(newEvent)
+    // })
+    // .then((res) => {
+    //   if (!res.ok) return res.json().then((e) => Promise.reject(e));
+    //   return res.json();
+    // })
+    // .then((event) => {
+    //   this.context.addEvent(event);
+    //   this.props.history.push(`/`);
+    // })
+    // .catch((error) => {
+    //   console.error({ error });
+    // });    
   };
   changeHandler = (e) => {
     this.setState({
@@ -60,11 +61,11 @@ export default class CreateEvent extends Component {
           >
             <h3>Create New Event</h3>
             <div>
-              <label htmlFor="Announcements">
+              <label htmlFor="announcements">
                 Announcements
                 <input
-                  id="Announcements"
-                  name="Announcements"
+                  id="announcements"
+                  name="announcements"
                   onChange={this.changeHandler}
                 ></input>
               </label>
@@ -84,7 +85,7 @@ export default class CreateEvent extends Component {
                 Date
                 <input
                   id="date"
-                  name="date"
+                  name="event_date"
                   onChange={this.changeHandler}
                 ></input>
               </label>
@@ -94,7 +95,7 @@ export default class CreateEvent extends Component {
                 Time
                 <input
                   id="time"
-                  name="time"
+                  name="event_time"
                   onChange={this.changeHandler}
                 ></input>
               </label>
@@ -111,7 +112,7 @@ export default class CreateEvent extends Component {
                 ></input>
               </label>
               </div>
-              <div>
+              {/* <div>
               <label htmlFor="lesson-summary">
                 Lesson Summary
                 <input
@@ -120,7 +121,7 @@ export default class CreateEvent extends Component {
                   onChange={this.changeHandler}
                 ></input>
               </label>
-              </div>
+              </div> */}
               <div>
               <label htmlFor="bible-passage">
                 Bible Passage

@@ -1,10 +1,10 @@
-.main-nav  {
+/* .main-nav  {
   display: flex;
   justify-content: space-between;
   padding-left: 40px;
   padding-right: 40px;
   background-color: #aaa9a9
-}
+} */
 .bible-search, .select-passage{
   display: flex;
   text-align: center;
@@ -90,7 +90,7 @@ select{
     /* margin: 20px; */
     background-color: #e2e0e0;
     border-radius: 10px;
-    flex: 2;
+    /* flex: 2; */
   }
  
 }

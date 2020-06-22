@@ -2,10 +2,11 @@ import React, { Component } from "react";
 import store from "../Store";
 // import ApiContext from "../ApiContext";
 import Prayer from "../Prayer/Prayer";
-import Chat from "../Chat/Chat";
-import SimpleCalendar from "../SimpleCalendar/SimpleCalendar";
-
+// import Chat from "../Chat/Chat";
+// import SimpleCalendar from "../SimpleCalendar/SimpleCalendar";
+import Invite from '../Invite/Invite'
 import "./DashRight.css";
+import GroupInfo from "../GroupInfo/GroupInfo";
 
 export default class DashRight extends Component {
   render() {
@@ -31,6 +32,11 @@ export default class DashRight extends Component {
             <button>Send</button>
           </div>
         </div> */}
+              {/* <Invite className='invite' onInvite={this.props.onInvite}></Invite> */}
+
+        
+        <GroupInfo />
+        
         <div className="box-dash prayer-box">
           <h3>Prayer Requests</h3>
           {store.prayers.map((prayer) => (

@@ -11,6 +11,8 @@ import store from "../Store";
 import CreateGroup from "../CreateGroup/CreateGroup";
 import CreateEvent from "../CreateEvent/CreateEvent";
 import PrayerRequests from "../PrayerRequests/PrayerRequests";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faBars } from '@fortawesome/free-solid-svg-icons'
 import "./Dashboard.css";
 class Dashboard extends Component {
   state = {
@@ -18,7 +20,7 @@ class Dashboard extends Component {
     users: [],
     groups: [],
     events: [],
-    userId:'',
+    userId: "",
     groupId: "",
     eventId: "",
     error: null,
@@ -36,14 +38,13 @@ class Dashboard extends Component {
     // console.log(x);
     for (let [key, value] of x) {
       this.setState({
-        [key]: value
-        
+        [key]: value,
       });
     }
   }
 
   handleBiblePassage = (eventId) => {
-    let url = new URL(config.API_ENDPOINT);
+    let url = new URL(`${config.API_ENDPOINT}text/`);
 
     url.searchParams.set("q", store.events[eventId].bible_passage);
     url.searchParams.set("include-passage-reference", true);
@@ -69,17 +70,27 @@ class Dashboard extends Component {
         }
         return res.json();
       })
-      .then((passage) => {this.setPassage(passage)
-      this.setState({
-        eventId:eventId
-      })
+      .then((passage) => {
+        this.setPassage(passage);
+        this.setState({
+          eventId: eventId,
+        });
       })
       .catch((error) => {
         console.error(error);
         this.setState({ error });
       });
   };
-
+  HamNav = () => {
+    
+    let x = DashSideNav. 
+    console.log(x)
+    if (x.style.display === "block") {
+      x.style.display = "none";
+    } else {
+      x.style.display = "block";
+    }
+  }
   invite = (formData) => {
     console.log(formData);
   };
@@ -94,13 +105,12 @@ class Dashboard extends Component {
       body: JSON.stringify(formData),
     })
       .then((res) => {
-        console.log(res)
-        return res.json()
-        
+        console.log(res);
+        return res.json();
       })
-       .then(() => {
-        this.props.history.push('/dashboard')
-       })
+      .then(() => {
+        this.props.history.push("/dashboard");
+      })
       .catch((error) => {
         console.log(error);
       });
@@ -108,9 +118,28 @@ class Dashboard extends Component {
   joinGroup = (formData) => {
     console.log(formData);
   };
+
   createEvent = (formData) => {
     console.log(formData);
+    fetch("http://localhost:8000/api/events/createevent", {
+      headers: {
+        "Content-Type": "application/json",
+      },
+      method: "POST",
+      body: JSON.stringify(formData),
+    })
+      .then((res) => {
+        console.log(res);
+        return res.json();
+      })
+      .then(() => {
+        this.props.history.push("/dashboard");
+      })
+      .catch((error) => {
+        console.log(error);
+      });
   };
+
   prayerRequest = (formData) => {
     console.log(formData);
   };
@@ -125,21 +154,21 @@ class Dashboard extends Component {
   };
   handleEvent = (eventId) => {
     this.setState({
-      eventId:eventId,
-    })
-  }
+      eventId: eventId,
+    });
+  };
   handleGroup = (groupId) => {
     // console.log(groupId)
     this.setState({
       groupId: groupId,
-    })
-  }
+    });
+  };
   handleUser = (userId) => {
     // console.log(userId)
     this.setState({
-      userId:userId,
-    })
-  }
+      userId: userId,
+    });
+  };
   handleAddGroup = (group) => {
     this.setState({
       groups: [this.state.groups, group],
@@ -158,7 +187,8 @@ class Dashboard extends Component {
             key={path}
             path={path}
             render={() => {
-              return <DashMain passage={this.state.passage}></DashMain>;
+              return <DashMain onHandleHam={this.HamNav}
+              passage={this.state.passage}></DashMain>;
             }}
           />
         ))}
@@ -209,19 +239,18 @@ class Dashboard extends Component {
   render() {
     let i = window.location.search;
     let x = new URLSearchParams(i);
-    // console.log(x);
     
+
     for (let [key, value] of x) {
-      if(key === 'groupId'){
-        if(value !== this.state.groupId){
-          this.handleGroup(value)
+      if (key === "groupId") {
+        if (value !== this.state.groupId) {
+          this.handleGroup(value);
         }
       }
       // for(let [key, value] )
-      if(key === 'eventId'){
-        if(value !== this.state.eventId){
-          this.handleBiblePassage(value)
-          
+      if (key === "eventId") {
+        if (value !== this.state.eventId) {
+          this.handleBiblePassage(value);
         }
       }
     }
@@ -236,7 +265,8 @@ class Dashboard extends Component {
       addGroup: this.handleAddGroup,
       handleGroup: this.handleGroup,
       handleUser: this.handleUser,
-      handleEvent: this.handleEvent
+      handleEvent: this.handleEvent,
+      handleHam: this.HamNav,
     };
     // console.log(this.state);
     return (
@@ -269,4 +299,4 @@ class Dashboard extends Component {
   }
 }
 
-export default withRouter(Dashboard)
+export default withRouter(Dashboard);

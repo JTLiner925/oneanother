@@ -1,7 +1,7 @@
 import React, { Component } from "react";
-import { Link } from 'react-router-dom';
-import store from '../Store'
-import config from '../config'
+// import { Link } from 'react-router-dom';
+// import store from '../Store'
+// import config from '../config'
 // import { FontAwesomeIcon } from '@fontawesome/react-fontawesome';
 // import { fas } from '@fontawesome/free-solid-svg-icons'
 import "./SignUp.css";

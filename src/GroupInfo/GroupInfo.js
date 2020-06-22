@@ -8,11 +8,7 @@ export default class GroupInfo extends Component {
   render(){
   return (
     <div className="main-body">
-      <nav className="main-nav">
-        <h2>Group Name</h2>
-        <p>Profile</p>
-      </nav>
-      <Invite className='invite' onInvite={this.props.onInvite}></Invite>
+      {/* <Invite className='invite' onInvite={this.props.onInvite}></Invite> */}
       
       <div className="group-row-one">
       <div className="group-box pitch-box">
@@ -22,21 +18,12 @@ export default class GroupInfo extends Component {
           <p>Logisticals: i.e. childcare, food, etc.</p>
         </div>
       <div className="group-box leader-box">
-          <h3>Leader Name</h3>
-          <p>About Leader</p>
+          <h3>Joe Schmoe</h3>
           <p>Contact Info</p>
+          <p>Date and Time</p>
+          <p>Location</p>
+          <p>Additional Details</p>
         </div>
-        <div className="group-box time-date-box">
-          <h3>When</h3>
-          <p>Date</p>
-          <p>Time</p>
-        </div>
-        <div className="group-box location-box">
-          <h3>Where</h3>
-          <p>Address of group</p>
-          <p>Additional details</p>
-        </div>
-        
       </div>
       
     </div>

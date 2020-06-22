@@ -4,24 +4,26 @@ import "./DashMain.css";
 import ApiContext from "../ApiContext";
 import STORE from "../Store";
 import DashCenter from "../DashCenter/DashCenter";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faBars } from '@fortawesome/free-solid-svg-icons'
 import DashRight from "../DashRight/DashRight";
+import DashSideNav from '../DashSideNav/DashSideNav'
 
 export default class DashMain extends Component {
-  // state = {
-  //   store: STORE,
-  // };
+  state={}
   static contextType = ApiContext;
-
+  submitHandler = (e) => {
+    e.preventDefault();
+    this.props.onHandleHam(this.state);
+  };
   render() {
-    // const { store } = this.state;
-    // let  { groupId, userId, eventId } = this.context
-    // console.log(userId)
-    
+    console.log(this.props)
     return (
       <ApiContext.Consumer>
       {({ groupId, userId, eventId }) => (
       <div className="main-body">
         <nav className="main-nav">
+        <FontAwesomeIcon className='icon' icon={faBars} onClick={this.submitHandler}/>
           <h2>{groupId?STORE.groups[groupId].name:'Select Group'}</h2>
 
           <Link to="/signup">

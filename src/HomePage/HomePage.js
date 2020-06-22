@@ -3,9 +3,9 @@ import { Link } from "react-router-dom";
 import "./HomePage.css";
 import Carousel from "nuka-carousel";
 import dashboard from "../images/dashboard-ex.jpg";
-import bible from "../images/bible.jpg";
-import chat from "../images/chat.jpg";
-import potluck from "../images/potuck.jpg";
+// import bible from "../images/bible.jpg";
+// import chat from "../images/chat.jpg";
+import potluck from "../images/potluck.jpg";
 import prayer from "../images/prayer.jpg";
 
 export default class HomePage extends Component {
@@ -32,11 +32,19 @@ export default class HomePage extends Component {
           />
         </div>
         <Carousel className="carousel">
-          <div className="slide">
-            <p>this is the Bible slide</p>
+          <div className="slide slide1">
+            <p>Read with oneAnother</p>
             {/* <img  className='slide-img'src={bible} alt='first pic'></img>         */}
           </div>
-          <img
+          <div className="slide slide2">
+            <p>Pray for oneAnother</p>
+            {/* <img  className='slide-img'src={bible} alt='first pic'></img>         */}
+          </div>
+          <div className="slide slide3">
+            <p>Support oneAnother</p>
+            {/* <img  className='slide-img'src={bible} alt='first pic'></img>         */}
+          </div>
+          {/* <img
             src="http://placehold.it/1000x400/ffffff/c0392b/&text=slide1"
             alt="pic1"
           />
@@ -59,7 +67,7 @@ export default class HomePage extends Component {
           <img
             src="http://placehold.it/1000x400/ffffff/c0392b/&text=slide6"
             alt="pic6"
-          />
+          /> */}
         </Carousel>
         <section className="features">
           <div className="feature bible">
@@ -72,7 +80,7 @@ export default class HomePage extends Component {
               </p>
             </div>
           </div>
-          <div className="feature chat">
+          {/* <div className="feature chat">
             <div className="feature-text">
               <h2>Chat with oneAnother</h2>
               <p>
@@ -81,9 +89,8 @@ export default class HomePage extends Component {
               </p>
             </div>
             <img className="feature-pic" src={prayer} alt="chat icon" />
-          </div>
+          </div> */}
           <div className="feature prayer">
-            <img className="feature-pic" src={prayer} alt="praying hands" />
             <div className="feature-text">
               <h2>Pray for oneAnother</h2>
               <p>
@@ -91,8 +98,14 @@ export default class HomePage extends Component {
                 can check in and encourage oneAnother.
               </p>
             </div>
+            <img className="feature-pic" src={prayer} alt="praying hands" />
           </div>
           <div className="feature sign-up">
+          <img
+              className="feature-pic"
+              src={prayer}
+              alt="food on picnic table"
+            />
             <div className="feature-text">
               <h2>Support oneAnother</h2>
               <p>
@@ -100,11 +113,7 @@ export default class HomePage extends Component {
                 check them off to sign up and bring them.
               </p>
             </div>
-            <img
-              className="feature-pic"
-              src={prayer}
-              alt="food on picnic table"
-            />
+            
           </div>
         </section>
       </div>
