@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { Route, Link } from "react-router-dom";
+import ReactDOM from 'react-dom'
 import "./DashMain.css";
 import ApiContext from "../ApiContext";
 import STORE from "../Store";
@@ -12,18 +13,34 @@ import DashSideNav from '../DashSideNav/DashSideNav'
 export default class DashMain extends Component {
   state={}
   static contextType = ApiContext;
-  submitHandler = (e) => {
-    e.preventDefault();
-    this.props.onHandleHam(this.state);
+  HamNav = (e) => {
+    console.log(e)
+    if (e.target.style.display === "block") {
+      e.target.style.display = "none";
+    } else {
+      e.target.style.display = "block";
+    }
+  }
+
+  
+  changeHandler = (e) => {
+    this.setState({
+      [e.target.name]: e.target.value,
+    });
   };
+
+  // submitHandler = (e) => {
+  //   e.preventDefault();
+  //   this.props.HamNav(this.state);
+  // };
   render() {
-    console.log(this.props)
+    console.log(this.state)
     return (
       <ApiContext.Consumer>
       {({ groupId, userId, eventId }) => (
       <div className="main-body">
         <nav className="main-nav">
-        <FontAwesomeIcon className='icon' icon={faBars} onClick={this.submitHandler}/>
+        <FontAwesomeIcon className='icon' icon={faBars} onClick={this.HamNav}/>
           <h2>{groupId?STORE.groups[groupId].name:'Select Group'}</h2>
 
           <Link to="/signup">

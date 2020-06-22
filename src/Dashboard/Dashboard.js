@@ -81,16 +81,15 @@ class Dashboard extends Component {
         this.setState({ error });
       });
   };
-  HamNav = () => {
+  // HamNav = () => {
     
-    let x = DashSideNav. 
-    console.log(x)
-    if (x.style.display === "block") {
-      x.style.display = "none";
-    } else {
-      x.style.display = "block";
-    }
-  }
+  //   let x = <DashSideNav display={'block'}/>
+  //   if (x.style.display === "block") {
+  //     x.style.display = "none";
+  //   } else {
+  //     x.style.display = "block";
+  //   }
+  // }
   invite = (formData) => {
     console.log(formData);
   };
@@ -266,7 +265,7 @@ class Dashboard extends Component {
       handleGroup: this.handleGroup,
       handleUser: this.handleUser,
       handleEvent: this.handleEvent,
-      handleHam: this.HamNav,
+    
     };
     // console.log(this.state);
     return (

@@ -4,6 +4,7 @@
   padding-left: 80px;
   padding-right: 40px;
   background-color: #aaa9a9;
+  position: relative;
 }
 .event-alert {
   display: flex;
