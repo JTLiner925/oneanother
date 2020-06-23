@@ -45,12 +45,9 @@ export default class LogIn extends Component {
         
         <Link to="/signup">
           <button className="signup">
-            Sign Up
+            Sign Up Now!
           </button>
         </Link>
-        <p className="disclaimer">
-          This is a demo! Please do not enter any personal information.
-        </p>
       </form>
     );
   }

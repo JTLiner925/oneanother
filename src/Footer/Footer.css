@@ -1,5 +1,8 @@
 footer {
   display: flex;
   justify-content: space-evenly;
-  background-color: #e2e0e0;
+  background-color:  rgb(61, 61, 61);
+  position: absolute;
+  bottom: 0;
+  width: 100%;
 }

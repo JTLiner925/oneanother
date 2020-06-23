@@ -18,8 +18,21 @@
   border-radius: 10px;
   margin: 40px;
 }
-.main-nav .icon{
-
+.event-alert p {
+  font-family: 'Permanent Marker', cursive;
+font-size: 24px;
+}
+/* svg:not(:root).svg-inline--fa {
+  overflow: visible;
+  height: auto;
+  /* width: 30%; */
+/* padding: 20px; */
+/* } */
+.main-nav #icon {
+  overflow: visible;
+  height: auto;
+  width: 2%;
+  padding: 20px;
   padding: 14px 16px;
   text-decoration: none;
   font-size: 17px;
@@ -31,9 +44,9 @@
   box-shadow: 0 1px 8px 0 rgba(0, 0, 0, 0.2);
 
   left: 15px;
-  top:  10px;
+  top: 10px;
 }
-.main-nav .icon:hover{
+.main-nav #icon:hover {
   background-color: var(--main-color);
   color: #aaa9a9;
   transition: 500ms;
@@ -42,6 +55,7 @@
   display: flex;
   flex-direction: row;
   align-content: center;
+  
 }
 .main-group {
   display: flex;
@@ -60,26 +74,30 @@
 }
 
 @media screen and (min-width: 650px) {
-  .main-body {
+  /* .main-body {
     flex: 4;
-  }
+    
+  } */
   .main {
     display: flex;
-    width: 100%;
-    justify-content: space-evenly;
+    /* width: 100%; */
+    justify-content: space-between;
+    margin-bottom: 50px;
+    flex: 3;
   }
 
   .center-section {
     display: flex;
-    width: 60%;
+    /* width: 60%; */
     justify-content: space-evenly;
+    flex: 1;
   }
   .right-side {
-    width: 40%;
+    flex: 1;
   }
   .row-one-dash,
   .row-two-dash {
-    width: 45%;
+    width: 50%;
     height: auto;
   }
 

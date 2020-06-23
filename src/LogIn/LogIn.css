@@ -1,9 +1,9 @@
 :root {
-  --white: #fff;
-  --accent-color: #32d1c1;
-  --dark-accent-color: #24c4b4;
-  --main-color: #687574;
-  --dark-main-color: #3f6562;
+  --white: rgb(237, 237, 237);
+  --accent-color: #0b5df5;
+  --dark-accent-color: #0342b8;
+  --main-color: #a1a1a1;
+  --dark-main-color: #242424;
 }
 .wave {
   display: block;
@@ -29,6 +29,8 @@
   align-items: center;
   justify-content: center;
   font-family: "Roboto", sans-serif;
+  margin-bottom: 100px;
+ 
 }
 
 .welcome,
@@ -51,20 +53,22 @@
   border-radius: 0px;
   border: 0px;
   border-radius: 5px;
-  background-color: hsl(0, 0%, 95%);
+  background-color: hsl(0, 1%, 71%);
 }
 .container {
   margin-top: 30px;
   display: flex;
   flex-direction: column;
   max-width: 250px;
-  background-color: var(--white);
+  /* background-color: var(--white); */
   padding: 2em;
   border-radius: 5px;
-  box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
-  border-top: 10px solid var(--accent-color);
+  /* box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22); */
+  /* border-top: 10px solid var(--accent-color); */
 }
-
+.container button {
+  padding: .5em;
+}
 .signup {
   background-color: var(--accent-color);
 }
@@ -78,6 +82,7 @@
 
 .login:hover {
   background-color: var(--dark-main-color);
+  transition: 500ms;
 }
 
 .disclaimer {

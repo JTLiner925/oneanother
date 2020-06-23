@@ -3,6 +3,10 @@ import { Link } from "react-router-dom";
 import "./HomePage.css";
 import Carousel from "nuka-carousel";
 import dashboard from "../images/dashboard-ex.jpg";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faPray,  faBible, faUser, faUserFriends, faUsers } from '@fortawesome/free-solid-svg-icons'
+import {  faListAlt } from '@fortawesome/free-regular-svg-icons'
+
 // import bible from "../images/bible.jpg";
 // import chat from "../images/chat.jpg";
 import potluck from "../images/potluck.jpg";
@@ -13,9 +17,9 @@ export default class HomePage extends Component {
     return (
       <div>
         <div className="hero">
-          <h2>Love oneAnother...</h2>
-          <h3>Build up oneAnother...</h3>
-          <h4>Serve oneAnother...</h4>
+          <h2 className='love-header'>Love oneAnother...</h2>
+          <h2 className='build-header'>Build up oneAnother...</h2>
+          <h2 className='serve-header'>Serve oneAnother...</h2>
           <p className="intro-text">
             Open a Bible app, discuss food options in an email, announcements in
             a group chat, and you seem to always be out of the loop with what's
@@ -25,22 +29,28 @@ export default class HomePage extends Component {
           <Link className="get-started" to="/signup">
             <button className="signup sign-up">Get Started</button>
           </Link>
-          <img
+          {/* <img
             className="dashboard-image"
             src={dashboard}
             alt="dashboard screenshot"
-          />
+          /> */}
         </div>
         <Carousel className="carousel">
           <div className="slide slide1">
+            <FontAwesomeIcon id='user-icon' icon={faUser} />
+
             <p>Read with oneAnother</p>
             {/* <img  className='slide-img'src={bible} alt='first pic'></img>         */}
           </div>
           <div className="slide slide2">
+          <FontAwesomeIcon icon={faUserFriends} />
+
             <p>Pray for oneAnother</p>
             {/* <img  className='slide-img'src={bible} alt='first pic'></img>         */}
           </div>
           <div className="slide slide3">
+          <FontAwesomeIcon icon={faUsers} />
+
             <p>Support oneAnother</p>
             {/* <img  className='slide-img'src={bible} alt='first pic'></img>         */}
           </div>
@@ -71,7 +81,6 @@ export default class HomePage extends Component {
         </Carousel>
         <section className="features">
           <div className="feature bible">
-            <img className="feature-pic" src={prayer} alt="bible" />
             <div className="feature-text">
               <h2>Read with oneAnother</h2>
               <p>
@@ -79,6 +88,7 @@ export default class HomePage extends Component {
                 with the study questions.
               </p>
             </div>
+            <FontAwesomeIcon icon={faBible} />
           </div>
           {/* <div className="feature chat">
             <div className="feature-text">
@@ -91,6 +101,8 @@ export default class HomePage extends Component {
             <img className="feature-pic" src={prayer} alt="chat icon" />
           </div> */}
           <div className="feature prayer">
+          <FontAwesomeIcon className='pray-icon' icon={faPray} />
+
             <div className="feature-text">
               <h2>Pray for oneAnother</h2>
               <p>
@@ -98,14 +110,9 @@ export default class HomePage extends Component {
                 can check in and encourage oneAnother.
               </p>
             </div>
-            <img className="feature-pic" src={prayer} alt="praying hands" />
           </div>
-          <div className="feature sign-up">
-          <img
-              className="feature-pic"
-              src={prayer}
-              alt="food on picnic table"
-            />
+          <div className="feature support">
+          
             <div className="feature-text">
               <h2>Support oneAnother</h2>
               <p>
@@ -113,7 +120,7 @@ export default class HomePage extends Component {
                 check them off to sign up and bring them.
               </p>
             </div>
-            
+            <FontAwesomeIcon icon={faListAlt} />
           </div>
         </section>
       </div>

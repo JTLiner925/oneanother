@@ -1,6 +1,7 @@
 .signup-container {
   margin: 0 auto;
   margin-top: 30px;
+  margin-bottom: 100px;
   display: flex;
   flex-direction: column;
   width: 100%;
@@ -8,12 +9,21 @@
   align-items: flex-start;
   justify-content: center;
   font-family: "Roboto", sans-serif;
-  background-color: var(--white);
+  /* background-color: var(--white); */
   padding: 2em;
   border-radius: 5px;
-  box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
-  border-top: 10px solid var(--accent-color);
+  /* box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22); */
+  /* border-top: 10px solid var(--accent-color); */
 }
+.signup-container button {
+  padding: .8em;
+  background-color: #0b5df5;
+}
+.signup-container button:hover {
+  background-color: #0342b8;
+  transition: 500ms;
+}
+
 
 #email-input, #password-input, #first-name-input, #last-name-input, #address-input, #bio-input {
   width: 40%;
@@ -21,7 +31,7 @@
   border-radius: 0px;
   border: 0px;
   border-radius: 5px;
-  background-color: hsl(0, 0%, 95%);
+  background-color: hsl(0, 1%, 71%);
 }
 #address-input{
   width: 90%;
