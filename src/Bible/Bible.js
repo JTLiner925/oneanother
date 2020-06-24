@@ -1,11 +1,12 @@
 import React, { Component } from "react";
-import config from '../config'
+import config from "../config";
+import store from "../Store";
 import "./Bible.css";
 
 export default class DashMain extends Component {
-  state={
-    passage: '',
-  }
+  state = {
+    passage: "",
+  };
   setPassage = (passage) => {
     this.setState({
       passage,
@@ -17,11 +18,12 @@ export default class DashMain extends Component {
       [e.target.name]: e.target.value,
     });
   };
-  handleBibleSearch = (eventId) => {
+  handleBibleReference = (e) => {
+    e.preventDefault()
+    e.persist();
+    let url = new URL(`https://api.esv.org/v3/passage/text/`);
 
-    let url = new URL(`${config.API_ENDPOINT}search/`);
-
-    url.searchParams.set("q", eventId);
+    url.searchParams.set("q", this.state.book + this.state.chapter);
     url.searchParams.set("include-passage-reference", true);
     url.searchParams.set("include-verse-number", true);
     url.searchParams.set("include-first-verse-number", true);
@@ -48,7 +50,7 @@ export default class DashMain extends Component {
       .then((passage) => {
         this.setPassage(passage);
         this.setState({
-          eventId: this.changeHandler,
+          [e.target.name]: e.target.value,
         });
       })
       .catch((error) => {
@@ -56,53 +58,111 @@ export default class DashMain extends Component {
         this.setState({ error });
       });
   };
-  render(){
-    console.log(this.handleBibleSearch)
-  return (
-    <div className="main-body">
-      <nav className="main-nav">
-        <h2>Group Name</h2>
-        <p>Profile</p>
-      </nav>
-      <form className="bible-search" onSubmit={this.handleBibleSearch}>
-      <p>Search the Bible</p>
-        <label>
-          <input onChange={this.changeHandler}></input>
-          <span role='img' aria-label='search' className='search'>🔍</span>
-        </label>  
-        <button type='submit'>Submit</button>      
-      </form>
-      <div className='select-passage'>
-        <h3 className='select-passage-header'>Select Passage</h3>
-        <div className='select-options'>
-        <select>
-          <option>Select Book</option>
-          <option>Matthew</option>
-          <option>Mark</option>
-          <option>Luke</option>
-          <option>John</option>
-        </select>
-        <select>
-          <option>Select Chapter</option>
-          <option>1</option>
-          <option>2</option>
-          <option>3</option>
-        </select>
-        <select>
-          <option>Select Verse</option>
-          <option>1</option>
-          <option>10</option>
-          <option>15</option>
-        </select>
-        </div>
-      </div>
-      <div className="row-one">
-        <div className="box bible-box">
-          <h3>Bible</h3>
-          <p>{this.state.passage.passages}</p>
-          <p>Passage</p>
-        </div>
-        {/* <div className='study-tools'>
+
+  handleBibleSearch = (e) => {
+    e.preventDefault();
+    e.persist();
+    console.log("hello");
+    let url = new URL(`https://api.esv.org/v3/passage/search/`);
+
+    url.searchParams.set("q", this.state.search);
+    url.searchParams.set("include-passage-reference", true);
+    url.searchParams.set("include-verse-number", true);
+    url.searchParams.set("include-first-verse-number", true);
+    url.searchParams.set("include-footnotes", true);
+    url.searchParams.set("include-footnote-body", true);
+    url.searchParams.set("include-heading", true);
+    url.searchParams.set("include-short-copyright", true);
+    url.searchParams.set("indent-using", "tab");
+    console.log(url);
+    const options = {
+      method: "GET",
+
+      headers: {
+        Authorization: `Token ${config.API_KEY}`,
+      },
+    };
+    console.log(config.API_KEY);
+    fetch(url.href, options)
+      .then((res) => {
+        console.log(res);
+        if (!res.ok) {
+          throw new Error("Something went wrong, please try again later.");
+        }
+        return res.json();
+      })
+      .then((passage) => {
+        console.log(passage);
+        this.setPassage(passage);
+        this.setState({
+          passage: passage,
+        });
+      })
+      .catch((error) => {
+        console.error(error);
+        this.setState({ error });
+      });
+  };
+  render() {
+    
+    console.log(this.state);
+    return (
+      <div className="main-body">
+        {/* <nav className="main-nav">
+          <h2>Group Name</h2>
+          <p>Profile</p>
+        </nav> */}
+        <form className="bible-search" onSubmit={this.handleBibleSearch}>
+          <p>Search the Bible</p>
+          <label>
+            <input name="search" onChange={this.changeHandler}></input>
+            <span role="img" aria-label="search" className="search">
+              🔍
+            </span>
+          </label>
+          <button type="submit">Submit</button>
+        </form>
+        <form className="select-passage" onSubmit={this.handleBibleReference}>
+          <h3 className="select-passage-header">Select Passage</h3>
+          <div className="select-options">
+                <select name="book" onChange={this.changeHandler}>
+              <option>Select Book</option>
+              <option>Matthew</option>
+            </select>
+            <select name="chapter" onChange={this.changeHandler}>
+              <option >Select Chapter</option>
+              <option>1</option>
+            </select>
+            
+           
+            
+            <button type="submit">Submit</button>
+          </div>
+        </form>
+        <div className="row-one">
+          <div className="box bible-box">
+            <h3>Bible</h3>
+            {this.state.passage &&
+              this.state.passage.passages.map((result, i) => {
+                return (
+                  <div key={i}>
+                    <p>{result.reference}</p>
+                    <p>{result.content}</p>
+                <p>{result}</p>
+                  </div>
+                );
+              })}
+              {this.state.passage &&
+              this.state.passage.results.map((result, i) => {
+                return (
+                  <div key={i}>
+                    <p>{result.reference}</p>
+                    <p>{result.content}</p>
+                  </div>
+                );
+              })}
+          </div>
+          {/* <div className='study-tools'>
         <div className="box study-box">
           <h3>Study Tools</h3>
           <p>highlight passage</p>
@@ -114,8 +174,8 @@ export default class DashMain extends Component {
           <p>takes notes on a passage</p>
         </div>
         </div> */}
+        </div>
       </div>
-      
-    </div>
-  );
-}}
+    );
+  }
+}

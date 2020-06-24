@@ -1,5 +1,5 @@
 .App {
-  background-color: #ffffff;
+  /* background-color: #ffffff; */
   background: rgba(76, 76, 77, 0.973);
   /* background: linear-gradient(
     90deg,
@@ -8,14 +8,13 @@
     rgb(100, 100, 100) 100%
   );*/
   background-image: linear-gradient(
-    to bottom ,
+    to bottom,
     rgb(19, 19, 19),
     rgb(79, 79, 79)
   );
-  color: var(--main-color); 
-  
+  color: var(--main-color);
 }
-.App{
+.App {
   display: flex;
   flex-direction: column;
   position: relative;
@@ -24,17 +23,16 @@ a {
   color: #cccccc;
   text-decoration: none;
 }
-a:hover{
+a:hover {
   color: #6f6f6f;
   transition: 200ms;
 }
-h3{
+h3 {
   color: #6f6f6f;
 }
 li {
   list-style-type: none;
 }
-p{
+p {
   color: #6f6f6f;
-
 }

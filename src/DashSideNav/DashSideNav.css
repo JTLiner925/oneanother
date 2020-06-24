@@ -2,29 +2,29 @@
   display: flex;
   flex-direction: column;
   text-align: left;
-    width: 100%;
-    padding: 10px;
-    background-color: #292929;
-    box-shadow: 0 1px 8px 0 rgba(0, 0, 0, 0.2);
-  /* overflow: hidden;
-  position: relative; */
+  width: 100%;
+  padding: 10px;
+  background-color: #292929;
+  box-shadow: 0 1px 8px 0 rgba(0, 0, 0, 0.2);
+  /* overflow: hidden; */
+  position: relative;
 }
-/* .side-nav-body {
+.side-nav-body {
   display: none;
 }
 
-.myLinks{
+.myLinks {
   display: block;
-} */
-.nav-group{
+}
+.nav-group {
   display: flex;
   flex-direction: column;
 }
-@media screen and (min-width: 650px){
-  .side-nav-body{
-    flex:1;
+@media screen and (min-width: 650px) {
+  .side-nav-body {
+    flex: 1;
   }
-  .side-nav{
+  .side-nav {
     /* margin-left: 20px; */
     margin-right: 20px;
     border-radius: 10px;

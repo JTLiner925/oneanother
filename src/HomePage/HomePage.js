@@ -3,9 +3,15 @@ import { Link } from "react-router-dom";
 import "./HomePage.css";
 import Carousel from "nuka-carousel";
 import dashboard from "../images/dashboard-ex.jpg";
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faPray,  faBible, faUser, faUserFriends, faUsers } from '@fortawesome/free-solid-svg-icons'
-import {  faListAlt } from '@fortawesome/free-regular-svg-icons'
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+  faPray,
+  faBible,
+  faUser,
+  faUserFriends,
+  faUsers,
+} from "@fortawesome/free-solid-svg-icons";
+import { faListAlt } from "@fortawesome/free-regular-svg-icons";
 
 // import bible from "../images/bible.jpg";
 // import chat from "../images/chat.jpg";
@@ -17,9 +23,9 @@ export default class HomePage extends Component {
     return (
       <div>
         <div className="hero">
-          <h2 className='love-header'>Love oneAnother...</h2>
-          <h2 className='build-header'>Build up oneAnother...</h2>
-          <h2 className='serve-header'>Serve oneAnother...</h2>
+          <h2 className="love-header">Love oneAnother . . .</h2>
+          <h2 className="build-header">Build up oneAnother . . .</h2>
+          <h2 className="serve-header">Serve oneAnother . . .</h2>
           <p className="intro-text">
             Open a Bible app, discuss food options in an email, announcements in
             a group chat, and you seem to always be out of the loop with what's
@@ -37,19 +43,19 @@ export default class HomePage extends Component {
         </div>
         <Carousel className="carousel">
           <div className="slide slide1">
-            <FontAwesomeIcon id='user-icon' icon={faUser} />
+            <FontAwesomeIcon id="user-icon" icon={faUser} />
 
             <p>Read with oneAnother</p>
             {/* <img  className='slide-img'src={bible} alt='first pic'></img>         */}
           </div>
           <div className="slide slide2">
-          <FontAwesomeIcon icon={faUserFriends} />
+            <FontAwesomeIcon icon={faUserFriends} />
 
             <p>Pray for oneAnother</p>
             {/* <img  className='slide-img'src={bible} alt='first pic'></img>         */}
           </div>
           <div className="slide slide3">
-          <FontAwesomeIcon icon={faUsers} />
+            <FontAwesomeIcon icon={faUsers} />
 
             <p>Support oneAnother</p>
             {/* <img  className='slide-img'src={bible} alt='first pic'></img>         */}
@@ -101,7 +107,7 @@ export default class HomePage extends Component {
             <img className="feature-pic" src={prayer} alt="chat icon" />
           </div> */}
           <div className="feature prayer">
-          <FontAwesomeIcon className='pray-icon' icon={faPray} />
+            <FontAwesomeIcon className="pray-icon" icon={faPray} />
 
             <div className="feature-text">
               <h2>Pray for oneAnother</h2>
@@ -112,7 +118,6 @@ export default class HomePage extends Component {
             </div>
           </div>
           <div className="feature support">
-          
             <div className="feature-text">
               <h2>Support oneAnother</h2>
               <p>

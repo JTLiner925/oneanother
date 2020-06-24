@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Route, withRouter } from "react-router-dom";
+import { Route, withRouter, Link } from "react-router-dom";
 import config from "../config";
 import DashSideNav from "../DashSideNav/DashSideNav";
 import DashMain from "../DashMain/DashMain";
@@ -11,8 +11,8 @@ import store from "../Store";
 import CreateGroup from "../CreateGroup/CreateGroup";
 import CreateEvent from "../CreateEvent/CreateEvent";
 import PrayerRequests from "../PrayerRequests/PrayerRequests";
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faBars } from '@fortawesome/free-solid-svg-icons'
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faBars } from "@fortawesome/free-solid-svg-icons";
 import "./Dashboard.css";
 class Dashboard extends Component {
   state = {
@@ -30,6 +30,17 @@ class Dashboard extends Component {
       passage,
       error: null,
     });
+  };
+  static contextType = ApiContext;
+  HamNav = (e) => {
+    let elem = document.querySelector(".side-nav-body");
+    // elem.classList.add("none");
+    console.log(elem);
+    if (elem.style.display === "block") {
+      elem.style.display = "none";
+    } else {
+      elem.style.display = "block";
+    }
   };
 
   componentDidMount() {
@@ -81,15 +92,7 @@ class Dashboard extends Component {
         this.setState({ error });
       });
   };
-  // HamNav = () => {
-    
-  //   let x = <DashSideNav display={'block'}/>
-  //   if (x.style.display === "block") {
-  //     x.style.display = "none";
-  //   } else {
-  //     x.style.display = "block";
-  //   }
-  // }
+
   invite = (formData) => {
     console.log(formData);
   };
@@ -99,6 +102,7 @@ class Dashboard extends Component {
     fetch("http://localhost:8000/api/groups/creategroup", {
       headers: {
         "Content-Type": "application/json",
+        Authorization: `Bearer ${window.localStorage.getItem("token")}`,
       },
       method: "POST",
       body: JSON.stringify(formData),
@@ -116,6 +120,24 @@ class Dashboard extends Component {
   };
   joinGroup = (formData) => {
     console.log(formData);
+    fetch("http://localhost:8000/api/groups/joingroup", {
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${window.localStorage.getItem("token")}`,
+      },
+      method: "POST",
+      body: JSON.stringify(formData),
+    })
+      .then((res) => {
+        console.log(res);
+        return res.json();
+      })
+      .then(() => {
+        this.props.history.push("/dashboard");
+      })
+      .catch((error) => {
+        console.log(error);
+      });
   };
 
   createEvent = (formData) => {
@@ -176,6 +198,22 @@ class Dashboard extends Component {
   renderMainRoutes() {
     return (
       <>
+        <ApiContext.Consumer>
+          {({ groupId, userId }) => (
+            <nav className="main-nav">
+              <FontAwesomeIcon id="icon" icon={faBars} onClick={this.HamNav} />
+              <h2>{groupId ? store.groups[groupId].name : "Select Group"}</h2>
+
+              <Link to="/signup">
+                <p>
+                  {userId
+                    ? store.one_another_users[userId].first_name
+                    : "joker"}
+                </p>
+              </Link>
+            </nav>
+          )}
+        </ApiContext.Consumer>
         {[
           "/dashboard",
           "/dashboard/:bible_passage",
@@ -186,8 +224,12 @@ class Dashboard extends Component {
             key={path}
             path={path}
             render={() => {
-              return <DashMain onHandleHam={this.HamNav}
-              passage={this.state.passage}></DashMain>;
+              return (
+                <DashMain
+                  onHandleHam={this.HamNav}
+                  passage={this.state.passage}
+                ></DashMain>
+              );
             }}
           />
         ))}
@@ -238,7 +280,6 @@ class Dashboard extends Component {
   render() {
     let i = window.location.search;
     let x = new URLSearchParams(i);
-    
 
     for (let [key, value] of x) {
       if (key === "groupId") {
@@ -265,7 +306,6 @@ class Dashboard extends Component {
       handleGroup: this.handleGroup,
       handleUser: this.handleUser,
       handleEvent: this.handleEvent,
-    
     };
     // console.log(this.state);
     return (

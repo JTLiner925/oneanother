@@ -51,10 +51,10 @@ export default class CreateEvent extends Component {
     return (
       <div className='main-body'>
         
-          <nav className="main-nav">
+          {/* <nav className="main-nav">
             <h2>Group Name</h2>
             <p>Profile</p>
-          </nav>
+          </nav> */}
           <form
             className="form-template event-form"
             onSubmit={this.submitHandler}

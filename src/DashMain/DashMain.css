@@ -19,8 +19,8 @@
   margin: 40px;
 }
 .event-alert p {
-  font-family: 'Permanent Marker', cursive;
-font-size: 24px;
+  font-family: "Permanent Marker", cursive;
+  font-size: 24px;
 }
 /* svg:not(:root).svg-inline--fa {
   overflow: visible;
@@ -36,7 +36,7 @@ font-size: 24px;
   padding: 14px 16px;
   text-decoration: none;
   font-size: 17px;
-  background-color: #aaa9a9;
+  background-color: #cfcece;
 
   /* display: block; */
   position: absolute;
@@ -55,7 +55,6 @@ font-size: 24px;
   display: flex;
   flex-direction: row;
   align-content: center;
-  
 }
 .main-group {
   display: flex;

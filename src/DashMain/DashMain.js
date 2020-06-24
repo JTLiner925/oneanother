@@ -12,14 +12,16 @@ import DashSideNav from "../DashSideNav/DashSideNav";
 export default class DashMain extends Component {
   state = {};
   static contextType = ApiContext;
-  HamNav = (e) => {
-    console.log(e);
-    if (e.target.style.display === "block") {
-      e.target.style.display = "none";
-    } else {
-      e.target.style.display = "block";
-    }
-  };
+  // HamNav = (e) => {
+  //   let elem = document.querySelector(".side-nav-body");
+  //   elem.classList.add("hide");
+  //   console.log(elem);
+  //   if (elem.style.display === "block") {
+  //     elem.style.display = "none";
+  //   } else {
+  //     elem.style.display = "block";
+  //   }
+  // };
 
   changeHandler = (e) => {
     this.setState({
@@ -35,14 +37,10 @@ export default class DashMain extends Component {
     console.log(this.state);
     return (
       <ApiContext.Consumer>
-        {({ groupId, userId, eventId }) => (
+        {({ eventId }) => (
           <div className="main-body">
-            <nav className="main-nav">
-              <FontAwesomeIcon
-                id="icon"
-                icon={faBars}
-                onClick={this.HamNav}
-              />
+            {/* <nav className="main-nav">
+              <FontAwesomeIcon id="icon" icon={faBars} onClick={this.HamNav} />
               <h2>{groupId ? STORE.groups[groupId].name : "Select Group"}</h2>
 
               <Link to="/signup">
@@ -52,7 +50,7 @@ export default class DashMain extends Component {
                     : "joker"}
                 </p>
               </Link>
-            </nav>
+            </nav> */}
 
             <div className="event-alert">
               <div className="votd-container"></div>

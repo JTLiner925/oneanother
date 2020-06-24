@@ -1,14 +1,55 @@
 import React, { Component } from "react";
+import { Route, withRouter } from "react-router-dom";
+
 import "./CreateGroup.css";
 import STORE from "../Store";
 
 export default class CreateGroup extends Component {
-  state = {}
+  state = {
+    group: "",
+  };
+  setGroup = (group) => {
+    this.setState({
+      group,
+      error: null,
+    });
+  };
+
+  componentDidMount() {
+    
+    // let groupId = this.state.group.id
+    fetch("http://localhost:8000/api/groups", {
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${window.localStorage.getItem("token")}`,
+      },
+      method: "GET",
+    })
+      .then((res) => {
+        console.log(res);
+        if (!res.ok) {
+          throw new Error("Something went wrong, please try again later.");
+        }
+        return res.json();
+      })
+      .then((group) => {
+        this.setGroup(group);
+        this.setState({
+          group: group,
+        });
+      })
+      
+      .catch((error) => {
+        console.log(error);
+        this.setState({ error });
+      })
+  }
   submitHandler = (e) => {
     e.preventDefault();
     this.props.onCreateGroup(this.state);
   };
   submitJoinHandler = (e) => {
+    //post for joining group
     e.preventDefault();
     this.props.onJoinGroup(this.state);
   };
@@ -19,13 +60,13 @@ export default class CreateGroup extends Component {
     });
   };
   render() {
-    console.log(this.props, this.state)
+    console.log(this.state);
     return (
       <div className="main-body">
-        <nav className="main-nav">
+        {/* <nav className="main-nav">
           <h2>Group Name</h2>
           <p>{STORE.one_another_users[0].first_name}</p>
-        </nav>
+        </nav> */}
         <form
           className="form-template join-form"
           onSubmit={this.submitJoinHandler}
@@ -34,20 +75,19 @@ export default class CreateGroup extends Component {
           <div>
             {/* create a search/option ? when you search name then valid options pop up */}
             Search Groups
-            
-              <select  htmlFor="group-search">
-                {" "}
-                {STORE.groups.map((group, i) => (
-                <option
-                  key={i}
-                  id="group-search"
-                  name="group_search"
-                  // onChange={this.changeHandler}
-                >{group.name}</option>
-                
+            <select>
+              {" "}
+              {this.state.group &&
+                this.state.group.map((gr) => (
+                  <option
+                    key={gr.id}
+                    name="group_name"
+                    onChange={this.changeHandler}
+                  >
+                    {gr.group_name}
+                  </option>
                 ))}
-              </select>
-            
+            </select>
             <button type="submit" className="join-group">
               Join Group
             </button>
