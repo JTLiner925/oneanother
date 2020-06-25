@@ -19,7 +19,7 @@ export default class DashMain extends Component {
     });
   };
   handleBibleReference = (e) => {
-    e.preventDefault()
+    e.preventDefault();
     e.persist();
     let url = new URL(`https://api.esv.org/v3/passage/text/`);
 
@@ -39,7 +39,7 @@ export default class DashMain extends Component {
         Authorization: `Token ${config.API_KEY}`,
       },
     };
-    fetch(url, options)
+    fetch(url.href, options)
       .then((res) => {
         // console.log(res);
         if (!res.ok) {
@@ -92,7 +92,6 @@ export default class DashMain extends Component {
         return res.json();
       })
       .then((passage) => {
-        console.log(passage);
         this.setPassage(passage);
         this.setState({
           passage: passage,
@@ -104,14 +103,9 @@ export default class DashMain extends Component {
       });
   };
   render() {
-    
     console.log(this.state);
     return (
       <div className="main-body">
-        {/* <nav className="main-nav">
-          <h2>Group Name</h2>
-          <p>Profile</p>
-        </nav> */}
         <form className="bible-search" onSubmit={this.handleBibleSearch}>
           <p>Search the Bible</p>
           <label>
@@ -125,55 +119,40 @@ export default class DashMain extends Component {
         <form className="select-passage" onSubmit={this.handleBibleReference}>
           <h3 className="select-passage-header">Select Passage</h3>
           <div className="select-options">
-                <select name="book" onChange={this.changeHandler}>
+            <select name="book" onChange={this.changeHandler}>
               <option>Select Book</option>
               <option>Matthew</option>
             </select>
             <select name="chapter" onChange={this.changeHandler}>
-              <option >Select Chapter</option>
+              <option>Select Chapter</option>
               <option>1</option>
             </select>
-            
-           
-            
+
             <button type="submit">Submit</button>
           </div>
         </form>
         <div className="row-one">
           <div className="box bible-box">
             <h3>Bible</h3>
-            {this.state.passage &&
-              this.state.passage.passages.map((result, i) => {
-                return (
-                  <div key={i}>
-                    <p>{result.reference}</p>
-                    <p>{result.content}</p>
-                <p>{result}</p>
-                  </div>
-                );
-              })}
-              {this.state.passage &&
-              this.state.passage.results.map((result, i) => {
-                return (
-                  <div key={i}>
-                    <p>{result.reference}</p>
-                    <p>{result.content}</p>
-                  </div>
-                );
-              })}
+            {this.state.passage
+              ? this.state.passage &&
+                this.state.passage.passages.map((pa, i) => {
+                  return (
+                    <div key={i}>
+                      <p>{pa}</p>
+                    </div>
+                  );
+                })
+              : this.state.passage &&
+                this.state.passage.results.map((result, i) => {
+                  return (
+                    <div key={i}>
+                      <p>{result.reference}</p>
+                      <p>{result.content}</p>
+                    </div>
+                  );
+                })}
           </div>
-          {/* <div className='study-tools'>
-        <div className="box study-box">
-          <h3>Study Tools</h3>
-          <p>highlight passage</p>
-          <p>cross references</p>
-          <p>tag someone, leave them note</p>
-        </div>
-        <div className="box notes-box">
-          <h3>Notes</h3>
-          <p>takes notes on a passage</p>
-        </div>
-        </div> */}
         </div>
       </div>
     );
