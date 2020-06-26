@@ -145,6 +145,7 @@ class Dashboard extends Component {
     fetch("http://localhost:8000/api/events/createevent", {
       headers: {
         "Content-Type": "application/json",
+        Authorization: `Bearer ${window.localStorage.getItem("token")}`,
       },
       method: "POST",
       body: JSON.stringify(formData),

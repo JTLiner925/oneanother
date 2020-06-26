@@ -1,12 +1,14 @@
 #dash-body {
   display: flex;
-  flex-direction: column;
-}
-@media screen and (min-width: 650px){
-#dash-body {
-  display: flex;
   flex-direction: row;
-  /* flex: 1; */
 }
-
+.Dash__main {
+  width: 100%;
+}
+@media screen and (min-width: 650px) {
+  #dash-body {
+    display: flex;
+    flex-direction: row;
+    /* flex: 1; */
+  }
 }

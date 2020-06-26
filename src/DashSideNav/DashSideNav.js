@@ -7,6 +7,47 @@ import ApiContext from "../ApiContext";
 import "./DashSideNav.css";
 
 export default class DashSideNav extends Component {
+  state={
+    group:'',
+    event:'',
+  }
+  setGroup = (group, event) => {
+    this.setState({
+      group,
+      event,
+      error: null,
+    });
+  };
+  componentDidMount() {
+    // let groupId = this.state.group.id
+    fetch("http://localhost:8000/api/groups", {
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${window.localStorage.getItem("token")}`,
+      },
+      method: "GET",
+    })
+      .then((res) => {
+        console.log(res);
+        if (!res.ok) {
+          throw new Error("Something went wrong, please try again later.");
+        }
+        return res.json();
+      })
+      .then((group, event) => {
+        
+        this.setState({
+          group: '',
+          event: '',
+        });
+        this.setGroup(group, event);
+      })
+
+      .catch((error) => {
+        console.log(error);
+        this.setState({ error });
+      });
+  }
   static defaultProps = {
     match: {
       params: {},
@@ -33,9 +74,10 @@ export default class DashSideNav extends Component {
     // const { groups = [] } = store;
     // const groupsForUser = findGroupsForUser(groups, userGroup);
     // console.log(findGroupsForUser(groups, userGroup));
-    const { groupId } = this.context;
+    const { groupId, groups, events } = this.context;
     // const { events = [] } = this.context;
     // console.log(this.props)
+    console.log(this.state, this.context)
     return (
       
       <div className="side-nav-body">
@@ -59,7 +101,7 @@ export default class DashSideNav extends Component {
           <div className="nav-group">
             <h3>Groups</h3>
             <ul>
-              {store.groups.map((group) => {
+              {groups.map((group) => {
                 let id = +group.id - 1;
                 return (
                   <li key={group.id}>
@@ -68,7 +110,7 @@ export default class DashSideNav extends Component {
                       to={`/dashboard?groupId=${id}`}
                     >
                       <span></span>
-                      {group.name}
+                      {group.group_name}
                     </NavLink>
                   </li>
                 );
@@ -84,7 +126,7 @@ export default class DashSideNav extends Component {
               {/* <li>Group Info</li> */}
 
               {/* <li>Events Calender</li> */}
-              {store.events.map((event) => {
+              {groups.map((event) => {
                 let id = +event.id - 1;
                 if (event.group_id === groupId) {
                   return (

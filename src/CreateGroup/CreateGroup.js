@@ -51,10 +51,15 @@ export default class CreateGroup extends Component {
   submitJoinHandler = (e) => {
     //post for joining group
     e.preventDefault();
-    this.props.onJoinGroup(this.state);
+    let group = this.state.group.find((g)=>{
+      return  g.group_name === this.state.group_name
+    })
+    console.log(group)
+    this.props.onJoinGroup(group);
   };
 
   changeHandler = (e) => {
+    console.log(e.target.name)
     this.setState({
       [e.target.name]: e.target.value,
     });
@@ -75,14 +80,15 @@ export default class CreateGroup extends Component {
           <div>
             {/* create a search/option ? when you search name then valid options pop up */}
             Search Groups
-            <select>
+            <select name="group_name" onChange={this.changeHandler}>
               {" "}
+              <option>Select Group</option>
               {this.state.group &&
                 this.state.group.map((gr) => (
                   <option
                     key={gr.id}
-                    name="group_name"
-                    onChange={this.changeHandler}
+                    
+                    
                   >
                     {gr.group_name}
                   </option>

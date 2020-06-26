@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import "./HomePage.css";
 import Carousel from "nuka-carousel";
-import dashboard from "../images/dashboard-ex.jpg";
+import dashboard from "../images/dashexample.png";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faPray,
@@ -24,8 +24,15 @@ export default class HomePage extends Component {
       <div>
         <div className="hero">
           <h2 className="love-header">Love oneAnother . . .</h2>
-          <h2 className="build-header">Build up oneAnother . . .</h2>
-          <h2 className="serve-header">Serve oneAnother . . .</h2>
+          <h2 className="build-header">Build up oneAnother. . .</h2>
+          <h2 className="serve-header">Serve oneAnother. . .</h2>
+          <div className='img-fade'>
+          <img
+            className="dashboard-image"
+            src={dashboard}
+            alt="dashboard screenshot"
+          />
+          </div>
           <p className="intro-text">
             Open a Bible app, discuss food options in an email, announcements in
             a group chat, and you seem to always be out of the loop with what's
@@ -35,11 +42,7 @@ export default class HomePage extends Component {
           <Link className="get-started" to="/signup">
             <button className="signup sign-up">Get Started</button>
           </Link>
-          {/* <img
-            className="dashboard-image"
-            src={dashboard}
-            alt="dashboard screenshot"
-          /> */}
+          
         </div>
         <Carousel className="carousel">
           <div className="slide slide1">
