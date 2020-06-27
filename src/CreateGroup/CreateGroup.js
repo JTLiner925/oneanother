@@ -8,42 +8,7 @@ export default class CreateGroup extends Component {
   state = {
     group: "",
   };
-  setGroup = (group) => {
-    this.setState({
-      group,
-      error: null,
-    });
-  };
 
-  componentDidMount() {
-    
-    // let groupId = this.state.group.id
-    fetch("http://localhost:8000/api/groups", {
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: `Bearer ${window.localStorage.getItem("token")}`,
-      },
-      method: "GET",
-    })
-      .then((res) => {
-        console.log(res);
-        if (!res.ok) {
-          throw new Error("Something went wrong, please try again later.");
-        }
-        return res.json();
-      })
-      .then((group) => {
-        this.setGroup(group);
-        this.setState({
-          group: group,
-        });
-      })
-      
-      .catch((error) => {
-        console.log(error);
-        this.setState({ error });
-      })
-  }
   submitHandler = (e) => {
     e.preventDefault();
     this.props.onCreateGroup(this.state);
@@ -51,21 +16,34 @@ export default class CreateGroup extends Component {
   submitJoinHandler = (e) => {
     //post for joining group
     e.preventDefault();
-    let group = this.state.group.find((g)=>{
-      return  g.group_name === this.state.group_name
-    })
-    console.log(group)
+    let group = this.props.groups.find((g) => {
+      return g.group_name === this.state.group_name;
+    });
+    console.log(group);
     this.props.onJoinGroup(group);
   };
 
   changeHandler = (e) => {
-    console.log(e.target.name)
-    this.setState({
-      [e.target.name]: e.target.value,
-    });
+    console.log(e.target.id);
+    if (e.target.name === "group_names") {
+      let element = document.querySelector(`#${e.target.value}`);
+      // console.log(element.getAttribute('groupid'))
+      let groupid;
+
+      groupid = element.getAttribute("groupid");
+
+      this.setState({
+        group_name: e.target.value,
+        groupid: groupid,
+      });
+    } else {
+      this.setState({
+        [e.target.name]: e.target.value,
+      });
+    }
   };
   render() {
-    console.log(this.state);
+    console.log(this.props);
     return (
       <div className="main-body">
         {/* <nav className="main-nav">
@@ -80,16 +58,13 @@ export default class CreateGroup extends Component {
           <div>
             {/* create a search/option ? when you search name then valid options pop up */}
             Search Groups
-            <select name="group_name" onChange={this.changeHandler}>
+            <p>{this.props.message}</p>
+            <select name="group_names" onChange={this.changeHandler}>
               {" "}
               <option>Select Group</option>
-              {this.state.group &&
-                this.state.group.map((gr) => (
-                  <option
-                    key={gr.id}
-                    
-                    
-                  >
+              {this.props.groups &&
+                this.props.groups.map((gr) => (
+                  <option id={gr.group_name} groupid={gr.id} key={gr.id}>
                     {gr.group_name}
                   </option>
                 ))}

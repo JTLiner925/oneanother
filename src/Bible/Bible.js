@@ -1312,8 +1312,9 @@ export default class DashMain extends Component {
               ? this.state.passage &&
                 this.state.passage.passages.map((pa, i) => {
                   return (
-                    <div key={i}>
-                      <p>{pa}</p>
+                    <div key={i} className='box-bible bible-texts'>
+                      <h3>{pa.canonical}</h3>
+                      <p className='bible-passage'>{pa}</p>
                     </div>
                   );
                 })
@@ -1321,7 +1322,7 @@ export default class DashMain extends Component {
               ? this.state.passage &&
                 this.state.passage.results.map((result, i) => {
                   return (
-                    <div key={i}>
+                    <div key={i} className='box-bible bible-texts'>
                       <p>{result.reference}</p>
                       <p>{result.content}</p>
                     </div>

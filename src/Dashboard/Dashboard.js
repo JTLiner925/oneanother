@@ -42,8 +42,47 @@ class Dashboard extends Component {
       elem.style.display = "block";
     }
   };
-
+  setGroup = (group) => {
+    this.setState({
+      group,
+      error: null,
+    });
+  };
   componentDidMount() {
+    let urls = [
+      "http://localhost:8000/api/groups",
+      "http://localhost:8000/api/events",
+    ];
+    Promise.all([
+      fetch("http://localhost:8000/api/groups", {
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${window.localStorage.getItem("token")}`,
+        },
+        method: "GET",
+      }),
+      fetch("http://localhost:8000/api/events", {
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${window.localStorage.getItem("token")}`,
+        },
+        method: "GET",
+      }),
+    ])
+      .then(([groupRes, eventRes]) => {
+        return Promise.all([groupRes.json(), eventRes.json()]);
+      })
+      .then(([groups, events]) => {
+        console.log(groups, events);
+        this.setState({
+          groups: groups,
+          events: events,
+        });
+      })
+      .catch((error) => {
+        console.log(error);
+        this.setState({ error });
+      });
     let i = window.location.search;
     let x = new URLSearchParams(i);
     // console.log(x);
@@ -132,8 +171,15 @@ class Dashboard extends Component {
         console.log(res);
         return res.json();
       })
-      .then(() => {
-        this.props.history.push("/dashboard");
+      .then((resData) => {
+        console.log(resData);
+        if (resData.message !== "Already Joined Group") {
+          this.props.history.push("/dashboard");
+        } else {
+          this.setState({
+            message: resData.message,
+          });
+        }
       })
       .catch((error) => {
         console.log(error);
@@ -203,7 +249,7 @@ class Dashboard extends Component {
           {({ groupId, userId }) => (
             <nav className="main-nav">
               <FontAwesomeIcon id="icon" icon={faBars} onClick={this.HamNav} />
-              <h2>{groupId ? store.groups[groupId].name : "Select Group"}</h2>
+              {/* <h2>{groupId ? this.state.groups[groupId].group_name : "Select Group"}</h2>
 
               <Link to="/signup">
                 <p>
@@ -211,7 +257,7 @@ class Dashboard extends Component {
                     ? store.one_another_users[userId].first_name
                     : "joker"}
                 </p>
-              </Link>
+              </Link> */}
             </nav>
           )}
         </ApiContext.Consumer>
@@ -252,6 +298,8 @@ class Dashboard extends Component {
           render={() => {
             return (
               <CreateGroup
+                message={this.state.message}
+                groups={this.state.groups}
                 onCreateGroup={this.createGroup}
                 onJoinGroup={this.joinGroup}
               ></CreateGroup>
@@ -261,7 +309,12 @@ class Dashboard extends Component {
         <Route
           path="/createevent"
           render={() => {
-            return <CreateEvent onCreateEvent={this.createEvent}></CreateEvent>;
+            return (
+              <CreateEvent
+                groups={this.state.groups}
+                onCreateEvent={this.createEvent}
+              ></CreateEvent>
+            );
           }}
         />
         <Route
@@ -279,6 +332,7 @@ class Dashboard extends Component {
     );
   }
   render() {
+    console.log(this.state);
     let i = window.location.search;
     let x = new URLSearchParams(i);
 
@@ -328,7 +382,9 @@ class Dashboard extends Component {
               key={path}
               path={path}
               render={() => {
-                return <DashSideNav />;
+                return <DashSideNav 
+                events={this.state.events}
+                groups={this.state.groups}/>;
               }}
             />
           ))}

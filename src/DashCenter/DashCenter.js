@@ -18,7 +18,7 @@ export default class DashCenter extends Component {
           <div className="box-dash bible-box-dash">
             <div id="biblia"></div>
             <BibleCard
-              lesson_title={eventId?store.events[eventId].lesson_title:'Bible'}
+              lesson_title={eventId?store.events[eventId].lesson_title:store.events[1].lesson_title}
               canonical={this.props.passage.canonical}
               passage={this.props.passage.passages}
             />
@@ -29,7 +29,7 @@ export default class DashCenter extends Component {
 
         <div className="row-two-dash">
 
-          <div className="box-dash need-box">
+          {/* <div className="box-dash need-box">
             <h3>Needed Items</h3>
             <p>Items to bring to group</p>
             {eventId?store.events[eventId].needed_items.map((need, i) => (
@@ -38,7 +38,7 @@ export default class DashCenter extends Component {
               <Needed key={i} item={need} />
             ))}
             <p>Please don't forget your items!</p>
-          </div>
+          </div> */}
 
           <div className="box-dash question-box">
             <h3>Questions</h3>

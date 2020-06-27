@@ -54,11 +54,33 @@ select{
   padding: 10px;
   background-color: #e2e0e0;
   box-shadow: 0 1px 8px 0 rgba(0, 0, 0, 0.2);
+
 }
+.bible-texts{
+  padding-bottom: 20px;
+  overflow: scroll;
+  max-height: 700px;
+}
+
 .box h3 {
   text-align: center;
 }
+.bible-passage{
+  padding-bottom: 20px;
+  max-height: 700px;
+  /* overflow: scroll; */
 
+}
+/* .box-bible{
+  overflow: scroll;
+} */
+.bible-box{
+  background-color: #e2e0e0;
+  border-radius: 10px;
+  max-height: 700px;
+  overflow: scroll;
+
+}
 @media screen and (min-width: 650px){
   .main-body{
     flex: 4;
@@ -68,7 +90,8 @@ select{
     
   }
   .row-one {
-    height: 500px;
+    /* height: 500px; */
+    padding: 20px;
     /* width: 90%; */
     justify-content: space-between;
     margin: 20px;
@@ -80,17 +103,20 @@ select{
   .study-tools {
     flex-direction: column;
   }
+  .box-bible{
+  padding: 10px;
+  /* overflow: unset; */
+  }
   .study-box, .notes-box{
     width: unset;
     padding: 10px;
     background-color: #e2e0e0;
     box-shadow: 0 1px 8px 0 rgba(0, 0, 0, 0.2);
   }
-  .bible-box{
-    /* margin: 20px; */
+  /* .bible-box{
     background-color: #e2e0e0;
     border-radius: 10px;
-    /* flex: 2; */
-  }
+    max-height: 1000px;
+  } */
  
 }

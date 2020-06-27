@@ -11,61 +11,29 @@ export default class DashSideNav extends Component {
     group:'',
     event:'',
   }
-  setGroup = (group, event) => {
-    this.setState({
-      group,
-      event,
-      error: null,
-    });
-  };
-  componentDidMount() {
-    // let groupId = this.state.group.id
-    fetch("http://localhost:8000/api/groups", {
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: `Bearer ${window.localStorage.getItem("token")}`,
-      },
-      method: "GET",
-    })
-      .then((res) => {
-        console.log(res);
-        if (!res.ok) {
-          throw new Error("Something went wrong, please try again later.");
-        }
-        return res.json();
-      })
-      .then((group, event) => {
-        
-        this.setState({
-          group: '',
-          event: '',
-        });
-        this.setGroup(group, event);
-      })
-
-      .catch((error) => {
-        console.log(error);
-        this.setState({ error });
-      });
-  }
-  static defaultProps = {
-    match: {
-      params: {},
-    },
-  };
+  // setGroup = (group, event) => {
+  //   this.setState({
+  //     group,
+  //     event,
+  //     error: null,
+  //   });
+  // };
+ 
+ 
   static contextType = ApiContext;
 
   render() {
     let i = window.location.search;
     let x = new URLSearchParams(i);
-    console.log(x);
+    let id
     let y;
     for (let [key, value] of x) {
       if (key === "groupId") {
         y = `?groupId=${value}`;
+        id = value
       }
     }
-
+console.log(id)
     // for (let [key, value] of x) {
     //   if(key === '')
     // }
@@ -74,10 +42,11 @@ export default class DashSideNav extends Component {
     // const { groups = [] } = store;
     // const groupsForUser = findGroupsForUser(groups, userGroup);
     // console.log(findGroupsForUser(groups, userGroup));
-    const { groupId, groups, events } = this.context;
+    const { groupId } = this.context
+    const {  groups, events } = this.props;
     // const { events = [] } = this.context;
     // console.log(this.props)
-    console.log(this.state, this.context)
+    // console.log(this.state, this.context)
     return (
       
       <div className="side-nav-body">
@@ -91,9 +60,9 @@ export default class DashSideNav extends Component {
         <Link to="createevent">
           <h2>Create Event</h2>
         </Link>
-        <Link to="prayerrequests">
+        {/* <Link to="prayerrequests">
           <h2>Prayer Requests</h2>
-        </Link>
+        </Link> */}
         <Link to="bible">
           <h2>Bible</h2>
         </Link>
@@ -102,7 +71,7 @@ export default class DashSideNav extends Component {
             <h3>Groups</h3>
             <ul>
               {groups.map((group) => {
-                let id = +group.id - 1;
+                let id = group.id;
                 return (
                   <li key={group.id}>
                     <NavLink
@@ -126,14 +95,15 @@ export default class DashSideNav extends Component {
               {/* <li>Group Info</li> */}
 
               {/* <li>Events Calender</li> */}
-              {groups.map((event) => {
-                let id = +event.id - 1;
-                if (event.group_id === groupId) {
+              {events.map((event) => {
+                let idee = event.id;
+                console.log(id, event.group_event)
+                if (event.group_event && event.group_event == id) {
                   return (
                     <li key={event.id}>
                       <NavLink
                         className="event-link"
-                        to={y ? `${y}&eventId=${id}` : "/dashboard"}
+                        to={y ? `${y}&eventId=${idee}` : "/dashboard"}
                       >
                         {event.lesson_title}
                       </NavLink>

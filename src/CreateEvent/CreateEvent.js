@@ -6,10 +6,12 @@ import ApiContext from "../ApiContext";
 export default class CreateEvent extends Component {
   state = {
     event: "",
+    group: "",
   };
-  setEvent = (event) => {
+  setEvent = (event, group) => {
     this.setState({
       event,
+      group,
       error: null,
     });
   };
@@ -35,11 +37,12 @@ export default class CreateEvent extends Component {
         }
         return res.json();
       })
-      .then((event) => {
-        this.setEvent(event);
+      .then((event, group) => {
         this.setState({
           event: event,
+          group: group,
         });
+        this.setEvent(event);
       })
 
       .catch((error) => {
@@ -49,14 +52,34 @@ export default class CreateEvent extends Component {
   }
   submitHandler = (e) => {
     e.preventDefault();
+    let group = this.props.groups.find((g) => {
+      return g.group_name === this.state.group_event;
+    });
+    console.log(group);
     this.props.onCreateEvent(this.state);
   };
   changeHandler = (e) => {
-    this.setState({
-      [e.target.name]: e.target.value,
-    });
+    console.log(e.target.id);
+    if (e.target.name === "group_name") {
+      let element = document.querySelector(`#${e.target.value.split(' ').join('_')}`);
+      // console.log(element.getAttribute('groupid'))
+      let groupid;
+console.log(e.target.value, element)
+      groupid = element.getAttribute("groupid");
+
+      this.setState({
+        [e.target.name]: e.target.value,
+        groupid: groupid,
+      });
+    } else {
+      this.setState({
+        [e.target.name]: e.target.value,
+      });
+    }
   };
   render() {
+    console.log(this.state, this.context);
+
     return (
       <div className="main-body">
         {/* <nav className="main-nav">
@@ -68,6 +91,20 @@ export default class CreateEvent extends Component {
           onSubmit={this.submitHandler}
         >
           <h3>Create New Event</h3>
+          <div>
+            {/* create a search/option ? when you search name then valid options pop up */}
+            Search Groups
+            <select name="group_name" onChange={this.changeHandler}>
+              {" "}
+              <option>Select Group</option>
+              {this.props.groups &&
+                this.props.groups.map((gr) => (
+                  <option id={gr.group_name.split(' ').join('_')} groupid={gr.id} key={gr.id}>
+                    {gr.group_name}
+                  </option>
+                ))}
+            </select>
+          </div>
           <div>
             <label htmlFor="announcements">
               Announcements
