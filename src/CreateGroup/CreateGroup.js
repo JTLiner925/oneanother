@@ -122,6 +122,7 @@ export default class CreateGroup extends Component {
           </div> */}
           <div>
             <label htmlFor="phone">
+              {/* won't let you use dashes */}
               Phone Number
               <input
                 id="phone"

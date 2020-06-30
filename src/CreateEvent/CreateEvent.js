@@ -62,7 +62,7 @@ export default class CreateEvent extends Component {
     console.log(e.target.id);
     if (e.target.name === "group_name") {
       let element = document.querySelector(`#${e.target.value.split(' ').join('_')}`);
-      // console.log(element.getAttribute('groupid'))
+      console.log(element.getAttribute('groupid'))
       let groupid;
 console.log(e.target.value, element)
       groupid = element.getAttribute("groupid");

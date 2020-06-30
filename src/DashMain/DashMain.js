@@ -48,7 +48,7 @@ export default class DashMain extends Component {
         id = value ;
       }
     }
-    const { events, eventId } = this.props;
+    const { events, eventId, groupId } = this.props;
     return (
       <ApiContext.Consumer>
         {({ eventId }) => (
@@ -67,12 +67,11 @@ export default class DashMain extends Component {
             </nav> */}
 
             <div className="event-alert">
-              <div className="votd-container"></div>
               <h3>Announcements</h3>
               
                 {events.map((event, i) => {
                   console.log(event.group_event)
-                  if (event.group_event && event.group_event == id) {
+                  if (event.id == eventId && event.group_event == groupId) {
                     return <p key={i}>{event.announcements}</p>;
                   }
                 })}

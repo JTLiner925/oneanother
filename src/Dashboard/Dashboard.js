@@ -389,6 +389,7 @@ class Dashboard extends Component {
       if (key === "eventId") {
         if (value !== this.state.eventId) {
           this.handleBiblePassage(value);
+          this.handleEvent(value);
         }
       }
     }

@@ -18,7 +18,7 @@ export default class DashCenter extends Component {
         id = value;
       }
     }
-    const { eventId, events } = this.props;
+    const { groups, eventId, events, groupId } = this.props;
 
     // console.log(events);
     return (
@@ -45,7 +45,7 @@ export default class DashCenter extends Component {
             <p>Items to bring to group</p>
             {events.map((event, i) => {
               // console.log(event);
-              if (event.group_event && event.group_event == id) {
+              if (event.id == eventId && event.group_event == groupId) {
                 return <Needed key={i} item={event.needed_items} />;
               }
             })}
@@ -55,7 +55,7 @@ export default class DashCenter extends Component {
           <div className="box-dash question-box">
             <h3>Questions</h3>
             {events.map((event, i) => {
-              if (event.group_event && event.group_event == id) {
+              if (event.id == eventId && event.group_event == groupId) {
                 return <Questions key={i} question={event.question} />;
               }
             })}
