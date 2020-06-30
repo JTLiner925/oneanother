@@ -3,7 +3,7 @@
   justify-content: space-between;
   padding-left: 80px;
   padding-right: 40px;
-  background-color: #aaa9a9;
+  background-color: #230230;
   position: relative;
 }
 .event-alert {
@@ -11,12 +11,17 @@
   flex-direction: column;
   text-align: center;
   justify-content: space-around;
-  padding-left: 40px;
-  padding-right: 40px;
+  height: 300px;
   box-shadow: 0 1px 8px 0 rgba(0, 0, 0, 0.2);
-  background-color: #e2e0e0;
-  border-radius: 10px;
-  margin: 40px;
+  background-image: url(../images/hero.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position-y: -80px;
+  /* background-color: #e2e0e0; */
+  /* border-radius: 10px; */
+  margin-bottom: 40px;
+  margin-bottom: 15px;
+
 }
 .event-alert p {
   font-family: "Permanent Marker", cursive;
@@ -64,9 +69,10 @@
 .box-dash {
   padding: 10px;
   padding-bottom: 0;
-  background-color: #e2e0e0;
-  box-shadow: 0 1px 8px 0 rgba(0, 0, 0, 0.2);
+  /* background-color: #e2e0e0; */
+  box-shadow: 0 0 8px 0 rgba(0, 0, 0, 0.2);
   overflow: scroll;
+  margin-bottom: 15px;
 }
 .box-dash h3 {
   text-align: center;
@@ -102,7 +108,7 @@
 
   .box-dash {
     margin: 20px;
-    background-color: #e2e0e0;
+    /* background-color: #e2e0e0; */
     border-radius: 10px;
   }
 }

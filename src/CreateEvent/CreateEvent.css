@@ -9,18 +9,17 @@
 .main-body {
   display: flex;
   flex-direction: column;
-  margin-bottom: 40px;
-  
+  margin-bottom: 30px;
 }
-.join-form, .create-form{
+.join-form,
+.create-form {
   flex-direction: column;
 }
-.lesson{
+.lesson {
   flex-direction: column;
 }
-@media screen and (min-width: 650px){
-  .main-body{
+@media screen and (min-width: 650px) {
+  .main-body {
     flex: 4;
   }
- 
 }

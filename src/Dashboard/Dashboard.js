@@ -54,6 +54,13 @@ class Dashboard extends Component {
       "http://localhost:8000/api/events",
     ];
     Promise.all([
+      fetch("http://localhost:8000/api/users", {
+        headers: {
+          "Content-Type": "application/json",
+        },
+
+        method: "GET",
+      }),
       fetch("http://localhost:8000/api/groups", {
         headers: {
           "Content-Type": "application/json",
@@ -68,15 +75,18 @@ class Dashboard extends Component {
         },
         method: "GET",
       }),
+      
     ])
-      .then(([groupRes, eventRes]) => {
-        return Promise.all([groupRes.json(), eventRes.json()]);
+      .then(([ userRes, groupRes, eventRes ]) => {
+        return Promise.all([ userRes.json(), groupRes.json(), eventRes.json() ]);
       })
-      .then(([groups, events]) => {
-        console.log(groups, events);
+      .then(([users, groups, events ]) => {
+        console.log(users, groups, events );
         this.setState({
+          users: users,
           groups: groups,
           events: events,
+          
         });
       })
       .catch((error) => {
@@ -95,7 +105,6 @@ class Dashboard extends Component {
 
   handleBiblePassage = (eventId) => {
     let url = new URL(`${config.API_ENDPOINT}text/`);
-
     url.searchParams.set("q", store.events[eventId].bible_passage);
     url.searchParams.set("include-passage-reference", true);
     url.searchParams.set("include-verse-number", true);
@@ -232,7 +241,7 @@ class Dashboard extends Component {
     });
   };
   handleUser = (userId) => {
-    // console.log(userId)
+    console.log(userId)
     this.setState({
       userId: userId,
     });
@@ -243,24 +252,46 @@ class Dashboard extends Component {
     });
   };
   renderMainRoutes() {
+    // const { groupId, groups } = this.state;
+    // let i = window.location.search;
+    // let x = new URLSearchParams(i);
+    // let id
+    // let y;
+    // for (let [key, value] of x) {
+    //   if (key === "groupId") {
+    //     y = `?groupId=${value}`;
+    //     id = value
+    //   }
+    // }
+  
     return (
       <>
-        <ApiContext.Consumer>
-          {({ groupId, userId }) => (
-            <nav className="main-nav">
-              <FontAwesomeIcon id="icon" icon={faBars} onClick={this.HamNav} />
-              {/* <h2>{groupId ? this.state.groups[groupId].group_name : "Select Group"}</h2>
-
-              <Link to="/signup">
-                <p>
-                  {userId
-                    ? store.one_another_users[userId].first_name
-                    : "joker"}
+        <nav className="main-nav">
+          <FontAwesomeIcon id="icon" icon={faBars} onClick={this.HamNav} />
+          {this.state.groups.map((group) => {
+            if (group.id && group.id == this.state.groupId) {
+            return (
+              <h2 key={group.group_name}>{group.group_name}</h2>
+              // <h2>{groupId ? this.state.groups[groupId].group_name: 'Select Group'}</h2>
+            );
+            }
+          })}
+          {this.state.users.map((user) => {
+            // console.log(user.id)
+            if(user.id && user.id == this.state.userId) {
+              
+              return (
+                <Link to="/signup">
+                <p key={user.first_name}>
+                  {user.first_name}
                 </p>
-              </Link> */}
-            </nav>
-          )}
-        </ApiContext.Consumer>
+              </Link>
+              )
+            }
+          })}
+          {/*  */}
+        </nav>
+
         {[
           "/dashboard",
           "/dashboard/:bible_passage",
@@ -275,6 +306,12 @@ class Dashboard extends Component {
                 <DashMain
                   onHandleHam={this.HamNav}
                   passage={this.state.passage}
+                  groups={this.state.groups}
+                  events={this.state.events}
+                  groupId={this.state.groupId}
+                  eventId={this.state.eventId}
+                  users={this.state.users}
+                  userId={this.state.userId}
                 ></DashMain>
               );
             }}
@@ -287,12 +324,12 @@ class Dashboard extends Component {
             return <Invite onInvite={this.invite}></Invite>;
           }}
         />
-        <Route
+        {/* <Route
           path="/groupinfo"
           render={() => {
             return <GroupInfo onInvite={this.invite}></GroupInfo>;
           }}
-        />
+        /> */}
         <Route
           path="/creategroup"
           render={() => {
@@ -317,7 +354,7 @@ class Dashboard extends Component {
             );
           }}
         />
-        <Route
+        {/* <Route
           path="/prayerrequests"
           render={() => {
             return (
@@ -327,16 +364,22 @@ class Dashboard extends Component {
               ></PrayerRequests>
             );
           }}
-        />
+        /> */}
       </>
     );
   }
   render() {
-    console.log(this.state);
+    
+
     let i = window.location.search;
     let x = new URLSearchParams(i);
 
     for (let [key, value] of x) {
+      if (key === "userId") {
+        if (value !== this.state.userId) {
+          this.handleUser(value);
+        }
+      }
       if (key === "groupId") {
         if (value !== this.state.groupId) {
           this.handleGroup(value);
@@ -382,9 +425,14 @@ class Dashboard extends Component {
               key={path}
               path={path}
               render={() => {
-                return <DashSideNav 
-                events={this.state.events}
-                groups={this.state.groups}/>;
+                return (
+                  <DashSideNav
+                    events={this.state.events}
+                    groups={this.state.groups}
+                    user={this.state.users}
+                    
+                  />
+                );
               }}
             />
           ))}

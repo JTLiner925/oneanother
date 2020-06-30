@@ -1,13 +1,13 @@
 .App {
   /* background-color: #ffffff; */
-  background: rgba(76, 76, 77, 0.973);
+  background: rgba(255, 255, 255, 0.973);
   /* background: linear-gradient(
     90deg,
     rgba(223, 223, 223, 0.906) 0%,
     rgb(153, 153, 153) 53%,
     rgb(100, 100, 100) 100%
   );*/
-  background-image: linear-gradient(to bottom, #a4a4a4, #ffffff);
+  /* background-image: linear-gradient(to bottom, #a4a4a4, #ffffff); */
   color: var(--main-color);
 }
 .App {

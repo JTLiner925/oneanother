@@ -33,7 +33,7 @@ export default class DashSideNav extends Component {
         id = value
       }
     }
-console.log(id)
+// console.log(id)
     // for (let [key, value] of x) {
     //   if(key === '')
     // }
@@ -97,7 +97,7 @@ console.log(id)
               {/* <li>Events Calender</li> */}
               {events.map((event) => {
                 let idee = event.id;
-                console.log(id, event.group_event)
+                // console.log(id, event.group_event)
                 if (event.group_event && event.group_event == id) {
                   return (
                     <li key={event.id}>

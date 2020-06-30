@@ -10,7 +10,11 @@ import DashRight from "../DashRight/DashRight";
 import DashSideNav from "../DashSideNav/DashSideNav";
 
 export default class DashMain extends Component {
-  state = {};
+  state = {
+    groups: "",
+    events: "",
+    users: "",
+  };
   static contextType = ApiContext;
   // HamNav = (e) => {
   //   let elem = document.querySelector(".side-nav-body");
@@ -34,7 +38,17 @@ export default class DashMain extends Component {
   //   this.props.HamNav(this.state);
   // };
   render() {
-    console.log(this.state);
+    let i = window.location.search;
+    let x = new URLSearchParams(i);
+    let id;
+    let y;
+    for (let [key, value] of x) {
+      if (key === "eventId") {
+        y = `?groupId=${value}`;
+        id = value ;
+      }
+    }
+    const { events, eventId } = this.props;
     return (
       <ApiContext.Consumer>
         {({ eventId }) => (
@@ -54,12 +68,15 @@ export default class DashMain extends Component {
 
             <div className="event-alert">
               <div className="votd-container"></div>
-              <h3>Stories of Hope...</h3>
-              <p>
-                {eventId
-                  ? STORE.events[eventId].lesson_title
-                  : STORE.events[1].lesson_title}
-              </p>
+              <h3>Announcements</h3>
+              
+                {events.map((event, i) => {
+                  console.log(event.group_event)
+                  if (event.group_event && event.group_event == id) {
+                    return <p key={i}>{event.announcements}</p>;
+                  }
+                })}
+              
             </div>
             <div className="main">
               {[
@@ -78,7 +95,17 @@ export default class DashMain extends Component {
                   key={path}
                   path={path}
                   render={() => {
-                    return <DashCenter passage={this.props.passage} />;
+                    return (
+                      <DashCenter
+                        groups={this.props.groups}
+                        events={this.props.events}
+                        groupId={this.props.groupId}
+                        eventId={this.props.eventId}
+                        users={this.props.users}
+                        userId={this.props.userId}
+                        passage={this.props.passage}
+                      />
+                    );
                   }}
                 />
               ))}
@@ -99,7 +126,16 @@ export default class DashMain extends Component {
                   key={path}
                   path={path}
                   render={() => {
-                    return <DashRight />;
+                    return (
+                      <DashRight
+                        groups={this.props.groups}
+                        events={this.props.events}
+                        groupId={this.props.groupId}
+                        eventId={this.props.eventId}
+                        users={this.props.users}
+                        userId={this.props.userId}
+                      />
+                    );
                   }}
                 />
               ))}

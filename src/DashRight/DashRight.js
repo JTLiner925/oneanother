@@ -4,7 +4,7 @@ import ApiContext from "../ApiContext";
 import Prayer from "../Prayer/Prayer";
 // import Chat from "../Chat/Chat";
 // import SimpleCalendar from "../SimpleCalendar/SimpleCalendar";
-import Invite from '../Invite/Invite'
+import Invite from "../Invite/Invite";
 import Needed from "../Needed/Needed";
 
 import "./DashRight.css";
@@ -14,20 +14,10 @@ export default class DashRight extends Component {
   static contextType = ApiContext;
 
   render() {
-    let { eventId } =  this.context
+    // console.log(this.props.groups);
 
     return (
       <div className="side-right">
-        <div className="box-dash need-box">
-            <h3>Needed Items</h3>
-            <p>Items to bring to group</p>
-            {eventId?store.events[eventId].needed_items.map((need, i) => (
-              <Needed key={i} item={need} />
-            )):store.events[1].needed_items.map((need, i) => (
-              <Needed key={i} item={need} />
-            ))}
-            <p>Please don't forget your items!</p>
-          </div>
         {/* <div className="box-dash calendar-box">
           <h3>Event Calendar</h3>
           <SimpleCalendar />
@@ -43,16 +33,23 @@ export default class DashRight extends Component {
               />
             ))}
           </div> */}
-          {/* <div className="chat-input-container">
+        {/* <div className="chat-input-container">
             <input type="text" className="chat-input" />
             <button>Send</button>
           </div>
         </div> */}
-              {/* <Invite className='invite' onInvite={this.props.onInvite}></Invite> */}
+        {/* <Invite className='invite' onInvite={this.props.onInvite}></Invite> */}
 
-        
-        <GroupInfo />
-        
+        <GroupInfo
+          groups={this.props.groups}
+          events={this.props.events}
+          groupId={this.props.groupId}
+          eventId={this.props.eventId}
+          users={this.props.users}
+          userId={this.props.userId}
+          // groupId = {this.props.groupId}
+        />
+
         {/* <div className="box-dash prayer-box">
           <h3>Prayer Requests</h3>
           {store.prayers.map((prayer) => (
