@@ -12,7 +12,7 @@ import "./App.css";
 class App extends Component {
   state = {};
   signUp = (formData) => {
-    console.log(formData);
+    // console.log(formData);
     fetch("http://localhost:8000/api/users/signup", {
       headers: {
         "Content-Type": "application/json",
@@ -29,7 +29,7 @@ class App extends Component {
   };
 
   logIn = (formData) => {
-    console.log(formData);
+    // console.log(formData);
     fetch("http://localhost:8000/api/users/login", {
       headers: {
         "Content-Type": "application/json",
@@ -42,6 +42,8 @@ class App extends Component {
       })
       .then((userData) => {
         window.localStorage.setItem('token', userData.token)
+        window.localStorage.setItem('userName', userData.userName)
+        console.log(userData)
         this.props.history.push('/dashboard')
       })
       .catch((error) => {
@@ -49,7 +51,7 @@ class App extends Component {
       });
   };
   render() {
-    console.log(this.props, window)
+    // console.log(this.props, window)
     return (
       <main className="App">
         {["/", "/login", "/signup"].map((path) => (

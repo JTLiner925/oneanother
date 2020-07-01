@@ -80,7 +80,6 @@ export default class DashMain extends Component {
   handleBibleSearch = (e) => {
     e.preventDefault();
     e.persist();
-    console.log("hello");
     let url = new URL(`https://api.esv.org/v3/passage/search/`);
 
     url.searchParams.set("q", this.state.search);
@@ -92,7 +91,7 @@ export default class DashMain extends Component {
     url.searchParams.set("include-heading", true);
     url.searchParams.set("include-short-copyright", true);
     url.searchParams.set("indent-using", "tab");
-    console.log(url);
+    // console.log(url);
     const options = {
       method: "GET",
 
@@ -100,10 +99,10 @@ export default class DashMain extends Component {
         Authorization: `Token ${config.API_KEY}`,
       },
     };
-    console.log(config.API_KEY);
+    // console.log(config.API_KEY);
     fetch(url.href, options)
       .then((res) => {
-        console.log(res);
+        // console.log(res);
         if (!res.ok) {
           throw new Error("Something went wrong, please try again later.");
         }
@@ -1259,7 +1258,7 @@ export default class DashMain extends Component {
         ],
       },
     };
-    console.log(this.state);
+    // console.log(this.state);
     return (
       <div className="main-body">
         <form className="bible-search" onSubmit={this.handleBibleSearch}>
@@ -1286,7 +1285,7 @@ export default class DashMain extends Component {
             >
               <option>Select Book</option>
               {Object.keys(books).map((book) => {
-                console.log(book);
+                // console.log(book);
                 return <option key={book}>{book}</option>;
               })}
             </select>

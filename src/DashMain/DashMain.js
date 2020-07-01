@@ -70,7 +70,7 @@ export default class DashMain extends Component {
               <h3>Announcements</h3>
               
                 {events.map((event, i) => {
-                  console.log(event.group_event)
+                  // console.log(event.group_event)
                   if (event.id == eventId && event.group_event == groupId) {
                     return <p key={i}>{event.announcements}</p>;
                   }

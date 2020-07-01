@@ -19,22 +19,32 @@ export default class DashCenter extends Component {
       }
     }
     const { groups, eventId, events, groupId } = this.props;
-
-    // console.log(events);
+let lessonTitle = this.props.events.lesson_title;
+if(this.props.events.length > 0){
+  lessonTitle = this.props.events.find((event) => {
+    return (
+      event.id == eventId
+    )
+  })
+}
+    console.log(events);
     return (
       <div className="center-section">
         <div className="row-one-dash">
           <div className="box-dash bible-box-dash">
-            <div id="biblia"></div>
+            {/* <div id="biblia"></div> */}
+            <h3>{lessonTitle ? lessonTitle.lesson_title: 'Bible' }</h3>
+            {events.map((event, i) => {
+              if (event.id == eventId && event.group_event == groupId) {
+                return (  
             <BibleCard
-              lesson_title={
-                eventId
-                  ? store.events[eventId].lesson_title
-                  : store.events[1].lesson_title
-              }
+            key={i}
+              lesson_title={event.lesson_title}
               canonical={this.props.passage.canonical}
               passage={this.props.passage.passages}
             />
+            )}
+                })}
             {/* <div>{JSON.stringify(this.props.passage)}</div> */}
           </div>
         </div>
@@ -42,14 +52,12 @@ export default class DashCenter extends Component {
         <div className="row-two-dash">
           <div className="box-dash need-box">
             <h3>Needed Items</h3>
-            <p>Items to bring to group</p>
             {events.map((event, i) => {
               // console.log(event);
               if (event.id == eventId && event.group_event == groupId) {
                 return <Needed key={i} item={event.needed_items} />;
               }
             })}
-            <p>Please don't forget your items!</p>
           </div>
 
           <div className="box-dash question-box">

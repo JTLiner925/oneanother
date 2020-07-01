@@ -10,6 +10,13 @@ export default class GroupInfo extends Component {
   render() {
     const { groups, events, groupId, users, userId } = this.props;
     let leaderId = this.props.groups.group_leader;
+    if(this.props.groups.length > 0){
+      leaderId = this.props.groups.find((group) => {
+        return (
+          group.id == groupId
+        )
+      })
+    }
     // console.log(this.props.groups);
     return (
       <div className="main-body">
@@ -34,9 +41,9 @@ export default class GroupInfo extends Component {
             })}
           </div>
           <div className="group-box leader-box">
-            {users.map((user) => {
+            {leaderId && users.map((user) => {
               // console.log(leaderId);
-              if (user.id && user.id == leaderId) {
+              if (user.id && user.id == leaderId.group_leader) {
                 return (
                   <div key={user}>
                     <h3>
@@ -49,10 +56,6 @@ export default class GroupInfo extends Component {
                 );
               }
             })}
-
-            <p>Date and Time</p>
-            <p>Location</p>
-            <p>Additional Details</p>
           </div>
         </div>
       </div>

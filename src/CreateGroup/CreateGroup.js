@@ -19,12 +19,12 @@ export default class CreateGroup extends Component {
     let group = this.props.groups.find((g) => {
       return g.group_name === this.state.group_name;
     });
-    console.log(group);
+    // console.log(group);
     this.props.onJoinGroup(group);
   };
 
   changeHandler = (e) => {
-    console.log(e.target.id);
+    // console.log(e.target.id);
     if (e.target.name === "group_names") {
       let element = document.querySelector(`#${e.target.value}`);
       // console.log(element.getAttribute('groupid'))
@@ -43,7 +43,7 @@ export default class CreateGroup extends Component {
     }
   };
   render() {
-    console.log(this.props);
+    // console.log(this.props);
     return (
       <div className="main-body">
         {/* <nav className="main-nav">

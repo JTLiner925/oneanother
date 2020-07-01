@@ -31,7 +31,7 @@ export default class CreateEvent extends Component {
       method: "GET",
     })
       .then((res) => {
-        console.log(res);
+        // console.log(res);
         if (!res.ok) {
           throw new Error("Something went wrong, please try again later.");
         }
@@ -55,16 +55,16 @@ export default class CreateEvent extends Component {
     let group = this.props.groups.find((g) => {
       return g.group_name === this.state.group_event;
     });
-    console.log(group);
+    // console.log(group);
     this.props.onCreateEvent(this.state);
   };
   changeHandler = (e) => {
-    console.log(e.target.id);
+    // console.log(e.target.id);
     if (e.target.name === "group_name") {
       let element = document.querySelector(`#${e.target.value.split(' ').join('_')}`);
-      console.log(element.getAttribute('groupid'))
+      // console.log(element.getAttribute('groupid'))
       let groupid;
-console.log(e.target.value, element)
+// console.log(e.target.value, element)
       groupid = element.getAttribute("groupid");
 
       this.setState({
@@ -78,7 +78,7 @@ console.log(e.target.value, element)
     }
   };
   render() {
-    console.log(this.state, this.context);
+    // console.log(this.state, this.context);
 
     return (
       <div className="main-body">

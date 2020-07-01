@@ -35,7 +35,7 @@ class Dashboard extends Component {
   HamNav = (e) => {
     let elem = document.querySelector(".side-nav-body");
     // elem.classList.add("none");
-    console.log(elem);
+    // console.log(elem);
     if (elem.style.display === "block") {
       elem.style.display = "none";
     } else {
@@ -81,7 +81,7 @@ class Dashboard extends Component {
         return Promise.all([ userRes.json(), groupRes.json(), eventRes.json() ]);
       })
       .then(([users, groups, events ]) => {
-        console.log(users, groups, events );
+        // console.log(users, groups, events );
         this.setState({
           users: users,
           groups: groups,
@@ -104,8 +104,13 @@ class Dashboard extends Component {
   }
 
   handleBiblePassage = (eventId) => {
+    let selectedEvent = this.state.events.find((event) => {
+      // console.log(event, eventId)
+      return event.id.toString() == eventId})
+    // console.log(selectedEvent)
+    if(selectedEvent){
     let url = new URL(`${config.API_ENDPOINT}text/`);
-    url.searchParams.set("q", store.events[eventId].bible_passage);
+    url.searchParams.set("q", selectedEvent.bible_passage);
     url.searchParams.set("include-passage-reference", true);
     url.searchParams.set("include-verse-number", true);
     url.searchParams.set("include-first-verse-number", true);
@@ -139,7 +144,7 @@ class Dashboard extends Component {
         console.error(error);
         this.setState({ error });
       });
-  };
+  }};
 
   invite = (formData) => {
     console.log(formData);
@@ -167,7 +172,7 @@ class Dashboard extends Component {
       });
   };
   joinGroup = (formData) => {
-    console.log(formData);
+    // console.log(formData);
     fetch("http://localhost:8000/api/groups/joingroup", {
       headers: {
         "Content-Type": "application/json",
@@ -177,11 +182,11 @@ class Dashboard extends Component {
       body: JSON.stringify(formData),
     })
       .then((res) => {
-        console.log(res);
+        // console.log(res);
         return res.json();
       })
       .then((resData) => {
-        console.log(resData);
+        // console.log(resData);
         if (resData.message !== "Already Joined Group") {
           this.props.history.push("/dashboard");
         } else {
@@ -196,7 +201,7 @@ class Dashboard extends Component {
   };
 
   createEvent = (formData) => {
-    console.log(formData);
+    // console.log(formData);
     fetch("http://localhost:8000/api/events/createevent", {
       headers: {
         "Content-Type": "application/json",
@@ -206,7 +211,7 @@ class Dashboard extends Component {
       body: JSON.stringify(formData),
     })
       .then((res) => {
-        console.log(res);
+        // console.log(res);
         return res.json();
       })
       .then(() => {
@@ -241,7 +246,7 @@ class Dashboard extends Component {
     });
   };
   handleUser = (userId) => {
-    console.log(userId)
+    // console.log(userId)
     this.setState({
       userId: userId,
     });
@@ -252,6 +257,7 @@ class Dashboard extends Component {
     });
   };
   renderMainRoutes() {
+
     // const { groupId, groups } = this.state;
     // let i = window.location.search;
     // let x = new URLSearchParams(i);
@@ -263,7 +269,8 @@ class Dashboard extends Component {
     //     id = value
     //   }
     // }
-  
+    let userName = window.localStorage.getItem('userName')
+
     return (
       <>
         <nav className="main-nav">
@@ -276,20 +283,13 @@ class Dashboard extends Component {
             );
             }
           })}
-          {this.state.users.map((user) => {
-            // console.log(user.id)
-            if(user.id && user.id == this.state.userId) {
-              
-              return (
+          
                 <Link to="/signup">
-                <p key={user.first_name}>
-                  {user.first_name}
+                <p key={userName}>
+                  {userName}
                 </p>
               </Link>
-              )
-            }
-          })}
-          {/*  */}
+              
         </nav>
 
         {[
@@ -369,17 +369,12 @@ class Dashboard extends Component {
     );
   }
   render() {
-    
+    // console.log(this.state.eventId)
 
     let i = window.location.search;
     let x = new URLSearchParams(i);
-
     for (let [key, value] of x) {
-      if (key === "userId") {
-        if (value !== this.state.userId) {
-          this.handleUser(value);
-        }
-      }
+      
       if (key === "groupId") {
         if (value !== this.state.groupId) {
           this.handleGroup(value);
@@ -431,6 +426,7 @@ class Dashboard extends Component {
                     events={this.state.events}
                     groups={this.state.groups}
                     user={this.state.users}
+                    onSelect={this.filterEvents}
                     
                   />
                 );

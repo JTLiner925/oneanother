@@ -1,9 +1,12 @@
 /* .item:checked {
   text-decoration: line-through;
 } */
-input[type=checkbox] + label{
+input[type="checkbox"] + label {
   text-decoration: none;
 }
-input[type=checkbox]:checked + label{
+input[type="checkbox"]:checked + label {
   text-decoration: line-through;
+}
+.Item {
+  margin-left: 10px;
 }

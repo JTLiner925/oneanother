@@ -20,7 +20,7 @@ export default class SignUp extends Component {
     })
   }
   render(){
-    console.log(this.props, this.state)
+    // console.log(this.props, this.state)
   return (
     <form className="signup-container" onSubmit={this.submitHandler}>
       <h1>Sign up</h1>
