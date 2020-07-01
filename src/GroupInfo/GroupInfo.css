@@ -19,7 +19,16 @@
   border-radius: 10px;
  
 }
-
+.pitch-box {
+  padding: 20px;
+  padding-bottom: 0;
+  /* background-color: rgb(55, 242, 214); */
+  /* background: linear-gradient(45deg, rgb(2, 39, 245), rgb(63, 174, 243), rgb(55, 242, 214) ); */
+  /* box-shadow: 0 0 8px 0 rgba(0, 0, 0, 0.2); */
+  overflow: scroll;
+  /* margin-bottom: 15px; */
+  /* background-color: rgb(221, 249, 252); */
+}
 
 .main-body {
   display: flex;
@@ -33,14 +42,7 @@
   /* flex: 5; */
 }
 
-.group-box{
-  /* width: 100%; */
-  padding-left: 20px;
-  width: 100%;
-  /* background-color: #e2e0e0; */
-  box-shadow: 0 1px 8px 0 rgba(0, 0, 0, 0.2);
-  margin-bottom: 15px;
-}
+
 .group-box h3 {
   text-align: center;
 }

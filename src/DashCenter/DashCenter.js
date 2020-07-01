@@ -78,7 +78,7 @@ if(this.props.events.length > 0){
             ))} */}
           </div>
         <div className="row-two-dash">
-          <div className="box-dash need-box">
+          <div className="box-dash need-box" id='need-box'>
             <h3>Needed Items</h3>
             {events.map((event, i) => {
               // console.log(event);

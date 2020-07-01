@@ -1,12 +1,13 @@
-.bible-box-dash{
+.bible-box-dash {
   overflow: scroll;
-  }
-@media screen and (min-width: 650px){
-.row-one-dash, .row-two-dash{
+}
+#need-box {
+  box-shadow: none;
+}
+@media screen and (min-width: 650px) {
+  .row-one-dash,
+  .row-two-dash {
     display: flex;
     flex-direction: column;
-    
   }
-
- 
 }

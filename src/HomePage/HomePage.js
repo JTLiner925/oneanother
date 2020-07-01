@@ -27,11 +27,11 @@ export default class HomePage extends Component {
           <h2 className="build-header">Build up oneAnother. . .</h2>
           <h2 className="serve-header">Serve oneAnother. . .</h2>
           <div className='img-fade'>
-          <img
+          {/* <img
             className="dashboard-image"
             src={dashboard}
             alt="dashboard screenshot"
-          />
+          /> */}
           </div>
           <p className="intro-text">
             Open a Bible app, discuss food options in an email, announcements in
