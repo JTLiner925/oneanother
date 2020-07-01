@@ -38,10 +38,20 @@ class Dashboard extends Component {
     // console.log(elem);
     if (elem.style.display === "block") {
       elem.style.display = "none";
-    } else {
+    } 
+    else{
       elem.style.display = "block";
     }
   };
+  HamNavPage = () => {
+    let elem = document.querySelector(".side-nav-body");
+    if(elem.style.display === "none"){
+      elem.style.display = "none";
+    }
+    else{
+      elem.style.display = "none";
+    }
+  }
   setGroup = (group) => {
     this.setState({
       group,
@@ -111,12 +121,12 @@ class Dashboard extends Component {
     if(selectedEvent){
     let url = new URL(`${config.API_ENDPOINT}text/`);
     url.searchParams.set("q", selectedEvent.bible_passage);
-    url.searchParams.set("include-passage-reference", true);
+    url.searchParams.set("include-passage-reference", false);
     url.searchParams.set("include-verse-number", true);
-    url.searchParams.set("include-first-verse-number", true);
+    url.searchParams.set("include-first-verse-number", false);
     url.searchParams.set("include-footnotes", true);
-    url.searchParams.set("include-footnote-body", true);
-    url.searchParams.set("include-heading", true);
+    url.searchParams.set("include-footnote-body", false);
+    url.searchParams.set("include-heading", false);
     url.searchParams.set("include-short-copyright", true);
     url.searchParams.set("indent-using", "tab");
     const options = {
@@ -285,7 +295,7 @@ class Dashboard extends Component {
           })}
           
                 <Link to="/signup">
-                <p key={userName}>
+                <p className= 'userName' key={userName}>
                   {userName}
                 </p>
               </Link>
@@ -304,7 +314,7 @@ class Dashboard extends Component {
             render={() => {
               return (
                 <DashMain
-                  onHandleHam={this.HamNav}
+                  onHandleHam={this.HamNavPage}
                   passage={this.state.passage}
                   groups={this.state.groups}
                   events={this.state.events}
@@ -317,11 +327,19 @@ class Dashboard extends Component {
             }}
           />
         ))}
-        <Route path="/bible" component={Bible} />
+        <Route path="/bible" 
+        render={() => {
+          return <Bible
+          onHandleHam={this.HamNavPage}
+          ></Bible>}}
+          />
         <Route
           path="/invite"
           render={() => {
-            return <Invite onInvite={this.invite}></Invite>;
+            return <Invite 
+            onInvite={this.invite}
+            onHandleHam={this.HamNavPage}
+            ></Invite>;
           }}
         />
         {/* <Route
@@ -339,6 +357,8 @@ class Dashboard extends Component {
                 groups={this.state.groups}
                 onCreateGroup={this.createGroup}
                 onJoinGroup={this.joinGroup}
+                onHandleHam={this.HamNavPage}
+
               ></CreateGroup>
             );
           }}
@@ -350,6 +370,8 @@ class Dashboard extends Component {
               <CreateEvent
                 groups={this.state.groups}
                 onCreateEvent={this.createEvent}
+                onHandleHam={this.HamNavPage}
+
               ></CreateEvent>
             );
           }}

@@ -128,7 +128,7 @@ export default class HomePage extends Component {
                 check them off to sign up and bring them.
               </p>
             </div>
-            <FontAwesomeIcon icon={faListAlt} />
+            <FontAwesomeIcon className='support-icon'icon={faListAlt} />
           </div>
         </section>
       </div>

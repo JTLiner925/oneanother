@@ -12,12 +12,16 @@ import GroupInfo from "../GroupInfo/GroupInfo";
 
 export default class DashRight extends Component {
   static contextType = ApiContext;
+  submitHandler = (e) => {
+    // e.preventDefault();
 
+    this.props.navHandler(this.state);
+  };
   render() {
     // console.log(this.props.groups);
 
     return (
-      <div className="side-right">
+      <div className="side-right" >
         {/* <div className="box-dash calendar-box">
           <h3>Event Calendar</h3>
           <SimpleCalendar />
@@ -47,6 +51,7 @@ export default class DashRight extends Component {
           eventId={this.props.eventId}
           users={this.props.users}
           userId={this.props.userId}
+          navHandler={this.submitHandler}
           // groupId = {this.props.groupId}
         />
 

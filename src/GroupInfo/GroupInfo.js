@@ -7,6 +7,11 @@ export default class GroupInfo extends Component {
     group: "",
     event: "",
   };
+  submitHandler = (e) => {
+    // e.preventDefault();
+
+    this.props.navHandler(this.state);
+  };
   render() {
     const { groups, events, groupId, users, userId } = this.props;
     let leaderId = this.props.groups.group_leader;
@@ -23,7 +28,7 @@ export default class GroupInfo extends Component {
         {/* <Invite className='invite' onInvite={this.props.onInvite}></Invite> */}
 
         <div className="group-row-one">
-          <div className="group-box pitch-box">
+          <div className="group-box pitch-box" onClick={this.submitHandler}>
             {groups.map((group) => {
               // console.log(group);
               if (group.id && group.id == groupId) {
@@ -40,7 +45,7 @@ export default class GroupInfo extends Component {
               }
             })}
           </div>
-          <div className="group-box leader-box">
+          <div className="group-box leader-box" onClick={this.submitHandler} >
             {leaderId && users.map((user) => {
               // console.log(leaderId);
               if (user.id && user.id == leaderId.group_leader) {

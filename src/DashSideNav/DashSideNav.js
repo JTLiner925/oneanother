@@ -52,7 +52,7 @@ export default class DashSideNav extends Component {
       <div className="side-nav-body">
         <div className='myLinks'>
         <Link to="/dashboard">
-          <h1>oneAnother</h1>
+          <h1 className='logo'>oneAnother</h1>
         </Link>
         <Link to="./creategroup">
           <h2>Start/Join Group</h2>

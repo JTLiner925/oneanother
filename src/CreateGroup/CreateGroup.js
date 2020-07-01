@@ -22,7 +22,9 @@ export default class CreateGroup extends Component {
     // console.log(group);
     this.props.onJoinGroup(group);
   };
-
+  navHandler = () => {
+    this.props.onHandleHam(this.state)
+  }
   changeHandler = (e) => {
     // console.log(e.target.id);
     if (e.target.name === "group_names") {
@@ -45,7 +47,7 @@ export default class CreateGroup extends Component {
   render() {
     // console.log(this.props);
     return (
-      <div className="main-body">
+      <div className="main-body" onClick={this.navHandler}>
         {/* <nav className="main-nav">
           <h2>Group Name</h2>
           <p>{STORE.one_another_users[0].first_name}</p>

@@ -1,4 +1,6 @@
 .bible-text{
   overflow: scroll;
   max-height: 700px;
+  padding-left: 20px;
+  padding-right: 20px;
 }

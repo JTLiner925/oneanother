@@ -58,6 +58,9 @@ export default class CreateEvent extends Component {
     // console.log(group);
     this.props.onCreateEvent(this.state);
   };
+  navHandler = () => {
+    this.props.onHandleHam(this.state)
+  }
   changeHandler = (e) => {
     // console.log(e.target.id);
     if (e.target.name === "group_name") {
@@ -81,7 +84,7 @@ export default class CreateEvent extends Component {
     // console.log(this.state, this.context);
 
     return (
-      <div className="main-body">
+      <div className="main-body" onClick={this.navHandler}>
         {/* <nav className="main-nav">
             <h2>Group Name</h2>
             <p>Profile</p>

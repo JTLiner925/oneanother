@@ -33,10 +33,23 @@ export default class DashMain extends Component {
     });
   };
 
-  // submitHandler = (e) => {
-  //   e.preventDefault();
-  //   this.props.HamNav(this.state);
-  // };
+  navHandler = (e) => {
+    // e.preventDefault();
+    // let checkedItem = this.props.events.find((event) => {
+    //   console.log(event.needed_items)
+    //   return(
+    //     event.needed_item == e
+    //   )
+    // })
+    // console.log(checkedItem)
+    // if(checkedItem.checked === 'false'){
+    //   checkedItem.checked = 'true'
+    // }if(checkedItem.checked === 'true'){
+    //   checkedItem.checked = 'false'
+    // }else{
+    this.props.onHandleHam(this.state);
+    
+  };
   render() {
     let i = window.location.search;
     let x = new URLSearchParams(i);
@@ -52,7 +65,7 @@ export default class DashMain extends Component {
     return (
       <ApiContext.Consumer>
         {({ eventId }) => (
-          <div className="main-body">
+          <div className="main-body" >
             {/* <nav className="main-nav">
               <FontAwesomeIcon id="icon" icon={faBars} onClick={this.HamNav} />
               <h2>{groupId ? STORE.groups[groupId].name : "Select Group"}</h2>
@@ -66,7 +79,7 @@ export default class DashMain extends Component {
               </Link>
             </nav> */}
 
-            <div className="event-alert">
+            <div className="event-alert"onClick={this.navHandler}>
               <h3>Announcements</h3>
               
                 {events.map((event, i) => {
@@ -103,6 +116,7 @@ export default class DashMain extends Component {
                         users={this.props.users}
                         userId={this.props.userId}
                         passage={this.props.passage}
+                        navHandler={this.navHandler}
                       />
                     );
                   }}
@@ -133,6 +147,7 @@ export default class DashMain extends Component {
                         eventId={this.props.eventId}
                         users={this.props.users}
                         userId={this.props.userId}
+                        navHandler={this.navHandler}
                       />
                     );
                   }}

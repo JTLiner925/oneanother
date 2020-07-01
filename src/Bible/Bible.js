@@ -28,6 +28,9 @@ export default class DashMain extends Component {
       });
     }
   };
+  navHandler = () => {
+    this.props.onHandleHam(this.state)
+  }
   changeHandler = (e) => {
     this.setState({
       [e.target.name]: e.target.value,
@@ -40,11 +43,11 @@ export default class DashMain extends Component {
     let url = new URL(`https://api.esv.org/v3/passage/text/`);
 
     url.searchParams.set("q", this.state.book + this.state.chapter);
-    url.searchParams.set("include-passage-reference", true);
+    url.searchParams.set("include-passage-reference", false);
     url.searchParams.set("include-verse-number", true);
-    url.searchParams.set("include-first-verse-number", true);
+    url.searchParams.set("include-first-verse-number", false);
     url.searchParams.set("include-footnotes", true);
-    url.searchParams.set("include-footnote-body", true);
+    url.searchParams.set("include-footnote-body", false);
     url.searchParams.set("include-heading", true);
     url.searchParams.set("include-short-copyright", true);
     url.searchParams.set("indent-using", "tab");
@@ -1260,7 +1263,7 @@ export default class DashMain extends Component {
     };
     // console.log(this.state);
     return (
-      <div className="main-body">
+      <div className="main-body" onClick={this.navHandler}>
         <form className="bible-search" onSubmit={this.handleBibleSearch}>
           <p>Search the Bible</p>
           <label>

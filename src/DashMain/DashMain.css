@@ -1,19 +1,20 @@
 .main-nav {
   display: flex;
-  justify-content: space-between;
-  padding-left: 80px;
-  padding-right: 40px;
-  background-color: #230230;
-  position: relative;
+  justify-content: center;
+  padding-left: 60px;
+  padding-right: 60px;
+  align-items: center;
+  
 }
 .event-alert {
+  color: #ffffff;
   display: flex;
   flex-direction: column;
   text-align: center;
   justify-content: space-around;
-  /* height: 300px; */
+  min-height: 300px;
   box-shadow: 0 1px 8px 0 rgba(0, 0, 0, 0.2);
-  background-image: url(../images/hero.jpg);
+  background: -webkit-linear-gradient(45deg, rgb(55, 242, 214), rgb(63, 174, 243), rgb(2, 39, 245) );
   background-repeat: no-repeat;
   background-size: cover;
   /* background-position-y: -80px; */
@@ -21,13 +22,19 @@
   /* border-radius: 10px; */
   margin-bottom: 40px;
   margin-bottom: 15px;
-
+  /* position: relative; */
+}
+.event-alert h3{
+  font-family: "Permanent Marker", cursive;
+  color: #ffffff;
 }
 .event-alert p {
-  font-family: "Permanent Marker", cursive;
+  /* font-family: "Permanent Marker", cursive; */
   font-size: 24px;
   max-width: 330px;
   margin: 15px auto;
+  color: #ffffff;
+
 }
 /* svg:not(:root).svg-inline--fa {
   overflow: visible;
@@ -43,21 +50,19 @@
   padding: 14px 16px;
   text-decoration: none;
   font-size: 17px;
-  background-color: #cfcece;
-
+  background: linear-gradient(45deg, rgb(55, 242, 214), rgb(63, 174, 243), rgb(2, 39, 245) );
+color: rgb(2, 39, 245);
   /* display: block; */
   position: absolute;
   border-radius: 10px;
   box-shadow: 0 1px 8px 0 rgba(0, 0, 0, 0.2);
 
-  left: 15px;
-  top: 10px;
+  left: 20px;
+  top: 30px;
 }
 .main-nav #icon:hover {
-  background-color: var(--main-color);
-  color: #aaa9a9;
-  transition: 500ms;
-}
+  background: linear-gradient(45deg, rgb(2, 39, 245), rgb(63, 174, 243), rgb(55, 242, 214) );
+  animation: ease forwards;}
 .main-body {
   display: flex;
   flex-direction: row;
@@ -71,11 +76,13 @@
 .box-dash {
   padding: 10px;
   padding-bottom: 0;
-  /* background-color: #e2e0e0; */
+  /* background-color: rgb(55, 242, 214); */
+  /* background: linear-gradient(45deg, rgb(2, 39, 245), rgb(63, 174, 243), rgb(55, 242, 214) ); */
   box-shadow: 0 0 8px 0 rgba(0, 0, 0, 0.2);
   overflow: scroll;
   margin-bottom: 15px;
 }
+
 .box-dash h3 {
   text-align: center;
 }

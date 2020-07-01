@@ -12,7 +12,7 @@ body {
   background-repeat: no-repeat;
   background-size: cover;
   /* height: 800px; */
-  background-image: linear-gradient(to bottom, #a4a4a4, #ffffff);
+  /* background-image: linear-gradient(to bottom, #a4a4a4, #ffffff); */
 
   /* background-image: linear-gradient(
     to bottom ,
@@ -27,6 +27,10 @@ body {
     rgb(61, 61, 61) 100%
   );
   color: var(--main-color); */
+  background: -webkit-linear-gradient(45deg, rgb(55, 242, 214), rgb(63, 174, 243), rgb(2, 39, 245) );
+  /* background-clip: text;
+  -webkit-text-fill-color: transparent; */
+  color: #ffffff
 }
 .hero p {
   font-size: 20px;
@@ -112,7 +116,7 @@ body {
   height: 100%;
 }
 .slider {
-  color: #929191;
+  /* color: #929191; */
   text-align: center;
   font-size: 36px;
 
@@ -134,11 +138,11 @@ body {
   background-color: #0b5df5;
 }
 .get-started .sign-up:hover {
-  background-color: #0342b8;
-  transition: 300ms;
+  background-color: #03338e;
+  transition: 500ms;
 }
 .features p {
-  color: #b3b3b3;
+  /* color: #b3b3b3; */
   font-size: 20px;
 }
 .bible {
@@ -165,16 +169,26 @@ body {
 }
 .feature-pic {
   width: 45%;
+  
   /* height: 100%; */
 }
 svg:not(:root).svg-inline--fa {
   overflow: visible;
   height: auto;
   width: 30%;
+  color: linear-gradient(45deg, rgb(55, 242, 214), rgb(63, 174, 243), rgb(2, 39, 245) );
+  background-clip: icon;
+  -webkit-text-fill-color: transparent;
   /* padding: 20px; */
 }
+/* .support-icon{
+  background: -webkit-linear-gradient(45deg, rgb(55, 242, 214), rgb(63, 174, 243), rgb(2, 39, 245) );
+  background-clip: icon;
+  -webkit-text-fill-color: transparent;
+} */
 #user-icon {
   width: 20%;
+
 }
 .feature-text {
   width: 45%;
