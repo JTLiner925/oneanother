@@ -23,9 +23,9 @@ export default class HomePage extends Component {
     return (
       <div>
         <div className="hero">
-          <h2 className="love-header">Love oneAnother . . .</h2>
-          <h2 className="build-header">Build up oneAnother. . .</h2>
-          <h2 className="serve-header">Serve oneAnother. . .</h2>
+          <h2 className="love-header">Love oneAnother...</h2>
+          <h2 className="build-header">Build up oneAnother...</h2>
+          <h2 className="serve-header">Serve oneAnother...</h2>
           <div className='img-fade'>
           {/* <img
             className="dashboard-image"

@@ -2,6 +2,7 @@ html,
 body {
   margin: 0;
   height: 100%;
+  width: 100%;
 }
 
 .hero {
@@ -43,8 +44,8 @@ body {
 .love-header {
   /* font-family: 'Pacifico', cursive; */
   font-size: 28px;
-  margin-right: 100px;
-  text-align: center;
+  margin-left: 10px;
+  text-align: left;
 }
 .build-header {
   /* font-family: 'Pacifico', cursive; */
@@ -55,13 +56,13 @@ body {
 .serve-header {
   /* font-family: 'Pacifico', cursive; */
   font-size: 28px;
-  margin-left: 100px;
-  text-align: center;
+  margin-right: 10px;
+  text-align: right;
 }
-.carousel, .slide{
+.carousel,
+.slide {
   overflow-x: hidden;
   height: 250px;
-
 }
 .carousel p {
   font-size: 24px;
@@ -182,7 +183,7 @@ body {
   margin-bottom: 30px;
 }
 .feature-pic {
-  width: 45%;
+  width: 55%;
 
   /* height: 100%; */
 }
