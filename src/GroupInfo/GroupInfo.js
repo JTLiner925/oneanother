@@ -29,13 +29,14 @@ export default class GroupInfo extends Component {
 
         <div className="group-row-one">
           <div className="group-box pitch-box" onClick={this.submitHandler}>
-            {groups.map((group) => {
+            {groupId ? groups.map((group) => {
               // console.log(group);
               if (group.id && group.id == groupId) {
                 return (
                   <div key={group}>
-                    <h3>{group.group_name}</h3>
+                    <h3 className='pitch-header'>Group Info</h3>
                     <div className='pitch'>
+                      <p>{group.group_name}</p>
                     <p>{group.pitch}</p>
                     <p>{group.group_location}</p>
                     <p>{group.time_date}</p>
@@ -45,26 +46,27 @@ export default class GroupInfo extends Component {
                   </div>
                 );
               }
-            })}
+            }): <div className='hidden'></div>}
           </div>
           <div className="group-box leader-box" onClick={this.submitHandler} >
-            {leaderId && users.map((user) => {
+            {leaderId ? leaderId && users.map((user) => {
               // console.log(leaderId);
               if (user.id && user.id == leaderId.group_leader) {
                 return (
                   <div key={user}>
-                    <h3>
-                      {user.first_name}
-                      {user.last_name}
+                    <h3 className='leader-header'>
+                      Group Leader
                     </h3>
                     <div className='leader'>
+                      <p>{user.first_name}
+                      {user.last_name}</p>
                     <p>{user.user_email}</p>
                     <p>{user.bio}</p>
                     </div>
                   </div>
                 );
               }
-            })}
+            }): <div className='hidden'></div>}
           </div>
         </div>
       </div>

@@ -6,15 +6,72 @@
   padding-right: 40px;
   background-color: #aaa9a9
 } */
-.main-body {
+.event-body {
+  margin: 0;
+  padding-top: 40px;
+  padding-bottom: 70px;
   display: flex;
   flex-direction: column;
-  margin-bottom: 30px;
+  align-items: center;
+  background: -webkit-linear-gradient(
+    45deg,
+    rgb(55, 242, 214),
+    rgb(63, 174, 243),
+    rgb(2, 39, 245)
+  );
 }
-.join-form,
-.create-form {
+.event-body h3{
+  padding-bottom: 20px;
+}
+.event-form {
+  width: 90%;
+
   flex-direction: column;
 }
+.event-form select {
+  display: block;
+  border-radius: 10px;
+  /* height: 30px; */
+  padding: 1em;
+  align-content: center;
+  width: 100%;
+  justify-content: space-around;
+  margin: 0;
+}
+.event-input input, .event-input textarea{
+  width: 90%;
+  padding: 1em;
+  border-radius: 0px;
+  border: 0px;
+  border-radius: 5px;
+  background-color: hsl(0, 0%, 93%);
+}
+.event-input input:hover, .event-input textarea:hover{
+  background-color: hsl(0, 0%, 73%);
+  transition: 500ms;
+}
+.event-input input:active, .event-input textarea:active{
+  background-color: hsl(0, 0%, 73%);
+
+}
+.event-form button{
+  font-size: 1em;
+  color: var(--white);
+  padding: 1em;
+  margin: 0.5em;
+  border-radius: 10px;
+  border-width: 0px;
+  text-transform: uppercase;
+
+  background-color: #0b5df5;
+}
+
+.event-form button:hover{
+background-color: #0342b8;
+  transition: 500ms;}
+/* .event-form {
+  text-align: left;
+} */
 .lesson {
   flex-direction: column;
 }

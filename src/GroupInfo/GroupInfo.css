@@ -19,8 +19,15 @@
   border-radius: 10px;
  
 }
-.pitch-box {
-  padding: 20px;
+.hidden{
+  visibility: hidden;
+  height: 0;
+}
+.pitch-header, .leader-header {
+  padding-top: 20px;
+}
+.pitch-box, .leader-box {
+  /* padding: 20px; */
   padding-bottom: 0;
   /* background-color: rgb(55, 242, 214); */
   /* background: linear-gradient(45deg, rgb(2, 39, 245), rgb(63, 174, 243), rgb(55, 242, 214) ); */
@@ -28,15 +35,21 @@
   overflow: scroll;
   /* margin-bottom: 15px; */
   /* background-color: rgb(221, 249, 252); */
-  min-height: 300px;
+  /* min-height: 300px; */
+}
+.pitch-box, .leader-box, .leader, .pitch{
+  padding: 0;
+min-height: 0;
+
 }
 .leader, .pitch{
   display: flex;
   flex-direction: column;
   /* margin:0 auto; */
   margin-top: 10px;
+  margin-left: 20px;
   justify-content: space-around;
-  min-height: 200px;
+  /* min-height: 200px; */
 }
 .leader p, .pitch p{
   line-height: 1.7;

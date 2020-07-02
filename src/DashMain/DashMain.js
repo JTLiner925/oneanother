@@ -48,7 +48,6 @@ export default class DashMain extends Component {
     //   checkedItem.checked = 'false'
     // }else{
     this.props.onHandleHam(this.state);
-    
   };
   render() {
     let i = window.location.search;
@@ -58,14 +57,14 @@ export default class DashMain extends Component {
     for (let [key, value] of x) {
       if (key === "eventId") {
         y = `?groupId=${value}`;
-        id = value ;
+        id = value;
       }
     }
     const { events, eventId, groupId } = this.props;
     return (
       <ApiContext.Consumer>
         {({ eventId }) => (
-          <div className="main-body" >
+          <div className="main-body">
             {/* <nav className="main-nav">
               <FontAwesomeIcon id="icon" icon={faBars} onClick={this.HamNav} />
               <h2>{groupId ? STORE.groups[groupId].name : "Select Group"}</h2>
@@ -79,16 +78,30 @@ export default class DashMain extends Component {
               </Link>
             </nav> */}
 
-            <div className="event-alert"onClick={this.navHandler}>
-              <h3>Announcements</h3>
-              
-                {events.map((event, i) => {
+            <div className="event-alert" onClick={this.navHandler}>
+              {/* <h3>Announcements</h3> */}
+
+              {eventId ? (
+                events.map((event, i) => {
                   // console.log(event.group_event)
                   if (event.id == eventId && event.group_event == groupId) {
-                    return <p key={i}>{event.announcements}</p>;
-                  }
-                })}
-              
+                    return(
+                    <>
+                      <h3>Announcements</h3>
+                      <p key={i}>{event.announcements}</p>
+                    </>
+                    )}
+                })
+              ) : (
+                <div className='dashHero'>
+                  
+                  <p className="qotd">
+                    “Discipleship is not an option. Jesus says that if anyone
+                    would come after me, he must follow me.”
+                  </p>
+                  <h2 className="qotdAuthor"> ~ Tim Keller</h2>
+                </div>
+              )}
             </div>
             <div className="main">
               {[

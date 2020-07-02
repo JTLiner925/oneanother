@@ -22,10 +22,11 @@
   flex-direction: column;
   height: 80px;
 }
-select{
+.select-passage select{
   border-radius: 10px;
   height: 30px;
   align-items: center;
+  /* width: 100%; */
   justify-content: space-around;
   margin: 1%;
 }

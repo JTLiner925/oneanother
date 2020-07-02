@@ -59,15 +59,17 @@ export default class CreateEvent extends Component {
     this.props.onCreateEvent(this.state);
   };
   navHandler = () => {
-    this.props.onHandleHam(this.state)
-  }
+    this.props.onHandleHam(this.state);
+  };
   changeHandler = (e) => {
     // console.log(e.target.id);
     if (e.target.name === "group_name") {
-      let element = document.querySelector(`#${e.target.value.split(' ').join('_')}`);
+      let element = document.querySelector(
+        `#${e.target.value.split(" ").join("_")}`
+      );
       // console.log(element.getAttribute('groupid'))
       let groupid;
-// console.log(e.target.value, element)
+      // console.log(e.target.value, element)
       groupid = element.getAttribute("groupid");
 
       this.setState({
@@ -84,15 +86,12 @@ export default class CreateEvent extends Component {
     // console.log(this.state, this.context);
 
     return (
-      <div className="main-body" onClick={this.navHandler}>
+      <div className="event-body" onClick={this.navHandler}>
         {/* <nav className="main-nav">
             <h2>Group Name</h2>
             <p>Profile</p>
           </nav> */}
-        <form
-          className="form-template event-form"
-          onSubmit={this.submitHandler}
-        >
+        <form className="event-form" onSubmit={this.submitHandler}>
           <h3>Create New Event</h3>
           <div>
             {/* create a search/option ? when you search name then valid options pop up */}
@@ -102,65 +101,70 @@ export default class CreateEvent extends Component {
               <option>Select Group</option>
               {this.props.groups &&
                 this.props.groups.map((gr) => (
-                  <option id={gr.group_name.split(' ').join('_')} groupid={gr.id} key={gr.id}>
+                  <option
+                    id={gr.group_name.split(" ").join("_")}
+                    groupid={gr.id}
+                    key={gr.id}
+                  >
                     {gr.group_name}
                   </option>
                 ))}
             </select>
           </div>
-          <div>
-            <label htmlFor="announcements">
-              Announcements
-              <textarea
-                id="announcements"
-                name="announcements"
-                onChange={this.changeHandler}
-              ></textarea>
-            </label>
-          </div>
-          <div>
-            <label htmlFor="needed-items">
-              Needed Items
-              <textarea
-                id="needed-items"
-                name="needed_items"
-                onChange={this.changeHandler}
-              ></textarea>
-            </label>
-          </div>
-          <div>
-            <label htmlFor="date">
-              Date
-              <input
-                id="date"
-                name="event_date"
-                onChange={this.changeHandler}
-              ></input>
-            </label>
-          </div>
-          <div>
-            <label htmlFor="time">
-              Time
-              <input
-                id="time"
-                name="event_time"
-                onChange={this.changeHandler}
-              ></input>
-            </label>
-          </div>
-          <div className="lesson">
-            <h3>Lesson</h3>
+          <div className="event-input">
             <div>
-              <label htmlFor="lesson-title">
-                Lesson Title
+              <label htmlFor="announcements">
+                Announcements
+                <textarea
+                  id="announcements"
+                  name="announcements"
+                  onChange={this.changeHandler}
+                ></textarea>
+              </label>
+            </div>
+            <div>
+              <label htmlFor="needed-items">
+                Needed Items
+                <textarea
+                  id="needed-items"
+                  name="needed_items"
+                  onChange={this.changeHandler}
+                ></textarea>
+              </label>
+            </div>
+            <div>
+              <label htmlFor="date">
+                Date
                 <input
-                  id="lesson-title"
-                  name="lesson_title"
+                  id="date"
+                  name="event_date"
                   onChange={this.changeHandler}
                 ></input>
               </label>
             </div>
-            {/* <div>
+            <div>
+              <label htmlFor="time">
+                Time
+                <input
+                  id="time"
+                  name="event_time"
+                  onChange={this.changeHandler}
+                ></input>
+              </label>
+            </div>
+            <div className="lesson">
+              <h3>Lesson</h3>
+              <div>
+                <label htmlFor="lesson-title">
+                  Lesson Title
+                  <input
+                    id="lesson-title"
+                    name="lesson_title"
+                    onChange={this.changeHandler}
+                  ></input>
+                </label>
+              </div>
+              {/* <div>
               <label htmlFor="lesson-summary">
                 Lesson Summary
                 <input
@@ -170,36 +174,37 @@ export default class CreateEvent extends Component {
                 ></input>
               </label>
               </div> */}
-            <div>
-              <label htmlFor="bible-passage">
-                Bible Passage
-                <input
-                  id="bible-passage"
-                  name="bible_passage"
-                  onChange={this.changeHandler}
-                ></input>
-              </label>
+              <div>
+                <label htmlFor="bible-passage">
+                  Bible Passage
+                  <input
+                    id="bible-passage"
+                    name="bible_passage"
+                    onChange={this.changeHandler}
+                  ></input>
+                </label>
+              </div>
             </div>
-          </div>
-          <div>
-            <h3>Questions</h3>
             <div>
-              <label htmlFor="question">
-                Question
-                <textarea
-                  id="question"
-                  name="question"
-                  onChange={this.changeHandler}
-                ></textarea>
-              </label>
-              {/* <button type="submit" className="add-another-question">
+              <h3>Questions</h3>
+              <div>
+                <label htmlFor="question">
+                  Question
+                  <textarea
+                    id="question"
+                    name="question"
+                    onChange={this.changeHandler}
+                  ></textarea>
+                </label>
+                {/* <button type="submit" className="add-another-question">
               Add Another Question
             </button> */}
+              </div>
             </div>
+            <button type="submit" className="create-event">
+              Create Event
+            </button>
           </div>
-          <button type="submit" className="create-event">
-            Create Event
-          </button>
         </form>
       </div>
     );

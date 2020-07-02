@@ -2,17 +2,7 @@ import React, { Component } from "react";
 import './Needed.css'
 
 export default class Needed extends Component {
-  // console.log(props.item);
-  // changeHandler = (e) => {
-    
-  //     if(e.target.check === 'false'){
-  //       e.target.check = 'true'
-  //     }else {
-  //       e.target.check === 'false'
-  //     }
-  //     // [e.target.name]: e.target.checked,
  
-  // };
   render(){
   return (
     <div className="Needed">

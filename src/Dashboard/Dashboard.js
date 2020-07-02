@@ -285,14 +285,14 @@ class Dashboard extends Component {
       <>
         <nav className="main-nav">
           <FontAwesomeIcon id="icon" icon={faBars} onClick={this.HamNav} />
-          {this.state.groups.map((group) => {
+          {this.state.groupId ? this.state.groups.map((group) => {
             if (group.id && group.id == this.state.groupId) {
             return (
               <h2 key={group.group_name}>{group.group_name}</h2>
               // <h2>{groupId ? this.state.groups[groupId].group_name: 'Select Group'}</h2>
             );
             }
-          })}
+          }): <h1 className='dashHeader'>oneAnother</h1>}
           
                 <Link to="/signup">
                 <p className= 'userName' key={userName}>

@@ -47,13 +47,13 @@ export default class CreateGroup extends Component {
   render() {
     // console.log(this.props);
     return (
-      <div className="main-body" onClick={this.navHandler}>
+      <div className="create-body" onClick={this.navHandler}>
         {/* <nav className="main-nav">
           <h2>Group Name</h2>
           <p>{STORE.one_another_users[0].first_name}</p>
         </nav> */}
         <form
-          className="form-template join-form"
+          className=" join-form"
           onSubmit={this.submitJoinHandler}
         >
           <h3>Join Group</h3>
@@ -66,7 +66,7 @@ export default class CreateGroup extends Component {
               <option>Select Group</option>
               {this.props.groups &&
                 this.props.groups.map((gr) => (
-                  <option id={gr.group_name} groupid={gr.id} key={gr.id}>
+                  <option className='group-option' id={gr.group_name} groupid={gr.id} key={gr.id}>
                     {gr.group_name}
                   </option>
                 ))}
@@ -78,11 +78,11 @@ export default class CreateGroup extends Component {
           <p>display group they picked</p>
         </form>
         <form
-          className="form-template create-form"
+          className=" create-form"
           onSubmit={this.submitHandler}
         >
           <h3>Create New Group</h3>
-          <div>
+          <div className='create-input'>
             <label htmlFor="name">
               Group Name
               <input
@@ -92,14 +92,14 @@ export default class CreateGroup extends Component {
               ></input>
             </label>
           </div>
-          <div>
+          <div className='create-input'>
             <label htmlFor="pitch">
               Pitch
-              <input
+              <textarea
                 id="pitch"
                 name="pitch"
                 onChange={this.changeHandler}
-              ></input>
+              ></textarea>
             </label>
           </div>
           {/* <div>
@@ -122,7 +122,7 @@ export default class CreateGroup extends Component {
               ></input>
             </label>
           </div> */}
-          <div>
+          <div className='create-input'>
             <label htmlFor="phone">
               {/* won't let you use dashes */}
               Phone Number
@@ -133,7 +133,7 @@ export default class CreateGroup extends Component {
               ></input>
             </label>
           </div>
-          <div>
+          <div className='create-input'>
             <label htmlFor="location">
               Location
               <input
@@ -143,7 +143,7 @@ export default class CreateGroup extends Component {
               ></input>
             </label>
           </div>
-          <div>
+          <div className='create-input'>
             <label htmlFor="time-date">
               Time and Date
               <input
@@ -153,14 +153,14 @@ export default class CreateGroup extends Component {
               ></input>
             </label>
           </div>
-          <div>
+          <div className='create-input'>
             <label htmlFor="more-info">
               More Info
-              <input
+              <textarea
                 id="more-info"
                 name="more_info"
                 onChange={this.changeHandler}
-              ></input>
+              ></textarea>
             </label>
           </div>
           <button type="submit" className="create-group">
