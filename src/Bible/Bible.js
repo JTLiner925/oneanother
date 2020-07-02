@@ -1261,20 +1261,21 @@ export default class DashMain extends Component {
         ],
       },
     };
-    // console.log(this.state);
+    console.log(this.state);
     return (
-      <div className="main-body" onClick={this.navHandler}>
+      <div className="bible-body" onClick={this.navHandler}>
+        <div className='bible-search-params'>
         <form className="bible-search" onSubmit={this.handleBibleSearch}>
-          <p>Search the Bible</p>
+          <h3>Search the Bible</h3>
           <label>
             <input
               value={this.state.search}
               name="search"
+              className='search'
               onChange={this.changeHandler}
+              placeholder="Search for keywords i.e. 'abide'  'love'  'Jesus' "
             ></input>
-            <span role="img" aria-label="search" className="search">
-              🔍
-            </span>
+            
           </label>
           <button type="submit">Submit</button>
         </form>
@@ -1307,15 +1308,17 @@ export default class DashMain extends Component {
             <button type="submit">Submit</button>
           </div>
         </form>
+        </div>
         <div className="row-one">
           <div className="box bible-box">
-            <h3>Bible</h3>
             {this.state.address === "chapter"
               ? this.state.passage &&
                 this.state.passage.passages.map((pa, i) => {
+                  
                   return (
                     <div key={i} className='box-bible bible-texts'>
-                      <h3>{pa.canonical}</h3>
+                      {/* <h4>{pa.book}{pa.chapter}</h4> */}
+                      <h3>Bible Passage</h3>
                       <p className='bible-passage'>{pa}</p>
                     </div>
                   );
@@ -1325,6 +1328,7 @@ export default class DashMain extends Component {
                 this.state.passage.results.map((result, i) => {
                   return (
                     <div key={i} className='box-bible bible-texts'>
+                      {/* <h3>Search Results</h3> */}
                       <p>{result.reference}</p>
                       <p>{result.content}</p>
                     </div>
