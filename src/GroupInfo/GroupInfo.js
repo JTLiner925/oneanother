@@ -35,11 +35,13 @@ export default class GroupInfo extends Component {
                 return (
                   <div key={group}>
                     <h3>{group.group_name}</h3>
+                    <div className='pitch'>
                     <p>{group.pitch}</p>
                     <p>{group.group_location}</p>
                     <p>{group.time_date}</p>
                     <p>{group.leader_phone}</p>
                     <p>{group.more_info}</p>
+                    </div>
                   </div>
                 );
               }
@@ -55,8 +57,10 @@ export default class GroupInfo extends Component {
                       {user.first_name}
                       {user.last_name}
                     </h3>
+                    <div className='leader'>
                     <p>{user.user_email}</p>
                     <p>{user.bio}</p>
+                    </div>
                   </div>
                 );
               }

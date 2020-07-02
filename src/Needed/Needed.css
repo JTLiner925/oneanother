@@ -8,5 +8,15 @@ input[type="checkbox"]:checked + label {
   text-decoration: line-through;
 }
 .Item {
-  margin-left: 10px;
+  /* margin-left: 10px; */
+  line-height: 1.7;
+
+}
+.Item {
+  display: flex;
+  flex-direction: column;
+  /* margin:0 auto; */
+  margin-top: 10px;
+  justify-content: space-around;
+  min-height: 300px;
 }

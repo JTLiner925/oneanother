@@ -47,7 +47,7 @@ export default class SignUp extends Component {
       <input id="address-input" name='user_address' onChange={this.changeHandler}></input>
 
       <label htmlFor="bio-input">Tell us about yourself!</label>
-      <input id="bio-input" name='user_bio' onChange={this.changeHandler}></input>
+      <textarea id="bio-input" name='user_bio' onChange={this.changeHandler}></textarea>
 
       <div className="buttons">
          <button type='submit' className="signup">Sign Up</button>

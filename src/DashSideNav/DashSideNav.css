@@ -4,13 +4,14 @@
   text-align: left;
   /* width: 70%; */
   padding: 10px;
-  padding-top: 25px;
+  padding-top: 45px;
   
   background-color: #ffffff;
   box-shadow: 2px 2px 8px 0 rgba(0, 0, 0, 0.76);
   /* overflow: hidden; */
   position: fixed;
   border-bottom-right-radius: 25px;
+  z-index: 1;
 }
 .side-nav-body {
   display: none;

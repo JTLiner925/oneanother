@@ -1,10 +1,20 @@
 html,
 body {
   margin: 0;
-  height: 100%;
+ /* overflow: hidden; */
+}
+/* body::-webkit-scrollbar {
+  display: none;
+  opacity: 0;
+} */
+.homePage {
+  margin: 0;
   width: 100%;
 }
-
+.homePage::-webkit-scrollbar {
+  display: none;
+  opacity: 0;
+}
 .hero {
   /* padding-top: 100px; */
   display: flex;
@@ -106,7 +116,7 @@ body {
 
 .get-started {
   margin: 0 auto;
-  margin-bottom: 50px;
+  margin-bottom: 10px;
   align-items: center;
   text-decoration: none;
 }
@@ -117,7 +127,7 @@ body {
 .img-fade {
   color: #000000;
 }
-.dashboard-image {
+/* .dashboard-image {
   display: flex;
   width: auto;
   height: 200px;
@@ -126,7 +136,7 @@ body {
   border-radius: 10px;
 
   box-shadow: 0 0 20px 5px rgb(0, 0, 0);
-}
+} */
 .slide-img {
   height: 100%;
 }
@@ -183,7 +193,7 @@ body {
   margin-bottom: 30px;
 }
 .feature-pic {
-  width: 55%;
+  /* width: 55%; */
 
   /* height: 100%; */
 }
@@ -213,10 +223,9 @@ svg:not(:root).svg-inline--fa {
   width: 45%;
 }
 .intro-text {
-  width: 400px;
-  max-width: 700px;
+  width: 87%;
   margin: 0 auto;
-  margin-bottom: 20px;
+  margin-bottom: 10px;
 }
 @media screen and (min-width: 650px) {
   /* .hero {

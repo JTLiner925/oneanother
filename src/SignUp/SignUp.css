@@ -1,17 +1,20 @@
 .signup-container {
-  margin: 0 auto;
-  margin-top: 30px;
-  margin-bottom: 100px;
+  margin: 0;
+  margin-bottom: 0;
   display: flex;
   flex-direction: column;
-  width: 95%;
-  max-width: 500px;
+  /* max-width: 500px; */
   align-items: flex-start;
   justify-content: center;
   font-family: "Roboto", sans-serif;
+  background: -webkit-linear-gradient(
+    45deg,
+    rgb(55, 242, 214),
+    rgb(63, 174, 243),
+    rgb(2, 39, 245)
+  );
   /* background-color: var(--white); */
-  /* padding: 2em; */
-  border-radius: 5px;
+  padding: 2em;
   /* box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22); */
   /* border-top: 10px solid var(--accent-color); */
 }
@@ -26,12 +29,20 @@
 
 
 #email-input, #password-input, #first-name-input, #last-name-input, #address-input, #bio-input {
-  width: 40%;
+  width: 90%;
   padding: 1em;
   border-radius: 0px;
   border: 0px;
   border-radius: 5px;
-  background-color: hsl(0, 1%, 71%);
+  background-color: hsl(0, 0%, 93%);
+}
+#email-input:hover, #password-input:hover, #first-name-input:hover, #last-name-input:hover, #address-input:hover, #bio-input:hover {
+  background-color: hsl(0, 0%, 73%);
+  transition: 500ms;
+
+}
+#email-input:active, #password-input:active, #first-name-input:active, #last-name-input:active, #address-input:active, #bio-input:active {
+  background-color: hsl(0, 0%, 73%);
 }
 #address-input{
   width: 90%;

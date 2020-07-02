@@ -28,8 +28,20 @@
   overflow: scroll;
   /* margin-bottom: 15px; */
   /* background-color: rgb(221, 249, 252); */
+  min-height: 300px;
 }
+.leader, .pitch{
+  display: flex;
+  flex-direction: column;
+  /* margin:0 auto; */
+  margin-top: 10px;
+  justify-content: space-around;
+  min-height: 200px;
+}
+.leader p, .pitch p{
+  line-height: 1.7;
 
+}
 .main-body {
   display: flex;
   flex-direction: column;

@@ -5,8 +5,14 @@
 .Dash__main {
   width: 100%;
 }
-.main_nav{
+.main-nav {
+  margin: 0;
+  padding: 0;
+  /* position: absolute; */
+  background-color: #ffffff;
   position: relative;
+  height: 100px;
+  width: 100%;
 }
 .userName {
   position: absolute;

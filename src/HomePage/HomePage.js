@@ -21,13 +21,13 @@ import prayer from "../images/prayer.jpg";
 export default class HomePage extends Component {
   render() {
     return (
-      <div>
+      <div className="homePage">
         <div className="hero">
           <h2 className="love-header">Love oneAnother...</h2>
           <h2 className="build-header">Build up oneAnother...</h2>
           <h2 className="serve-header">Serve oneAnother...</h2>
-          <div className='img-fade'>
-          {/* <img
+          <div className="img-fade">
+            {/* <img
             className="dashboard-image"
             src={dashboard}
             alt="dashboard screenshot"
@@ -36,13 +36,15 @@ export default class HomePage extends Component {
           <p className="intro-text">
             Open a Bible app, discuss food options in an email, announcements in
             a group chat, and you seem to always be out of the loop with what's
-            next.Join oneAnother, the app that allows you to do everything
-            imaginable for your church small group in one location!
+            next.
           </p>
           <Link className="get-started" to="/signup">
             <button className="signup sign-up">Get Started</button>
           </Link>
-          
+          <p className="intro-text">
+            Join oneAnother and do everything imaginable for your church small
+            group in one location!
+          </p>
         </div>
         <Carousel className="carousel">
           <div className="slide slide1">
@@ -128,7 +130,7 @@ export default class HomePage extends Component {
                 check them off to sign up and bring them.
               </p>
             </div>
-            <FontAwesomeIcon className='support-icon'icon={faListAlt} />
+            <FontAwesomeIcon className="support-icon" icon={faListAlt} />
           </div>
         </section>
       </div>
