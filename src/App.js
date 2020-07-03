@@ -5,7 +5,7 @@ import Footer from "./Footer/Footer";
 import HomePage from "./HomePage/HomePage";
 import LogIn from "./LogIn/LogIn";
 import SignUp from "./SignUp/SignUp";
-import HEROKU_API from './config'
+import HEROKU_API from "./config";
 import Dashboard from "./Dashboard/Dashboard";
 import "./App.css";
 
@@ -14,53 +14,51 @@ class App extends Component {
     users: [],
   };
   signUp = (formData) => {
-   
-    
     // console.log(formData);
     fetch(`https://mighty-brook-70505.herokuapp.com/api/users/signup`, {
       headers: {
         "Content-Type": "application/json",
-        "Authorization": "Access-Control-Allow-Origin"
+        Authorization: "Access-Control-Allow-Origin",
       },
       // mode: 'no-cors',
       method: "POST",
       body: JSON.stringify(formData),
     })
       .then((formData) => {
-        this.logIn(formData)
+        this.logIn(formData);
       })
       .catch((error) => {
         console.log(error);
       });
   };
-handleAddUser = (user) => {
-  this.setState({
-    users: [...this.state.users, user]
-  })
-}
+  handleAddUser = (user) => {
+    this.setState({
+      users: [...this.state.users, user],
+    });
+  };
   logIn = (formData) => {
     // console.log(formData);
     fetch(`https://mighty-brook-70505.herokuapp.com/api/users/login`, {
       headers: {
         "Content-Type": "application/json",
-        "Authorization": "Access-Control-Allow-Origin"
+        Authorization: "Access-Control-Allow-Origin",
       },
       // mode: 'no-cors',
       method: "POST",
       body: JSON.stringify(formData),
     })
       .then((res) => {
-       return res.json()
+        return res.json();
       })
       .then((userData) => {
-        window.localStorage.setItem('token', userData.token)
-        window.localStorage.setItem('userName', userData.userName)
-        
+        window.localStorage.setItem("token", userData.token);
+        window.localStorage.setItem("userName", userData.userName);
+
         // this.setState({
         //   userData: userData
         // })
-        
-        this.props.history.push('/dashboard')
+
+        this.props.history.push("/dashboard");
       })
       .catch((error) => {
         console.log(error);
