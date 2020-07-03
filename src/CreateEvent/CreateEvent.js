@@ -24,7 +24,7 @@ export default class CreateEvent extends Component {
   // static contextType = ApiContext;
   componentDidMount() {
     // let groupId = this.state.group.id
-    fetch(`${HEROKU_API}/api/events`, {
+    fetch(`https://mighty-brook-70505.herokuapp.com/api/events`, {
       headers: {
         "Content-Type": "application/json",
         Authorization: `Bearer ${window.localStorage.getItem("token")}`,

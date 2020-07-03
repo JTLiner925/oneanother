@@ -65,21 +65,21 @@ class Dashboard extends Component {
       `${HEROKU_API}/api/events`,
     ];
     Promise.all([
-      fetch(`${HEROKU_API}/api/users`, {
+      fetch(`https://mighty-brook-70505.herokuapp.com/api/users`, {
         headers: {
           "Content-Type": "application/json",
         },
 
         method: "GET",
       }),
-      fetch(`${HEROKU_API}/api/groups`, {
+      fetch(`https://mighty-brook-70505.herokuapp.com/api/groups`, {
         headers: {
           "Content-Type": "application/json",
           Authorization: `Bearer ${window.localStorage.getItem("token")}`,
         },
         method: "GET",
       }),
-      fetch(`${HEROKU_API}/api/events`, {
+      fetch(`https://mighty-brook-70505.herokuapp.com/api/events`, {
         headers: {
           "Content-Type": "application/json",
           Authorization: `Bearer ${window.localStorage.getItem("token")}`,
