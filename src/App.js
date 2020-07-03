@@ -10,7 +10,9 @@ import Dashboard from "./Dashboard/Dashboard";
 import "./App.css";
 
 class App extends Component {
-  state = {};
+  state = {
+    users: [],
+  };
   signUp = (formData) => {
     // console.log(formData);
     fetch(`${HEROKU_API}/api/users/signup`, {
@@ -27,7 +29,11 @@ class App extends Component {
         console.log(error);
       });
   };
-
+handleAddUser = (user) => {
+  this.setState({
+    users: [...this.state.users, user]
+  })
+}
   logIn = (formData) => {
     // console.log(formData);
     fetch(`${HEROKU_API}/api/users/login`, {
@@ -43,8 +49,7 @@ class App extends Component {
       .then((userData) => {
         window.localStorage.setItem('token', userData.token)
         window.localStorage.setItem('userName', userData.userName)
-        this.setState({
-          userData: userData})
+        this.handleAddUser(userData);
         this.props.history.push('/dashboard')
       })
       .catch((error) => {
