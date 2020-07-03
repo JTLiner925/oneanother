@@ -22,7 +22,7 @@ class App extends Component {
         "Content-Type": "application/json",
 
       },
-      mode: 'no-cors',
+      // mode: 'no-cors',
       method: "POST",
       body: JSON.stringify(formData),
     })
@@ -44,7 +44,7 @@ handleAddUser = (user) => {
       headers: {
         "Content-Type": "application/json",
       },
-      mode: 'no-cors',
+      // mode: 'no-cors',
       method: "POST",
       body: JSON.stringify(formData),
     })
@@ -54,9 +54,10 @@ handleAddUser = (user) => {
       .then((userData) => {
         window.localStorage.setItem('token', userData.token)
         window.localStorage.setItem('userName', userData.userName)
-        this.setState({
-          userData: userData
-        })
+        
+        // this.setState({
+        //   userData: userData
+        // })
         
         this.props.history.push('/dashboard')
       })
