@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import store from "../Store";
+import HEROKU_API from '../config'
 import "./CreateEvent.css";
 import ApiContext from "../ApiContext";
 
@@ -23,7 +24,7 @@ export default class CreateEvent extends Component {
   // static contextType = ApiContext;
   componentDidMount() {
     // let groupId = this.state.group.id
-    fetch("http://localhost:8000/api/events", {
+    fetch(`${HEROKU_API}/api/events`, {
       headers: {
         "Content-Type": "application/json",
         Authorization: `Bearer ${window.localStorage.getItem("token")}`,

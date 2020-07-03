@@ -7,6 +7,7 @@ import Bible from "../Bible/Bible";
 import Invite from "../Invite/Invite";
 import GroupInfo from "../GroupInfo/GroupInfo";
 import ApiContext from "../ApiContext";
+import HEROKU_API from '../config'
 import store from "../Store";
 import CreateGroup from "../CreateGroup/CreateGroup";
 import CreateEvent from "../CreateEvent/CreateEvent";
@@ -60,25 +61,25 @@ class Dashboard extends Component {
   };
   componentDidMount() {
     let urls = [
-      "http://localhost:8000/api/groups",
-      "http://localhost:8000/api/events",
+      `${HEROKU_API}/api/groups`,
+      `${HEROKU_API}/api/events`,
     ];
     Promise.all([
-      fetch("http://localhost:8000/api/users", {
+      fetch(`${HEROKU_API}/api/users`, {
         headers: {
           "Content-Type": "application/json",
         },
 
         method: "GET",
       }),
-      fetch("http://localhost:8000/api/groups", {
+      fetch(`${HEROKU_API}/api/groups`, {
         headers: {
           "Content-Type": "application/json",
           Authorization: `Bearer ${window.localStorage.getItem("token")}`,
         },
         method: "GET",
       }),
-      fetch("http://localhost:8000/api/events", {
+      fetch(`${HEROKU_API}/api/events`, {
         headers: {
           "Content-Type": "application/json",
           Authorization: `Bearer ${window.localStorage.getItem("token")}`,
@@ -162,7 +163,7 @@ class Dashboard extends Component {
 
   createGroup = (formData) => {
     console.log(formData);
-    fetch("http://localhost:8000/api/groups/creategroup", {
+    fetch(`${HEROKU_API}/api/groups/creategroup`, {
       headers: {
         "Content-Type": "application/json",
         Authorization: `Bearer ${window.localStorage.getItem("token")}`,
@@ -183,7 +184,7 @@ class Dashboard extends Component {
   };
   joinGroup = (formData) => {
     // console.log(formData);
-    fetch("http://localhost:8000/api/groups/joingroup", {
+    fetch(`${HEROKU_API}/api/groups/joingroup`, {
       headers: {
         "Content-Type": "application/json",
         Authorization: `Bearer ${window.localStorage.getItem("token")}`,
@@ -212,7 +213,7 @@ class Dashboard extends Component {
 
   createEvent = (formData) => {
     // console.log(formData);
-    fetch("http://localhost:8000/api/events/createevent", {
+    fetch(`${HEROKU_API}/api/events/createevent`, {
       headers: {
         "Content-Type": "application/json",
         Authorization: `Bearer ${window.localStorage.getItem("token")}`,

@@ -5,7 +5,7 @@ import Footer from "./Footer/Footer";
 import HomePage from "./HomePage/HomePage";
 import LogIn from "./LogIn/LogIn";
 import SignUp from "./SignUp/SignUp";
-
+import HEROKU_API from './config'
 import Dashboard from "./Dashboard/Dashboard";
 import "./App.css";
 
@@ -13,7 +13,7 @@ class App extends Component {
   state = {};
   signUp = (formData) => {
     // console.log(formData);
-    fetch("http://localhost:8000/api/users/signup", {
+    fetch(`${HEROKU_API}/api/users/signup`, {
       headers: {
         "Content-Type": "application/json",
       },
@@ -30,7 +30,7 @@ class App extends Component {
 
   logIn = (formData) => {
     // console.log(formData);
-    fetch("http://localhost:8000/api/users/login", {
+    fetch(`${HEROKU_API}/api/users/login`, {
       headers: {
         "Content-Type": "application/json",
       },
