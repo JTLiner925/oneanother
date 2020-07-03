@@ -24,10 +24,6 @@ class App extends Component {
       method: "POST",
       body: JSON.stringify(formData),
     })
-    .then((res) => {
-      if (!res.ok) return res.json().then((e) => Promise.reject(e));
-      return res.json();
-    })
       .then((formData) => {
         this.logIn(formData)
       })
