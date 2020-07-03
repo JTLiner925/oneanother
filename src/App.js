@@ -20,7 +20,6 @@ class App extends Component {
     fetch(`https://mighty-brook-70505.herokuapp.com/api/users/signup`, {
       headers: {
         "Content-Type": "application/json",
-        Authorization: `Bearer ${window.history.state.getItem("key")}`,
 
       },
       mode: 'no-cors',
@@ -44,7 +43,6 @@ handleAddUser = (user) => {
     fetch(`https://mighty-brook-70505.herokuapp.com/api/users/login`, {
       headers: {
         "Content-Type": "application/json",
-        Authorization: `Bearer ${window.history.state.getItem("key")}`,
       },
       mode: 'no-cors',
       method: "POST",
