@@ -18,8 +18,8 @@ class App extends Component {
     fetch(`https://mighty-brook-70505.herokuapp.com/api/users/signup`, {
       headers: {
         "Content-Type": "application/json",
-        Authorization: "Access-Control-Allow-Origin",
       },
+      Authorization: "Access-Control-Allow-Origin",
       // mode: 'no-cors',
       method: "POST",
       body: JSON.stringify(formData),
@@ -41,8 +41,9 @@ class App extends Component {
     fetch(`https://mighty-brook-70505.herokuapp.com/api/users/login`, {
       headers: {
         "Content-Type": "application/json",
-        Authorization: "Access-Control-Allow-Origin",
       },
+      Authorization: "Access-Control-Allow-Origin",
+
       // mode: 'no-cors',
       method: "POST",
       body: JSON.stringify(formData),
