@@ -163,7 +163,7 @@ class Dashboard extends Component {
 
   createGroup = (formData) => {
     console.log(formData);
-    fetch(`${HEROKU_API}/api/groups/creategroup`, {
+    fetch(`https://mighty-brook-70505.herokuapp.com/api/groups/creategroup`, {
       headers: {
         "Content-Type": "application/json",
         Authorization: `Bearer ${window.localStorage.getItem("token")}`,
@@ -184,7 +184,7 @@ class Dashboard extends Component {
   };
   joinGroup = (formData) => {
     // console.log(formData);
-    fetch(`${HEROKU_API}/api/groups/joingroup`, {
+    fetch(`https://mighty-brook-70505.herokuapp.com/api/groups/joingroup`, {
       headers: {
         "Content-Type": "application/json",
         Authorization: `Bearer ${window.localStorage.getItem("token")}`,
@@ -213,7 +213,7 @@ class Dashboard extends Component {
 
   createEvent = (formData) => {
     // console.log(formData);
-    fetch(`${HEROKU_API}/api/events/createevent`, {
+    fetch(`https://mighty-brook-70505.herokuapp.com/api/events/createevent`, {
       headers: {
         "Content-Type": "application/json",
         Authorization: `Bearer ${window.localStorage.getItem("token")}`,
