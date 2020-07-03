@@ -13,17 +13,26 @@ class App extends Component {
   state = {
     users: [],
   };
-  signUp = (formData) => {
+  signUp = (e) => {
+    e.preventDefault();
+    const newUser = {
+      first_name: e.target['first_name'].value,
+      last_name: e.target['last_name'].value,
+      user_address: e.target['user_address'].value,
+      user_bio: e.target['user_bio'].value,
+      user_email: e.target['user_email'].value,
+      user_password: e.target['user_password'].value,
+    }
     // console.log(formData);
     fetch(`${HEROKU_API}/api/users/signup`, {
       headers: {
         "Content-Type": "application/json",
       },
       method: "POST",
-      body: JSON.stringify(formData),
+      body: JSON.stringify(newUser),
     })
       .then((res) => {
-        this.logIn(formData)
+        this.logIn(newUser)
       })
       .catch((error) => {
         console.log(error);
