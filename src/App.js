@@ -17,7 +17,7 @@ class App extends Component {
    
     
     // console.log(formData);
-    fetch(`${HEROKU_API}/api/users/signup`, {
+    fetch(`https://mighty-brook-70505.herokuapp.com/api/users/signup`, {
       headers: {
         "Content-Type": "application/json",
       },
@@ -38,7 +38,7 @@ handleAddUser = (user) => {
 }
   logIn = (formData) => {
     // console.log(formData);
-    fetch(`${HEROKU_API}/api/users/login`, {
+    fetch(`https://mighty-brook-70505.herokuapp.com/api/users/login`, {
       headers: {
         "Content-Type": "application/json",
       },
