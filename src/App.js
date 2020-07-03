@@ -13,26 +13,19 @@ class App extends Component {
   state = {
     users: [],
   };
-  signUp = (e) => {
-    e.preventDefault();
-    const newUser = {
-      first_name: e.target['first_name'].value,
-      last_name: e.target['last_name'].value,
-      user_address: e.target['user_address'].value,
-      user_bio: e.target['user_bio'].value,
-      user_email: e.target['user_email'].value,
-      user_password: e.target['user_password'].value,
-    }
+  signUp = (formData) => {
+   
+    
     // console.log(formData);
     fetch(`${HEROKU_API}/api/users/signup`, {
       headers: {
         "Content-Type": "application/json",
       },
       method: "POST",
-      body: JSON.stringify(newUser),
+      body: JSON.stringify(formData),
     })
       .then((res) => {
-        this.logIn(newUser)
+        this.logIn(formData)
       })
       .catch((error) => {
         console.log(error);
@@ -58,7 +51,7 @@ handleAddUser = (user) => {
       .then((userData) => {
         window.localStorage.setItem('token', userData.token)
         window.localStorage.setItem('userName', userData.userName)
-        this.handleAddUser(userData);
+        this.state(userData)
         this.props.history.push('/dashboard')
       })
       .catch((error) => {
