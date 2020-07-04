@@ -425,7 +425,7 @@ class Dashboard extends Component {
       addEvent: this.handleAddEvent,
       addGroup: this.handleAddGroup,
       handleGroup: this.handleGroup,
-      handleUser: this.handleUser,
+      handleUser: this.setUser,
       handleEvent: this.handleEvent,
     };
     // console.log(this.state);
