@@ -1,9 +1,8 @@
 import React, { Component } from "react";
 import { NavLink, Link } from "react-router-dom";
-import store from "../Store";
 import ApiContext from "../ApiContext";
 
-// import { getEventsForGroup } from "../helpers";
+import { findGroupsForUser } from "../helpers";
 import "./DashSideNav.css";
 
 export default class DashSideNav extends Component {
@@ -38,22 +37,23 @@ export default class DashSideNav extends Component {
     //   if(key === '')
     // }
 
-    // const userGroup = parseInt(store.one_another_users[0].group_id);
-    // const { groups = [] } = store;
-    // const groupsForUser = findGroupsForUser(groups, userGroup);
+    
     // console.log(findGroupsForUser(groups, userGroup));
-    const { groupId } = this.context
+    // const { groupId } = this.context
     // const uId = this.props.userId
-    const { groups, userId, events } = this.props;
+    const { userId, events } = this.props;
     // const { events = [] } = this.context;
     // console.log(this.props)
-    let userIds = this.props.groups.user_ids[0];
-    if(this.props.groups.length > 0) {
-      userIds = this.props.groups.find((group) => {
-        return group.user_ids == userId;
-      })
-    }
+    // let userIds = this.props.groups.user_ids[0];
+    // if(this.props.groups.length > 0) {
+    //   userIds = this.props.groups.find((group) => {
+    //     return group.user_ids == userId;
+    //   })
+    // }
     // console.log(this.state, this.context)
+    const userGroup = parseInt(this.props.users[0].id);
+    const { groups = [] } = this.props;
+    const groupsForUser = findGroupsForUser(groups, userGroup);
     return (
       
       <div className="side-nav-body">
@@ -77,10 +77,10 @@ export default class DashSideNav extends Component {
           <div className="nav-group">
             <h3>Groups</h3>
             <ul>
-              {groups.map((group) => {
+              {groupsForUser.map((group) => {
                 let idee = group.id;
                 // let uId = group.user_ids
-                if(group.user_ids && group.user_ids == userIds.user_ids){
+                // if(group.user_ids && group.user_ids == userIds.user_ids){
                 return (
                   <li key={group.id}>
                     <NavLink
@@ -92,7 +92,7 @@ export default class DashSideNav extends Component {
                     </NavLink>
                   </li>
                 );
-  }})}
+  })}
             </ul>
           </div>
           <div>
