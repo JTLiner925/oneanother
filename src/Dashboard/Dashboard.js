@@ -448,7 +448,8 @@ class Dashboard extends Component {
                   <DashSideNav
                     events={this.state.events}
                     groups={this.state.groups}
-                    user={this.state.users}
+                    users={this.state.users}
+                    userId={this.state.userId}
                     onSelect={this.filterEvents}
                     
                   />
