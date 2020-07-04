@@ -28,7 +28,7 @@ export default class CreateGroup extends Component {
   changeHandler = (e) => {
     // console.log(e.target.id);
     if (e.target.name === "group_names") {
-      let element = document.querySelector(`#${e.target.value}`);
+      let element = document.querySelector(`#${e.target.value.split(" ").join("_")}`);
       // console.log(element.getAttribute('groupid'))
       let groupid;
 
@@ -66,7 +66,7 @@ export default class CreateGroup extends Component {
               <option>Select Group</option>
               {this.props.groups &&
                 this.props.groups.map((gr) => (
-                  <option className='group-option' id={gr.group_name} groupid={gr.id} key={gr.id}>
+                  <option className='group-option' id={gr.group_name.split(" ").join("_")} groupid={gr.id} key={gr.id}>
                     {gr.group_name}
                   </option>
                 ))}
