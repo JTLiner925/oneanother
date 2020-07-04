@@ -56,7 +56,7 @@ export default class DashSideNav extends Component {
     //   })
     // }
     // console.log(this.state, this.context)
-    const userGroup = parseInt(this.props.match.id);
+    const userGroup = parseInt(this.props.match.user_ids);
     const { groups = [] } = this.props;
     const groupsForUser = findGroupsForUser(groups, userGroup);
     return (
