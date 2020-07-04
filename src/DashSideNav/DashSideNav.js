@@ -47,7 +47,7 @@ export default class DashSideNav extends Component {
     const { groups, userId, events } = this.props;
     // const { events = [] } = this.context;
     // console.log(this.props)
-    let userIds = this.props.groups.user_ids;
+    let userIds = this.props.groups.user_ids[0];
     if(this.props.groups.length > 0) {
       userIds = this.props.groups.find((group) => {
         return group.user_ids == userId;
@@ -79,6 +79,7 @@ export default class DashSideNav extends Component {
             <ul>
               {groups.map((group) => {
                 let idee = group.id;
+                // let uId = group.user_ids
                 if(group.user_ids && group.user_ids == userIds.user_ids){
                 return (
                   <li key={group.id}>
