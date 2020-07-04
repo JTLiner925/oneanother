@@ -25,6 +25,7 @@ class App extends Component {
     })
       .then((formData) => {
         this.logIn(formData);
+        this.props.history.push("/dashboard");
       })
       .catch((error) => {
         console.log(error);
