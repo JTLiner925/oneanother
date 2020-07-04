@@ -10,6 +10,9 @@
   flex-direction: column;
   /* align-items: center; */
 }
+.bible-select{
+  height: 45px;
+}
 .bible-search-params {
   display: flex;
   flex-direction: column;

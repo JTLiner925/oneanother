@@ -1283,6 +1283,7 @@ export default class DashMain extends Component {
           <h3 className="select-passage-header">Select Passage</h3>
           <div className="select-options">
             <select
+            className = 'bible-select'
               value={this.state.book}
               name="book"
               onChange={this.changeHandler}
