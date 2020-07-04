@@ -11,6 +11,14 @@
   /* align-items: center; */
 }
 .bible-select{
+  display: block;
+  border-radius: 10px;
+  /* height: 30px; */
+  padding: 1em;
+  align-content: center;
+  width: 100%;
+  justify-content: space-around;
+  margin: 0;
   height: 45px;
 }
 .bible-search-params {
