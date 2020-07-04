@@ -10,16 +10,27 @@
   flex-direction: column;
   /* align-items: center; */
 }
-.bible-select{
-  display: block;
+/* .bible-select{
+
+  width: 100%;
+  
+  
+}
+.bible-search-params  */
+.bible-select {
+  height: 45px;
+  display: flex;
+  flex-direction: column;
   border-radius: 10px;
   /* height: 30px; */
   padding: 1em;
   align-content: center;
-  width: 100%;
-  justify-content: space-around;
-  margin: 0;
-  height: 45px;
+  width: 90%;
+  align-items: center;
+  /* justify-content: space-around; */
+  /* margin: 0; */
+  margin: 10px auto;
+  margin-bottom: 10px;
 }
 .bible-search-params {
   display: flex;
@@ -63,19 +74,7 @@
   width: 25px;
   height: auto;
 } */
-.bible-search-params select {
-  display: flex;
-  flex-direction: column;
-  border-radius: 10px;
-  /* height: 30px; */
-  padding: 1em;
-  align-content: center;
-  width: 90%;
-  align-items: center;
-  /* margin: 0; */
-  margin: 10px auto;
-  margin-bottom: 10px;
-}
+
 .bible-search-params button {
   font-size: 1em;
   color: var(--white);
