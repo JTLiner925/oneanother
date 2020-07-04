@@ -141,7 +141,9 @@
 
 .box h3 {
   text-align: center;
-  padding-top: 20px;
+  /* padding-top: 20px; */
+  margin: 0;
+  padding: 0;
 }
 .bible-passage {
   padding-bottom: 70px;
