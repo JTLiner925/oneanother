@@ -15,11 +15,12 @@
   );
   /* background-color: var(--white); */
   padding: 2em;
+  padding-bottom: 2.7em;
   /* box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22); */
   /* border-top: 10px solid var(--accent-color); */
 }
 .signup-container button {
-  padding: .8em;
+  padding: 0.8em;
   background-color: #0b5df5;
 }
 .signup-container button:hover {
@@ -27,8 +28,12 @@
   transition: 500ms;
 }
 
-
-#email-input, #password-input, #first-name-input, #last-name-input, #address-input, #bio-input {
+#email-input,
+#password-input,
+#first-name-input,
+#last-name-input,
+#address-input,
+#bio-input {
   width: 90%;
   padding: 1em;
   border-radius: 0px;
@@ -36,18 +41,27 @@
   border-radius: 5px;
   background-color: hsl(0, 0%, 93%);
 }
-#email-input:hover, #password-input:hover, #first-name-input:hover, #last-name-input:hover, #address-input:hover, #bio-input:hover {
+#email-input:hover,
+#password-input:hover,
+#first-name-input:hover,
+#last-name-input:hover,
+#address-input:hover,
+#bio-input:hover {
   background-color: hsl(0, 0%, 73%);
   transition: 500ms;
-
 }
-#email-input:active, #password-input:active, #first-name-input:active, #last-name-input:active, #address-input:active, #bio-input:active {
+#email-input:active,
+#password-input:active,
+#first-name-input:active,
+#last-name-input:active,
+#address-input:active,
+#bio-input:active {
   background-color: hsl(0, 0%, 73%);
 }
-#address-input{
+#address-input {
   width: 90%;
 }
-#bio-input{
+#bio-input {
   width: 90%;
   height: 200px;
 }

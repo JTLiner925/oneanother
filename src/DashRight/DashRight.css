@@ -16,6 +16,9 @@
 .Chat-comp {
   overflow: scroll;
 }
+.side-right{
+  padding-bottom: 40px;
+}
 @media screen and (min-width: 650px) {
   
   .right-side {
