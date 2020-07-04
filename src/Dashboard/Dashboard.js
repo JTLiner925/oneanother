@@ -7,7 +7,7 @@ import Bible from "../Bible/Bible";
 import Invite from "../Invite/Invite";
 import GroupInfo from "../GroupInfo/GroupInfo";
 import ApiContext from "../ApiContext";
-import HEROKU_API from '../config'
+import HEROKU_API from "../config";
 import store from "../Store";
 import CreateGroup from "../CreateGroup/CreateGroup";
 import CreateEvent from "../CreateEvent/CreateEvent";
@@ -39,38 +39,27 @@ class Dashboard extends Component {
     // console.log(elem);
     if (elem.style.display === "block") {
       elem.style.display = "none";
-    } 
-    else{
+    } else {
       elem.style.display = "block";
     }
   };
   HamNavPage = () => {
     let elem = document.querySelector(".side-nav-body");
-    if(elem.style.display === "none"){
+    if (elem.style.display === "none") {
+      elem.style.display = "none";
+    } else {
       elem.style.display = "none";
     }
-    else{
-      elem.style.display = "none";
-    }
-  }
+  };
   setGroup = (group) => {
     this.setState({
       group,
       error: null,
     });
   };
-  setUser = (userId) => {
-    // console.log(userId)
-    this.setState({
-      userId,
-      error: null,
-    });
-  };
+  
   componentDidMount() {
-    let urls = [
-      `${HEROKU_API}/api/groups`,
-      `${HEROKU_API}/api/events`,
-    ];
+    let urls = [`${HEROKU_API}/api/groups`, `${HEROKU_API}/api/events`];
     Promise.all([
       fetch(`https://mighty-brook-70505.herokuapp.com/api/users`, {
         headers: {
@@ -93,19 +82,17 @@ class Dashboard extends Component {
         },
         method: "GET",
       }),
-      
     ])
-      .then(([ userRes, groupRes, eventRes ]) => {
-        return Promise.all([ userRes.json(), groupRes.json(), eventRes.json() ]);
+      .then(([userRes, groupRes, eventRes]) => {
+        return Promise.all([userRes.json(), groupRes.json(), eventRes.json()]);
       })
-      .then(([users, groups, events ]) => {
+      .then(([users, groups, events]) => {
         // console.log(users, groups, events );
-      
+
         this.setState({
           users: users,
           groups: groups,
           events: events,
-          userId: users.id
         });
         // this.setUser(users[user].id)
       })
@@ -126,45 +113,47 @@ class Dashboard extends Component {
   handleBiblePassage = (eventId) => {
     let selectedEvent = this.state.events.find((event) => {
       // console.log(event, eventId)
-      return event.id.toString() == eventId})
+      return event.id.toString() == eventId;
+    });
     // console.log(selectedEvent)
-    if(selectedEvent){
-    let url = new URL(`${config.API_ENDPOINT}text/`);
-    url.searchParams.set("q", selectedEvent.bible_passage);
-    url.searchParams.set("include-passage-reference", false);
-    url.searchParams.set("include-verse-number", true);
-    url.searchParams.set("include-first-verse-number", false);
-    url.searchParams.set("include-footnotes", true);
-    url.searchParams.set("include-footnote-body", false);
-    url.searchParams.set("include-heading", false);
-    url.searchParams.set("include-short-copyright", true);
-    url.searchParams.set("indent-using", "tab");
-    const options = {
-      method: "GET",
+    if (selectedEvent) {
+      let url = new URL(`${config.API_ENDPOINT}text/`);
+      url.searchParams.set("q", selectedEvent.bible_passage);
+      url.searchParams.set("include-passage-reference", false);
+      url.searchParams.set("include-verse-number", true);
+      url.searchParams.set("include-first-verse-number", false);
+      url.searchParams.set("include-footnotes", true);
+      url.searchParams.set("include-footnote-body", false);
+      url.searchParams.set("include-heading", false);
+      url.searchParams.set("include-short-copyright", true);
+      url.searchParams.set("indent-using", "tab");
+      const options = {
+        method: "GET",
 
-      headers: {
-        Authorization: `Token ${config.API_KEY}`,
-      },
-    };
-    fetch(url, options)
-      .then((res) => {
-        // console.log(res);
-        if (!res.ok) {
-          throw new Error("Something went wrong, please try again later.");
-        }
-        return res.json();
-      })
-      .then((passage) => {
-        this.setPassage(passage);
-        this.setState({
-          eventId: eventId,
+        headers: {
+          Authorization: `Token ${config.API_KEY}`,
+        },
+      };
+      fetch(url, options)
+        .then((res) => {
+          // console.log(res);
+          if (!res.ok) {
+            throw new Error("Something went wrong, please try again later.");
+          }
+          return res.json();
+        })
+        .then((passage) => {
+          this.setPassage(passage);
+          this.setState({
+            eventId: eventId,
+          });
+        })
+        .catch((error) => {
+          console.error(error);
+          this.setState({ error });
         });
-      })
-      .catch((error) => {
-        console.error(error);
-        this.setState({ error });
-      });
-  }};
+    }
+  };
 
   invite = (formData) => {
     console.log(formData);
@@ -265,14 +254,18 @@ class Dashboard extends Component {
       groupId: groupId,
     });
   };
-  
+  handleUser = (userId) => {
+    // console.log(userId)
+    this.setState({
+      userId: userId,
+    });
+  };
   handleAddGroup = (group) => {
     this.setState({
       groups: [this.state.groups, group],
     });
   };
   renderMainRoutes() {
-
     // const { groupId, groups } = this.state;
     // let i = window.location.search;
     // let x = new URLSearchParams(i);
@@ -284,27 +277,30 @@ class Dashboard extends Component {
     //     id = value
     //   }
     // }
-    let userName = window.localStorage.getItem('userName')
+    let userName = window.localStorage.getItem("userName");
 
     return (
       <>
         <nav className="main-nav">
           <FontAwesomeIcon id="icon" icon={faBars} onClick={this.HamNav} />
-          {this.state.groupId ? this.state.groups.map((group) => {
-            if (group.id && group.id == this.state.groupId) {
-            return (
-              <h2 key={group.group_name}>{group.group_name}</h2>
-              // <h2>{groupId ? this.state.groups[groupId].group_name: 'Select Group'}</h2>
-            );
-            }
-          }): <h1 className='dashHeader'>oneAnother</h1>}
-          
-                <Link to="/signup">
-                <p className= 'userName' key={userName}>
-                  {userName}
-                </p>
-              </Link>
-              
+          {this.state.groupId ? (
+            this.state.groups.map((group) => {
+              if (group.id && group.id == this.state.groupId) {
+                return (
+                  <h2 key={group.group_name}>{group.group_name}</h2>
+                  // <h2>{groupId ? this.state.groups[groupId].group_name: 'Select Group'}</h2>
+                );
+              }
+            })
+          ) : (
+            <h1 className="dashHeader">oneAnother</h1>
+          )}
+
+          <Link to="/signup">
+            <p className="userName" key={userName}>
+              {userName}
+            </p>
+          </Link>
         </nav>
 
         {[
@@ -332,19 +328,21 @@ class Dashboard extends Component {
             }}
           />
         ))}
-        <Route path="/bible" 
-        render={() => {
-          return <Bible
-          onHandleHam={this.HamNavPage}
-          ></Bible>}}
-          />
+        <Route
+          path="/bible"
+          render={() => {
+            return <Bible onHandleHam={this.HamNavPage}></Bible>;
+          }}
+        />
         <Route
           path="/invite"
           render={() => {
-            return <Invite 
-            onInvite={this.invite}
-            onHandleHam={this.HamNavPage}
-            ></Invite>;
+            return (
+              <Invite
+                onInvite={this.invite}
+                onHandleHam={this.HamNavPage}
+              ></Invite>
+            );
           }}
         />
         {/* <Route
@@ -363,7 +361,6 @@ class Dashboard extends Component {
                 onCreateGroup={this.createGroup}
                 onJoinGroup={this.joinGroup}
                 onHandleHam={this.HamNavPage}
-
               ></CreateGroup>
             );
           }}
@@ -376,7 +373,6 @@ class Dashboard extends Component {
                 groups={this.state.groups}
                 onCreateEvent={this.createEvent}
                 onHandleHam={this.HamNavPage}
-
               ></CreateEvent>
             );
           }}
@@ -401,11 +397,11 @@ class Dashboard extends Component {
     let i = window.location.search;
     let x = new URLSearchParams(i);
     for (let [key, value] of x) {
-      this.setUser(value)
+      this.setUser(value);
       if (key === "groupId") {
         if (value !== this.state.groupId) {
           this.handleGroup(value);
-          // 
+          //
         }
       }
       // for(let [key, value] )
@@ -426,7 +422,7 @@ class Dashboard extends Component {
       addEvent: this.handleAddEvent,
       addGroup: this.handleAddGroup,
       handleGroup: this.handleGroup,
-      handleUser: this.setUser,
+      handleUser: this.handleUser,
       handleEvent: this.handleEvent,
     };
     // console.log(this.state);
