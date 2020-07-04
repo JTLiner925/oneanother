@@ -401,6 +401,7 @@ class Dashboard extends Component {
       if (key === "groupId") {
         if (value !== this.state.groupId) {
           this.handleGroup(value);
+          this.handleUser(value)
         }
       }
       // for(let [key, value] )
@@ -450,8 +451,6 @@ class Dashboard extends Component {
                     groups={this.state.groups}
                     users={this.state.users}
                     userId={this.state.userId}
-                    onSelect={this.filterEvents}
-                    
                   />
                 );
               }}
