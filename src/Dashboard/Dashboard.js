@@ -62,7 +62,7 @@ class Dashboard extends Component {
   setUser = (userId) => {
     // console.log(userId)
     this.setState({
-      userId,
+      userId: userId
       error: null,
     });
   };
