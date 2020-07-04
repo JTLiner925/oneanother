@@ -28,15 +28,18 @@
 
   flex-direction: column;
 }
-.event-form select {
+.event-select {
+  height: 45px;
   display: block;
   border-radius: 10px;
   /* height: 30px; */
-  padding: 1em;
+  padding-left: 1em;
   align-content: center;
   width: 100%;
-  justify-content: space-around;
-  margin: 0;
+  align-items: center;
+  /* justify-content: space-around; */
+  margin: 10px auto;
+  margin-bottom: 10px;
 }
 .event-input input, .event-input textarea{
   width: 90%;

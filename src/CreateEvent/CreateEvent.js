@@ -97,7 +97,7 @@ export default class CreateEvent extends Component {
           <div>
             {/* create a search/option ? when you search name then valid options pop up */}
             Search Groups
-            <select name="group_name" onChange={this.changeHandler}>
+            <select className='event-select' name="group_name" onChange={this.changeHandler}>
               {" "}
               <option>Select Group</option>
               {this.props.groups &&
