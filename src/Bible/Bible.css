@@ -19,11 +19,11 @@
 .bible-search-params  */
 .bible-select {
   height: 45px;
-  display: flex;
-  flex-direction: column;
+  display: block;
+  /* flex-direction: column; */
   border-radius: 10px;
   /* height: 30px; */
-  padding: 1em;
+  padding-left: 1em;
   align-content: center;
   width: 90%;
   align-items: center;
@@ -63,8 +63,6 @@
   flex-direction: column;
   width: 90%;
   padding: 1em;
-  ;
- 
   border: 0px;
   border-radius: 5px;
   background-color: hsl(0, 0%, 93%);
