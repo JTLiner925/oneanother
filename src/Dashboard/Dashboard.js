@@ -98,13 +98,14 @@ class Dashboard extends Component {
       .then(([ userRes, groupRes, eventRes ]) => {
         return Promise.all([ userRes.json(), groupRes.json(), eventRes.json() ]);
       })
-      .then(([users, groups, events ]) => {
+      .then(([users, groups, events, userId ]) => {
         // console.log(users, groups, events );
       
         this.setState({
           users: users,
           groups: groups,
           events: events,
+          userId: userId
         });
         // this.setUser(users[user].id)
       })
