@@ -105,7 +105,6 @@ class Dashboard extends Component {
           users: users,
           groups: groups,
           events: events,
-          userId: users.user.id
         });
         // this.setUser(users[user].id)
       })
