@@ -400,11 +400,11 @@ class Dashboard extends Component {
     let i = window.location.search;
     let x = new URLSearchParams(i);
     for (let [key, value] of x) {
-      
+      this.handleUser(value)
       if (key === "groupId") {
         if (value !== this.state.groupId) {
           this.handleGroup(value);
-          // this.handleUser(value)
+          // 
         }
       }
       // for(let [key, value] )
