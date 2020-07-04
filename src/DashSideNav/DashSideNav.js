@@ -7,8 +7,8 @@ import "./DashSideNav.css";
 
 export default class DashSideNav extends Component {
   state={
-    group:'',
-    event:'',
+    groups:'',
+    events:'',
   }
   static defaultProps = {
     match: {
@@ -56,7 +56,7 @@ export default class DashSideNav extends Component {
     //   })
     // }
     console.log(this.props)
-    const userID = parseInt(this.props.match.user_ids);
+    const userID = parseInt(this.props.match.id);
     const { groups = [] } = this.props;
     const groupsForUser = findGroupsForUser(groups, userID);
     return (

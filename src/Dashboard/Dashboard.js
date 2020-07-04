@@ -59,6 +59,13 @@ class Dashboard extends Component {
       error: null,
     });
   };
+  setUser = (userId) => {
+    // console.log(userId)
+    this.setState({
+      userId,
+      error: null,
+    });
+  };
   componentDidMount() {
     let urls = [
       `${HEROKU_API}/api/groups`,
@@ -93,12 +100,13 @@ class Dashboard extends Component {
       })
       .then(([users, groups, events ]) => {
         // console.log(users, groups, events );
+      
         this.setState({
           users: users,
           groups: groups,
           events: events,
-          
         });
+        // this.setUser(users[user].id)
       })
       .catch((error) => {
         console.log(error);
@@ -256,12 +264,7 @@ class Dashboard extends Component {
       groupId: groupId,
     });
   };
-  handleUser = (userId) => {
-    // console.log(userId)
-    this.setState({
-      userId: userId,
-    });
-  };
+  
   handleAddGroup = (group) => {
     this.setState({
       groups: [this.state.groups, group],
@@ -401,7 +404,7 @@ class Dashboard extends Component {
       if (key === "groupId") {
         if (value !== this.state.groupId) {
           this.handleGroup(value);
-          this.handleUser(value)
+          // this.handleUser(value)
         }
       }
       // for(let [key, value] )
