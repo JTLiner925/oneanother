@@ -83,10 +83,10 @@ export default class DashSideNav extends Component {
           <div className="nav-group">
             <h3>Groups</h3>
             <ul>
-              {groupsForUser.map((group) => {
+              {groups.map((group) => {
                 let idee = group.id;
-                // let uId = group.user_ids
-                // if(group.user_ids && group.user_ids == userIds.user_ids){
+                let uId = group.user_ids
+                if(uId && uId == userId){
                 return (
                   <li key={group.id}>
                     <NavLink
@@ -98,6 +98,7 @@ export default class DashSideNav extends Component {
                     </NavLink>
                   </li>
                 );
+                }
   })}
             </ul>
           </div>
