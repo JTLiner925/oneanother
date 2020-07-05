@@ -145,16 +145,16 @@
 }
 
 @media screen and (min-width: 650px) {
-  /* .main-body {
+  .main-body {
     flex: 4;
     
-  } */
+  }
   .main {
     display: flex;
     /* width: 100%; */
     justify-content: space-between;
     margin-bottom: 50px;
-    flex: 3;
+    /* flex: 3; */
   }
 
   .center-section {
@@ -163,7 +163,7 @@
     justify-content: space-evenly;
     flex: 1;
   }
-  .right-side {
+  .side-right {
     flex: 1;
   }
   .row-one-dash,
