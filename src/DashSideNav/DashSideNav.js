@@ -66,7 +66,7 @@ export default class DashSideNav extends Component {
     const groupsForUser = findGroupsForUser(groups, userGroup);
     let user_id;
     if(this.props.users.length > 0){
-      user_id = this.props.users.map((user) => {
+      user_id = this.props.users.find((user) => {
         return (
           user.id == userId
         )
