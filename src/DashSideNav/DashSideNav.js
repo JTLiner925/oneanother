@@ -68,7 +68,7 @@ export default class DashSideNav extends Component {
     if(this.props.users.length > 0){
       user_id = this.props.users.map((user) => {
         return (
-          user.id == userGroup
+          user.id == parseInt(userId)
         )
       })
     }
