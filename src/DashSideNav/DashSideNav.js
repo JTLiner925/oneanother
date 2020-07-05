@@ -45,14 +45,14 @@ export default class DashSideNav extends Component {
     // console.log(findGroupsForUser(groups, userGroup));
     // const { userId } = this.props;
     // const uId = this.props.userId
-   
+
     // const { events = [] } = this.context;
     // console.log(this.props)
-    let currentUser = this.props.groups.user_ids.map((user_id) => {
-      return (
-        user_id == userId
-      )
-    });
+    // let currentUser = this.props.groups.user_ids.map((user_id) => {
+    //   return (
+    //     user_id == userId
+    //   )
+    // });
     // if (this.props.groups.length > 0) {
     //   userIds = this.props.groups.map((group) => {
     //     return group.user_ids == userId;
@@ -60,7 +60,7 @@ export default class DashSideNav extends Component {
     // }
     // console.log(this.props);
     // const { userGroup } =
-    const  { userId, events } = this.props
+    const { userId, events } = this.props;
     const { groups = [] } = this.props;
     const groupsForUser = findGroupsForUser(groups, userId);
 
@@ -87,28 +87,22 @@ export default class DashSideNav extends Component {
             <div className="nav-group">
               <h3>Groups</h3>
               <ul>
-                {currentUser ? currentUser && groups.map((group) => {
-                  let idee = group.id
-                  let userIds = group.user_ids
-                  if(userIds && userIds == currentUser) {
-                    return (
-                      <li key={group.id}>
-                        <NavLink
-                          className="group-link"
-                          to={`/dashboard?groupId=${idee}`}
-                        >
-                          <span></span>
-                          {group.group_name}
-                        </NavLink>
-                      </li>
-                    );
-                  }
-                }):''
-                // groupsForUser.map((group) => {
-                //   let idee = group.id;
+                {groupsForUser.map((group) => {
+                  let idee = group.id;
 
-                  
+                  return (
+                    <li key={group.id}>
+                      <NavLink
+                        className="group-link"
+                        to={`/dashboard?groupId=${idee}`}
+                      >
+                        <span></span>
+                        {group.group_name}
+                      </NavLink>
+                    </li>
+                  );
                 })}
+                )}
               </ul>
             </div>
             <div>
