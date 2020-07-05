@@ -101,7 +101,7 @@ export default class DashSideNav extends Component {
                   for (let i = 0; i < userIds.length; i++) {
                     let idsArray = userIds[i]
                     console.log(idsArray, user_id)
-                    if (idsArray == user_id) {
+                    if (idsArray == user_id.id) {
                       return (
                         <li key={group.id}>
                           <NavLink
