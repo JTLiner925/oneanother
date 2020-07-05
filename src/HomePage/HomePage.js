@@ -41,16 +41,17 @@ export default class HomePage extends Component {
           <Link className="get-started" to="/signup">
             <button className="signup sign-up">Get Started</button>
           </Link>
-          <p className="intro-text">
+          {/* <p className="intro-text">
             Join oneAnother and do everything imaginable for your church small
             group in one location!
-          </p>
+          </p> */}
         </div>
         <Carousel className="carousel">
           <div className="slide slide1">
             <FontAwesomeIcon id="user-icon" icon={faUser} />
 
-            <p>Read with oneAnother</p>
+            <p>Join oneAnother and do everything imaginable for your church small
+            group in one location!</p>
             {/* <img  className='slide-img'src={bible} alt='first pic'></img>         */}
           </div>
           <div className="slide slide2">

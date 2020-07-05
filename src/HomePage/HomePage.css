@@ -256,7 +256,16 @@ svg:not(:root).svg-inline--fa {
   .slide1,
   .slide2,
   .slide3 {
+    display: flex;
+    flex-direction: column;
     height: 500px;
+    align-items: center;
+    justify-content: space-around;
+  }
+  .slide1 p{
+    width: 60%;
+    
+    margin: 0 auto;
   }
   .bible,
   .chat,
