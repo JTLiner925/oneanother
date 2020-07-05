@@ -145,23 +145,23 @@
 }
 
 @media screen and (min-width: 650px) {
-  .main-body {
-    flex: 4;
+  /* .main-body {
+    flex: 3;
     
-  }
+  } */
   .main {
     display: flex;
     /* width: 100%; */
     justify-content: space-between;
     margin-bottom: 50px;
-    /* flex: 3; */
+    flex: 3;
   }
 
   .center-section {
     display: flex;
     /* width: 60%; */
     justify-content: space-evenly;
-    flex: 1;
+    flex: 2;
   }
   .side-right {
     flex: 1;
