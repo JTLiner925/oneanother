@@ -89,20 +89,34 @@ export default class DashSideNav extends Component {
               <ul>
                 {groupsForUser.map((group) => {
                   let idee = group.id;
-
-                  return (
-                    <li key={group.id}>
-                      <NavLink
-                        className="group-link"
-                        to={`/dashboard?groupId=${idee}`}
-                      >
-                        <span></span>
-                        {group.group_name}
-                      </NavLink>
-                    </li>
-                  );
+                  let groupIds = group.group_ids;
+                  for (let i = 0; i < groupIds.length; i++) {
+                    if (groupIds[i] === userId) {
+                      return (
+                        <li key={group.id}>
+                          <NavLink
+                            className="group-link"
+                            to={`/dashboard?groupId=${idee}`}
+                          >
+                            <span></span>
+                            {group.group_name}
+                          </NavLink>
+                        </li>
+                      );
+                    }
+                  }
+                  // return (
+                  //   <li key={group.id}>
+                  //     <NavLink
+                  //       className="group-link"
+                  //       to={`/dashboard?groupId=${idee}`}
+                  //     >
+                  //       <span></span>
+                  //       {group.group_name}
+                  //     </NavLink>
+                  //   </li>
+                  // );
                 })}
-                )}
               </ul>
             </div>
             <div>
