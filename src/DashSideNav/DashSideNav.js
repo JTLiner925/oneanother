@@ -68,7 +68,7 @@ export default class DashSideNav extends Component {
     if(this.props.users.length > 0){
       user_id = this.props.users.map((user) => {
         return (
-          user.id.toString() == userId.id
+          user.id == userId.id
         )
       })
     }
@@ -99,7 +99,7 @@ export default class DashSideNav extends Component {
                   let idee = group.id;
                   let userIds = group.user_ids;
                   for (let i = 0; i < userIds.length; i++) {
-                    let idsArray = userIds[i]
+                    let idsArray = userIds[i].toString()
                     console.log(idsArray, user_id)
                     if (idsArray && idsArray == user_id.id) {
                       return (
