@@ -45,7 +45,7 @@ export default class DashSideNav extends Component {
     // console.log(findGroupsForUser(groups, userGroup));
     // const { userId } = this.props;
     // const uId = this.props.userId
-    const { events } = this.props;
+   
     // const { events = [] } = this.context;
     // console.log(this.props)
     // let userIds = this.props.groups.user_ids;
@@ -56,7 +56,7 @@ export default class DashSideNav extends Component {
     // }
     // console.log(this.props);
     // const { userGroup } =
-    const  { userId } = this.props.users
+    const  { userId, events } = this.props
     const { groups = [] } = this.props;
     const groupsForUser = findGroupsForUser(groups, userId);
 
@@ -83,20 +83,27 @@ export default class DashSideNav extends Component {
             <div className="nav-group">
               <h3>Groups</h3>
               <ul>
-                {groupsForUser.map((group) => {
-                  let idee = group.id;
+                {userId ? userId && groups.map((group) => {
+                  let idee = group.id
+                  let userIds = group.user_ids
+                  if(userIds && userIds == userId) {
+                    return (
+                      <li key={group.id}>
+                        <NavLink
+                          className="group-link"
+                          to={`/dashboard?groupId=${idee}`}
+                        >
+                          <span></span>
+                          {group.group_name}
+                        </NavLink>
+                      </li>
+                    );
+                  }
+                }):''
+                // groupsForUser.map((group) => {
+                //   let idee = group.id;
 
-                  return (
-                    <li key={group.id}>
-                      <NavLink
-                        className="group-link"
-                        to={`/dashboard?groupId=${idee}`}
-                      >
-                        <span></span>
-                        {group.group_name}
-                      </NavLink>
-                    </li>
-                  );
+                  
                 })}
               </ul>
             </div>
