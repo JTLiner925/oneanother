@@ -61,17 +61,17 @@ export default class DashSideNav extends Component {
     // console.log(this.props);
     
     const  userGroup = parseInt(this.props.userId)
-    const { userId, events } = this.props;
+    const { userId, events, users } = this.props;
     const { groups = [] } = this.props;
     const groupsForUser = findGroupsForUser(groups, userGroup);
-    let user_id;
-    if(this.props.users.length > 0){
-      user_id = this.props.users.map((user) => {
-        return (
-          user.id == userId.id
-        )
-      })
-    }
+    // let user_id;
+    // if(this.props.users.length > 0){
+    //   user_id = this.props.users.map((user) => {
+    //     return (
+    //       user.id == userId.id
+    //     )
+    //   })
+    // }
     console.log(this.props, userId);
     return (
       <div className="side-nav-body">
@@ -98,9 +98,11 @@ export default class DashSideNav extends Component {
                 {groupsForUser.map((group) => {
                   let idee = group.id;
                   let userIds = group.user_ids;
+                  for (let j = 0; j < users.length; j++) {
+                    let user_id = users[j].toString()
                   for (let i = 0; i < userIds.length; i++) {
                     let idsArray = userIds[i].toString()
-                    console.log(idsArray, user_id.id)
+                    console.log(idsArray, user_id)
                     if (idsArray && idsArray == user_id.id) {
                       return (
                         <li key={group.id}>
@@ -114,7 +116,7 @@ export default class DashSideNav extends Component {
                         </li>
                       );
                     }
-                  }
+                  }}
                   // return (
                   //   <li key={group.id}>
                   //     <NavLink
