@@ -92,7 +92,7 @@ export default class DashSideNav extends Component {
                   let userIds = group.user_ids;
                   for (let i = 0; i < userIds.length; i++) {
                     let idsArray = userIds[i]
-                    console.log(idsArray)
+                    console.log(idsArray, userGroup)
                     if (idsArray == userGroup) {
                       return (
                         <li key={group.id}>
