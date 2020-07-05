@@ -69,6 +69,7 @@ export default class DashCenter extends Component {
             {/* <div>{JSON.stringify(this.props.passage)}</div> */}
           </div>
         </div>
+        <div className="row-two-dash">
         <div className="box-dash question-box" onClick={this.submitHandler}>
           <h3>Questions</h3>
           {eventId ? (
@@ -89,7 +90,7 @@ export default class DashCenter extends Component {
               <Questions key={i} question={question} />
             ))} */}
         </div>
-        <div className="row-two-dash">
+        
           <div className="box-dash need-box" id="need-box">
             <h3>Needed Items</h3>
             {eventId ? (
