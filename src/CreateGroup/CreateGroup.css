@@ -29,7 +29,10 @@
 }
 .create-input input, .create-input textarea{
   width: 90%;
-  padding: 1em;
+  padding: .5em;
+  padding-left: 1em;
+  font-size: 1.3em;
+
   border-radius: 0px;
   border: 0px;
   border-radius: 5px;
@@ -47,8 +50,10 @@
 .join-form select {
   display: block;
   border-radius: 10px;
-  height: 45px;
-  padding: 1em;
+  font-size: 1.3em;
+
+  height: 50px;
+  padding-left: .6em;
   align-content: center;
   width: 100%;
   justify-content: space-around;
@@ -63,7 +68,9 @@
 .create-form button {
   font-size: 1em;
   color: var(--white);
-  padding: 1em;
+  padding: .6em;
+  font-size: 1.3em;
+
   margin: 0.5em;
   width: 60%;
   border-radius: 10px;

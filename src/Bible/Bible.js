@@ -1276,7 +1276,7 @@ export default class DashMain extends Component {
                 placeholder="Search for keywords i.e. 'abide'  'love'  'Jesus' "
               ></input>
             </label>
-            <button type="submit">Submit</button>
+            <button  className='bible-submit' type="submit">Submit</button>
           </form>
           <form className="select-passage" onSubmit={this.handleBibleReference}>
             <h3 className="select-passage-header">Select Passage</h3>
@@ -1306,7 +1306,7 @@ export default class DashMain extends Component {
                   })}
               </select>
 
-              <button type="submit">Submit</button>
+              <button className='bible-submit' type="submit">Submit</button>
             </div>
           </form>
         </div>

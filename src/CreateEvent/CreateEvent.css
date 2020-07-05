@@ -29,11 +29,14 @@
   flex-direction: column;
 }
 .event-select {
-  height: 45px;
+  height: 50px;
   display: block;
   border-radius: 10px;
   /* height: 30px; */
+  padding: .5em;
   padding-left: 1em;
+  font-size: 1.3em;
+
   align-content: center;
   width: 100%;
   align-items: center;
@@ -43,8 +46,11 @@
 }
 .event-input input, .event-input textarea{
   width: 90%;
-  padding: 1em;
+  padding: .5em;
+  padding-left: 1em;
+
   border-radius: 0px;
+  font-size: 1.3em;
   border: 0px;
   border-radius: 5px;
   background-color: hsl(0, 0%, 93%);
@@ -58,9 +64,9 @@
 
 }
 .event-form button{
-  font-size: 1em;
+  font-size: 1.3em;
   color: var(--white);
-  padding: 1em;
+  padding: .6em;
   margin: 0.5em;
   border-radius: 10px;
   border-width: 0px;
