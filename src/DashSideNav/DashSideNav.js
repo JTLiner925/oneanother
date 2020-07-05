@@ -66,7 +66,7 @@ export default class DashSideNav extends Component {
     const groupsForUser = findGroupsForUser(groups, userGroup);
     let user_id;
     if(this.props.users.length > 0){
-      user_id = this.props.users.find((user) => {
+      user_id = this.props.users.filter((user) => {
         return (
           user.id == userId
         )
@@ -101,7 +101,7 @@ export default class DashSideNav extends Component {
                   for (let i = 0; i < userIds.length; i++) {
                     let idsArray = userIds[i]
                     console.log(idsArray, user_id)
-                    if (idsArray == user_id.id) {
+                    if (idsArray && idsArray == user_id.id) {
                       return (
                         <li key={group.id}>
                           <NavLink
