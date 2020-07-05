@@ -171,7 +171,10 @@
     width: 50%;
     height: auto;
   }
-
+.bible-box-dash{
+  height: 700px;
+  justify-content: space-around;
+}
   .box-dash {
     margin: 20px;
     /* background-color: #e2e0e0; */
