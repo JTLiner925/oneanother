@@ -129,7 +129,7 @@ export default class DashSideNav extends Component {
                   //     </NavLink>
                   //   </li>
                   // );
-                })}
+                )}
               </ul>
             </div>
             <div>
