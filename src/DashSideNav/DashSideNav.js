@@ -102,9 +102,8 @@ export default class DashSideNav extends Component {
                     let user_id = users[j]
                   for (let i = 0; i < userIds.length; i++) {
                     let idsArray = userIds[i]
-                    if(idsArray.filter(userIds => userIds === user_id.id).map(userIds => userIds.id))
                     // console.log(idsArray, user_id)
-                    // if (idsArray && idsArray == user_id.id) 
+                    if (idsArray && idsArray == user_id.id) 
                     {
                       return (
                         <li key={group.id}>
