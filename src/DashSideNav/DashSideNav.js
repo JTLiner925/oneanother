@@ -89,9 +89,9 @@ export default class DashSideNav extends Component {
               <ul>
                 {groupsForUser.map((group) => {
                   let idee = group.id;
-                  let groupIds = group.group_ids;
-                  for (let i = 0; i < groupIds.length; i++) {
-                    if (groupIds[i] === userId) {
+                  let userIds = group.user_ids;
+                  for (let i = 0; i < userIds.length; i++) {
+                    if (userIds[i] === userId) {
                       return (
                         <li key={group.id}>
                           <NavLink
