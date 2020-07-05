@@ -60,9 +60,10 @@ export default class DashSideNav extends Component {
     // }
     // console.log(this.props);
     
-    const  userGroup = parseInt(this.props.match.userId)
-    const { userId, events, users } = this.props;
-    const { groups = [] } = this.props;
+    const { userId, events, users } = this.context;
+    const { groups = [] } = this.context;
+
+    const  userGroup = parseInt(userId)
     const groupsForUser = findGroupsForUser(groups, userGroup);
     // let user_id;
     // if(this.props.users.length > 0){
@@ -97,14 +98,14 @@ export default class DashSideNav extends Component {
               <ul>
                 {groupsForUser.map((group) => {
                   let idee = group.id;
-                  let userIds = group.user_ids;
-                  for (let j = 0; j < users.length; j++) {
-                    let user_id = users[j]
-                  for (let i = 0; i < userIds.length; i++) {
-                    let idsArray = userIds[i]
+                  // let userIds = group.user_ids;
+                  // for (let j = 0; j < users.length; j++) {
+                  //   let user_id = users[j]
+                  // for (let i = 0; i < userIds.length; i++) {
+                  //   let idsArray = userIds[i]
                     // console.log(idsArray, user_id)
-                    if (idsArray && idsArray == user_id.id) 
-                    {
+                    // if (idsArray && idsArray == user_id.id) 
+                    // {
                       return (
                         <li key={group.id}>
                           <NavLink
@@ -117,7 +118,6 @@ export default class DashSideNav extends Component {
                         </li>
                       );
                     }
-                  }}
                   // return (
                   //   <li key={group.id}>
                   //     <NavLink
