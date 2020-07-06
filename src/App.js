@@ -53,7 +53,7 @@ class App extends Component {
       .then((userData) => {
         window.localStorage.setItem("token", userData.token);
         window.localStorage.setItem("userName", userData.userName);
-
+        console.log(userData)
         // this.setState({
         //   userData: userData
         // })
