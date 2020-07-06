@@ -47,13 +47,13 @@ class App extends Component {
       method: "POST",
       body: JSON.stringify(formData),
     })
-      .then((res) => {
-       
+      .then((res) => { 
         return res.json();
       })
       .then((userData) => {
         window.localStorage.setItem("token", userData.token);
         window.localStorage.setItem("userName", userData.userName);
+          this.handleAddUser(userData)
         
 
         this.props.history.push("/dashboard");
