@@ -96,7 +96,7 @@ export default class DashSideNav extends Component {
             <div className="nav-group">
               <h3>Groups</h3>
               <ul>
-                {groupsForUser.map((group) => {
+                {groups.map((group) => {
                   let idee = group.id;
                   // let userIds = group.user_ids;
                   // for (let j = 0; j < users.length; j++) {
