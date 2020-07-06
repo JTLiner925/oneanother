@@ -60,10 +60,10 @@ export default class DashSideNav extends Component {
     // }
     // console.log(this.props);
     
-    const { userId, events, users } = this.props;
+    const {  events, users } = this.props;
     const { groups = [] } = this.props;
 
-    const  userGroup = parseInt(userId)
+    const  userGroup = parseInt(this.props.userId)
     const groupsForUser = findGroupsForUser(groups, userGroup);
     // let user_id;
     // if(this.props.users.length > 0){
@@ -73,7 +73,7 @@ export default class DashSideNav extends Component {
     //     )
     //   })
     // }
-    console.log(this.props, userId);
+    // console.log(this.props, userId);
     return (
       <div className="side-nav-body">
         <div className="myLinks">
@@ -98,14 +98,14 @@ export default class DashSideNav extends Component {
               <ul>
                 {groupsForUser.map((group) => {
                   let idee = group.id;
-                  // let userIds = group.user_ids;
-                  // for (let j = 0; j < users.length; j++) {
-                  //   let user_id = users[j]
-                  // for (let i = 0; i < userIds.length; i++) {
-                  //   let idsArray = userIds[i]
+                  let userIds = group.user_ids;
+                  for (let j = 0; j < users.length; j++) {
+                    let user_id = users[j]
+                  for (let i = 0; i < userIds.length; i++) {
+                    let idsArray = userIds[i]
                     // console.log(idsArray, user_id)
-                    // if (idsArray && idsArray == user_id.id) 
-                    // {
+                    if (idsArray && idsArray == user_id.id) 
+                    {
                       return (
                         <li key={group.id}>
                           <NavLink
@@ -118,18 +118,8 @@ export default class DashSideNav extends Component {
                         </li>
                       );
                     }
-                  // return (
-                  //   <li key={group.id}>
-                  //     <NavLink
-                  //       className="group-link"
-                  //       to={`/dashboard?groupId=${idee}`}
-                  //     >
-                  //       <span></span>
-                  //       {group.group_name}
-                  //     </NavLink>
-                  //   </li>
-                  // );
-                )}
+                  }
+  }})}
               </ul>
             </div>
             <div>

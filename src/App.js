@@ -25,7 +25,7 @@ class App extends Component {
     })
       .then((res) => {
         this.logIn(formData);
-        // this.props.history.push("/dashboard");
+        this.props.history.push("/dashboard");
       })
       .catch((error) => {
         console.log(error);
@@ -53,7 +53,6 @@ class App extends Component {
       .then((userData) => {
         window.localStorage.setItem("token", userData.token);
         window.localStorage.setItem("userName", userData.userName);
-          this.handleAddUser(userData)
         
 
         this.props.history.push("/dashboard");
