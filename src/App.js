@@ -19,11 +19,11 @@ class App extends Component {
       headers: {
         "Content-Type": "application/json",
       },
-      mode: 'no-cors',
+      // mode: 'no-cors',
       method: "POST",
       body: JSON.stringify(formData),
     })
-      .then((res) => {
+      .then((formData) => {
         this.logIn(formData);
       })
       .catch((error) => {
