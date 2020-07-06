@@ -23,7 +23,7 @@ class App extends Component {
       method: "POST",
       body: JSON.stringify(formData),
     })
-      .then((formData) => {
+      .then((res) => {
         this.logIn(formData);
       })
       .catch((error) => {
