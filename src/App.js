@@ -54,9 +54,9 @@ class App extends Component {
         window.localStorage.setItem("token", userData.token);
         window.localStorage.setItem("userName", userData.userName);
 
-        this.setState({
-          userData: userData
-        })
+        // this.setState({
+        //   userData: userData
+        // })
 
         this.props.history.push("/dashboard");
       })
