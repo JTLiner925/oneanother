@@ -48,14 +48,16 @@ class App extends Component {
       body: JSON.stringify(formData),
     })
       .then((res) => {
-        console.log(res.json())
+       
         return res.json();
       })
       .then((userData) => {
         window.localStorage.setItem("token", userData.token);
         window.localStorage.setItem("userName", userData.userName);
         console.log(userData)
-        //  return userData;
+         this.setState({
+           userData: userData,
+         })
         
 
         this.props.history.push("/dashboard");
