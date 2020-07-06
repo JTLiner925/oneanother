@@ -37,7 +37,7 @@ class App extends Component {
     });
   };
   logIn = (formData) => {
-    // console.log(formData);
+    console.log(formData);
     fetch(`https://mighty-brook-70505.herokuapp.com/api/users/login`, {
       headers: {
         "Content-Type": "application/json",
@@ -48,15 +48,15 @@ class App extends Component {
       body: JSON.stringify(formData),
     })
       .then((res) => {
+        console.log(res.json())
         return res.json();
       })
       .then((userData) => {
         window.localStorage.setItem("token", userData.token);
         window.localStorage.setItem("userName", userData.userName);
         console.log(userData)
-        this.setState({
-          userData: userData
-        })
+         return userData;
+        
 
         this.props.history.push("/dashboard");
       })
