@@ -23,9 +23,8 @@ class App extends Component {
       method: "POST",
       body: JSON.stringify(formData),
     })
-      .then((res) => {
+      .then((formData) => {
         this.logIn(formData);
-        this.props.history.push("/dashboard");
       })
       .catch((error) => {
         console.log(error);
@@ -43,7 +42,7 @@ class App extends Component {
         "Content-Type": "application/json",
       },
 
-      mode: 'no-cors',
+      // mode: 'no-cors',
       method: "POST",
       body: JSON.stringify(formData),
     })
