@@ -19,7 +19,7 @@ class App extends Component {
       headers: {
         "Content-Type": "application/json",
       },
-      mode: 'no-cors',
+      // mode: 'no-cors',
       method: "POST",
       body: JSON.stringify(formData),
     })
@@ -42,7 +42,7 @@ class App extends Component {
         "Content-Type": "application/json",
       },
 
-      // mode: 'no-cors',
+      mode: 'no-cors',
       method: "POST",
       body: JSON.stringify(formData),
     })
