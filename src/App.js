@@ -41,7 +41,7 @@ class App extends Component {
       headers: {
         "Content-Type": "application/json",
       },
-
+//just seeing if my pushes are working
       mode: 'no-cors',
       method: "POST",
       body: JSON.stringify(formData),
