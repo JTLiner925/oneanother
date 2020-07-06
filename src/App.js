@@ -47,7 +47,7 @@ class App extends Component {
       body: JSON.stringify(formData),
     })
       .then((res) => { 
-        return res.json();
+        return res.json(formData);
       })
       .then((userData) => {
         window.localStorage.setItem("token", userData.token);
