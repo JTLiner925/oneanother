@@ -88,7 +88,8 @@ class Dashboard extends Component {
       })
       .then(([users, groups, events]) => {
         // console.log(users, groups, events );
-
+        let userId = users.find(user => user.user_name === window.localStorage.getItem('userName'))
+        console.log(userId)
         this.setState({
           users: users,
           groups: groups,

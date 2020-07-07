@@ -5,7 +5,13 @@ export const findEvent = (events = [], eventId) =>
 events.find((event) => event.id === eventId);
 
 export const findGroupsForUser = (groups = [], userId) =>
-!userId ? groups : groups.filter((group) => group.user_ids === userId);
+
+{ console.log(userId)
+  if(!userId){
+    return []
+  } 
+  let filteredGroups = groups.filter((group) => group.user_ids === userId)
+  return filteredGroups};
 
 export const getEventsForGroup = (events = [], groupId) =>
 !groupId ? events : events.filter((event) => event.group_id === groupId);

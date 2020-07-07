@@ -60,7 +60,7 @@ export default class DashSideNav extends Component {
     // }
     // console.log(this.props);
     
-    const {  events, users } = this.props;
+    const {  events = [], users } = this.props;
     const { groups = [] } = this.props;
 
     const  userGroup = parseInt(this.props.userId)
@@ -73,7 +73,7 @@ export default class DashSideNav extends Component {
     //     )
     //   })
     // }
-    // console.log(this.props, userId);
+    console.log(this.props);
     return (
       <div className="side-nav-body">
         <div className="myLinks">
