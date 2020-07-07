@@ -296,9 +296,9 @@ class Dashboard extends Component {
             <h1 className="dashHeader">oneAnother</h1>
           )}
 
-          <Link to="/signup">
+          <Link to="/">
             <p className="userName" key={userName}>
-              {userName}
+             Log out {userName}
             </p>
           </Link>
         </nav>
