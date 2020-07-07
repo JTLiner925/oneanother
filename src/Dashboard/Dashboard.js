@@ -59,7 +59,7 @@ class Dashboard extends Component {
   };
   
   componentDidMount() {
-    let urls = [`${HEROKU_API}/api/groups`, `${HEROKU_API}/api/events`];
+    let urls = [`${config.HEROKU_API}/api/groups`, `${HEROKU_API}/api/events`];
     Promise.all([
       fetch(`https://mighty-brook-70505.herokuapp.com/api/users`, {
         headers: {
@@ -88,7 +88,7 @@ class Dashboard extends Component {
       })
       .then(([users, groups, events]) => {
         // console.log(users, groups, events );
-        let userId = users.find(user => user.user_name === window.localStorage.getItem('userName'))
+        let userId = users.find(user => user.first_name === window.localStorage.getItem('userName'))
         console.log(userId)
         this.setState({
           users: users,
