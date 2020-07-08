@@ -248,6 +248,8 @@ class Dashboard extends Component {
             const { message } = error;
             throw new Error(message);
         }
+        default:
+            break;
     }
 }}
 
