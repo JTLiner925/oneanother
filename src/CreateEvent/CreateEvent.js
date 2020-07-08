@@ -55,16 +55,15 @@ export default class CreateEvent extends Component {
     e.preventDefault();
     if (e.target.name === "bible_passage") {
       let verse = e.target.value();
-        
-    if(await this.props.checkBibleVerse(verse)){
       let group = this.props.groups.find((g) => {
         return g.group_name === this.state.group_event;
       });
+    if(await this.props.checkBibleVerse(verse)){  
       // console.log(group);
       this.props.onCreateEvent(this.state);
     } else {
       this.setState({
-        error: 'Check your spelling, did not find verses. i.e. Matthew 28:18-20'
+        error: ('Check your spelling, did not find verses. i.e. Matthew 28:18-20')
       })
     }
     
