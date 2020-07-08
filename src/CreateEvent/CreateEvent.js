@@ -1,8 +1,8 @@
 import React, { Component } from "react";
 import store from "../Store";
-import HEROKU_API from '../config'
+import HEROKU_API from "../config";
 import config from "../config";
-import NotFoundError from '../NotFoundError/NotFoundError'
+import NotFoundError from "../NotFoundError/NotFoundError";
 import "./CreateEvent.css";
 import ApiContext from "../ApiContext";
 
@@ -53,57 +53,53 @@ export default class CreateEvent extends Component {
         this.setState({ error });
       });
   }
-//   getBibleVerse = async (eventId) => {
-//     let selectedEvent = this.state.events.find((event) => {
-//       // console.log(event, eventId)
-//       return event.id.toString() == eventId;
-//     });
-//     console.log(selectedEvent)
-//     if (selectedEvent) {
-//       let url = new URL(`${config.API_ENDPOINT}text/`);
-//       url.searchParams.set("q", selectedEvent.bible_passage);
-//       const options = {
-//         method: "GET",
+  //   getBibleVerse = async (eventId) => {
+  //     let selectedEvent = this.state.events.find((event) => {
+  //       // console.log(event, eventId)
+  //       return event.id.toString() == eventId;
+  //     });
+  //     console.log(selectedEvent)
+  //     if (selectedEvent) {
+  //       let url = new URL(`${config.API_ENDPOINT}text/`);
+  //       url.searchParams.set("q", selectedEvent.bible_passage);
+  //       const options = {
+  //         method: "GET",
 
-//         headers: {
-//           Authorization: `Token ${config.API_KEY}`,
-//         },
-//       };
-      
-//     const res = await fetch(url, options)
-//     console.log(res)
-//     switch (res.status) {
-//         case 204:
-//             return null;
-//         case 200: {
-//             const { verse } = await res.json();
-//             return verse;
-//         }
-//         case 404: {
-//             throw new NotFoundError();
-//         }
-//         case 500: {
-//             const { error } = await res.json();
-//             const { message } = error;
-//             throw new Error(message);
-//         }
-//         default:
-//             break;
-//     }
-// }}
+  //         headers: {
+  //           Authorization: `Token ${config.API_KEY}`,
+  //         },
+  //       };
 
+  //     const res = await fetch(url, options)
+  //     console.log(res)
+  //     switch (res.status) {
+  //         case 204:
+  //             return null;
+  //         case 200: {
+  //             const { verse } = await res.json();
+  //             return verse;
+  //         }
+  //         case 404: {
+  //             throw new NotFoundError();
+  //         }
+  //         case 500: {
+  //             const { error } = await res.json();
+  //             const { message } = error;
+  //             throw new Error(message);
+  //         }
+  //         default:
+  //             break;
+  //     }
+  // }}
 
   submitHandler = (e) => {
     e.preventDefault();
-    
-      let group = this.props.groups.find((g) => {
-        return g.group_name === this.state.group_event;
-      });
-   
-      this.props.onCreateEvent(this.state);
-    
-    
-    
+
+    let group = this.props.groups.find((g) => {
+      return g.group_name === this.state.group_event;
+    });
+
+    this.props.onCreateEvent(this.state);
   };
 
   navHandler = () => {
@@ -132,7 +128,7 @@ export default class CreateEvent extends Component {
   };
   render() {
     // console.log(this.state, this.context);
-
+    const { userId } = this.props;
     return (
       <div className="event-body" onClick={this.navHandler}>
         {/* <nav className="main-nav">
@@ -144,19 +140,31 @@ export default class CreateEvent extends Component {
           <div>
             {/* create a search/option ? when you search name then valid options pop up */}
             Search Groups
-            <select className='event-select' name="group_name" onChange={this.changeHandler}>
+            <select
+              className="event-select"
+              name="group_name"
+              onChange={this.changeHandler}
+            >
               {" "}
               <option>Select Group</option>
               {this.props.groups &&
-                this.props.groups.map((gr) => (
-                  <option
-                    id={gr.group_name.split(" ").join("_")}
-                    groupid={gr.id}
-                    key={gr.id}
-                  >
-                    {gr.group_name}
-                  </option>
-                ))}
+                this.props.groups.map((gr) => {
+                  let userIds = gr.user_ids;
+                  for (let i = 0; i < userIds.length; i++) {
+                    let idsArray = userIds[i];
+                    if (idsArray && idsArray == userId) {
+                      return (
+                        <option
+                          id={gr.group_name.split(" ").join("_")}
+                          groupid={gr.id}
+                          key={gr.id}
+                        >
+                          {gr.group_name}
+                        </option>
+                      );
+                    }
+                  }
+                })}
             </select>
           </div>
           <div className="event-input">
