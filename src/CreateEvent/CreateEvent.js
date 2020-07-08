@@ -100,7 +100,7 @@ checkBibleVerseExists = async (address) => {
         return false;
     }
 }
-  submitHandler = async (e) => {
+  submitHandler = (e) => {
     e.preventDefault();
     if (e.target.name === "bible_passage") {
       let verse = e.target.value();
@@ -108,7 +108,7 @@ checkBibleVerseExists = async (address) => {
       let group = this.props.groups.find((g) => {
         return g.group_name === this.state.group_event;
       });
-    if(await this.checkBibleVerse(verse)){  
+    if( this.checkBibleVerse(verse)){  
       // console.log(group);
       this.props.onCreateEvent(this.state);
     } else {
