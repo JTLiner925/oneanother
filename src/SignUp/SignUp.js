@@ -4,22 +4,27 @@ import React, { Component } from "react";
 // import config from '../config'
 // import { FontAwesomeIcon } from '@fontawesome/react-fontawesome';
 // import { fas } from '@fontawesome/free-solid-svg-icons'
+import { validateAll } from 'indicative';
 import "./SignUp.css";
 
 export default class SignUp extends Component {
- state = {}
-  // addUser()
+  state = {
+    password:'',
+    password_confirmation:'',
+}
+  
   submitHandler = (e) => {   
     e.preventDefault()
-    if(e.target.name('user_password') === e.target.name('confirm_password')){
+   console.log(this.state)
     this.props.onSignUp(this.state)
+  
     }
-  }
-  changeHandler = (e) => {
+  changeHandler = (e) => { 
     this.setState({
       [e.target.name]:e.target.value
     })
   }
+  
   render(){
     // console.log(this.props, this.state)
   return (
@@ -29,8 +34,8 @@ export default class SignUp extends Component {
       <input id="email-input" type="email" name='user_email'  onChange={this.changeHandler}required />
       <label htmlFor="password-input">Password:</label>
       <input id="password-input" type="password" name='user_password'  onChange={this.changeHandler}required />
-      <label htmlFor="password-input"> Confirm Password:</label>
-      <input id="password-input" type="password" name='confirm_password'  onChange={this.changeHandler}required />
+      <label htmlFor="password-confirm"> Confirm Password:</label>
+      <input id="password-confirm" type="password" name='password_confirmation'  onChange={this.changeHandler}required />
       {/* <a href="#">Forgot Password</a> */}
 
       <label htmlFor="first-name-input" >
