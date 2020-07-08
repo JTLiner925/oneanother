@@ -437,6 +437,7 @@ class Dashboard extends Component {
             return (
               <CreateEvent
                 groups={this.state.groups}
+                userId={this.state.userId}
                 onCreateEvent={this.createEvent}
                 onHandleHam={this.HamNavPage}
               ></CreateEvent>

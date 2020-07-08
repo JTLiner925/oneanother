@@ -152,6 +152,7 @@ export default class CreateEvent extends Component {
                   let userIds = gr.user_ids;
                   for (let i = 0; i < userIds.length; i++) {
                     let idsArray = userIds[i];
+                    console.log(idsArray)
                     if (idsArray && idsArray == userId) {
                       return (
                         <option
