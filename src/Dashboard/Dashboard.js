@@ -275,7 +275,7 @@ class Dashboard extends Component {
 
 
   createEvent = (formData) => {
-    // console.log(formData);
+    console.log(formData);
     
     fetch(`https://mighty-brook-70505.herokuapp.com/api/events/createevent`, {
       headers: {

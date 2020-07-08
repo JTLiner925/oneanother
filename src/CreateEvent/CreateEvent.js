@@ -58,7 +58,7 @@ export default class CreateEvent extends Component {
       // console.log(event, eventId)
       return event.id.toString() == eventId;
     });
-    // console.log(selectedEvent)
+    console.log(selectedEvent)
     if (selectedEvent) {
       let url = new URL(`${config.API_ENDPOINT}text/`);
       url.searchParams.set("q", selectedEvent.bible_passage);
@@ -71,6 +71,7 @@ export default class CreateEvent extends Component {
       };
       
     const res = await fetch(url, options)
+    console.log(res)
     switch (res.status) {
         case 204:
             return null;
@@ -103,6 +104,7 @@ checkBibleVerseExists = async (address) => {
     e.preventDefault();
     if (e.target.name === "bible_passage") {
       let verse = e.target.value();
+      console.log(verse)
       let group = this.props.groups.find((g) => {
         return g.group_name === this.state.group_event;
       });
