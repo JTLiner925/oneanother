@@ -28,7 +28,7 @@ export default class SignUp extends Component {
    const messages = {
      required: ' This {{ field }} is required',
      'email.email': 'The email is invalid.',
-     'password.confirmed': 'The password does not match!'
+     'user_password.confirmed': 'The password does not match!'
 
    }
 
