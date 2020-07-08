@@ -439,7 +439,6 @@ class Dashboard extends Component {
                 groups={this.state.groups}
                 onCreateEvent={this.createEvent}
                 onHandleHam={this.HamNavPage}
-                checkBibleVerse={this.checkBibleVerseExists}
               ></CreateEvent>
             );
           }}

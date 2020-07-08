@@ -53,72 +53,59 @@ export default class CreateEvent extends Component {
         this.setState({ error });
       });
   }
-  getBibleVerse = async (eventId) => {
-    let selectedEvent = this.state.events.find((event) => {
-      // console.log(event, eventId)
-      return event.id.toString() == eventId;
-    });
-    console.log(selectedEvent)
-    if (selectedEvent) {
-      let url = new URL(`${config.API_ENDPOINT}text/`);
-      url.searchParams.set("q", selectedEvent.bible_passage);
-      const options = {
-        method: "GET",
+//   getBibleVerse = async (eventId) => {
+//     let selectedEvent = this.state.events.find((event) => {
+//       // console.log(event, eventId)
+//       return event.id.toString() == eventId;
+//     });
+//     console.log(selectedEvent)
+//     if (selectedEvent) {
+//       let url = new URL(`${config.API_ENDPOINT}text/`);
+//       url.searchParams.set("q", selectedEvent.bible_passage);
+//       const options = {
+//         method: "GET",
 
-        headers: {
-          Authorization: `Token ${config.API_KEY}`,
-        },
-      };
+//         headers: {
+//           Authorization: `Token ${config.API_KEY}`,
+//         },
+//       };
       
-    const res = await fetch(url, options)
-    console.log(res)
-    switch (res.status) {
-        case 204:
-            return null;
-        case 200: {
-            const { verse } = await res.json();
-            return verse;
-        }
-        case 404: {
-            throw new NotFoundError();
-        }
-        case 500: {
-            const { error } = await res.json();
-            const { message } = error;
-            throw new Error(message);
-        }
-        default:
-            break;
-    }
-}}
+//     const res = await fetch(url, options)
+//     console.log(res)
+//     switch (res.status) {
+//         case 204:
+//             return null;
+//         case 200: {
+//             const { verse } = await res.json();
+//             return verse;
+//         }
+//         case 404: {
+//             throw new NotFoundError();
+//         }
+//         case 500: {
+//             const { error } = await res.json();
+//             const { message } = error;
+//             throw new Error(message);
+//         }
+//         default:
+//             break;
+//     }
+// }}
 
-checkBibleVerseExists = async (address) => {
-    try {
-        const verse = await this.getBibleVerse(address);
-        return !!verse;
-    } catch {
-        return false;
-    }
-}
+
   submitHandler = (e) => {
     e.preventDefault();
-    if (e.target.name === "bible_passage") {
-      let verse = e.target.value();
-      console.log(verse)
+    
       let group = this.props.groups.find((g) => {
         return g.group_name === this.state.group_event;
       });
-    if( this.checkBibleVerse(verse)){  
-      // console.log(group);
+   
       this.props.onCreateEvent(this.state);
-    } else {
-      this.setState({
-        error: ('Check your spelling, did not find verses. i.e. Matthew 28:18-20')
-      })
-    }
+    
+    
     
   };
-}
+
   navHandler = () => {
     this.props.onHandleHam(this.state);
   };
