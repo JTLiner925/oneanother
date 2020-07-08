@@ -215,52 +215,52 @@ class Dashboard extends Component {
 
  
 
-  getBibleVerse = async (eventId) => {
-    let selectedEvent = this.state.events.find((event) => {
-      // console.log(event, eventId)
-      return event.id.toString() == eventId;
-    });
-    // console.log(selectedEvent)
-    if (selectedEvent) {
-      let url = new URL(`${config.API_ENDPOINT}text/`);
-      url.searchParams.set("q", selectedEvent.bible_passage);
-      const options = {
-        method: "GET",
+//   getBibleVerse = async (eventId) => {
+//     let selectedEvent = this.state.events.find((event) => {
+//       // console.log(event, eventId)
+//       return event.id.toString() == eventId;
+//     });
+//     // console.log(selectedEvent)
+//     if (selectedEvent) {
+//       let url = new URL(`${config.API_ENDPOINT}text/`);
+//       url.searchParams.set("q", selectedEvent.bible_passage);
+//       const options = {
+//         method: "GET",
 
-        headers: {
-          Authorization: `Token ${config.API_KEY}`,
-        },
-      };
+//         headers: {
+//           Authorization: `Token ${config.API_KEY}`,
+//         },
+//       };
       
-    const res = await fetch(url, options)
-    switch (res.status) {
-        case 204:
-            return null;
-        case 200: {
-            const { verse } = await res.json();
-            return verse;
-        }
-        case 404: {
-            throw new NotFoundError();
-        }
-        case 500: {
-            const { error } = await res.json();
-            const { message } = error;
-            throw new Error(message);
-        }
-        default:
-            break;
-    }
-}}
+//     const res = await fetch(url, options)
+//     switch (res.status) {
+//         case 204:
+//             return null;
+//         case 200: {
+//             const { verse } = await res.json();
+//             return verse;
+//         }
+//         case 404: {
+//             throw new NotFoundError();
+//         }
+//         case 500: {
+//             const { error } = await res.json();
+//             const { message } = error;
+//             throw new Error(message);
+//         }
+//         default:
+//             break;
+//     }
+// }}
 
-checkBibleVerseExists = async (address) => {
-    try {
-        const verse = await this.getBibleVerse(address);
-        return !!verse;
-    } catch {
-        return false;
-    }
-}
+// checkBibleVerseExists = async (address) => {
+//     try {
+//         const verse = await this.getBibleVerse(address);
+//         return !!verse;
+//     } catch {
+//         return false;
+//     }
+// }
 
 //   onSubmit: async () => {
     

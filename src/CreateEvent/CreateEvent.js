@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import store from "../Store";
 import HEROKU_API from '../config'
+import config from "../config";
+import NotFoundError from '../NotFoundError/NotFoundError'
 import "./CreateEvent.css";
 import ApiContext from "../ApiContext";
 
@@ -51,6 +53,52 @@ export default class CreateEvent extends Component {
         this.setState({ error });
       });
   }
+  getBibleVerse = async (eventId) => {
+    let selectedEvent = this.state.events.find((event) => {
+      // console.log(event, eventId)
+      return event.id.toString() == eventId;
+    });
+    // console.log(selectedEvent)
+    if (selectedEvent) {
+      let url = new URL(`${config.API_ENDPOINT}text/`);
+      url.searchParams.set("q", selectedEvent.bible_passage);
+      const options = {
+        method: "GET",
+
+        headers: {
+          Authorization: `Token ${config.API_KEY}`,
+        },
+      };
+      
+    const res = await fetch(url, options)
+    switch (res.status) {
+        case 204:
+            return null;
+        case 200: {
+            const { verse } = await res.json();
+            return verse;
+        }
+        case 404: {
+            throw new NotFoundError();
+        }
+        case 500: {
+            const { error } = await res.json();
+            const { message } = error;
+            throw new Error(message);
+        }
+        default:
+            break;
+    }
+}}
+
+checkBibleVerseExists = async (address) => {
+    try {
+        const verse = await this.getBibleVerse(address);
+        return !!verse;
+    } catch {
+        return false;
+    }
+}
   submitHandler = async (e) => {
     e.preventDefault();
     if (e.target.name === "bible_passage") {
@@ -58,7 +106,7 @@ export default class CreateEvent extends Component {
       let group = this.props.groups.find((g) => {
         return g.group_name === this.state.group_event;
       });
-    if(await this.props.checkBibleVerse(verse)){  
+    if(await this.checkBibleVerse(verse)){  
       // console.log(group);
       this.props.onCreateEvent(this.state);
     } else {
