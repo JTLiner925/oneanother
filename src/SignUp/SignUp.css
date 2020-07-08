@@ -30,6 +30,7 @@
 
 #email-input,
 #password-input,
+#password-confirm,
 #first-name-input,
 #last-name-input,
 #address-input,
@@ -43,6 +44,7 @@
 }
 #email-input:hover,
 #password-input:hover,
+#password-confirm:hover,
 #first-name-input:hover,
 #last-name-input:hover,
 #address-input:hover,
@@ -52,6 +54,7 @@
 }
 #email-input:active,
 #password-input:active,
+#password-confirm:active,
 #first-name-input:active,
 #last-name-input:active,
 #address-input:active,

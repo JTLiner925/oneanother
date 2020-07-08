@@ -9,14 +9,40 @@ import "./SignUp.css";
 
 export default class SignUp extends Component {
   state = {
-    password:'',
+    first_name:'',
+    user_email:'',
+    user_password:'',
     password_confirmation:'',
 }
   
   submitHandler = (e) => {   
     e.preventDefault()
    console.log(this.state)
-    this.props.onSignUp(this.state)
+   const data = this.props.onSignUp(this.state)
+   const rules = {
+     first_name: 'required|string',
+    user_email: 'required|email',
+    user_password: 'required|string|min:6|confirmed'
+   };
+
+   const messages = {
+     required: ' This {{ field }} is required',
+     'email.email': 'The email is invalid.',
+     'password.confirmed': 'The password does not match!'
+
+   }
+
+   validateAll(data, rules, messages)
+   .then(() => {
+     console.log('success')
+   })
+   .catch(errors => {
+     console.log(errors);
+     const formattedErrors = {}
+     errors.forEach( error => formattedErrors[error.field] = error.message)
+     this.setState({ errors: formattedErrors })
+   })
+    
   
     }
   changeHandler = (e) => { 
