@@ -8,6 +8,7 @@ import Invite from "../Invite/Invite";
 import GroupInfo from "../GroupInfo/GroupInfo";
 import ApiContext from "../ApiContext";
 import HEROKU_API from "../config";
+import NotFoundError from '../NotFoundError/NotFoundError'
 import store from "../Store";
 import CreateGroup from "../CreateGroup/CreateGroup";
 import CreateEvent from "../CreateEvent/CreateEvent";
@@ -88,6 +89,7 @@ class Dashboard extends Component {
       })
       .then(([users, groups, events]) => {
         // console.log(users, groups, events );
+        
         let userId = users.find(user => user.first_name === window.localStorage.getItem('userName'))
         console.log(userId)
         this.setState({
@@ -211,8 +213,68 @@ class Dashboard extends Component {
       });
   };
 
+ 
+
+  getBibleVerse = async (eventId) => {
+    let selectedEvent = this.state.events.find((event) => {
+      // console.log(event, eventId)
+      return event.id.toString() == eventId;
+    });
+    // console.log(selectedEvent)
+    if (selectedEvent) {
+      let url = new URL(`${config.API_ENDPOINT}text/`);
+      url.searchParams.set("q", selectedEvent.bible_passage);
+      const options = {
+        method: "GET",
+
+        headers: {
+          Authorization: `Token ${config.API_KEY}`,
+        },
+      };
+      
+    const res = await fetch(url, options)
+    switch (res.status) {
+        case 204:
+            return null;
+        case 200: {
+            const { verse } = await res.json();
+            return verse;
+        }
+        case 404: {
+            throw new NotFoundError();
+        }
+        case 500: {
+            const { error } = await res.json();
+            const { message } = error;
+            throw new Error(message);
+        }
+    }
+}}
+
+checkBibleVerseExists = async (address) => {
+    try {
+        const verse = await this.getBibleVerse(address);
+        return !!verse;
+    } catch {
+        return false;
+    }
+}
+
+//   onSubmit: async () => {
+    
+//     if (await checkBibleVerseExists(address)) {
+//         const res = await fetch('http://myapi.com')
+//         //...
+//     } else {
+//         setState({
+//             error: "This verse does not exist"
+//         })
+//     }
+
+
   createEvent = (formData) => {
     // console.log(formData);
+    
     fetch(`https://mighty-brook-70505.herokuapp.com/api/events/createevent`, {
       headers: {
         "Content-Type": "application/json",
@@ -375,6 +437,7 @@ class Dashboard extends Component {
                 groups={this.state.groups}
                 onCreateEvent={this.createEvent}
                 onHandleHam={this.HamNavPage}
+                checkBibleVerse={this.checkBibleVerseExists}
               ></CreateEvent>
             );
           }}
