@@ -18,7 +18,7 @@ export default class SignUp extends Component {
   submitHandler = (e) => {   
     e.preventDefault()
    console.log(this.state)
-   const data = this.props.onSignUp(this.state)
+   const data = this.state;
    const rules = {
      first_name: 'required|string',
     user_email: 'required|email',
@@ -35,6 +35,7 @@ export default class SignUp extends Component {
    validateAll(data, rules, messages)
    .then(() => {
      console.log('success')
+     this.props.onSignUp(this.state)
    })
    .catch(errors => {
      console.log(errors);
