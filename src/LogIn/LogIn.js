@@ -37,7 +37,7 @@ export default class LogIn extends Component {
           name="user_password"
           onChange={this.changeHandler}
         />
-        <a href="#">Forgot Password</a>
+        {/* <a href="#">Forgot Password</a> */}
         
           <button type="submit" className="login">
             Login

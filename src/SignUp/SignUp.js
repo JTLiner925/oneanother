@@ -11,8 +11,9 @@ export default class SignUp extends Component {
   // addUser()
   submitHandler = (e) => {   
     e.preventDefault()
+    if(e.target.name('user_password') === e.target.name('confirm_password')){
     this.props.onSignUp(this.state)
-  
+    }
   }
   changeHandler = (e) => {
     this.setState({
@@ -28,7 +29,9 @@ export default class SignUp extends Component {
       <input id="email-input" type="email" name='user_email'  onChange={this.changeHandler}required />
       <label htmlFor="password-input">Password:</label>
       <input id="password-input" type="password" name='user_password'  onChange={this.changeHandler}required />
-      <a href="#">Forgot Password</a>
+      <label htmlFor="password-input"> Confirm Password:</label>
+      <input id="password-input" type="password" name='confirm_password'  onChange={this.changeHandler}required />
+      {/* <a href="#">Forgot Password</a> */}
 
       <label htmlFor="first-name-input" >
         First Name
