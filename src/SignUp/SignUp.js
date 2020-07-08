@@ -18,31 +18,31 @@ export default class SignUp extends Component {
   submitHandler = (e) => {   
     e.preventDefault()
    console.log(this.state)
-  //  const data = this.state;
-  //  const rules = {
-  //    first_name: 'required|string',
-  //   user_email: 'required|email',
-  //   user_password: 'required|string|min:6|confirmed'
-  //  };
+   const data = this.state;
+   const rules = {
+     first_name: 'required|string',
+    user_email: 'required|email',
+    user_password: 'required|string|min:6|confirmed'
+   };
 
-  //  const messages = {
-  //    required: ' This {{ field }} is required',
-  //    'email.email': 'The email is invalid.',
-  //    'user_password.confirmed': 'The password does not match!'
+   const messages = {
+     required: ' This {{ field }} is required',
+     'email.email': 'The email is invalid.',
+     'user_password.confirmed': 'The password does not match!'
 
-  //  }
+   }
 
-  //  validateAll(data, rules, messages)
-  //  .then(() => {
-  //    console.log('success')
-  //    this.props.onSignUp(this.state)
-  //  })
-  //  .catch(errors => {
-  //    console.log(errors);
-  //    const formattedErrors = {}
-  //    errors.forEach( error => formattedErrors[error.field] = error.message)
-  //    this.setState({ errors: formattedErrors })
-  //  })
+   validateAll(data, rules, messages)
+   .then(() => {
+     console.log('success')
+     this.props.onSignUp(this.state)
+   })
+   .catch(errors => {
+     console.log(errors);
+     const formattedErrors = {}
+     errors.forEach( error => formattedErrors[error.field] = error.message)
+     this.setState({ errors: formattedErrors })
+   })
     
   this.props.onSignUp(this.state)
 
