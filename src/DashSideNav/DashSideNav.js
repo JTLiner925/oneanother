@@ -96,15 +96,15 @@ export default class DashSideNav extends Component {
             <div className="nav-group">
               <h3>Groups</h3>
               <ul>
-                {groupsForUser.map((group) => {
+                {groups.map((group) => {
                   let idee = group.id;
                   let userIds = group.user_ids;
-                  for (let j = 0; j < users.length; j++) {
-                    let user_id = users[j]
+                  // for (let j = 0; j < users.length; j++) {
+                  //   let user_id = users[j]
                   for (let i = 0; i < userIds.length; i++) {
                     let idsArray = userIds[i]
                     // console.log(idsArray, user_id)
-                    if (idsArray && idsArray == user_id.id) 
+                    if (idsArray && idsArray == userId) 
                     {
                       return (
                         <li key={group.id}>
@@ -119,7 +119,7 @@ export default class DashSideNav extends Component {
                       );
                     }
                   }
-  }})}
+  })}
               </ul>
             </div>
             <div>
