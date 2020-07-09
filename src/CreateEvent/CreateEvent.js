@@ -73,31 +73,16 @@ export default class CreateEvent extends Component {
     fetch(url.href, options)
       .then((res) => {
         console.log(res);
-        let passages = res.json(["passages"]);
-        let passage = passages.map((pass) => {
-          console.log(pass)
-        })
-        if (passage) {
-          
-            return passage
-        
-          //  [0][1].strip()
-        } else {
+        if (!res.canonical === '' || !res.ok) {
           throw new Error(
             'Please check Bible passage, write out in long form. i.e. "Matthew 28:18-20"'
           );
         }
-        // console.log(res);
-        // if (!res.canonical === '' || !res.ok) {
-        //   throw new Error(
-        //     'Please check Bible passage, write out in long form. i.e. "Matthew 28:18-20"'
-        //   );
-        // }
-        // return res.json()
-      })
-      .then((res) => {
         this.props.onCreateEvent(this.state);
       })
+      // .then((res) => {
+      //   this.props.onCreateEvent(this.state);
+      // })
       .catch((error) => {
         console.log(error);
         this.setState({ error });
