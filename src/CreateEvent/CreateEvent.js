@@ -71,6 +71,7 @@ export default class CreateEvent extends Component {
     fetch(url, options)
       .then((res) => {
        let passages = res.json()['canonical']
+       console.log(passages)
        if(passages){
        return passages[0].strip()
        } else {
