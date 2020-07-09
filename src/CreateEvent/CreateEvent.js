@@ -60,6 +60,8 @@ export default class CreateEvent extends Component {
 
     let url = new URL(`${config.API_ENDPOINT}text/`);
     url.searchParams.set("q", checkVerse);
+    url.searchParams.set("include-passage-reference", true);
+
     const options = {
       method: "GET",
 
@@ -72,11 +74,13 @@ export default class CreateEvent extends Component {
       .then((res) => {
         console.log(res);
         let passages = res.json()["passages"];
-        console.log(passages);
-        if (passages) {
-          passages.map((p) => {
-            return p.strip();
-          });
+        let passage = passages.map((pass) => {
+          console.log(pass)
+        })
+        if (passage) {
+          
+            return passage
+        
           //  [0][1].strip()
         } else {
           throw new Error(
