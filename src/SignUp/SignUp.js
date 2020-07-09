@@ -17,6 +17,10 @@ export default class SignUp extends Component {
     console.log(checkPswd)
     if(pswd === checkPswd){
       this.props.onSignUp(this.state);
+    } else {
+      this.setState({
+        error: 'Passwords do not match, try again.'
+      })
     }
   };
   changeHandler = (e) => {
