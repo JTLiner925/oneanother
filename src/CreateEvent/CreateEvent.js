@@ -50,9 +50,8 @@ export default class CreateEvent extends Component {
         this.setState({ error });
       });
   }
-  handleBibleReference = (e) => {
-    e.preventDefault();
-    e.persist();
+  handleBibleReference = () => {
+    
     let checkVerse = this.state.bible_passage;
     let url = new URL(`https://api.esv.org/v3/passage/text/`);
 
