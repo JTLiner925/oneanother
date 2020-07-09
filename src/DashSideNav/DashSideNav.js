@@ -30,6 +30,8 @@ export default class DashSideNav extends Component {
 
     const { events = [], userId } = this.props;
     const { groups = [] } = this.props;
+    const groupEvents = [].concat(events)
+      .sort((a, b) => a.id > b.id ? 1 : -1)
     return (
       <div className="side-nav-body">
         <div className="myLinks">
@@ -49,7 +51,7 @@ export default class DashSideNav extends Component {
             <div className="nav-group">
               <h3>Groups</h3>
               <ul>
-                {groups.map((group) => {
+                {groupEvents.map((group) => {
                   let idee = group.id;
                   let userIds = group.user_ids;
                   for (let i = 0; i < userIds.length; i++) {
@@ -75,8 +77,10 @@ export default class DashSideNav extends Component {
               <h3>Events</h3>
               <ul>
                 {events.map((event) => {
+                  
                   let idee = event.id;
                   if (event.group_event && event.group_event == id) {
+                    // .sort((a, b) => (a.idee < b.idee){
                     return (
                       <li key={event.id}>
                         <NavLink
@@ -87,6 +91,7 @@ export default class DashSideNav extends Component {
                         </NavLink>
                       </li>
                     );
+                 
                   }
                 })}
               </ul>
