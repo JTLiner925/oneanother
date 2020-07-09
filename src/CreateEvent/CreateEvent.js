@@ -71,10 +71,10 @@ export default class CreateEvent extends Component {
     fetch(url, options)
       .then((res) => {
         console.log(res)
-       let passages = res.json(['passages'])
+       let passages = res.json()['passages']
        console.log(passages)
        if(passages){
-       return passages[0].strip()
+       return passages[0][1].strip()
        } else {
         throw new Error(
               'Please check Bible passage, write out in long form. i.e. "Matthew 28:18-20"'
