@@ -9,10 +9,16 @@ export default class SignUp extends Component {
     password_confirmation: "",
   };
 
+  
   submitHandler = (e) => {
     e.preventDefault();
-
-    this.props.onSignUp(this.state);
+    let pswd = e.user_password.value()
+    console.log(pswd)
+    let checkPswd = e.password_confirmation.value()
+    console.log(checkPswd)
+    if(pswd === checkPswd){
+      this.props.onSignUp(this.state);
+    }
   };
   changeHandler = (e) => {
     this.setState({
