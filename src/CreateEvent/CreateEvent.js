@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 // import HEROKU_API from "../config";
-// import config from "../config";
+import config from "../config";
 import "./CreateEvent.css";
 
 export default class CreateEvent extends Component {
@@ -49,7 +49,7 @@ export default class CreateEvent extends Component {
   submitHandler = (e) => {
     e.preventDefault();
     let checkVerse = this.state.bible_passage;
-      if (selectedEvent) {
+      if (checkVerse) {
         let url = new URL(`${config.API_ENDPOINT}text/`);
         url.searchParams.set("q", checkVerse);
         const options = {
@@ -69,31 +69,13 @@ export default class CreateEvent extends Component {
           error: 'Please check Bible passage, write out in long form. i.e. "Matthew 28:18-20"'
         })
       }
-      switch (res.status) {
-          case 204:
-              return null;
-          case 200: {
-              const { verse } = await res.json();
-              return verse;
-          }
-          case 404: {
-              throw new NotFoundError();
-          }
-          case 500: {
-              const { error } = await res.json();
-              const { message } = error;
-              throw new Error(message);
-          }
-          default:
-              break;
-      }
   }}
-    let group = this.props.groups.find((g) => {
-      return g.group_name === this.state.group_event;
-    });
+  //   let group = this.props.groups.find((g) => {
+  //     return g.group_name === this.state.group_event;
+  //   });
 
     
-  };
+  // };
 
   navHandler = () => {
     this.props.onHandleHam(this.state);
