@@ -50,20 +50,15 @@ export default class CreateEvent extends Component {
         this.setState({ error });
       });
   }
-  handleBibleReference = () => {
-    
+  
+  submitHandler = (e) => {
+    e.preventDefault();
+   
+    // this.props.onCreateEvent(this.state);
     let checkVerse = this.state.bible_passage;
-    let url = new URL(`https://api.esv.org/v3/passage/text/`);
 
+    let url = new URL(`${config.API_ENDPOINT}text/`);
     url.searchParams.set("q", checkVerse);
-    url.searchParams.set("include-passage-reference", false);
-    url.searchParams.set("include-verse-number", true);
-    url.searchParams.set("include-first-verse-number", false);
-    url.searchParams.set("include-footnotes", true);
-    url.searchParams.set("include-footnote-body", false);
-    url.searchParams.set("include-heading", true);
-    url.searchParams.set("include-short-copyright", true);
-    url.searchParams.set("indent-using", "tab");
     const options = {
       method: "GET",
 
@@ -71,67 +66,31 @@ export default class CreateEvent extends Component {
         Authorization: `Token ${config.API_KEY}`,
       },
     };
-    fetch(url.href, options)
+
+    fetch(url, options)
       .then((res) => {
-       
-        if (!res.ok) {
-          throw new Error("Something went wrong, please try again later.");
+        console.log(res);
+        if (!res.canonical === '' || !res.ok) {
+          throw new Error(
+            'Please check Bible passage, write out in long form. i.e. "Matthew 28:18-20"'
+          );
         }
-        return res.json();
+        return res.json()
       })
-      .then((passage) => {
-        this.setState({
-          passage: "",
-       
-         
-        });
-        this.setPassage(passage);
+      .then((res) => {
+        this.checkVerse(res)
+        this.props.onCreateEvent(this.state);
       })
       .catch((error) => {
-        console.error(error);
+        console.log(error);
         this.setState({ error });
       });
   };
-  submitHandler = (e) => {
-    e.preventDefault();
-    this.handleBibleReference(this.state.bible_passage)
-    this.props.onCreateEvent(this.state);
-  //   let checkVerse = this.state.bible_passage;
-
-  //   let url = new URL(`${config.API_ENDPOINT}text/`);
-  //   url.searchParams.set("q", checkVerse);
-  //   const options = {
-  //     method: "GET",
-
-  //     headers: {
-  //       Authorization: `Token ${config.API_KEY}`,
-  //     },
-  //   };
-
-  //   fetch(url, options)
-  //     .then((res) => {
-  //       console.log(res);
-  //       if (!res.ok) {
-  //         throw new Error(
-  //           'Please check Bible passage, write out in long form. i.e. "Matthew 28:18-20"'
-  //         );
-  //       }
-  //       return res.json()
-  //     })
-  //     .then((res) => {
-  //       this.checkVerse(res)
-  //       this.props.onCreateEvent(this.state);
-  //     })
-  //     .catch((error) => {
-  //       console.log(error);
-  //       this.setState({ error });
-  //     });
-  // };
   //   let group = this.props.groups.find((g) => {
   //     return g.group_name === this.state.group_event;
   //   });
 
-  };
+  // };
 
   navHandler = () => {
     this.props.onHandleHam(this.state);
