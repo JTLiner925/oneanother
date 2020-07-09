@@ -73,7 +73,7 @@ export default class CreateEvent extends Component {
     fetch(url.href, options)
       .then((res) => {
         console.log(res);
-        if (!res.canonical === '' || !res.ok) {
+        if (res.passages === [] || !res.ok) {
           throw new Error(
             'Please check Bible passage, write out in long form. i.e. "Matthew 28:18-20"'
           );
