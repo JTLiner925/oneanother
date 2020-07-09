@@ -86,10 +86,10 @@ export default class CreateEvent extends Component {
         // }
         // return res.json()
       })
-      // .then((res) => {
-      //   this.checkVerse(res)
-        // this.props.onCreateEvent(this.state);
-      // })
+      .then((res) => {
+        this.checkVerse(res)
+        this.props.onCreateEvent(this.state);
+      })
       .catch((error) => {
         console.log(error);
         this.setState({ error });
