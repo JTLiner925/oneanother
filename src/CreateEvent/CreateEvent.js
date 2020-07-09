@@ -8,6 +8,7 @@ export default class CreateEvent extends Component {
     event: "",
     group: "",
     passage: "",
+    error: null,
   };
   setEvent = (event, group) => {
     this.setState({
@@ -69,18 +70,26 @@ export default class CreateEvent extends Component {
 
     fetch(url, options)
       .then((res) => {
-        console.log(res);
-        if (!res.canonical === '' || !res.ok) {
-          throw new Error(
-            'Please check Bible passage, write out in long form. i.e. "Matthew 28:18-20"'
-          );
-        }
-        return res.json()
+       let passages = res.json()['passages']
+       if(passages){
+       return passages[0].strip()
+       } else {
+        throw new Error(
+              'Please check Bible passage, write out in long form. i.e. "Matthew 28:18-20"'
+            );
+       }
+        // console.log(res);
+        // if (!res.canonical === '' || !res.ok) {
+        //   throw new Error(
+        //     'Please check Bible passage, write out in long form. i.e. "Matthew 28:18-20"'
+        //   );
+        // }
+        // return res.json()
       })
-      .then((res) => {
-        this.checkVerse(res)
-        this.props.onCreateEvent(this.state);
-      })
+      // .then((res) => {
+      //   this.checkVerse(res)
+        // this.props.onCreateEvent(this.state);
+      // })
       .catch((error) => {
         console.log(error);
         this.setState({ error });
