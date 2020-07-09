@@ -75,12 +75,16 @@ export default class CreateEvent extends Component {
         return res.json()
       })
       .then((resData) => {
-        console.log(resData, 'this is the resData')
-        // this.props.onCreateEvent(this.state);
+        if (resData.passages.length === 0) {
+          throw new Error(
+            'Please check Bible passage, write out in long form. i.e. "Matthew 28:18-20"'
+          );
+        }
+        this.props.onCreateEvent(this.state);
       })
       .catch((error) => {
-        console.log(error, 'error');
-        // this.setState({ error });
+        console.log(error);
+        this.setState({ error });
       });
   };
   //   let group = this.props.groups.find((g) => {
@@ -207,7 +211,7 @@ export default class CreateEvent extends Component {
                     onChange={this.changeHandler}
                   ></input>
                 </label>
-                <p>{this.state.error}</p>
+                
               </div>
             </div>
             <div>
@@ -223,6 +227,7 @@ export default class CreateEvent extends Component {
                 </label>
               </div>
             </div>
+            <p>{this.state.error}</p>
             <button type="submit" className="create-event">
               Create Event
             </button>
