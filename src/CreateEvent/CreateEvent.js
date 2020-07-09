@@ -51,10 +51,10 @@ export default class CreateEvent extends Component {
         this.setState({ error });
       });
   }
-  
+
   submitHandler = (e) => {
     e.preventDefault();
-   
+
     // this.props.onCreateEvent(this.state);
     let checkVerse = this.state.bible_passage;
 
@@ -70,16 +70,19 @@ export default class CreateEvent extends Component {
 
     fetch(url, options)
       .then((res) => {
-        console.log(res)
-       let passages = res.json()['passages']
-       console.log(passages)
-       if(passages){
-       return passages[0][1].strip()
-       } else {
-        throw new Error(
-              'Please check Bible passage, write out in long form. i.e. "Matthew 28:18-20"'
-            );
-       }
+        console.log(res);
+        let passages = res.json()["passages"];
+        console.log(passages);
+        if (passages) {
+          passages.map((p) => {
+            return p.strip();
+          });
+          //  [0][1].strip()
+        } else {
+          throw new Error(
+            'Please check Bible passage, write out in long form. i.e. "Matthew 28:18-20"'
+          );
+        }
         // console.log(res);
         // if (!res.canonical === '' || !res.ok) {
         //   throw new Error(
@@ -89,7 +92,6 @@ export default class CreateEvent extends Component {
         // return res.json()
       })
       .then((res) => {
-     
         this.props.onCreateEvent(this.state);
       })
       .catch((error) => {
