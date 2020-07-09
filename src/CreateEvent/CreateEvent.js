@@ -44,37 +44,37 @@ export default class CreateEvent extends Component {
         this.setState({ error });
       });
   }
-  
 
   submitHandler = (e) => {
     e.preventDefault();
+    e.persist();
     let checkVerse = this.state.bible_passage;
-      if (checkVerse) {
-        let url = new URL(`${config.API_ENDPOINT}text/`);
-        url.searchParams.set("q", checkVerse);
-        const options = {
-          method: "GET",
 
-          headers: {
-            Authorization: `Token ${config.API_KEY}`,
-          },
-        };
+    let url = new URL(`${config.API_ENDPOINT}text/`);
+    url.searchParams.set("q", checkVerse);
+    const options = {
+      method: "GET",
 
-      const res = fetch(url, options)
-      console.log(res)
-      if(res.status === 200){
-        this.props.onCreateEvent(this.state);
-      } else {
+      headers: {
+        Authorization: `Token ${config.API_KEY}`,
+      },
+    };
+
+    fetch(url, options).then((res) => {
+      if (!res.ok) {
         this.setState({
-          error: 'Please check Bible passage, write out in long form. i.e. "Matthew 28:18-20"'
-        })
+          error:
+            'Please check Bible passage, write out in long form. i.e. "Matthew 28:18-20"',
+        });
+      } else {
+        this.props.onCreateEvent(this.state);
       }
-  }}
+    });
+  };
   //   let group = this.props.groups.find((g) => {
   //     return g.group_name === this.state.group_event;
   //   });
 
-    
   // };
 
   navHandler = () => {
@@ -196,7 +196,7 @@ export default class CreateEvent extends Component {
                     onChange={this.changeHandler}
                   ></input>
                 </label>
-              <p>{this.state.error}</p>
+                <p>{this.state.error}</p>
               </div>
             </div>
             <div>
