@@ -5,7 +5,7 @@ import Footer from "./Footer/Footer";
 import HomePage from "./HomePage/HomePage";
 import LogIn from "./LogIn/LogIn";
 import SignUp from "./SignUp/SignUp";
-import HEROKU_API from "./config";
+// import HEROKU_API from "./config";
 import Dashboard from "./Dashboard/Dashboard";
 import "./App.css";
 

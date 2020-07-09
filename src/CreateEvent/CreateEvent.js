@@ -1,6 +1,6 @@
 import React, { Component } from "react";
-import HEROKU_API from "../config";
-import config from "../config";
+// import HEROKU_API from "../config";
+// import config from "../config";
 import "./CreateEvent.css";
 
 export default class CreateEvent extends Component {

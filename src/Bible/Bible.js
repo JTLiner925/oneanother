@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import config from "../config";
-import store from "../Store";
 import ApiContext from "../ApiContext";
 import "./Bible.css";
 

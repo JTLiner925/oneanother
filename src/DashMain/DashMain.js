@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import { Route } from "react-router-dom";
 import "./DashMain.css";
 import ApiContext from "../ApiContext";
-import STORE from "../Store";
 import DashCenter from "../DashCenter/DashCenter";
 import DashRight from "../DashRight/DashRight";
 

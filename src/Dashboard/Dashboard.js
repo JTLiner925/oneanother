@@ -6,7 +6,7 @@ import DashMain from "../DashMain/DashMain";
 import Bible from "../Bible/Bible";
 import Invite from "../Invite/Invite";
 import ApiContext from "../ApiContext";
-import HEROKU_API from "../config";
+// import HEROKU_API from "../config";
 import CreateGroup from "../CreateGroup/CreateGroup";
 import CreateEvent from "../CreateEvent/CreateEvent";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";

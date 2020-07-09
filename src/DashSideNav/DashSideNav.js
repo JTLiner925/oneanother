@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import { NavLink, Link } from "react-router-dom";
 import ApiContext from "../ApiContext";
-import { findGroupsForUser } from "../helpers";
 import "./DashSideNav.css";
 
 export default class DashSideNav extends Component {
