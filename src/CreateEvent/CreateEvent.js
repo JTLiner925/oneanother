@@ -16,6 +16,12 @@ export default class CreateEvent extends Component {
       error: null,
     });
   };
+  checkVerse = (bible_passage) => {
+    this.setState({
+      bible_passage,
+      error: null,
+    })
+  }
 
   componentDidMount() {
     fetch(`https://mighty-brook-70505.herokuapp.com/api/events`, {
@@ -60,7 +66,7 @@ export default class CreateEvent extends Component {
       },
     };
 
-    fetch(url.href, options)
+    fetch(url, options)
       .then((res) => {
         console.log(res);
         if (!res.ok) {
@@ -71,6 +77,7 @@ export default class CreateEvent extends Component {
         return res.json()
       })
       .then((res) => {
+        this.checkVerse(res)
         this.props.onCreateEvent(this.state);
       })
       .catch((error) => {
