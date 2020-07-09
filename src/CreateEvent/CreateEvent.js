@@ -75,12 +75,12 @@ export default class CreateEvent extends Component {
         return res.json()
       })
       .then((resData) => {
-        console.log(resData)
+        console.log(resData, 'this is the resData')
         // this.props.onCreateEvent(this.state);
       })
       .catch((error) => {
-        console.log(error);
-        this.setState({ error });
+        console.log(error, 'error');
+        // this.setState({ error });
       });
   };
   //   let group = this.props.groups.find((g) => {
