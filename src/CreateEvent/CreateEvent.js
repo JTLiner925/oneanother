@@ -227,7 +227,7 @@ export default class CreateEvent extends Component {
                 </label>
               </div>
             </div>
-            {/* <p>{this.state.error}</p> */}
+            <p>{this.state.error}</p>
             <button type="submit" className="create-event">
               Create Event
             </button>
