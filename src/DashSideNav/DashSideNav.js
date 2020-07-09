@@ -58,6 +58,7 @@ export default class DashSideNav extends Component {
                   console.log(group)
                   let idee = group.id;
                   let userIds = group.user_ids;
+                  console.log(userIds)
                   for (let i = 0; i < userIds.length; i++) {
                     let idsArray = userIds[i];
                     if (idsArray && idsArray == userId) {
