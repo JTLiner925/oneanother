@@ -60,7 +60,8 @@ export default class CreateEvent extends Component {
       },
     };
 
-    fetch(url, options).then((res) => {
+    fetch(url.href, options)
+    .then((res) => {
       if (!res.ok) {
         this.setState({
           error:
