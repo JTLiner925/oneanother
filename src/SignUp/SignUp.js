@@ -14,7 +14,6 @@ export default class SignUp extends Component {
     e.preventDefault();
     let pswd = this.state.user_password
     let checkPswd = this.state.password_confirmation
-    console.log(checkPswd)
     if(pswd === checkPswd){
       this.props.onSignUp(this.state);
     } else {
