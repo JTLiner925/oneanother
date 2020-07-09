@@ -73,7 +73,7 @@ export default class CreateEvent extends Component {
     fetch(url.href, options)
       .then((res) => {
         console.log(res);
-        let passages = res.json()["passages"];
+        let passages = res.json(["passages"]);
         let passage = passages.map((pass) => {
           console.log(pass)
         })
