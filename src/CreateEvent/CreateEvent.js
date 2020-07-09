@@ -60,17 +60,19 @@ export default class CreateEvent extends Component {
       },
     };
 
-    fetch(url.href, options)
-    .then((res) => {
+    fetch(url.href, options).then((res) => {
+      console.log(res)
       if (!res.ok) {
-        this.setState({
-          error:
-            'Please check Bible passage, write out in long form. i.e. "Matthew 28:18-20"',
-        });
-      } else {
-        this.props.onCreateEvent(this.state);
+        throw new Error(
+          'Please check Bible passage, write out in long form. i.e. "Matthew 28:18-20"'
+        );
       }
-    });
+      this.props.onCreateEvent(this.state);
+    })
+    .catch((error) => {
+      console.log(error)
+      this.setState({ error })
+    })
   };
   //   let group = this.props.groups.find((g) => {
   //     return g.group_name === this.state.group_event;
@@ -119,7 +121,6 @@ export default class CreateEvent extends Component {
                   let userIds = gr.user_ids;
                   for (let i = 0; i < userIds.length; i++) {
                     let idsArray = userIds[i];
-                    console.log(idsArray);
                     if (idsArray && idsArray == userId) {
                       return (
                         <option

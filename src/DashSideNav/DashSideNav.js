@@ -34,7 +34,6 @@ export default class DashSideNav extends Component {
       .sort((a, b) => a.id > b.id ? 1 : -1)
       const sortEvents = [].concat(events)
       .sort((a, b) => a.id > b.id ? 1 : -1)
-      console.log(sortEvents)
     return (
       <div className="side-nav-body">
         <div className="myLinks">
@@ -80,7 +79,6 @@ export default class DashSideNav extends Component {
               <h3>Events</h3>
               <ul>
                 {sortEvents.map((event) => {
-                  console.log(event)
                   let idee = event.id;
                   if (event.group_event && event.group_event == id) {
                     return (
