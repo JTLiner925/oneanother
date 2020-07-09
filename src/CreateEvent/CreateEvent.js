@@ -70,7 +70,7 @@ export default class CreateEvent extends Component {
       },
     };
 
-    fetch(url, options)
+    fetch(url.href, options)
       .then((res) => {
         console.log(res);
         let passages = res.json()["passages"];
