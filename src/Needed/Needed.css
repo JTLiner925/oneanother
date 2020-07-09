@@ -1,6 +1,3 @@
-/* .item:checked {
-  text-decoration: line-through;
-} */
 input[type="checkbox"] + label {
   text-decoration: none;
 }
@@ -8,14 +5,11 @@ input[type="checkbox"]:checked + label {
   text-decoration: line-through;
 }
 .Item {
-  /* margin-left: 10px; */
   line-height: 1.7;
-
 }
 .Item {
   display: flex;
   flex-direction: column;
-  /* margin:0 auto; */
   margin-top: 10px;
   justify-content: space-around;
   min-height: 300px;

@@ -1,7 +1,5 @@
 import React, { Component } from "react";
 
-// import store from "../Store";
-
 export default class SimpleCalendar extends Component {
   render() {
     return (

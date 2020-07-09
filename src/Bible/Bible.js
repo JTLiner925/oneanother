@@ -60,7 +60,7 @@ export default class DashMain extends Component {
     };
     fetch(url.href, options)
       .then((res) => {
-        // console.log(res);
+       
         if (!res.ok) {
           throw new Error("Something went wrong, please try again later.");
         }
@@ -94,7 +94,7 @@ export default class DashMain extends Component {
     url.searchParams.set("include-heading", true);
     url.searchParams.set("include-short-copyright", true);
     url.searchParams.set("indent-using", "tab");
-    // console.log(url);
+    
     const options = {
       method: "GET",
 
@@ -102,10 +102,8 @@ export default class DashMain extends Component {
         Authorization: `Token ${config.API_KEY}`,
       },
     };
-    // console.log(config.API_KEY);
     fetch(url.href, options)
       .then((res) => {
-        // console.log(res);
         if (!res.ok) {
           throw new Error("Something went wrong, please try again later.");
         }
@@ -1261,7 +1259,6 @@ export default class DashMain extends Component {
         ],
       },
     };
-    console.log(this.state);
     return (
       <div className="bible-body" onClick={this.navHandler}>
         <div className="bible-search-params">
@@ -1289,7 +1286,6 @@ export default class DashMain extends Component {
               >
                 <option>Select Book</option>
                 {Object.keys(books).map((book) => {
-                  // console.log(book);
                   return <option key={book}>{book}</option>;
                 })}
               </select>
@@ -1317,7 +1313,6 @@ export default class DashMain extends Component {
                 this.state.passage.passages.map((pa, i) => {
                   return (
                     <div key={i} className="box-bible bible-texts">
-                      {/* <h4>{pa.book}{pa.chapter}</h4> */}
                       <h3>Bible Passage</h3>
                       <p className="bible-passage">{pa}</p>
                     </div>
@@ -1328,7 +1323,6 @@ export default class DashMain extends Component {
                 this.state.passage.results.map((result, i) => {
                   return (
                     <div key={i} className="box-bible bible-texts">
-                      {/* <h3>Search Results</h3> */}
                       <p>{result.reference}</p>
                       <p>{result.content}</p>
                     </div>

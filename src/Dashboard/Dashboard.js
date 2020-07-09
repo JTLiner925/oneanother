@@ -5,14 +5,10 @@ import DashSideNav from "../DashSideNav/DashSideNav";
 import DashMain from "../DashMain/DashMain";
 import Bible from "../Bible/Bible";
 import Invite from "../Invite/Invite";
-import GroupInfo from "../GroupInfo/GroupInfo";
 import ApiContext from "../ApiContext";
 import HEROKU_API from "../config";
-import NotFoundError from '../NotFoundError/NotFoundError'
-import store from "../Store";
 import CreateGroup from "../CreateGroup/CreateGroup";
 import CreateEvent from "../CreateEvent/CreateEvent";
-import PrayerRequests from "../PrayerRequests/PrayerRequests";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBars } from "@fortawesome/free-solid-svg-icons";
 import "./Dashboard.css";
@@ -36,8 +32,6 @@ class Dashboard extends Component {
   static contextType = ApiContext;
   HamNav = (e) => {
     let elem = document.querySelector(".side-nav-body");
-    // elem.classList.add("none");
-    // console.log(elem);
     if (elem.style.display === "block") {
       elem.style.display = "none";
     } else {
@@ -60,7 +54,6 @@ class Dashboard extends Component {
   };
   
   componentDidMount() {
-    let urls = [`${config.HEROKU_API}/api/groups`, `${HEROKU_API}/api/events`];
     Promise.all([
       fetch(`https://mighty-brook-70505.herokuapp.com/api/users`, {
         headers: {
@@ -88,7 +81,6 @@ class Dashboard extends Component {
         return Promise.all([userRes.json(), groupRes.json(), eventRes.json()]);
       })
       .then(([users, groups, events]) => {
-        // console.log(users, groups, events );
         
         let userId = users.find(user => user.first_name === window.localStorage.getItem('userName'))
         console.log(userId)
@@ -98,7 +90,6 @@ class Dashboard extends Component {
           events: events,
           userId: userId.id,
         });
-        // this.setUser(users[user].id)
       })
       .catch((error) => {
         console.log(error);
@@ -106,7 +97,6 @@ class Dashboard extends Component {
       });
     let i = window.location.search;
     let x = new URLSearchParams(i);
-    // console.log(x);
     for (let [key, value] of x) {
       this.setState({
         [key]: value,
@@ -116,10 +106,8 @@ class Dashboard extends Component {
 
   handleBiblePassage = (eventId) => {
     let selectedEvent = this.state.events.find((event) => {
-      // console.log(event, eventId)
       return event.id.toString() == eventId;
     });
-    // console.log(selectedEvent)
     if (selectedEvent) {
       let url = new URL(`${config.API_ENDPOINT}text/`);
       url.searchParams.set("q", selectedEvent.bible_passage);
@@ -140,7 +128,6 @@ class Dashboard extends Component {
       };
       fetch(url, options)
         .then((res) => {
-          // console.log(res);
           if (!res.ok) {
             throw new Error("Something went wrong, please try again later.");
           }
@@ -185,7 +172,6 @@ class Dashboard extends Component {
       });
   };
   joinGroup = (formData) => {
-    // console.log(formData);
     fetch(`https://mighty-brook-70505.herokuapp.com/api/groups/joingroup`, {
       headers: {
         "Content-Type": "application/json",
@@ -195,11 +181,9 @@ class Dashboard extends Component {
       body: JSON.stringify(formData),
     })
       .then((res) => {
-        // console.log(res);
         return res.json();
       })
       .then((resData) => {
-        // console.log(resData);
         if (resData.message !== "Already Joined Group") {
           this.props.history.push("/dashboard");
         } else {
@@ -213,67 +197,6 @@ class Dashboard extends Component {
       });
   };
 
- 
-
-//   getBibleVerse = async (eventId) => {
-//     let selectedEvent = this.state.events.find((event) => {
-//       // console.log(event, eventId)
-//       return event.id.toString() == eventId;
-//     });
-//     // console.log(selectedEvent)
-//     if (selectedEvent) {
-//       let url = new URL(`${config.API_ENDPOINT}text/`);
-//       url.searchParams.set("q", selectedEvent.bible_passage);
-//       const options = {
-//         method: "GET",
-
-//         headers: {
-//           Authorization: `Token ${config.API_KEY}`,
-//         },
-//       };
-      
-//     const res = await fetch(url, options)
-//     switch (res.status) {
-//         case 204:
-//             return null;
-//         case 200: {
-//             const { verse } = await res.json();
-//             return verse;
-//         }
-//         case 404: {
-//             throw new NotFoundError();
-//         }
-//         case 500: {
-//             const { error } = await res.json();
-//             const { message } = error;
-//             throw new Error(message);
-//         }
-//         default:
-//             break;
-//     }
-// }}
-
-// checkBibleVerseExists = async (address) => {
-//     try {
-//         const verse = await this.getBibleVerse(address);
-//         return !!verse;
-//     } catch {
-//         return false;
-//     }
-// }
-
-//   onSubmit: async () => {
-    
-//     if (await checkBibleVerseExists(address)) {
-//         const res = await fetch('http://myapi.com')
-//         //...
-//     } else {
-//         setState({
-//             error: "This verse does not exist"
-//         })
-//     }
-
-
   createEvent = (formData) => {
     console.log(formData);
     
@@ -286,7 +209,6 @@ class Dashboard extends Component {
       body: JSON.stringify(formData),
     })
       .then((res) => {
-        // console.log(res);
         return res.json();
       })
       .then(() => {
@@ -315,13 +237,11 @@ class Dashboard extends Component {
     });
   };
   handleGroup = (groupId) => {
-    // console.log(groupId)
     this.setState({
       groupId: groupId,
     });
   };
   handleUser = (userId) => {
-    // console.log(userId)
     this.setState({
       userId: userId,
     });
@@ -332,17 +252,6 @@ class Dashboard extends Component {
     });
   };
   renderMainRoutes() {
-    // const { groupId, groups } = this.state;
-    // let i = window.location.search;
-    // let x = new URLSearchParams(i);
-    // let id
-    // let y;
-    // for (let [key, value] of x) {
-    //   if (key === "groupId") {
-    //     y = `?groupId=${value}`;
-    //     id = value
-    //   }
-    // }
     let userName = window.localStorage.getItem("userName");
 
     return (
@@ -354,7 +263,6 @@ class Dashboard extends Component {
               if (group.id && group.id == this.state.groupId) {
                 return (
                   <h2 key={group.group_name}>{group.group_name}</h2>
-                  // <h2>{groupId ? this.state.groups[groupId].group_name: 'Select Group'}</h2>
                 );
               }
             })
@@ -411,12 +319,7 @@ class Dashboard extends Component {
             );
           }}
         />
-        {/* <Route
-          path="/groupinfo"
-          render={() => {
-            return <GroupInfo onInvite={this.invite}></GroupInfo>;
-          }}
-        /> */}
+        
         <Route
           path="/creategroup"
           render={() => {
@@ -459,8 +362,6 @@ class Dashboard extends Component {
     );
   }
   render() {
-    // console.log(this.state.eventId)
-
     let i = window.location.search;
     let x = new URLSearchParams(i);
     for (let [key, value] of x) {
@@ -468,10 +369,8 @@ class Dashboard extends Component {
       if (key === "groupId") {
         if (value !== this.state.groupId) {
           this.handleGroup(value);
-          //
         }
       }
-      // for(let [key, value] )
       if (key === "eventId") {
         if (value !== this.state.eventId) {
           this.handleBiblePassage(value);
@@ -492,7 +391,6 @@ class Dashboard extends Component {
       handleUser: this.handleUser,
       handleEvent: this.handleEvent,
     };
-    // console.log(this.state);
     return (
       <ApiContext.Provider value={value}>
         <section id="dash-body">

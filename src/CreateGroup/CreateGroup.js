@@ -1,8 +1,7 @@
 import React, { Component } from "react";
-import { Route, withRouter } from "react-router-dom";
 import { default as NumberFormat } from "react-number-format";
 import "./CreateGroup.css";
-import STORE from "../Store";
+
 
 export default class CreateGroup extends Component {
   state = {
@@ -14,24 +13,20 @@ export default class CreateGroup extends Component {
     this.props.onCreateGroup(this.state);
   };
   submitJoinHandler = (e) => {
-    //post for joining group
     e.preventDefault();
     let group = this.props.groups.find((g) => {
       return g.group_name === this.state.group_name;
     });
-    // console.log(group);
     this.props.onJoinGroup(group);
   };
   navHandler = () => {
     this.props.onHandleHam(this.state);
   };
   changeHandler = (e) => {
-    // console.log(e.target.id);
     if (e.target.name === "group_names") {
       let element = document.querySelector(
         `#${e.target.value.split(" ").join("_")}`
       );
-      // console.log(element.getAttribute('groupid'))
       let groupid;
 
       groupid = element.getAttribute("groupid");
@@ -47,17 +42,12 @@ export default class CreateGroup extends Component {
     }
   };
   render() {
-    // console.log(this.props);
     return (
       <div className="create-body" onClick={this.navHandler}>
-        {/* <nav className="main-nav">
-          <h2>Group Name</h2>
-          <p>{STORE.one_another_users[0].first_name}</p>
-        </nav> */}
+       
         <form className=" join-form" onSubmit={this.submitJoinHandler}>
           <h3>Join Group</h3>
           <div>
-            {/* create a search/option ? when you search name then valid options pop up */}
             Search Groups
             <p>{this.props.message}</p>
             <select name="group_names" onChange={this.changeHandler}>
@@ -103,39 +93,17 @@ export default class CreateGroup extends Component {
               ></textarea>
             </label>
           </div>
-          {/* <div>
-            <label htmlFor="leader">
-              Leader
-              <input
-                id="leader"
-                name="group_leader"
-                onChange={this.changeHandler}
-              ></input>
-            </label>
-          </div>
-          <div>
-            <label htmlFor="leader">
-              Leader
-              <input
-                id="leader"
-                name="group_leader"
-                onChange={this.changeHandler}
-              ></input>
-            </label>
-          </div> */}
+          
           <div className="create-input">
             <label htmlFor="phone">
-              {/* won't let you use dashes */}
               Phone Number
               <NumberFormat
                 id="phone"
                 name="leader_phone"
                 onChange={this.changeHandler}
                 format=" (###) ###-####"
-                // allowEmptyFormatting
                 mask="_"
               />
-              {/* <input></input> */}
             </label>
           </div>
           <div className="create-input">

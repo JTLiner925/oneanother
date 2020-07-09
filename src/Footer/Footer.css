@@ -2,14 +2,12 @@ footer {
   display: flex;
   justify-content: space-evenly;
   background-color: #1b98f8;
-
   position: fixed;
   bottom: 0;
-  left:0;
-  right:0;
+  left: 0;
+  right: 0;
   width: 100%;
 }
-footer a{
+footer a {
   color: #ffffff;
-
 }

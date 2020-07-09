@@ -1,13 +1,10 @@
 import React, { Component } from "react";
-import { Route, Link } from "react-router-dom";
+import { Route } from "react-router-dom";
 import "./DashMain.css";
 import ApiContext from "../ApiContext";
 import STORE from "../Store";
 import DashCenter from "../DashCenter/DashCenter";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faBars } from "@fortawesome/free-solid-svg-icons";
 import DashRight from "../DashRight/DashRight";
-import DashSideNav from "../DashSideNav/DashSideNav";
 
 export default class DashMain extends Component {
   state = {
@@ -16,16 +13,6 @@ export default class DashMain extends Component {
     users: "",
   };
   static contextType = ApiContext;
-  // HamNav = (e) => {
-  //   let elem = document.querySelector(".side-nav-body");
-  //   elem.classList.add("hide");
-  //   console.log(elem);
-  //   if (elem.style.display === "block") {
-  //     elem.style.display = "none";
-  //   } else {
-  //     elem.style.display = "block";
-  //   }
-  // };
 
   changeHandler = (e) => {
     this.setState({
@@ -34,19 +21,6 @@ export default class DashMain extends Component {
   };
 
   navHandler = (e) => {
-    // e.preventDefault();
-    // let checkedItem = this.props.events.find((event) => {
-    //   console.log(event.needed_items)
-    //   return(
-    //     event.needed_item == e
-    //   )
-    // })
-    // console.log(checkedItem)
-    // if(checkedItem.checked === 'false'){
-    //   checkedItem.checked = 'true'
-    // }if(checkedItem.checked === 'true'){
-    //   checkedItem.checked = 'false'
-    // }else{
     this.props.onHandleHam(this.state);
   };
   render() {
@@ -60,41 +34,25 @@ export default class DashMain extends Component {
         id = value;
       }
     }
-    const { events, eventId, groupId } = this.props;
+    const { events, groupId } = this.props;
     return (
       <ApiContext.Consumer>
         {({ eventId }) => (
           <div className="main-body">
-            {/* <nav className="main-nav">
-              <FontAwesomeIcon id="icon" icon={faBars} onClick={this.HamNav} />
-              <h2>{groupId ? STORE.groups[groupId].name : "Select Group"}</h2>
-
-              <Link to="/signup">
-                <p>
-                  {userId
-                    ? STORE.one_another_users[userId].first_name
-                    : "joker"}
-                </p>
-              </Link>
-            </nav> */}
-
             <div className="event-alert" onClick={this.navHandler}>
-              {/* <h3>Announcements</h3> */}
-
               {eventId ? (
                 events.map((event, i) => {
-                  // console.log(event.group_event)
                   if (event.id == eventId && event.group_event == groupId) {
-                    return(
-                    <>
-                      <h3>Announcements</h3>
-                      <p key={i}>{event.announcements}</p>
-                    </>
-                    )}
+                    return (
+                      <>
+                        <h3>Announcements</h3>
+                        <p key={i}>{event.announcements}</p>
+                      </>
+                    );
+                  }
                 })
               ) : (
-                <div className='dashHero'>
-                  
+                <div className="dashHero">
                   <p className="qotd">
                     “Discipleship is not an option. Jesus says that if anyone
                     would come after me, he must follow me.”

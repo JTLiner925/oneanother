@@ -24,14 +24,9 @@ export default class PrayerRequests extends Component {
   render() {
     return (
       <div className="main-body">
-        {/* <nav className="main-nav">
-          <h2>Group Name</h2>
-          <p>Profile</p>
-        </nav> */}
         <form className="form-template join-form" onSubmit={this.submitHandler}>
           <h3>Prayer Request</h3>
           <div>
-            {/* create a search/option ? when you search name then valid options pop up */}
             <label htmlFor="prayer-request">
               {" "}
               <input

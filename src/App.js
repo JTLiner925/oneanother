@@ -14,12 +14,10 @@ class App extends Component {
     users: [],
   };
   signUp = (formData) => {
-    // console.log(formData);
     fetch(`https://mighty-brook-70505.herokuapp.com/api/users/signup`, {
       headers: {
         "Content-Type": "application/json",
       },
-      // mode: 'no-cors',
       method: "POST",
       body: JSON.stringify(formData),
     })
@@ -36,24 +34,19 @@ class App extends Component {
     });
   };
   logIn = (formData) => {
-    console.log(formData);
     fetch(`https://mighty-brook-70505.herokuapp.com/api/users/login`, {
       headers: {
         "Content-Type": "application/json",
       },
-//just seeing if my pushes are working
-      // mode: 'no-cors',
       method: "POST",
       body: JSON.stringify(formData),
     })
-      .then((res) => { 
+      .then((res) => {
         return res.json();
       })
       .then((userData) => {
         window.localStorage.setItem("token", userData.token);
         window.localStorage.setItem("userName", userData.userName);
-        
-
         this.props.history.push("/dashboard");
       })
       .catch((error) => {
@@ -61,7 +54,6 @@ class App extends Component {
       });
   };
   render() {
-    // console.log(this.props, window)
     return (
       <main className="App">
         {["/", "/login", "/signup"].map((path) => (

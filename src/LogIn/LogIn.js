@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import "./LogIn.css";
 
 export default class LogIn extends Component {
-  state = {}
+  state = {};
   submitHandler = (e) => {
     e.preventDefault();
     this.props.onLogIn(this.state);
@@ -38,15 +38,11 @@ export default class LogIn extends Component {
           onChange={this.changeHandler}
         />
         {/* <a href="#">Forgot Password</a> */}
-        
-          <button type="submit" className="login">
-            Login
-          </button>
-        
+        <button type="submit" className="login">
+          Login
+        </button>
         <Link to="/signup">
-          <button className="signup">
-            Sign Up Now!
-          </button>
+          <button className="signup">Sign Up Now!</button>
         </Link>
       </form>
     );

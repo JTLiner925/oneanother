@@ -1,20 +1,12 @@
 .bible-text {
   padding-top: 20px;
-  /* display: flex;
-  flex-direction: column; */
-  /* overflow: scroll; */
   min-height: 200px;
   max-height: 400px;
   line-height: 1.5;
-  /* justify-content: space-around; */
-  /* padding-left: 20px;
-  padding-right: 20px; */
 }
-/* .bible-text::-webkit-scrollbar {
-  display: none;
-} */
+
 @media screen and (min-width: 650px) {
-.bible-text {
-  height: 680;
-}
+  .bible-text {
+    height: 680;
+  }
 }

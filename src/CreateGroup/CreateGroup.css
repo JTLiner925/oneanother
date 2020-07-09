@@ -1,11 +1,3 @@
-/* 
-.main-nav  {
-  display: flex;
-  justify-content: space-between;
-  padding-left: 40px;
-  padding-right: 40px;
-  background-color: #aaa9a9
-} */
 .create-body {
   margin: 0;
   padding-top: 40px;
@@ -20,31 +12,28 @@
     rgb(2, 39, 245)
   );
 }
-/* .group-option{
+.create-input {
   width: 100%;
-} */
-.create-input{
-  width: 100%;
-  
 }
-.create-input input, .create-input textarea{
+.create-input input,
+.create-input textarea {
   width: 90%;
-  padding: .5em;
+  padding: 0.5em;
   padding-left: 1em;
   font-size: 1.3em;
-
   border-radius: 0px;
   border: 0px;
   border-radius: 5px;
   background-color: hsl(0, 0%, 93%);
 }
-.create-input input:hover, .create-input textarea:hover{
+.create-input input:hover,
+.create-input textarea:hover {
   background-color: hsl(0, 0%, 73%);
   transition: 500ms;
 }
-.create-input input:active, .create-input textarea:active{
+.create-input input:active,
+.create-input textarea:active {
   background-color: hsl(0, 0%, 73%);
-
 }
 
 .join-form select {
@@ -53,7 +42,7 @@
   font-size: 1.3em;
 
   height: 50px;
-  padding-left: .6em;
+  padding-left: 0.6em;
   align-content: center;
   width: 100%;
   justify-content: space-around;
@@ -68,7 +57,7 @@
 .create-form button {
   font-size: 1em;
   color: var(--white);
-  padding: .6em;
+  padding: 0.6em;
   font-size: 1.3em;
 
   margin: 0.5em;
@@ -81,9 +70,10 @@
 }
 
 .join-form button:hover,
-.create-form button:hover{
-background-color: #0342b8;
-  transition: 500ms;}
+.create-form button:hover {
+  background-color: #0342b8;
+  transition: 500ms;
+}
 @media screen and (min-width: 650px) {
   .main-body {
     flex: 4;

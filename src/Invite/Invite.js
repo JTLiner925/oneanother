@@ -14,10 +14,6 @@ export default class Invite extends Component {
   render() {
     return (
       <div className="main-body">
-        {/* <nav className="main-nav">
-          <h2>Group Name</h2>
-          <p>Profile</p>
-        </nav> */}
         <form className="form-template" onSubmit={this.submitHandler}>
           <h3>Invite your friends!!</h3>
           <div>

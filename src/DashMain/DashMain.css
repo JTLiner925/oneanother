@@ -33,30 +33,18 @@
   );
   background-repeat: no-repeat;
   background-size: cover;
-  /* background-position-y: -80px; */
-  /* background-color: #e2e0e0; */
-  /* border-radius: 10px; */
-  /* margin-bottom: 40px; */
-  /* margin-bottom: 15px; */
-  /* position: relative; */
 }
 .event-alert h3 {
   font-family: "Permanent Marker", cursive;
   color: #ffffff;
 }
 .event-alert p {
-  /* font-family: "Permanent Marker", cursive; */
   font-size: 24px;
   max-width: 330px;
   margin: 15px auto;
   color: #ffffff;
 }
-/* svg:not(:root).svg-inline--fa {
-  overflow: visible;
-  height: auto;
-  /* width: 30%; */
-/* padding: 20px; */
-/* } */
+
 .main-nav #icon {
   overflow: visible;
   height: auto;
@@ -72,11 +60,9 @@
     rgb(2, 39, 245)
   );
   color: rgb(2, 39, 245);
-  /* display: block; */
   position: absolute;
   border-radius: 10px;
   box-shadow: 0 1px 8px 0 rgba(0, 0, 0, 0.2);
-
   left: 20px;
   top: 30px;
   z-index: 2;
@@ -105,11 +91,8 @@
 .leader-box {
   padding: 20px;
   padding-bottom: 0;
-  /* background-color: rgb(55, 242, 214); */
-  /* background: linear-gradient(45deg, rgb(2, 39, 245), rgb(63, 174, 243), rgb(55, 242, 214) ); */
   box-shadow: 0 0 8px 0 rgba(0, 0, 0, 0.2);
   overflow: scroll;
-  /* margin-bottom: 15px; */
 }
 
 .bible-box-dash {
@@ -117,26 +100,18 @@
   line-height: 1.5;
 }
 .need-box {
-  /* background-color: rgba(115, 221, 254, 0.317); */
   min-height: 400px;
 }
 .pitch-box {
   background-color: #daecfa;
 }
 .leader-box {
-  /* background-color: rgba(112, 248, 223, 0.173); */
   min-height: 300px;
 }
 .question-box {
   padding: 20px;
   padding-bottom: 0;
   background-color: #d5fcf8;
-
-  /* background-color: rgba(115, 221, 254, 0.317); */
-
-  /* background: linear-gradient(45deg, rgb(2, 39, 245), rgb(63, 174, 243), rgb(55, 242, 214) ); */
-  /* box-shadow: 0 0 8px 0 rgba(0, 0, 0, 0.2); */
-  /* margin-bottom: 15px; */
   z-index: 1;
   min-height: 400px;
 }
@@ -145,13 +120,9 @@
 }
 
 @media screen and (min-width: 650px) {
-  /* .main-body {
-    flex: 3;
-    
-  } */
+  
   .main {
     display: flex;
-    /* width: 100%; */
     justify-content: space-between;
     margin-bottom: 50px;
     flex: 3;
@@ -159,7 +130,6 @@
 
   .center-section {
     display: flex;
-    /* width: 60%; */
     justify-content: space-evenly;
     flex: 2;
   }
@@ -177,7 +147,6 @@
 }
   .box-dash {
     margin: 20px;
-    /* background-color: #e2e0e0; */
     border-radius: 10px;
   }
 }

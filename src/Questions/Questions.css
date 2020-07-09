@@ -1,12 +1,10 @@
-.Question{
+.Question {
   display: flex;
   flex-direction: column;
-  /* margin:0 auto; */
   margin-top: 10px;
   justify-content: space-around;
   min-height: 300px;
 }
-.Question p{
-
+.Question p {
   line-height: 1.7;
 }

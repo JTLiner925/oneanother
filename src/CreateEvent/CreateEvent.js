@@ -1,10 +1,7 @@
 import React, { Component } from "react";
-import store from "../Store";
 import HEROKU_API from "../config";
 import config from "../config";
-import NotFoundError from "../NotFoundError/NotFoundError";
 import "./CreateEvent.css";
-import ApiContext from "../ApiContext";
 
 export default class CreateEvent extends Component {
   state = {
@@ -18,14 +15,8 @@ export default class CreateEvent extends Component {
       error: null,
     });
   };
-  // static defaultProps = {
-  //   history: {
-  //     push: () => {},
-  //   },
-  // };
-  // static contextType = ApiContext;
+ 
   componentDidMount() {
-    // let groupId = this.state.group.id
     fetch(`https://mighty-brook-70505.herokuapp.com/api/events`, {
       headers: {
         "Content-Type": "application/json",
@@ -34,7 +25,6 @@ export default class CreateEvent extends Component {
       method: "GET",
     })
       .then((res) => {
-        // console.log(res);
         if (!res.ok) {
           throw new Error("Something went wrong, please try again later.");
         }
@@ -106,14 +96,11 @@ export default class CreateEvent extends Component {
     this.props.onHandleHam(this.state);
   };
   changeHandler = (e) => {
-    // console.log(e.target.id);
     if (e.target.name === "group_name") {
       let element = document.querySelector(
         `#${e.target.value.split(" ").join("_")}`
       );
-      // console.log(element.getAttribute('groupid'))
       let groupid;
-      // console.log(e.target.value, element)
       groupid = element.getAttribute("groupid");
 
       this.setState({
@@ -127,18 +114,13 @@ export default class CreateEvent extends Component {
     }
   };
   render() {
-    // console.log(this.state, this.context);
     const { userId } = this.props;
     return (
       <div className="event-body" onClick={this.navHandler}>
-        {/* <nav className="main-nav">
-            <h2>Group Name</h2>
-            <p>Profile</p>
-          </nav> */}
+       
         <form className="event-form" onSubmit={this.submitHandler}>
           <h3>Create New Event</h3>
           <div>
-            {/* create a search/option ? when you search name then valid options pop up */}
             Search Groups
             <select
               className="event-select"
@@ -221,16 +203,6 @@ export default class CreateEvent extends Component {
                   ></input>
                 </label>
               </div>
-              {/* <div>
-              <label htmlFor="lesson-summary">
-                Lesson Summary
-                <input
-                  id="lesson-summary"
-                  name="lesson_summary"
-                  onChange={this.changeHandler}
-                ></input>
-              </label>
-              </div> */}
               <div>
                 <label htmlFor="bible-passage">
                   Bible Passage
@@ -253,9 +225,6 @@ export default class CreateEvent extends Component {
                     onChange={this.changeHandler}
                   ></textarea>
                 </label>
-                {/* <button type="submit" className="add-another-question">
-              Add Another Question
-            </button> */}
               </div>
             </div>
             <button type="submit" className="create-event">

@@ -1,11 +1,3 @@
-/* 
-.main-nav  {
-  display: flex;
-  justify-content: space-between;
-  padding-left: 40px;
-  padding-right: 40px;
-  background-color: #aaa9a9
-} */
 .event-body {
   margin: 0;
   padding-top: 40px;
@@ -32,15 +24,12 @@
   height: 50px;
   display: block;
   border-radius: 10px;
-  /* height: 30px; */
   padding: .5em;
   padding-left: 1em;
   font-size: 1.3em;
-
   align-content: center;
   width: 100%;
   align-items: center;
-  /* justify-content: space-around; */
   margin: 10px auto;
   margin-bottom: 10px;
 }
@@ -48,7 +37,6 @@
   width: 90%;
   padding: .5em;
   padding-left: 1em;
-
   border-radius: 0px;
   font-size: 1.3em;
   border: 0px;
@@ -61,7 +49,6 @@
 }
 .event-input input:active, .event-input textarea:active{
   background-color: hsl(0, 0%, 73%);
-
 }
 .event-form button{
   font-size: 1.3em;
@@ -71,16 +58,12 @@
   border-radius: 10px;
   border-width: 0px;
   text-transform: uppercase;
-
   background-color: #0b5df5;
 }
 
 .event-form button:hover{
 background-color: #0342b8;
   transition: 500ms;}
-/* .event-form {
-  text-align: left;
-} */
 .lesson {
   flex-direction: column;
 }
