@@ -53,7 +53,7 @@ export default class CreateEvent extends Component {
 
   submitHandler = (e) => {
     e.preventDefault();
-    e.persist();
+  
     let checkVerse = this.state.bible_passage;
 
     let url = new URL(`${config.API_ENDPOINT}text/`);
