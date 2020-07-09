@@ -32,6 +32,7 @@ export default class DashSideNav extends Component {
     const { groups = [] } = this.props;
     const groupEvents = [].concat(events)
       .sort((a, b) => a.id > b.id ? 1 : -1)
+      console.log(groupEvents)
     return (
       <div className="side-nav-body">
         <div className="myLinks">
