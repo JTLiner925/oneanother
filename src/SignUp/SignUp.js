@@ -58,7 +58,7 @@ export default class SignUp extends Component {
           required
         />
         {/* <a href="#">Forgot Password</a> */}
-
+        <p>{this.state.error}</p>
         <label htmlFor="first-name-input">First Name</label>
         <input
           id="first-name-input"
