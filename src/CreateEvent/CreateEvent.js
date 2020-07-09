@@ -115,6 +115,7 @@ export default class CreateEvent extends Component {
     }
   };
   render() {
+    console.log(this.state)
     const { userId } = this.props;
     return (
       <div className="event-body" onClick={this.navHandler}>
@@ -227,7 +228,7 @@ export default class CreateEvent extends Component {
                 </label>
               </div>
             </div>
-            <p>{this.state.error}</p>
+            {/* <p>{this.state.error}</p> */}
             <button type="submit" className="create-event">
               Create Event
             </button>
