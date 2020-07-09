@@ -60,19 +60,23 @@ export default class CreateEvent extends Component {
       },
     };
 
-    fetch(url.href, options).then((res) => {
-      console.log(res)
-      if (!res.ok) {
-        throw new Error(
-          'Please check Bible passage, write out in long form. i.e. "Matthew 28:18-20"'
-        );
-      }
-      this.props.onCreateEvent(this.state);
-    })
-    .catch((error) => {
-      console.log(error)
-      this.setState({ error })
-    })
+    fetch(url.href, options)
+      .then((res) => {
+        console.log(res);
+        if (!res.ok) {
+          throw new Error(
+            'Please check Bible passage, write out in long form. i.e. "Matthew 28:18-20"'
+          );
+        }
+        return res.json()
+      })
+      .then((res) => {
+        this.props.onCreateEvent(this.state);
+      })
+      .catch((error) => {
+        console.log(error);
+        this.setState({ error });
+      });
   };
   //   let group = this.props.groups.find((g) => {
   //     return g.group_name === this.state.group_event;
