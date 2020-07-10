@@ -39,7 +39,7 @@ export default class LogIn extends Component {
           onChange={this.changeHandler}
           required
         />
-        <p>{this.props.error}</p>
+        <p>{this.props.message}</p>
         {/* <a href="#">Forgot Password</a> */}
         <button type="submit" className="login">
           Login
