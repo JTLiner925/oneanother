@@ -29,6 +29,7 @@ export default class LogIn extends Component {
           type="email"
           name="user_email"
           onChange={this.changeHandler}
+          required
         />
         Password:
         <input
@@ -36,6 +37,7 @@ export default class LogIn extends Component {
           type="password"
           name="user_password"
           onChange={this.changeHandler}
+          required
         />
         {/* <a href="#">Forgot Password</a> */}
         <button type="submit" className="login">
