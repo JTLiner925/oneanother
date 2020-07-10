@@ -47,7 +47,7 @@ class App extends Component {
         return res.json();
        }else{
         return res.json().then((data) => {
-          Promise.reject(new Error(data.error.message))
+         return Promise.reject(new Error(data.error.message))
         })
        }
       })
