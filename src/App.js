@@ -43,23 +43,25 @@ class App extends Component {
       body: JSON.stringify(formData),
     })
       .then((res) => {
-       
+       if(res.ok){
         return res.json();
+       }else{
+        return res.json().then((data) => {
+          Promise.reject(new Error(data.error.message))
+        })
+       }
       })
       .then((userData) => {
-       if(userData.message !== 'Invalid Password'){
+  
         window.localStorage.setItem("token", userData.token);
         window.localStorage.setItem("userName", userData.userName);
         this.props.history.push("/dashboard");
-       }else{
-         this.setState({
-           message: userData.message
-         })
-       }
+       
+         
       })
       .catch((error) => {
         console.log(error);
-        // this.setState({error})
+        this.setState({message: error.message})
       });
   };
   render() {
