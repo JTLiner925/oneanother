@@ -31,7 +31,7 @@ min-height: 0;
 .leader p, .pitch p{
   line-height: 1.7;
 }
-.main-body {
+.group-body {
   display: flex;
   flex-direction: column;
   align-content: center;
@@ -45,18 +45,22 @@ min-height: 0;
 }
 
 @media screen and (min-width: 650px){
-  .main-body{
-    flex: 4;
+  .group-body{
+    display: flex;
+    flex-direction: row;
   }
   .group-row-one{
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     justify-content: space-around;
     align-items: center;
     margin: 0 20px;
-  }
-  .group-row-one {    
     height: unset;
+  }
+  .group-row-one { 
+    display: flex;
+    flex-direction: row;   
+    
   }
   .row-two{
     height: 300px;
@@ -66,5 +70,6 @@ min-height: 0;
     margin-top: 20px;
     margin-bottom: 10px;
     border-radius: 10px;
+    width: 45%;
   }
 }

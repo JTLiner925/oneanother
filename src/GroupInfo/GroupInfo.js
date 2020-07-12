@@ -18,7 +18,7 @@ export default class GroupInfo extends Component {
       });
     }
     return (
-      <div className="main-body">
+      <div className="group-body">
         <div className="group-row-one">
           <div className="group-box pitch-box" onClick={this.submitHandler}>
             {groupId ? (
