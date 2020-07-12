@@ -52,7 +52,7 @@ class Dashboard extends Component {
       error: null,
     });
   };
-  
+
   componentDidMount() {
     Promise.all([
       fetch(`https://mighty-brook-70505.herokuapp.com/api/users`, {
@@ -81,9 +81,10 @@ class Dashboard extends Component {
         return Promise.all([userRes.json(), groupRes.json(), eventRes.json()]);
       })
       .then(([users, groups, events]) => {
-        
-        let userId = users.find(user => user.first_name === window.localStorage.getItem('userName'))
-        console.log(userId)
+        let userId = users.find(
+          (user) => user.first_name === window.localStorage.getItem("userName")
+        );
+        console.log(userId);
         this.setState({
           users: users,
           groups: groups,
@@ -199,7 +200,7 @@ class Dashboard extends Component {
 
   createEvent = (formData) => {
     console.log(formData);
-    
+
     fetch(`https://mighty-brook-70505.herokuapp.com/api/events/createevent`, {
       headers: {
         "Content-Type": "application/json",
@@ -262,9 +263,7 @@ class Dashboard extends Component {
           {this.state.groupId ? (
             this.state.groups.map((group) => {
               if (group.id && group.id == this.state.groupId) {
-                return (
-                  <h2 key={group.group_name}>{group.group_name}</h2>
-                );
+                return <h2 key={group.group_name}>{group.group_name}</h2>;
               }
             })
           ) : (
@@ -273,7 +272,7 @@ class Dashboard extends Component {
 
           <Link to="/">
             <p className="userName" key={userName}>
-             Log out {userName}
+              Log out {userName}
             </p>
           </Link>
         </nav>
@@ -320,7 +319,7 @@ class Dashboard extends Component {
             );
           }}
         />
-        
+
         <Route
           path="/creategroup"
           render={() => {
@@ -366,7 +365,6 @@ class Dashboard extends Component {
     let i = window.location.search;
     let x = new URLSearchParams(i);
     for (let [key, value] of x) {
-      
       if (key === "groupId") {
         if (value !== this.state.groupId) {
           this.handleGroup(value);

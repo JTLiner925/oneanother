@@ -4,7 +4,7 @@
 .center-section {
   display: flex;
 }
-.row-two-dash{
+.row-two-dash {
   display: flex;
   flex-direction: column;
 }
@@ -15,13 +15,14 @@
   background-color: #bef8ef;
 }
 @media screen and (min-width: 650px) {
-  
   .row-two-dash {
     display: flex;
     flex-direction: row;
     /* flex-direction: column; */
   }
-  
+  .question-box {
+    text-align: left;
+  }
   .bible-box-dash {
     max-height: 700px;
   }

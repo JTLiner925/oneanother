@@ -78,27 +78,26 @@
 }
 @media screen and (min-width: 650px) {
   .main-body {
-    text-align: center;
-    flex: 4;
+    text-align: left;
+    /* flex: 4; */
   }
   .event-form {
     width: 50%;
     margin: 0 auto;
   }
-  .create-button{
-    width: 50%;
+  .create-button {
+    width: 70%;
     margin: 0 auto;
   }
-  .create-event{
+  .create-event {
     width: 60%;
   }
   .event-input input,
-.event-input textarea {
-  width: 100%;
-}
-.event-select{
-  margin-top: 10px;
-  width: 100%;
-}
- 
+  .event-input textarea {
+    width: 100%;
+  }
+  .event-select {
+    margin-top: 10px;
+    width: 100%;
+  }
 }
