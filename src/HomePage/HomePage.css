@@ -47,6 +47,13 @@ body {
   overflow-x: hidden;
   height: 250px;
 }
+.carousel button {
+  border-radius: 50%;
+  height: 55px;
+  margin-left: 5px;
+  margin-right: 5px;
+}
+
 .carousel p {
   font-size: 24px;
   padding-top: 10px;
@@ -117,7 +124,7 @@ body {
   display: flex;
   height: 400px;
 }
-.sign-up{
+.sign-up {
   font-size: 1.2em;
   color: var(--white);
   padding: 1em;
@@ -158,6 +165,21 @@ body {
   flex-direction: column;
   margin-bottom: 30px;
 }
+
+.carousel svg:not(:root).svg-inline--fa {
+  overflow: hidden;
+  height: 50%;
+  width: 40%;
+  color: linear-gradient(
+    45deg,
+    rgb(55, 242, 214),
+    rgb(63, 174, 243),
+    rgb(2, 39, 245)
+  );
+  background-clip: icon;
+  -webkit-text-fill-color: transparent;
+}
+
 svg:not(:root).svg-inline--fa {
   overflow: visible;
   height: auto;
