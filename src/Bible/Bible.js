@@ -1284,7 +1284,7 @@ export default class DashMain extends Component {
                 name="book"
                 onChange={this.changeHandler}
               >
-                <option>Select Book</option>
+                <option>Book</option>
                 {Object.keys(books).map((book) => {
                   return <option key={book}>{book}</option>;
                 })}
@@ -1295,7 +1295,7 @@ export default class DashMain extends Component {
                 name="chapter"
                 onChange={this.changeHandler}
               >
-                <option>Select Chapter</option>
+                <option>Chapter</option>
                 {this.state.book &&
                   books[this.state.book].Chapters.map((chapter) => {
                     return <option key={chapter}>{chapter}</option>;
