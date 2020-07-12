@@ -5,11 +5,11 @@
 .Dash__main {
   width: 100%;
 }
-.dashHeader{
+.dashHeader {
   font-size: 36px;
   color: black;
   -webkit-text-fill-color: white; /* Will override color (regardless of order) */
-  -webkit-text-stroke-width: .5px;
+  -webkit-text-stroke-width: 0.5px;
   -webkit-text-stroke-color: rgb(126, 126, 126);
 }
 .main-nav {
@@ -27,9 +27,15 @@
   right: 20px;
   top: 10px;
 }
-@media screen and (min-width: 650px) {
+@media screen and (min-width: 550px) {
   #dash-body {
     display: flex;
     flex-direction: row;
+  }
+  .userName {
+    margin: 0;
+    position: absolute;
+    right: 20px;
+    top: 40px;
   }
 }
