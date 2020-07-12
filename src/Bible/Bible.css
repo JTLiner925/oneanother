@@ -125,4 +125,16 @@
     background-color: #e2e0e0;
     box-shadow: 0 1px 8px 0 rgba(0, 0, 0, 0.2);
   }
+  .select-options {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    align-content: center;
+    justify-content: center;
+  }
+  .bible-select {
+    width: 20%;
+    margin: 10px;
+    justify-content: center;
+  }
 }

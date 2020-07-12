@@ -59,7 +59,6 @@ export default class DashMain extends Component {
     };
     fetch(url.href, options)
       .then((res) => {
-       
         if (!res.ok) {
           throw new Error("Something went wrong, please try again later.");
         }
@@ -93,7 +92,7 @@ export default class DashMain extends Component {
     url.searchParams.set("include-heading", true);
     url.searchParams.set("include-short-copyright", true);
     url.searchParams.set("indent-using", "tab");
-    
+
     const options = {
       method: "GET",
 
@@ -1272,7 +1271,9 @@ export default class DashMain extends Component {
                 placeholder="Search for keywords i.e. 'abide'  'love'  'Jesus' "
               ></input>
             </label>
-            <button  className='bible-submit' type="submit">Submit</button>
+            <button className="bible-submit" type="submit">
+              Submit
+            </button>
           </form>
           <form className="select-passage" onSubmit={this.handleBibleReference}>
             <h3 className="select-passage-header">Select Passage</h3>
@@ -1300,9 +1301,10 @@ export default class DashMain extends Component {
                     return <option key={chapter}>{chapter}</option>;
                   })}
               </select>
-
-              <button className='bible-submit' type="submit">Submit</button>
             </div>
+            <button className="bible-submit" type="submit">
+              Submit
+            </button>
           </form>
         </div>
         <div className="row-one">
