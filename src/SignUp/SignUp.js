@@ -31,7 +31,7 @@ export default class SignUp extends Component {
   render() {
     return (
       <form className="signup-container" onSubmit={this.submitHandler}>
-        <h1>Sign up</h1>
+        <h1 className='signup-header'>Sign up</h1>
         <label htmlFor="email-input">Email:</label>
         <input
           id="email-input"

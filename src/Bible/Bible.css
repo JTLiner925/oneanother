@@ -6,7 +6,7 @@
 .bible-select {
   height: 45px;
   display: block;
-  border-radius: 10px;
+  border-radius: 25px;
   padding-left: 1em;
   align-content: center;
   width: 60%;
@@ -50,7 +50,7 @@
   font-size: 1.3em;
   color: var(--white);
   padding: 0.6em;
-  border-radius: 10px;
+  border-radius: 25px;
   border-width: 0px;
   text-transform: uppercase;
   margin-bottom: 20px;

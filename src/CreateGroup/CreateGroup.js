@@ -47,8 +47,9 @@ export default class CreateGroup extends Component {
        
         <form className=" join-form" onSubmit={this.submitJoinHandler}>
           <h3>Join Group</h3>
-          <div>
-            Search Groups
+          <p>Search Groups</p>
+          <div className='join-div'>
+            
             <p>{this.props.message}</p>
             <select name="group_names" onChange={this.changeHandler}>
               {" "}
@@ -69,9 +70,9 @@ export default class CreateGroup extends Component {
               Join Group
             </button>
           </div>
-          <p>display group they picked</p>
         </form>
         <form className=" create-form" onSubmit={this.submitHandler}>
+          <div className='create-inputs'>
           <h3>Create New Group</h3>
           <div className="create-input">
             <label htmlFor="name">
@@ -135,6 +136,7 @@ export default class CreateGroup extends Component {
                 onChange={this.changeHandler}
               ></textarea>
             </label>
+          </div>
           </div>
           <button type="submit" className="create-group">
             Create Group

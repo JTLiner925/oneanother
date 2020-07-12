@@ -12,30 +12,32 @@
     rgb(2, 39, 245)
   );
 }
-.event-body h3{
+.event-body h3 {
   padding-bottom: 20px;
 }
 .event-form {
-  width: 90%;
-
+  display: flex;
   flex-direction: column;
+  align-content: center;
+  width: 90%;
 }
 .event-select {
   height: 50px;
   display: block;
-  border-radius: 10px;
-  padding: .5em;
+  border-radius: 25px;
+  padding: 0.5em;
   padding-left: 1em;
   font-size: 1.3em;
   align-content: center;
-  width: 100%;
+  width: 98%;
   align-items: center;
   margin: 10px auto;
   margin-bottom: 10px;
 }
-.event-input input, .event-input textarea{
+.event-input input,
+.event-input textarea {
   width: 90%;
-  padding: .5em;
+  padding: 0.5em;
   padding-left: 1em;
   border-radius: 0px;
   font-size: 1.3em;
@@ -43,27 +45,34 @@
   border-radius: 5px;
   background-color: hsl(0, 0%, 93%);
 }
-.event-input input:hover, .event-input textarea:hover{
+.event-input input:hover,
+.event-input textarea:hover {
   background-color: hsl(0, 0%, 73%);
   transition: 500ms;
 }
-.event-input input:active, .event-input textarea:active{
+.event-input input:active,
+.event-input textarea:active {
   background-color: hsl(0, 0%, 73%);
 }
-.event-form button{
+.create-button {
+  text-align: center;
+}
+
+
+.event-form button {
   font-size: 1.3em;
   color: var(--white);
-  padding: .6em;
-  margin: 0.5em;
-  border-radius: 10px;
+  padding: 0.6em;
+  border-radius: 25px;
   border-width: 0px;
   text-transform: uppercase;
   background-color: #0b5df5;
 }
 
-.event-form button:hover{
-background-color: #0342b8;
-  transition: 500ms;}
+.event-form button:hover {
+  background-color: #0342b8;
+  transition: 500ms;
+}
 .lesson {
   flex-direction: column;
 }
