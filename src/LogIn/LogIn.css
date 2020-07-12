@@ -21,7 +21,7 @@
     transform: rotate(30deg);
   }
 }
-.welcome{
+.welcome {
   color: #ffffff;
 }
 .container {
@@ -46,9 +46,13 @@
 .links {
   text-align: center;
 }
-
+.buttons {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
 .login,
-.signup {
+.signup-now {
   font-size: 1.2em;
   color: var(--white);
   padding: 1em;
@@ -82,20 +86,19 @@
   margin: 0.2em auto;
 }
 .container a {
-  width: 100%;
-  text-align: center;
+  width: 50%;
+  /* text-align: center; */
   /* margin: .5em auto; */
 }
-a .signup {
+a .signup-now {
   padding: 0.7em;
-
+  width: 100%;
   margin: 0.2em auto;
-  width: 60%;
 }
-.signup {
+.signup-now {
   background-color: var(--accent-color);
 }
-.signup:hover {
+.signup-now:hover {
   background-color: var(--dark-accent-color);
 }
 
@@ -118,4 +121,37 @@ a .signup {
 
 .links:hover {
   color: var(--dark-main-color);
+}
+@media screen and (min-width: 600px) {
+  .buttons{
+    flex-direction: column;
+  }
+}
+@media screen and (min-width: 750px) {
+  .container {
+    align-items: center;
+  }
+  .container .email-input,
+  .container .password-input {
+    width: 40%;
+  }
+  .buttons {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    width: 50%;
+    text-align: center;
+  }
+  .buttons a {
+    width: 50%;
+    /* margin: 0 auto; */
+  }
+  .buttons .signup-now {
+    width: 100%;
+    /* margin: 0.5em auto; */
+  }
+  .container .login {
+    width: 45%;
+    margin: 0.5em auto;
+  }
 }

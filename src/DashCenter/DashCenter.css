@@ -1,19 +1,28 @@
 .bible-box-dash {
   overflow: scroll;
 }
+.center-section {
+  display: flex;
+}
+.row-two-dash{
+  display: flex;
+  flex-direction: column;
+}
 #need-box {
   box-shadow: none;
 }
-.question-box{
+.question-box {
   background-color: #bef8ef;
 }
 @media screen and (min-width: 650px) {
-  .row-one-dash,
+  
   .row-two-dash {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
+    /* flex-direction: column; */
   }
+  
   .bible-box-dash {
-    max-height: 700px
+    max-height: 700px;
   }
 }

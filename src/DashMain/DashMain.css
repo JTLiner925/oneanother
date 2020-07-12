@@ -5,7 +5,10 @@
   padding-right: 60px;
   align-items: center;
 }
-
+.main{
+  display: flex;
+  flex-direction: column;
+}
 .qotdAuthor {
   width: 40%;
   margin: 0 auto;
@@ -96,24 +99,24 @@
 }
 
 .bible-box-dash {
-  min-height: 250px;
+  min-height: 200px;
   line-height: 1.5;
 }
 .need-box {
-  min-height: 400px;
+  min-height: 300px;
 }
 .pitch-box {
   background-color: #daecfa;
 }
 .leader-box {
-  min-height: 300px;
+  min-height: 200px;
 }
 .question-box {
   padding: 20px;
   padding-bottom: 0;
   background-color: #d5fcf8;
-  z-index: 1;
-  min-height: 400px;
+  /* z-index: 1; */
+  min-height: 200px;
 }
 .box-dash h3 {
   text-align: center;
@@ -127,7 +130,12 @@
     margin-bottom: 50px;
     flex: 3;
   }
-
+  .bible-box-dash{
+    width: 80%;
+  }
+.question-box, #need-box{
+  width: 45%;
+}
   .center-section {
     display: flex;
     justify-content: space-evenly;
@@ -136,13 +144,18 @@
   .side-right {
     flex: 1;
   }
-  .row-one-dash,
-  .row-two-dash {
-    width: 50%;
+  .row-one-dash{
+    width: 40%;
     height: auto;
   }
+  .row-two-dash{
+    display: flex;
+    flex-direction: row;
+    width: 60%;
+
+  }
 .bible-box-dash{
-  height: 700px;
+  min-height: 400px;
   justify-content: space-around;
 }
   .box-dash {
