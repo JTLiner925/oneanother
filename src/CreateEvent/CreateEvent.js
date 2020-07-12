@@ -172,7 +172,7 @@ export default class CreateEvent extends Component {
             </div>
             <div>
               <label htmlFor="date">
-                Date
+                Event Date
                 <input
                   id="date"
                   name="event_date"
@@ -182,7 +182,7 @@ export default class CreateEvent extends Component {
             </div>
             <div>
               <label htmlFor="time">
-                Time
+                Event Time
                 <input
                   id="time"
                   name="event_time"

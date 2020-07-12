@@ -45,7 +45,7 @@
   height: 50px;
   padding-left: 0.6em;
   align-content: center;
-  width: 100%;
+  width: 95%;
   justify-content: space-around;
   margin: 0;
 }
@@ -62,7 +62,7 @@
 .join-div .join-group {
   align-content: center;
 }
-.create-inputs{
+.create-inputs {
   width: 100%;
 }
 .create-group {
@@ -97,4 +97,14 @@
   .main-body {
     flex: 4;
   }
+  .join-form {
+    width: 60%;
+  }
+  .create-form {
+    width: 60%;
+  }
+  .join-form button,
+.create-form button {
+  width: 40%;
+}
 }

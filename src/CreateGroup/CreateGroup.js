@@ -85,10 +85,10 @@ export default class CreateGroup extends Component {
             </label>
           </div>
           <div className="create-input">
-            <label htmlFor="pitch">
-              Pitch
+            <label htmlFor="pitch-text">
+              Pitch - What is your group about?
               <textarea
-                id="pitch"
+                id="pitch-text"
                 name="pitch"
                 onChange={this.changeHandler}
               ></textarea>
