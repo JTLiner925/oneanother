@@ -27,7 +27,7 @@ export default class HomePage extends Component {
             next.
           </p>
           <Link className="get-started" to="/signup">
-            <button className="signup sign-up">Get Started</button>
+            <button className="sign-up">Get Started</button>
           </Link>
         </div>
         <Carousel className="carousel">
