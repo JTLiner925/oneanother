@@ -135,7 +135,7 @@ export default class CreateGroup extends Component {
               </label>
             </div>
           </div>
-          <p className="error-alert">{this.props.message}</p>
+          <p className="error-alert">{this.props.createMessage}</p>
           <button type="submit" className="create-group">
             Create Group
           </button>
