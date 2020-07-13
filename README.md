@@ -1,3 +1,35 @@
+# oneAnother
+
+## https://oneanother.now.sh/
+
+### oneAnother API Repo: https://github.com/JTLiner925/one-another-api
+
+### ESV API Documentation: https://api.esv.org/docs/
+
+HTML/CSS/ReactJS
+
+The goal of oneAnother is to create a platform that the church can use to stay connected during the week, live life together, and encourage each other as we grow in Christ. oneAnother is meant to be a discipleship tool to keep followers of Christ growing in their faith.
+
+### oneAnother church small group app features:
+
+- Create a group & allow others to join.
+
+- Create events for the group
+
+- List needed items so everyone in the group can help out with food.(or any other items i.e. frisbee, paper plates)
+
+- Read and search the Bible right on the app
+
+- Write announcements right into your events
+
+### COMING SOON:
+
+- Chat with others from your group right in the app!
+
+- Leave prayer requests on a prayer wall & be able to comment & encourage to a specific prayer request
+
+- Event calendar to keep track of all your group(s) events
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
