@@ -9,17 +9,16 @@ export default class SignUp extends Component {
     password_confirmation: "",
   };
 
-  
   submitHandler = (e) => {
     e.preventDefault();
-    let pswd = this.state.user_password
-    let checkPswd = this.state.password_confirmation
-    if(pswd === checkPswd){
+    let pswd = this.state.user_password;
+    let checkPswd = this.state.password_confirmation;
+    if (pswd === checkPswd) {
       this.props.onSignUp(this.state);
     } else {
       this.setState({
-        error: 'Passwords do not match, try again.'
-      })
+        error: "Passwords do not match, try again.",
+      });
     }
   };
   changeHandler = (e) => {
@@ -31,7 +30,7 @@ export default class SignUp extends Component {
   render() {
     return (
       <form className="signup-container" onSubmit={this.submitHandler}>
-        <h1 className='signup-header'>Sign up</h1>
+        <h1 className="signup-header">Sign up</h1>
         <label htmlFor="email-input">Email:</label>
         <input
           id="email-input"
@@ -57,7 +56,6 @@ export default class SignUp extends Component {
           required
         />
         {/* <a href="#">Forgot Password</a> */}
-        <p>{this.state.error}</p>
         <label htmlFor="first-name-input">First Name</label>
         <input
           id="first-name-input"
@@ -86,6 +84,7 @@ export default class SignUp extends Component {
           name="user_bio"
           onChange={this.changeHandler}
         ></textarea>
+        <p className="error-alert">{this.state.error}</p>
 
         <div className="buttons">
           <button type="submit" className="signup">

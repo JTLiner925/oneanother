@@ -12,7 +12,7 @@
 .bible-select {
   height: 45px;
   display: block;
-  border-radius: 25px;
+  border-radius: 10px;
   padding-left: 1em;
   align-content: center;
   width: 40%;
@@ -104,9 +104,9 @@
   padding-right: 20px;
 }
 @media screen and (min-width: 500px) {
-  /* .main-body {
+  .main-body {
     flex: 4;
-  } */
+  }
   .row-one,
   .row-two,
   .study-tools {

@@ -5,6 +5,9 @@
 .Dash__main {
   width: 100%;
 }
+.error-alert {
+  color: #cb0000;
+}
 .dashHeader {
   font-size: 36px;
   color: black;
