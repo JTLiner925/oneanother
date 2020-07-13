@@ -188,20 +188,19 @@ class Dashboard extends Component {
       body: JSON.stringify(formData),
     })
       .then((res) => {
-        if (res.ok) {
-          return res.json();
+        return res.json();
+      })
+      .then((resData) => {
+        if (resData.message !== "Already Joined Group") {
+          this.props.history.push("/dashboard");
         } else {
-          return res.json().then((data) => {
-            return Promise.reject(new Error(data.error.message));
+          this.setState({
+            message: resData.message,
           });
         }
       })
-      .then((resData) => {
-        this.props.history.push("/dashboard");
-      })
       .catch((error) => {
         console.log(error);
-        this.setState({ message: error.message });
       });
   };
 
