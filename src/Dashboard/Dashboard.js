@@ -6,7 +6,6 @@ import DashMain from "../DashMain/DashMain";
 import Bible from "../Bible/Bible";
 import Invite from "../Invite/Invite";
 import ApiContext from "../ApiContext";
-// import HEROKU_API from "../config";
 import CreateGroup from "../CreateGroup/CreateGroup";
 import CreateEvent from "../CreateEvent/CreateEvent";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -84,7 +83,6 @@ class Dashboard extends Component {
         let userId = users.find(
           (user) => user.first_name === window.localStorage.getItem("userName")
         );
-        console.log(userId);
         this.setState({
           users: users,
           groups: groups,
@@ -93,7 +91,6 @@ class Dashboard extends Component {
         });
       })
       .catch((error) => {
-        console.log(error);
         this.setState({ error });
       });
     let i = window.location.search;
@@ -147,12 +144,7 @@ class Dashboard extends Component {
     }
   };
 
-  invite = (formData) => {
-    console.log(formData);
-  };
-
   createGroup = (formData) => {
-    console.log(formData);
     fetch(`https://mighty-brook-70505.herokuapp.com/api/groups/creategroup`, {
       headers: {
         "Content-Type": "application/json",
@@ -174,7 +166,6 @@ class Dashboard extends Component {
         this.props.history.push("/dashboard");
       })
       .catch((error) => {
-        console.log(error);
         this.setState({ createMessage: error.message });
       });
   };
@@ -205,7 +196,6 @@ class Dashboard extends Component {
   };
 
   createEvent = (formData) => {
-    console.log(formData);
 
     fetch(`https://mighty-brook-70505.herokuapp.com/api/events/createevent`, {
       headers: {
@@ -228,16 +218,8 @@ class Dashboard extends Component {
         this.props.history.push("/dashboard");
       })
       .catch((error) => {
-        console.log(error);
         this.setState({ eventMessage: error.message });
       });
-  };
-
-  prayerRequest = (formData) => {
-    console.log(formData);
-  };
-  prayerEncourage = (formData) => {
-    console.log(formData);
   };
 
   handleAddEvent = (event) => {
@@ -361,17 +343,6 @@ class Dashboard extends Component {
             );
           }}
         />
-        {/* <Route
-          path="/prayerrequests"
-          render={() => {
-            return (
-              <PrayerRequests
-                onPrayerRequest={this.prayerRequest}
-                onPrayerEncourage={this.prayerEncourage}
-              ></PrayerRequests>
-            );
-          }}
-        /> */}
       </>
     );
   }

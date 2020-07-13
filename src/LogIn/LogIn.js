@@ -40,7 +40,6 @@ export default class LogIn extends Component {
           required
         />
         <p className="error-alert">{this.props.message}</p>
-        {/* <a href="#">Forgot Password</a> */}
         <div className="buttons">
           <button type="submit" className="login">
             Login

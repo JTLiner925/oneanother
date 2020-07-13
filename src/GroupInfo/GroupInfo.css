@@ -33,12 +33,11 @@
   margin-left: 20px;
   margin-right: 20px;
   margin-bottom: 10px;
-
-  /* justify-content: space-around; */
 }
+
 .leader p,
 .pitch p {
-  margin-bottom: 0;
+  margin-bottom: 2px;
   line-height: 1.3;
 }
 .group-body {

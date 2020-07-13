@@ -28,8 +28,6 @@
   margin: 0;
   display: flex;
   flex-direction: column;
-  /* position: static; */
-  /* height: 100%; */
   padding: 2em;
   align-items: stretch;
   justify-content: center;
@@ -87,8 +85,6 @@
 }
 .container a {
   width: 50%;
-  /* text-align: center; */
-  /* margin: .5em auto; */
 }
 a .signup-now {
   padding: 0.7em;
@@ -144,11 +140,9 @@ a .signup-now {
   }
   .buttons a {
     width: 50%;
-    /* margin: 0 auto; */
   }
   .buttons .signup-now {
     width: 100%;
-    /* margin: 0.5em auto; */
   }
   .container .login {
     width: 45%;

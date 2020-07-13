@@ -5,7 +5,6 @@ import Footer from "./Footer/Footer";
 import HomePage from "./HomePage/HomePage";
 import LogIn from "./LogIn/LogIn";
 import SignUp from "./SignUp/SignUp";
-// import HEROKU_API from "./config";
 import Dashboard from "./Dashboard/Dashboard";
 import "./App.css";
 
@@ -25,7 +24,6 @@ class App extends Component {
         this.logIn(formData);
       })
       .catch((error) => {
-        console.log(error);
         this.setState({ error });
       });
   };
@@ -57,7 +55,6 @@ class App extends Component {
         this.props.history.push("/dashboard");
       })
       .catch((error) => {
-        console.log(error);
         this.setState({ message: error.message });
       });
   };

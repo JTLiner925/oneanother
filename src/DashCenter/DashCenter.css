@@ -18,7 +18,6 @@
   .row-two-dash {
     display: flex;
     flex-direction: row;
-    /* flex-direction: column; */
   }
   
   .bible-box-dash {

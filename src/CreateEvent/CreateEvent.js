@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-// import HEROKU_API from "../config";
 import config from "../config";
 import "./CreateEvent.css";
 
@@ -16,12 +15,6 @@ export default class CreateEvent extends Component {
       error: "",
     });
   };
-  // checkVerse = (passage) => {
-  //   this.setState({
-  //     passage,
-  //     error: null,
-  //   })
-  // }
 
   componentDidMount() {
     fetch(`https://mighty-brook-70505.herokuapp.com/api/events`, {
@@ -46,15 +39,12 @@ export default class CreateEvent extends Component {
       })
 
       .catch((error) => {
-        console.log(error);
         this.setState({ error });
       });
   }
 
   submitHandler = (e) => {
     e.preventDefault();
-
-    // this.props.onCreateEvent(this.state);
     let checkVerse = this.state.bible_passage;
 
     let url = new URL(`${config.API_ENDPOINT}text/`);
@@ -80,18 +70,12 @@ export default class CreateEvent extends Component {
         this.props.onCreateEvent(this.state);
       })
       .catch((error) => {
-        console.log(error);
         this.setState({
           error:
             'Please check Bible passage, write out in long form. i.e. "Matthew 28:18-20"',
         });
       });
   };
-  //   let group = this.props.groups.find((g) => {
-  //     return g.group_name === this.state.group_event;
-  //   });
-
-  // };
 
   navHandler = () => {
     this.props.onHandleHam(this.state);
@@ -115,7 +99,6 @@ export default class CreateEvent extends Component {
     }
   };
   render() {
-    console.log(this.state);
     const { userId } = this.props;
     return (
       <div className="event-body" onClick={this.navHandler}>
