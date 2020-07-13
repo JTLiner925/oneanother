@@ -179,7 +179,6 @@ export default class CreateEvent extends Component {
                   id="date"
                   name="event_date"
                   onChange={this.changeHandler}
-                  required
                 ></input>
               </label>
             </div>
@@ -190,7 +189,6 @@ export default class CreateEvent extends Component {
                   id="time"
                   name="event_time"
                   onChange={this.changeHandler}
-                  required
                 ></input>
               </label>
             </div>
@@ -203,7 +201,6 @@ export default class CreateEvent extends Component {
                     id="lesson-title"
                     name="lesson_title"
                     onChange={this.changeHandler}
-                    required
                   ></input>
                 </label>
               </div>
@@ -214,7 +211,6 @@ export default class CreateEvent extends Component {
                     id="bible-passage"
                     name="bible_passage"
                     onChange={this.changeHandler}
-                    required
                   ></input>
                 </label>
               </div>
@@ -228,13 +224,13 @@ export default class CreateEvent extends Component {
                     id="question"
                     name="question"
                     onChange={this.changeHandler}
-                    required
                   ></textarea>
                 </label>
               </div>
             </div>
           </div>
           <div className="create-button">
+            <p className="error-alert">{this.props.eventMessage}</p>
             <p className="error-alert">{this.state.error}</p>
             <button type="submit" className="create-event">
               Create Event

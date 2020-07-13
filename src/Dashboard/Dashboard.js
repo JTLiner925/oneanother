@@ -216,14 +216,20 @@ class Dashboard extends Component {
       body: JSON.stringify(formData),
     })
       .then((res) => {
-        return res.json();
+        if (!res.ok) {
+          return res.json().then((data) => {
+            return Promise.reject(new Error(data.error.message));
+          });
+        } else {
+          return res.json();
+        }
       })
       .then(() => {
         this.props.history.push("/dashboard");
       })
       .catch((error) => {
         console.log(error);
-        this.setState({ error });
+        this.setState({ eventMessage: error.message });
       });
   };
 
@@ -346,6 +352,7 @@ class Dashboard extends Component {
           render={() => {
             return (
               <CreateEvent
+                eventMessage={this.state.eventMessage}
                 groups={this.state.groups}
                 userId={this.state.userId}
                 onCreateEvent={this.createEvent}
