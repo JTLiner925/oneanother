@@ -78,6 +78,7 @@ export default class CreateGroup extends Component {
                   id="name"
                   name="group_name"
                   onChange={this.changeHandler}
+                  required
                 ></input>
               </label>
             </div>
