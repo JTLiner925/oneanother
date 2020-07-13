@@ -64,6 +64,7 @@
     flex-direction: row;
     justify-content: space-around;
     height: unset;
+    width: 100%;
   }
   .group-row-one {
     display: flex;
