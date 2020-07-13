@@ -162,20 +162,20 @@ class Dashboard extends Component {
       body: JSON.stringify(formData),
     })
       .then((res) => {
-        console.log(res);
-        return res.json();
-      })
-      .then((resData) => {
-        if (resData.message !== "Group created successfully!") {
-          this.props.history.push("/dashboard");
+        if (res.ok) {
+          return res.json();
         } else {
-          this.setState({
-            createMessage: resData.createMessage,
+          return res.json().then((data) => {
+            return Promise.reject(new Error(data.error.message));
           });
         }
       })
+      .then((resData) => {
+        this.props.history.push("/dashboard");
+      })
       .catch((error) => {
         console.log(error);
+        this.setState({ createMessage: error.message });
       });
   };
   joinGroup = (formData) => {
@@ -332,7 +332,7 @@ class Dashboard extends Component {
           render={() => {
             return (
               <CreateGroup
-                // createMessage={this.state.createMessage}
+                createMessage={this.state.createMessage}
                 message={this.state.message}
                 groups={this.state.groups}
                 onCreateGroup={this.createGroup}
