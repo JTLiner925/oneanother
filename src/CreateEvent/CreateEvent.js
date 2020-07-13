@@ -141,6 +141,7 @@ export default class CreateEvent extends Component {
                           id={gr.group_name.split(" ").join("_")}
                           groupid={gr.id}
                           key={gr.id}
+                          required
                         >
                           {gr.group_name}
                         </option>
@@ -178,6 +179,7 @@ export default class CreateEvent extends Component {
                   id="date"
                   name="event_date"
                   onChange={this.changeHandler}
+                  required
                 ></input>
               </label>
             </div>
@@ -188,6 +190,7 @@ export default class CreateEvent extends Component {
                   id="time"
                   name="event_time"
                   onChange={this.changeHandler}
+                  required
                 ></input>
               </label>
             </div>
@@ -200,6 +203,7 @@ export default class CreateEvent extends Component {
                     id="lesson-title"
                     name="lesson_title"
                     onChange={this.changeHandler}
+                    required
                   ></input>
                 </label>
               </div>
@@ -210,6 +214,7 @@ export default class CreateEvent extends Component {
                     id="bible-passage"
                     name="bible_passage"
                     onChange={this.changeHandler}
+                    required
                   ></input>
                 </label>
               </div>
@@ -223,6 +228,7 @@ export default class CreateEvent extends Component {
                     id="question"
                     name="question"
                     onChange={this.changeHandler}
+                    required
                   ></textarea>
                 </label>
               </div>
