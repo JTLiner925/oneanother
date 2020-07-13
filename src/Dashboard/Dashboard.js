@@ -165,7 +165,7 @@ class Dashboard extends Component {
         if (res.ok) {
           return res.json();
         } else {
-          return res.json().then((data) => {
+          res.json().then((data) => {
             return Promise.reject(new Error(data.error.message));
           });
         }
