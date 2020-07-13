@@ -47,7 +47,7 @@ export default class CreateGroup extends Component {
           <h3>Join Group</h3>
           <p>Search Groups</p>
           <div className="join-div">
-            <p>{this.props.message}</p>
+            <p className="error-alert">{this.props.message}</p>
             <select name="group_names" onChange={this.changeHandler}>
               {" "}
               <option>Select Group</option>
@@ -135,6 +135,7 @@ export default class CreateGroup extends Component {
               </label>
             </div>
           </div>
+          <p className="error-alert">{this.props.message}</p>
           <button type="submit" className="create-group">
             Create Group
           </button>
