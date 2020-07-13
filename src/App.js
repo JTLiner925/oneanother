@@ -43,25 +43,22 @@ class App extends Component {
       body: JSON.stringify(formData),
     })
       .then((res) => {
-       if(res.ok){
-        return res.json();
-       }else{
-        return res.json().then((data) => {
-         return Promise.reject(new Error(data.error.message))
-        })
-       }
+        if (res.ok) {
+          return res.json();
+        } else {
+          return res.json().then((data) => {
+            return Promise.reject(new Error(data.error.message));
+          });
+        }
       })
       .then((userData) => {
-  
         window.localStorage.setItem("token", userData.token);
         window.localStorage.setItem("userName", userData.userName);
         this.props.history.push("/dashboard");
-       
-         
       })
       .catch((error) => {
         console.log(error);
-        this.setState({message: error.message})
+        this.setState({ message: error.message });
       });
   };
   render() {
@@ -74,9 +71,9 @@ class App extends Component {
         <Route
           path="/login"
           render={() => {
-            return <LogIn 
-            message={this.state.message}
-            onLogIn={this.logIn}></LogIn>;
+            return (
+              <LogIn message={this.state.message} onLogIn={this.logIn}></LogIn>
+            );
           }}
         />
         <Route

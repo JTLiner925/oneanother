@@ -8,13 +8,12 @@ export default class CreateEvent extends Component {
     event: "",
     group: "",
     passage: "",
-  
   };
   setEvent = (event, group) => {
     this.setState({
       event,
       group,
-      error: '',
+      error: "",
     });
   };
   // checkVerse = (passage) => {
@@ -72,7 +71,7 @@ export default class CreateEvent extends Component {
 
     fetch(url.href, options)
       .then((res) => {
-        return res.json()
+        return res.json();
       })
       .then((resData) => {
         if (resData.passages.length === 0) {
@@ -82,8 +81,10 @@ export default class CreateEvent extends Component {
       })
       .catch((error) => {
         console.log(error);
-        this.setState({ error: 'Please check Bible passage, write out in long form. i.e. "Matthew 28:18-20"'
-      });
+        this.setState({
+          error:
+            'Please check Bible passage, write out in long form. i.e. "Matthew 28:18-20"',
+        });
       });
   };
   //   let group = this.props.groups.find((g) => {
@@ -114,7 +115,7 @@ export default class CreateEvent extends Component {
     }
   };
   render() {
-    console.log(this.state)
+    console.log(this.state);
     const { userId } = this.props;
     return (
       <div className="event-body" onClick={this.navHandler}>
@@ -211,7 +212,6 @@ export default class CreateEvent extends Component {
                     onChange={this.changeHandler}
                   ></input>
                 </label>
-                
               </div>
             </div>
             <div>
@@ -227,9 +227,9 @@ export default class CreateEvent extends Component {
                 </label>
               </div>
             </div>
-            </div>
-            <div className='create-button'>
-            <p>{this.state.error}</p>
+          </div>
+          <div className="create-button">
+            <p className="error-alert">{this.state.error}</p>
             <button type="submit" className="create-event">
               Create Event
             </button>
