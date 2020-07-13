@@ -170,7 +170,7 @@ class Dashboard extends Component {
           this.props.history.push("/dashboard");
         } else {
           this.setState({
-            createMessage: resData.message,
+            createMessage: resData.createMessage,
           });
         }
       })
@@ -188,19 +188,20 @@ class Dashboard extends Component {
       body: JSON.stringify(formData),
     })
       .then((res) => {
-        return res.json();
-      })
-      .then((resData) => {
-        if (resData.message !== "Already Joined Group") {
-          this.props.history.push("/dashboard");
+        if (res.ok) {
+          return res.json();
         } else {
-          this.setState({
-            message: resData.message,
+          return res.json().then((data) => {
+            return Promise.reject(new Error(data.error.message));
           });
         }
       })
+      .then((resData) => {
+        this.props.history.push("/dashboard");
+      })
       .catch((error) => {
         console.log(error);
+        this.setState({ message: error.message });
       });
   };
 
