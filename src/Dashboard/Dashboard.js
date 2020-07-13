@@ -162,12 +162,12 @@ class Dashboard extends Component {
       body: JSON.stringify(formData),
     })
       .then((res) => {
-        if (res.ok) {
-          return res.json();
-        } else {
-          res.json().then((data) => {
+        if (!res.ok) {
+          return res.json().then((data) => {
             return Promise.reject(new Error(data.error.message));
           });
+        } else {
+          return res.json();
         }
       })
       .then((resData) => {
