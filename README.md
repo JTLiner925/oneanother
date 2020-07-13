@@ -2,6 +2,10 @@
 
 ## https://oneanother.now.sh/
 
+demo user:
+   email: demoemail@gmail.com
+password: password123
+
 ![](/homepage.png)
 screenshot of the homepage in desktop and mobile version
 
