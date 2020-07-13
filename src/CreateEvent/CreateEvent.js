@@ -127,6 +127,7 @@ export default class CreateEvent extends Component {
               className="event-select"
               name="group_name"
               onChange={this.changeHandler}
+              required
             >
               {" "}
               <option>Select Group</option>
