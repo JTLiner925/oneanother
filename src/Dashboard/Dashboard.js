@@ -332,7 +332,7 @@ class Dashboard extends Component {
           render={() => {
             return (
               <CreateGroup
-                createMessage={this.state.createMessage}
+                // createMessage={this.state.createMessage}
                 message={this.state.message}
                 groups={this.state.groups}
                 onCreateGroup={this.createGroup}
