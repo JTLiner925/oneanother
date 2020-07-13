@@ -165,8 +165,14 @@ class Dashboard extends Component {
         console.log(res);
         return res.json();
       })
-      .then(() => {
-        this.props.history.push("/dashboard");
+      .then((resData) => {
+        if (resData.message !== "Group created successfully!") {
+          this.props.history.push("/dashboard");
+        } else {
+          this.setState({
+            createMessage: resData.message,
+          });
+        }
       })
       .catch((error) => {
         console.log(error);
@@ -325,6 +331,7 @@ class Dashboard extends Component {
           render={() => {
             return (
               <CreateGroup
+                createMessage={this.state.createMessage}
                 message={this.state.message}
                 groups={this.state.groups}
                 onCreateGroup={this.createGroup}
