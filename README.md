@@ -3,6 +3,7 @@
 ## https://oneanother.now.sh/
 
 ![](/homepage.png)
+screenshot of the homepage in desktop and mobile version
 
 ### oneAnother API Repo: https://github.com/JTLiner925/one-another-api
 
@@ -13,8 +14,9 @@ HTML/CSS/ReactJS
 The goal of oneAnother is to create a platform that the church can use to stay connected during the week, live life together, and encourage each other as we grow in Christ. oneAnother is meant to be a discipleship tool to keep followers of Christ growing in their faith.
 
 ![](/Dashboard.png)
+screenshot of the dashboard page in desktop and mobile version
 
-### oneAnother church small group app features:
+## oneAnother church small group app features:
 
 - Create a group & allow others to join.
 
@@ -27,6 +29,7 @@ The goal of oneAnother is to create a platform that the church can use to stay c
 - Write announcements right into your events
 
 ![](/group-event-bible.png)
+screenshot on the add group, add event, and read/search bible pages
 
 ### COMING SOON:
 
