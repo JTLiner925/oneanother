@@ -41,10 +41,10 @@ export default class LogIn extends Component {
         />
         <p className="error-alert">{this.props.message}</p>
         <div className="buttons">
-          <button type="submit" className="login">
+          <button type="submit" className="login" onClick={this.props.resetError}>
             Login
           </button>
-          <Link to="/signup">
+          <Link to="/signup" onClick={this.props.resetError}>
             <button className="signup-now">Sign Up Now!</button>
           </Link>
         </div>

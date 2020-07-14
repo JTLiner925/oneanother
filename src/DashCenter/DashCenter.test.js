@@ -1,14 +1,14 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { BrowserRouter } from 'react-router-dom'
-import 'mutationobserver-shim'
-import App from './App';
+
+import DashCenter from './DashCenter';
 
 test('renders learn react link', () => {
   const div = document.createElement('div');
   ReactDOM.render(
     <BrowserRouter>
-  <App />
+  <DashCenter events={[]}/>
   </BrowserRouter>, div);
   ReactDOM.unmountComponentAtNode(div);
 });

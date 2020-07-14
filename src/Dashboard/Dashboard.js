@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Route, withRouter, Link } from "react-router-dom";
+import { Route, Link } from "react-router-dom";
 import config from "../config";
 import DashSideNav from "../DashSideNav/DashSideNav";
 import DashMain from "../DashMain/DashMain";
@@ -53,6 +53,9 @@ class Dashboard extends Component {
   };
 
   componentDidMount() {
+    this.setState({
+      eventMessage:''
+    })
     Promise.all([
       fetch(`https://mighty-brook-70505.herokuapp.com/api/users`, {
         headers: {
@@ -143,7 +146,11 @@ class Dashboard extends Component {
         });
     }
   };
-
+  resetError = () => {
+    this.setState({
+      eventMessage: '',
+    })
+  }
   createGroup = (formData) => {
     fetch(`https://mighty-brook-70505.herokuapp.com/api/groups/creategroup`, {
       headers: {
@@ -334,6 +341,7 @@ class Dashboard extends Component {
           render={() => {
             return (
               <CreateEvent
+              resetError={this.resetError}
                 eventMessage={this.state.eventMessage}
                 groups={this.state.groups}
                 userId={this.state.userId}
@@ -412,4 +420,4 @@ class Dashboard extends Component {
   }
 }
 
-export default withRouter(Dashboard);
+export default Dashboard;

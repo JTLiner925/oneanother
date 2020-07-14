@@ -44,6 +44,10 @@ export default class CreateEvent extends Component {
   }
 
   submitHandler = (e) => {
+    this.props.resetError()
+    this.setState({
+      error:''
+    })
     e.preventDefault();
     let checkVerse = this.state.bible_passage;
 

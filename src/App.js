@@ -32,6 +32,11 @@ class App extends Component {
       users: [...this.state.users, user],
     });
   };
+  resetError = () => {
+    this.setState({
+      message: '',
+    })
+  }
   logIn = (formData) => {
     fetch(`https://mighty-brook-70505.herokuapp.com/api/users/login`, {
       headers: {
@@ -62,14 +67,17 @@ class App extends Component {
     return (
       <main className="App">
         {["/", "/login", "/signup"].map((path) => (
-          <Route key={path} exact path={path} component={HomeNav} />
+          <Route key={path} exact path={path} render={() => {
+            return (
+            <HomeNav resetError={this.resetError} />)
+          }} />
         ))}
         <Route exact path="/" component={HomePage} />
         <Route
           path="/login"
           render={() => {
             return (
-              <LogIn message={this.state.message} onLogIn={this.logIn}></LogIn>
+              <LogIn message={this.state.message} resetError={this.resetError} onLogIn={this.logIn}></LogIn>
             );
           }}
         />
