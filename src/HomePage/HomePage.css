@@ -45,7 +45,7 @@ body {
 .carousel,
 .slide {
   overflow-x: hidden;
-  height: 250px;
+  height: 300px;
 }
 .carousel button {
   border-radius: 50%;
@@ -61,15 +61,26 @@ body {
   color: #1b98f8;
 }
 .slide1 {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
   width: 100%;
-  height: 250px;
-  padding-top: 10px;
+  height: 300px;
+  padding-top: 40px;
+  padding-bottom: 40px;
   background-color: #daecfa;
   color: #1b98f8;
 }
 .slide2 {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
   width: 100%;
-  height: 250px;
+  height: 300px;
+  padding-top: 40px;
+  padding-bottom: 40px;
   background-color: #daecfa;
   background-position-y: -120px;
   background-repeat: no-repeat;
@@ -78,8 +89,14 @@ body {
   color: #1b98f8;
 }
 .slide3 {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
   width: 100%;
-  height: 250px;
+  height: 300px;
+  padding-top: 40px;
+  padding-bottom: 40px;
   background-repeat: no-repeat;
   background-size: cover;
   background-color: #daecfa;
@@ -87,7 +104,7 @@ body {
 }
 .slide p {
   margin: 0;
-  padding-top: 20px;
+  padding-bottom: 30px;
   color: #1b98f8;
   background-color: #daecfa;
 }
@@ -110,7 +127,7 @@ body {
 .slider {
   text-align: center;
   font-size: 36px;
-  height: 200px;
+  height: 300px;
   background-image: linear-gradient(
     to bottom,
     rgb(24, 24, 24),
@@ -167,8 +184,8 @@ body {
 }
 
 .carousel svg:not(:root).svg-inline--fa {
-  overflow: hidden;
-  height: 50%;
+  overflow: visible;
+  height: auto;
   width: 40%;
   color: linear-gradient(
     45deg,
@@ -184,17 +201,14 @@ svg:not(:root).svg-inline--fa {
   overflow: visible;
   height: auto;
   width: 30%;
-  color: linear-gradient(
-    45deg,
-    rgb(55, 242, 214),
-    rgb(63, 174, 243),
-    rgb(2, 39, 245)
-  );
   background-clip: icon;
   -webkit-text-fill-color: transparent;
 }
-#user-icon {
-  width: 20%;
+
+#users-icon,
+#user-friends-icon {
+  height: auto;
+  width: 50%;
 }
 .feature-text {
   width: 45%;
@@ -205,11 +219,11 @@ svg:not(:root).svg-inline--fa {
   margin-bottom: 10px;
 }
 @media screen and (min-width: 750px) {
-  .features{
+  .features {
     flex-direction: row;
   }
-  .feature{
-  align-items: center;
+  .feature {
+    align-items: center;
   }
   .love-header {
     font-size: 48px;
@@ -236,7 +250,7 @@ svg:not(:root).svg-inline--fa {
   .slide3 {
     display: flex;
     flex-direction: column;
-    height: 300px;
+    height: 400px;
     align-items: center;
     justify-content: space-around;
   }
@@ -250,7 +264,7 @@ svg:not(:root).svg-inline--fa {
   .support {
     height: 400px;
   }
-  .prayer{
+  .prayer {
     background-color: #eff6fc;
     flex-direction: row-reverse;
   }

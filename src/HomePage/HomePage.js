@@ -22,9 +22,8 @@ export default class HomePage extends Component {
           <h2 className="serve-header">Serve oneAnother...</h2>
           <div className="img-fade"></div>
           <p className="intro-text">
-            Open a Bible app, discuss food options in an email, announcements in
-            a group chat, and you seem to always be out of the loop with what's
-            next.
+            Join oneAnother and do everything imaginable for your church small
+            group in one location!
           </p>
           <Link className="get-started" to="/signup">
             <button className="sign-up">Get Started</button>
@@ -34,16 +33,15 @@ export default class HomePage extends Component {
           <div className="slide slide1">
             <FontAwesomeIcon id="user-icon" icon={faUser} />
             <p>
-              Join oneAnother and do everything imaginable for your church small
-              group in one location!
+              Join oneAnother and stay connected to your small group!
             </p>
           </div>
           <div className="slide slide2">
-            <FontAwesomeIcon icon={faUserFriends} />
+            <FontAwesomeIcon id="user-friends-icon" icon={faUserFriends} />
             <p>Pray for oneAnother</p>
           </div>
           <div className="slide slide3">
-            <FontAwesomeIcon icon={faUsers} />
+            <FontAwesomeIcon id="users-icon" icon={faUsers} />
             <p>Support oneAnother</p>
           </div>
         </Carousel>

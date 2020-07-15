@@ -81,12 +81,10 @@
 
 .box {
   width: 100%;
-  overflow: scroll;
   padding-top: 20px;
 }
 .bible-texts {
   padding-bottom: 50px;
-  overflow: scroll;
   padding-left: 20px;
   padding-right: 20px;
 }
@@ -98,8 +96,6 @@
 }
 .bible-passage {
   padding-bottom: 70px;
-  max-height: 500px;
-  overflow: scroll;
   padding-left: 20px;
   padding-right: 20px;
 }
