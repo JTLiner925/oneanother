@@ -10,8 +10,9 @@
   font-size: 18px;
 }
 a {
-  color: rgb(63, 174, 243);
+  color: rgb(1, 108, 174);
   text-decoration: none;
+  font-weight: bold;
 }
 a:hover {
   color: rgb(56, 84, 245);

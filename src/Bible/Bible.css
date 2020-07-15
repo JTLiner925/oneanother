@@ -9,17 +9,8 @@
   align-content: center;
   justify-content: center;
 }
-.bible-select {
-  height: 45px;
-  display: block;
-  border-radius: 10px;
-  padding-left: 1em;
-  align-content: center;
-  width: 40%;
-  font-size: 1.3em;
-  align-items: center;
-  margin: 10px;
-  margin-bottom: 10px;
+#bible-select, #chapter-select {
+  width: 100%;
 }
 .bible-search-params {
   display: flex;
@@ -39,10 +30,11 @@
 .bible-body {
   margin: 0;
 }
-.bible-search .search {
+.bible-search #search,
+#bible-select, #chapter-select {
   display: flex;
   flex-direction: column;
-  width: 50%;
+  /* width: 50%; */
   padding: 0.6em;
   font-size: 1.3em;
 
@@ -61,7 +53,7 @@
   text-transform: uppercase;
   margin-bottom: 20px;
   background-color: #0b5df5;
-  width: 40%;
+  width: 200px;
 }
 
 .bible-search-params button:hover {
@@ -75,7 +67,6 @@
 }
 
 .select-passage-header {
-  width: 100%;
   margin: 5px;
 }
 
@@ -134,8 +125,8 @@
     align-content: center;
     justify-content: center;
   }
-  .bible-select {
-    width: 25%;
+  #bible-select, #chapter-select {
+    width: 100%;
     margin: 10px;
     justify-content: center;
   }

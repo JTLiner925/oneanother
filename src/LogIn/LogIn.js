@@ -23,17 +23,17 @@ export default class LogIn extends Component {
             👋🏾
           </span>
         </h1>
-        Email:
+        <label htmlFor="email-input">Email:</label>
         <input
-          className="email-input"
+          id="email-input"
           type="email"
           name="user_email"
           onChange={this.changeHandler}
           required
         />
-        Password:
+        <label htmlFor="password-input">Password:</label>
         <input
-          className="password-input"
+          id='password-input'
           type="password"
           name="user_password"
           onChange={this.changeHandler}

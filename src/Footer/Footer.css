@@ -1,7 +1,7 @@
 footer {
   display: flex;
   flex-direction: column;
-  background-color: #1b98f8;
+  background-color: rgb(29, 53, 189);
   position: fixed;
   bottom: 0;
   left: 0;

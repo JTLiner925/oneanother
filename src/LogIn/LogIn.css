@@ -2,8 +2,8 @@
   --white: rgb(237, 237, 237);
   --accent-color: #0b5df5;
   --dark-accent-color: #0342b8;
-  --main-color: #797878;
-  --dark-main-color: #242424;
+  --main-color: #01fae9;
+  --dark-main-color: #02afa4;
 }
 .wave {
   display: block;
@@ -60,21 +60,21 @@
   text-transform: uppercase;
 }
 
-.email-input,
-.password-input {
+#email-input,
+#password-input {
   padding: 1em;
   border-radius: 0px;
   border: 0px;
   border-radius: 5px;
   background-color: hsl(0, 0%, 93%);
 }
-.email-input:hover,
-.password-input:hover {
+#email-input:hover,
+#password-input:hover {
   background-color: hsl(0, 0%, 73%);
   transition: 500ms;
 }
-.email-input:active,
-.password-input:active {
+#email-input:active,
+#password-input:active {
   background-color: hsl(0, 0%, 73%);
 }
 
@@ -99,11 +99,11 @@ a .signup-now {
 }
 
 .login {
-  background-color: var(--main-color);
+  background-color: var(--accent-color);
 }
 
 .login:hover {
-  background-color: var(--dark-main-color);
+  background-color: var(--dark-accent-color);
   transition: 500ms;
 }
 
@@ -127,8 +127,8 @@ a .signup-now {
   .container {
     align-items: center;
   }
-  .container .email-input,
-  .container .password-input {
+  .container #email-input,
+  .container #password-input {
     width: 40%;
   }
   .buttons {

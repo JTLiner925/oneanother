@@ -107,11 +107,12 @@ export default class CreateEvent extends Component {
     return (
       <div className="event-body" onClick={this.navHandler}>
         <form className="event-form" onSubmit={this.submitHandler}>
-          <h3>Create New Event</h3>
+          <h2>Create New Event</h2>
           <div>
+            <label htmlFor='event-select'>
             Search Groups
             <select
-              className="event-select"
+              id="event-select"
               name="group_name"
               onChange={this.changeHandler}
               required
@@ -138,6 +139,7 @@ export default class CreateEvent extends Component {
                   }
                 })}
             </select>
+            </label>
           </div>
           <div className="event-input">
             <div>

@@ -54,11 +54,11 @@ body {
   margin-right: 5px;
 }
 
-.carousel p {
+.carousel h3 {
   font-size: 24px;
   padding-top: 10px;
   background-color: #daecfa;
-  color: #1b98f8;
+  color: rgb(2, 39, 245);
 }
 .slide1 {
   display: flex;
@@ -70,8 +70,7 @@ body {
   padding-top: 40px;
   padding-bottom: 40px;
   background-color: #daecfa;
-  color: #1b98f8;
-}
+color: rgb(40, 69, 233);}
 .slide2 {
   display: flex;
   flex-direction: column;
@@ -86,8 +85,7 @@ body {
   background-repeat: no-repeat;
   background-size: cover;
 
-  color: #1b98f8;
-}
+color: rgb(40, 69, 233);}
 .slide3 {
   display: flex;
   flex-direction: column;
@@ -100,13 +98,11 @@ body {
   background-repeat: no-repeat;
   background-size: cover;
   background-color: #daecfa;
-  color: #1b98f8;
-}
-.slide p {
+color: rgb(40, 69, 233);}
+.slide h3 {
   margin: 0;
   padding-bottom: 30px;
-  color: #1b98f8;
-  background-color: #daecfa;
+color: rgb(40, 69, 233);  background-color: #daecfa;
 }
 .get-started {
   margin: 0 auto;
@@ -157,24 +153,23 @@ body {
   background-color: #03338e;
   transition: 500ms;
 }
-.features p {
+.features h3 {
   font-size: 20px;
 }
 .bible {
   justify-content: space-around;
-  color: #1b98f8;
-  background-color: #ffffff;
+color: rgb(40, 69, 233);  background-color: #ffffff;
 }
 .prayer {
   justify-content: space-around;
 
-  color: #1b98f8;
+  color: rgb(40, 69, 233);
   background-color: #daecfa;
 }
 .support {
   justify-content: space-around;
 
-  color: #1b98f8;
+  color: rgb(41, 64, 194);
   background-color: #ffffff;
 }
 .features {
@@ -191,7 +186,7 @@ body {
     45deg,
     rgb(55, 242, 214),
     rgb(63, 174, 243),
-    rgb(2, 39, 245)
+    rgb(1, 108, 174)
   );
   background-clip: icon;
   -webkit-text-fill-color: transparent;
@@ -201,6 +196,12 @@ svg:not(:root).svg-inline--fa {
   overflow: visible;
   height: auto;
   width: 30%;
+  color: linear-gradient(
+    45deg,
+    rgb(55, 242, 214),
+    rgb(63, 174, 243),
+    rgb(1, 108, 174)
+  );
   background-clip: icon;
   -webkit-text-fill-color: transparent;
 }

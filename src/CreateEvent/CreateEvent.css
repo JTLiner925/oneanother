@@ -21,7 +21,7 @@
   align-content: center;
   width: 90%;
 }
-.event-select {
+#event-select {
   height: 50px;
   display: block;
   border-radius: 10px;
@@ -96,7 +96,7 @@
   .event-input textarea {
     width: 100%;
   }
-  .event-select {
+  #event-select {
     margin-top: 10px;
     width: 100%;
   }

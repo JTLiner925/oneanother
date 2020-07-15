@@ -1261,12 +1261,13 @@ export default class DashMain extends Component {
       <div className="bible-body" onClick={this.navHandler}>
         <div className="bible-search-params">
           <form className="bible-search" onSubmit={this.handleBibleSearch}>
-            <h3>Search the Bible</h3>
-            <label>
+            
+            <label htmlFor="search">
+            <h2>Search the Bible</h2>
               <input
                 value={this.state.search}
                 name="search"
-                className="search"
+                id="search"
                 onChange={this.changeHandler}
                 placeholder="Search for keywords i.e. 'abide'  'love'  'Jesus' "
               ></input>
@@ -1276,10 +1277,11 @@ export default class DashMain extends Component {
             </button>
           </form>
           <form className="select-passage" onSubmit={this.handleBibleReference}>
-            <h3 className="select-passage-header">Select Passage</h3>
             <div className="select-options">
+              <label htmlFor='bible-select' className="select-passage-header">
+                <h3 >Select</h3>
               <select
-                className="bible-select"
+                id="bible-select"
                 value={this.state.book}
                 name="book"
                 onChange={this.changeHandler}
@@ -1289,8 +1291,10 @@ export default class DashMain extends Component {
                   return <option key={book}>{book}</option>;
                 })}
               </select>
+              </label>
+              <label htmlFor='chapter-select' className="select-passage-header"><h3 >Passage</h3>
               <select
-                className="bible-select"
+                id="chapter-select"
                 value={this.state.chapter}
                 name="chapter"
                 onChange={this.changeHandler}
@@ -1301,6 +1305,7 @@ export default class DashMain extends Component {
                     return <option key={chapter}>{chapter}</option>;
                   })}
               </select>
+              </label>
             </div>
             <button className="bible-submit" type="submit">
               Submit

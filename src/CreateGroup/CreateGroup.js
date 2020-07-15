@@ -44,16 +44,21 @@ export default class CreateGroup extends Component {
     return (
       <div className="create-body" onClick={this.navHandler}>
         <form className=" join-form" onSubmit={this.submitJoinHandler}>
-          <h3>Join Group</h3>
-          <p>Search Groups</p>
+          <h2>Join Group</h2>
           <div className="join-div">
             <p className="error-alert">{this.props.message}</p>
-            <select name="group_names" onChange={this.changeHandler}>
+            <label htmlFor="group-names">Search Groups</label>
+            <select
+              id="group-names"
+              name="group_names"
+              onChange={this.changeHandler}
+            >
               {" "}
               <option>Select Group</option>
               {this.props.groups &&
                 this.props.groups.map((gr) => (
                   <option
+                    label={gr.group_name}
                     className="group-option"
                     id={gr.group_name.split(" ").join("_")}
                     groupid={gr.id}
@@ -63,9 +68,11 @@ export default class CreateGroup extends Component {
                   </option>
                 ))}
             </select>
-            <button type="submit" className="join-group">
+            <div className="join-group">
+            <button type="submit" >
               Join Group
             </button>
+            </div>
           </div>
         </form>
         <form className=" create-form" onSubmit={this.submitHandler}>

@@ -54,8 +54,8 @@ class Dashboard extends Component {
 
   componentDidMount() {
     this.setState({
-      eventMessage:''
-    })
+      eventMessage: "",
+    });
     Promise.all([
       fetch(`https://mighty-brook-70505.herokuapp.com/api/users`, {
         headers: {
@@ -86,12 +86,14 @@ class Dashboard extends Component {
         let userId = users.find(
           (user) => user.first_name === window.localStorage.getItem("userName")
         );
+   
         this.setState({
           users: users,
           groups: groups,
           events: events,
           userId: userId.id,
         });
+        this.handleBiblePassage(this.state.eventId)
       })
       .catch((error) => {
         this.setState({ error });
@@ -148,9 +150,9 @@ class Dashboard extends Component {
   };
   resetError = () => {
     this.setState({
-      eventMessage: '',
-    })
-  }
+      eventMessage: "",
+    });
+  };
   createGroup = (formData) => {
     fetch(`https://mighty-brook-70505.herokuapp.com/api/groups/creategroup`, {
       headers: {
@@ -203,7 +205,6 @@ class Dashboard extends Component {
   };
 
   createEvent = (formData) => {
-
     fetch(`https://mighty-brook-70505.herokuapp.com/api/events/createevent`, {
       headers: {
         "Content-Type": "application/json",
@@ -341,7 +342,7 @@ class Dashboard extends Component {
           render={() => {
             return (
               <CreateEvent
-              resetError={this.resetError}
+                resetError={this.resetError}
                 eventMessage={this.state.eventMessage}
                 groups={this.state.groups}
                 userId={this.state.userId}
