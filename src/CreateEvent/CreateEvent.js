@@ -69,12 +69,17 @@ export default class CreateEvent extends Component {
         return res.json();
       })
       .then((resData) => {
-        console.log(resData)
+        console.log(resData);
         if (resData.passages.length === 0) {
-          throw new Error('Please check Bible passage, write out in long form. i.e. "Matthew 28:18-20"');
+          throw new Error(
+            'Please check Bible passage, write out in long form. i.e. "Matthew 28:18-20"'
+          );
         }
-        if (this.state.group_name === 'Select Group' || this.state.group_name === undefined ){
-          throw new Error('Must Select Group');
+        if (
+          this.state.group_name === "Select Group" ||
+          this.state.group_name === undefined
+        ) {
+          throw new Error("Must Select Group");
         }
         this.props.onCreateEvent(this.state);
       })
@@ -108,7 +113,7 @@ export default class CreateEvent extends Component {
     }
   };
   render() {
-    console.log(this.state.group_name)
+    console.log(this.state.group_name);
     const { userId } = this.props;
     return (
       <div className="event-body" onClick={this.navHandler}>
