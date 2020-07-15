@@ -10,6 +10,7 @@ export default class SignUp extends Component {
   };
 
   submitHandler = (e) => {
+    //check passwords before submitting
     e.preventDefault();
     let pswd = this.state.user_password;
     let checkPswd = this.state.password_confirmation;

@@ -33,7 +33,7 @@ export default class LogIn extends Component {
         />
         <label htmlFor="password-input">Password:</label>
         <input
-          id='password-input'
+          id="password-input"
           type="password"
           name="user_password"
           onChange={this.changeHandler}
@@ -41,7 +41,11 @@ export default class LogIn extends Component {
         />
         <p className="error-alert">{this.props.message}</p>
         <div className="buttons">
-          <button type="submit" className="login" onClick={this.props.resetError}>
+          <button
+            type="submit"
+            className="login"
+            onClick={this.props.resetError}
+          >
             Login
           </button>
           <Link to="/signup" onClick={this.props.resetError}>

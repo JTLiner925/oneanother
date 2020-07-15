@@ -33,6 +33,7 @@ export default class DashMain extends Component {
         id = value;
       }
     }
+    //use ternary to display placeholder text when no api call has been made
     const { events, groupId } = this.props;
     return (
       <ApiContext.Consumer>

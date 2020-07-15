@@ -13,6 +13,7 @@ class App extends Component {
     users: [],
   };
   signUp = (formData) => {
+    //sign up for an account - feeds into login()
     fetch(`https://mighty-brook-70505.herokuapp.com/api/users/signup`, {
       headers: {
         "Content-Type": "application/json",
@@ -34,10 +35,11 @@ class App extends Component {
   };
   resetError = () => {
     this.setState({
-      message: '',
-    })
-  }
+      message: "",
+    });
+  };
   logIn = (formData) => {
+    //logs into dashboard
     fetch(`https://mighty-brook-70505.herokuapp.com/api/users/login`, {
       headers: {
         "Content-Type": "application/json",
@@ -67,17 +69,25 @@ class App extends Component {
     return (
       <main className="App">
         {["/", "/login", "/signup"].map((path) => (
-          <Route key={path} exact path={path} render={() => {
-            return (
-            <HomeNav resetError={this.resetError} />)
-          }} />
+          <Route
+            key={path}
+            exact
+            path={path}
+            render={() => {
+              return <HomeNav resetError={this.resetError} />;
+            }}
+          />
         ))}
         <Route exact path="/" component={HomePage} />
         <Route
           path="/login"
           render={() => {
             return (
-              <LogIn message={this.state.message} resetError={this.resetError} onLogIn={this.logIn}></LogIn>
+              <LogIn
+                message={this.state.message}
+                resetError={this.resetError}
+                onLogIn={this.logIn}
+              ></LogIn>
             );
           }}
         />

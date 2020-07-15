@@ -32,9 +32,7 @@ export default class HomePage extends Component {
         <Carousel className="carousel">
           <div className="slide slide1">
             <FontAwesomeIcon id="user-icon" icon={faUser} />
-            <h3>
-              Join oneAnother and stay connected to your small group!
-            </h3>
+            <h3>Join oneAnother and stay connected to your small group!</h3>
           </div>
           <div className="slide slide2">
             <FontAwesomeIcon id="user-friends-icon" icon={faUserFriends} />

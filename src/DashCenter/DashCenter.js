@@ -9,6 +9,7 @@ export default class DashCenter extends Component {
   submitHandler = (e) => {
     this.props.navHandler(this.state);
   };
+  // section for event information
   render() {
     let i = window.location.search;
     let x = new URLSearchParams(i);
@@ -21,6 +22,7 @@ export default class DashCenter extends Component {
       }
     }
     const { eventId, events, groupId } = this.props;
+    //help to display lesson title in bible section
     let lessonTitle = this.props.events.lesson_title;
     if (this.props.events.length > 0) {
       lessonTitle = this.props.events.find((event) => {

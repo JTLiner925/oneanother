@@ -30,6 +30,7 @@ class Dashboard extends Component {
   };
   static contextType = ApiContext;
   HamNav = (e) => {
+    //event handler for hamburger menu
     let elem = document.querySelector(".side-nav-body");
     if (elem.style.display === "block") {
       elem.style.display = "none";
@@ -38,6 +39,7 @@ class Dashboard extends Component {
     }
   };
   HamNavPage = () => {
+    //event handler for menu to collapse by clicking in other places other than hamburger icon
     let elem = document.querySelector(".side-nav-body");
     if (elem.style.display === "none") {
       elem.style.display = "none";
@@ -53,6 +55,7 @@ class Dashboard extends Component {
   };
 
   componentDidMount() {
+    //call api for data to display in dashboard
     this.setState({
       eventMessage: "",
     });
@@ -93,6 +96,7 @@ class Dashboard extends Component {
           events: events,
           userId: userId.id,
         });
+        //maintain bible passage even if page refreshes
         this.handleBiblePassage(this.state.eventId);
       })
       .catch((error) => {
@@ -108,6 +112,7 @@ class Dashboard extends Component {
   }
 
   handleBiblePassage = (eventId) => {
+    //bible api call
     let selectedEvent = this.state.events.find((event) => {
       return event.id.toString() == eventId;
     });
@@ -148,11 +153,13 @@ class Dashboard extends Component {
     }
   };
   resetError = () => {
+    //reset error message when I leave page
     this.setState({
       eventMessage: "",
     });
   };
   createGroup = (formData) => {
+    //add group to api
     fetch(`https://mighty-brook-70505.herokuapp.com/api/groups/creategroup`, {
       headers: {
         "Content-Type": "application/json",
@@ -178,6 +185,7 @@ class Dashboard extends Component {
       });
   };
   joinGroup = (formData) => {
+    //join current group
     fetch(`https://mighty-brook-70505.herokuapp.com/api/groups/joingroup`, {
       headers: {
         "Content-Type": "application/json",
@@ -204,6 +212,7 @@ class Dashboard extends Component {
   };
 
   createEvent = (formData) => {
+    //add event for group
     fetch(`https://mighty-brook-70505.herokuapp.com/api/events/createevent`, {
       headers: {
         "Content-Type": "application/json",
@@ -255,6 +264,7 @@ class Dashboard extends Component {
     });
   };
   renderMainRoutes() {
+    //different routes for main section
     let userName = window.localStorage.getItem("userName");
 
     return (
@@ -355,6 +365,7 @@ class Dashboard extends Component {
     );
   }
   render() {
+    //grab groups and events based on routing groupId and eventId
     let i = window.location.search;
     let x = new URLSearchParams(i);
     for (let [key, value] of x) {

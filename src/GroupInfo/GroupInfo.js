@@ -10,6 +10,7 @@ export default class GroupInfo extends Component {
     this.props.navHandler(this.state);
   };
   render() {
+    //grabs leader for group
     const { groups, groupId, users } = this.props;
     let leaderId = this.props.groups.group_leader;
     if (this.props.groups.length > 0) {

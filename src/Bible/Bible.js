@@ -10,7 +10,7 @@ export default class DashMain extends Component {
     address: "",
   };
   static contextType = ApiContext;
-
+  //set passage based on either search term or book/chapter select
   setPassage = (passage, type) => {
     if (type === "chapter") {
       this.setState({
@@ -38,7 +38,7 @@ export default class DashMain extends Component {
   handleBibleReference = (e) => {
     e.preventDefault();
     e.persist();
-
+    //call api based on address
     let url = new URL(`https://api.esv.org/v3/passage/text/`);
 
     url.searchParams.set("q", this.state.book + this.state.chapter);
@@ -78,6 +78,7 @@ export default class DashMain extends Component {
   };
 
   handleBibleSearch = (e) => {
+    //call api based on search term
     e.preventDefault();
     e.persist();
     let url = new URL(`https://api.esv.org/v3/passage/search/`);
@@ -120,6 +121,7 @@ export default class DashMain extends Component {
       });
   };
   render() {
+    //create object of books of the bible with chapter
     let books = {
       Genesis: {
         Chapters: [

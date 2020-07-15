@@ -9,6 +9,7 @@ export default class CreateGroup extends Component {
 
   submitHandler = (e) => {
     e.preventDefault();
+    //create group from dashboard
     this.props.onCreateGroup(this.state);
   };
   submitJoinHandler = (e) => {
@@ -16,12 +17,14 @@ export default class CreateGroup extends Component {
     let group = this.props.groups.find((g) => {
       return g.group_name === this.state.group_name;
     });
+    //join group from dashboard
     this.props.onJoinGroup(group);
   };
   navHandler = () => {
     this.props.onHandleHam(this.state);
   };
   changeHandler = (e) => {
+    //grabs the group name to join
     if (e.target.name === "group_names") {
       let element = document.querySelector(
         `#${e.target.value.split(" ").join("_")}`

@@ -27,7 +27,7 @@ export default class DashSideNav extends Component {
         id = value;
       }
     }
-
+    //nav bar displays groups that you have join and events for each group
     const { events = [], userId } = this.props;
     const { groups = [] } = this.props;
     const groupEvents = []

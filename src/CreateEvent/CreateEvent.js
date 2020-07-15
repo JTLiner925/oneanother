@@ -70,11 +70,13 @@ export default class CreateEvent extends Component {
       })
       .then((resData) => {
         if (resData.passages.length === 0) {
+          //fix bible passages
           throw new Error(
             'Please check Bible passage, write out in long form. i.e. "Matthew 28:18-20"'
           );
         }
         if (
+          //select group before submitting
           this.state.group_name === "Select Group" ||
           this.state.group_name === undefined
         ) {

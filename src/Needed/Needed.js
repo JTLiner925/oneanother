@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import "./Needed.css";
 
 export default class Needed extends Component {
+  //display items needed for event
   render() {
     return (
       <div className="Needed">
