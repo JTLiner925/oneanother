@@ -1261,9 +1261,8 @@ export default class DashMain extends Component {
       <div className="bible-body" onClick={this.navHandler}>
         <div className="bible-search-params">
           <form className="bible-search" onSubmit={this.handleBibleSearch}>
-            
             <label htmlFor="search">
-            <h2>Search the Bible</h2>
+              <h2>Search the Bible</h2>
               <input
                 value={this.state.search}
                 name="search"
@@ -1278,33 +1277,34 @@ export default class DashMain extends Component {
           </form>
           <form className="select-passage" onSubmit={this.handleBibleReference}>
             <div className="select-options">
-              <label htmlFor='bible-select' className="select-passage-header">
-                <h3 >Select</h3>
-              <select
-                id="bible-select"
-                value={this.state.book}
-                name="book"
-                onChange={this.changeHandler}
-              >
-                <option>Book</option>
-                {Object.keys(books).map((book) => {
-                  return <option key={book}>{book}</option>;
-                })}
-              </select>
-              </label>
-              <label htmlFor='chapter-select' className="select-passage-header"><h3 >Passage</h3>
-              <select
-                id="chapter-select"
-                value={this.state.chapter}
-                name="chapter"
-                onChange={this.changeHandler}
-              >
-                <option>Chapter</option>
-                {this.state.book &&
-                  books[this.state.book].Chapters.map((chapter) => {
-                    return <option key={chapter}>{chapter}</option>;
+              <label htmlFor="bible-select" className="select-passage-header">
+                <h3>Select</h3>
+                <select
+                  id="bible-select"
+                  value={this.state.book}
+                  name="book"
+                  onChange={this.changeHandler}
+                >
+                  <option>Book</option>
+                  {Object.keys(books).map((book) => {
+                    return <option key={book}>{book}</option>;
                   })}
-              </select>
+                </select>
+              </label>
+              <label htmlFor="chapter-select" className="select-passage-header">
+                <h3>Passage</h3>
+                <select
+                  id="chapter-select"
+                  value={this.state.chapter}
+                  name="chapter"
+                  onChange={this.changeHandler}
+                >
+                  <option>Chapter</option>
+                  {this.state.book &&
+                    books[this.state.book].Chapters.map((chapter) => {
+                      return <option key={chapter}>{chapter}</option>;
+                    })}
+                </select>
               </label>
             </div>
             <button className="bible-submit" type="submit">

@@ -16,9 +16,8 @@
 .side-nav-body {
   display: none;
 }
-.side-nav h3{
-    color: rgb(77, 77, 77);
-
+.side-nav h3 {
+  color: rgb(77, 77, 77);
 }
 .myLinks {
   display: block;

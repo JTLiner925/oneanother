@@ -44,10 +44,10 @@ export default class CreateEvent extends Component {
   }
 
   submitHandler = (e) => {
-    this.props.resetError()
+    this.props.resetError();
     this.setState({
-      error:''
-    })
+      error: "",
+    });
     e.preventDefault();
     let checkVerse = this.state.bible_passage;
 
@@ -109,36 +109,36 @@ export default class CreateEvent extends Component {
         <form className="event-form" onSubmit={this.submitHandler}>
           <h2>Create New Event</h2>
           <div>
-            <label htmlFor='event-select'>
-            Search Groups
-            <select
-              id="event-select"
-              name="group_name"
-              onChange={this.changeHandler}
-              required
-            >
-              {" "}
-              <option>Select Group</option>
-              {this.props.groups &&
-                this.props.groups.map((gr) => {
-                  let userIds = gr.user_ids;
-                  for (let i = 0; i < userIds.length; i++) {
-                    let idsArray = userIds[i];
-                    if (idsArray && idsArray == userId) {
-                      return (
-                        <option
-                          id={gr.group_name.split(" ").join("_")}
-                          groupid={gr.id}
-                          key={gr.id}
-                          required
-                        >
-                          {gr.group_name}
-                        </option>
-                      );
+            <label htmlFor="event-select">
+              Search Groups
+              <select
+                id="event-select"
+                name="group_name"
+                onChange={this.changeHandler}
+                required
+              >
+                {" "}
+                <option>Select Group</option>
+                {this.props.groups &&
+                  this.props.groups.map((gr) => {
+                    let userIds = gr.user_ids;
+                    for (let i = 0; i < userIds.length; i++) {
+                      let idsArray = userIds[i];
+                      if (idsArray && idsArray == userId) {
+                        return (
+                          <option
+                            id={gr.group_name.split(" ").join("_")}
+                            groupid={gr.id}
+                            key={gr.id}
+                            required
+                          >
+                            {gr.group_name}
+                          </option>
+                        );
+                      }
                     }
-                  }
-                })}
-            </select>
+                  })}
+              </select>
             </label>
           </div>
           <div className="event-input">

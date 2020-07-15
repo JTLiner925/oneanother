@@ -9,7 +9,8 @@
   align-content: center;
   justify-content: center;
 }
-#bible-select, #chapter-select {
+#bible-select,
+#chapter-select {
   width: 100%;
 }
 .bible-search-params {
@@ -31,7 +32,8 @@
   margin: 0;
 }
 .bible-search #search,
-#bible-select, #chapter-select {
+#bible-select,
+#chapter-select {
   display: flex;
   flex-direction: column;
   /* width: 50%; */
@@ -125,7 +127,8 @@
     align-content: center;
     justify-content: center;
   }
-  #bible-select, #chapter-select {
+  #bible-select,
+  #chapter-select {
     width: 100%;
     margin: 10px;
     justify-content: center;

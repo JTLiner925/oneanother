@@ -86,14 +86,14 @@ class Dashboard extends Component {
         let userId = users.find(
           (user) => user.first_name === window.localStorage.getItem("userName")
         );
-   
+
         this.setState({
           users: users,
           groups: groups,
           events: events,
           userId: userId.id,
         });
-        this.handleBiblePassage(this.state.eventId)
+        this.handleBiblePassage(this.state.eventId);
       })
       .catch((error) => {
         this.setState({ error });

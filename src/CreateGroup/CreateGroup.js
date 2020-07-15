@@ -69,9 +69,7 @@ export default class CreateGroup extends Component {
                 ))}
             </select>
             <div className="join-group">
-            <button type="submit" >
-              Join Group
-            </button>
+              <button type="submit">Join Group</button>
             </div>
           </div>
         </form>
