@@ -73,7 +73,6 @@ export default class DashMain extends Component {
         this.setPassage(passage, "chapter");
       })
       .catch((error) => {
-        console.error(error);
         this.setState({ error });
       });
   };
@@ -117,7 +116,6 @@ export default class DashMain extends Component {
         this.setPassage(passage, "search");
       })
       .catch((error) => {
-        console.error(error);
         this.setState({ error });
       });
   };

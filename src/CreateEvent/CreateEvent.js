@@ -69,7 +69,6 @@ export default class CreateEvent extends Component {
         return res.json();
       })
       .then((resData) => {
-        console.log(resData);
         if (resData.passages.length === 0) {
           throw new Error(
             'Please check Bible passage, write out in long form. i.e. "Matthew 28:18-20"'
@@ -113,7 +112,6 @@ export default class CreateEvent extends Component {
     }
   };
   render() {
-    console.log(this.state.group_name);
     const { userId } = this.props;
     return (
       <div className="event-body" onClick={this.navHandler}>
