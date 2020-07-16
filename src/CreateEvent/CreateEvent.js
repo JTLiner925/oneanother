@@ -111,6 +111,12 @@ export default class CreateEvent extends Component {
         [e.target.name]: e.target.value,
         groupid: groupid,
       });
+    }
+    if (e.target.name === "needed_items") {
+      this.setState({ item_value: e.target.value });
+    }
+    if (e.target.name === "question") {
+      this.setState({ question_value: e.target.value });
     } else {
       this.setState({
         [e.target.name]: e.target.value,
@@ -118,11 +124,9 @@ export default class CreateEvent extends Component {
     }
   };
   onChangeItemValue = (event) => {
-    this.setState({ item_value: event.target.value });
+    this.props.resetError();
   };
-  onChangeQuestionValue = (event) => {
-    this.setState({ question_value: event.target.value });
-  };
+  onChangeQuestionValue = (event) => {};
   addItemHandler = () => {
     this.setState((state) => {
       const needed_items = [...state.needed_items, state.item_value];
@@ -135,9 +139,7 @@ export default class CreateEvent extends Component {
   };
   removeItemHandler = (i) => {
     this.setState({
-      needed_items: this.state.needed_items.filter((item, j) => i !== j)
-
-      
+      needed_items: this.state.needed_items.filter((item, j) => i !== j),
     });
   };
 
@@ -153,7 +155,7 @@ export default class CreateEvent extends Component {
   };
   removeQuestionHandler = (i) => {
     this.setState({
-      question: this.state.question.filter((question, j) => i !== j)
+      question: this.state.question.filter((question, j) => i !== j),
     });
   };
   render() {
@@ -215,7 +217,7 @@ export default class CreateEvent extends Component {
                   name="needed_items"
                   type="text"
                   value={this.state.item_value}
-                  onChange={this.onChangeItemValue}
+                  onChange={this.changeHandler}
                 ></input>
                 <button
                   id="add-button"
@@ -229,7 +231,7 @@ export default class CreateEvent extends Component {
               <ul className=" list-items">
                 {(this.state.needed_items || []).map((item, index) => {
                   return (
-                    <div key={index} className="list-div" name='needed_items'>
+                    <div key={index} className="list-div" name="needed_items">
                       <button
                         id="delete-button"
                         onClick={() => this.removeItemHandler(index)}
@@ -294,7 +296,7 @@ export default class CreateEvent extends Component {
                     id="question"
                     name="question"
                     value={this.state.question_value}
-                    onChange={this.onChangeQuestionValue}
+                    onChange={this.changeHandler}
                   ></input>
                   <button
                     id="add-button"
@@ -315,7 +317,7 @@ export default class CreateEvent extends Component {
                         >
                           X
                         </button>
-                        <li name='question'>{question}</li>
+                        <li name="question">{question}</li>
                       </div>
                     );
                   })}
