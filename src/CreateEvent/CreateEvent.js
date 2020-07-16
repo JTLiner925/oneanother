@@ -7,9 +7,9 @@ export default class CreateEvent extends Component {
     event: "",
     group: "",
     passage: "",
-    needed_item: [],
+    needed_items: [],
     item_value: "",
-    questions: [],
+    question: [],
     question_value: "",
   };
   setEvent = (event, group) => {
@@ -125,17 +125,17 @@ export default class CreateEvent extends Component {
   };
   addItemHandler = () => {
     this.setState((state) => {
-      const needed_item = [...state.needed_item, state.item_value];
+      const needed_items = [...state.needed_items, state.item_value];
 
       return {
-        needed_item,
+        needed_items,
         item_value: "",
       };
     });
   };
   removeItemHandler = (i) => {
     this.setState({
-      needed_item: this.state.needed_item.filter((item, j) => i !== j)
+      needed_items: this.state.needed_items.filter((item, j) => i !== j)
 
       
     });
@@ -143,17 +143,17 @@ export default class CreateEvent extends Component {
 
   addQuestionHandler = () => {
     this.setState((state) => {
-      const questions = [...state.questions, state.question_value];
+      const question = [...state.question, state.question_value];
 
       return {
-        questions,
+        question,
         question_value: "",
       };
     });
   };
   removeQuestionHandler = (i) => {
     this.setState({
-      questions: this.state.questions.filter((question, j) => i !== j)
+      question: this.state.question.filter((question, j) => i !== j)
     });
   };
   render() {
@@ -227,7 +227,7 @@ export default class CreateEvent extends Component {
                 </button>
               </label>
               <ul className=" list-items">
-                {(this.state.needed_item || []).map((item, index) => {
+                {(this.state.needed_items || []).map((item, index) => {
                   return (
                     <div key={index} className="list-div">
                       <button
@@ -306,7 +306,7 @@ export default class CreateEvent extends Component {
                   </button>
                 </label>
                 <ul className="list-questions">
-                  {(this.state.questions || []).map((question, index) => {
+                  {(this.state.question || []).map((question, index) => {
                     return (
                       <div key={index} className="list-div">
                         <button
