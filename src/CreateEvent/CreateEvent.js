@@ -212,6 +212,7 @@ export default class CreateEvent extends Component {
                 Needed Items
                 <input
                   id="needed-items"
+                  name="needed_items"
                   type="text"
                   value={this.state.item_value}
                   onChange={this.onChangeItemValue}
@@ -228,14 +229,14 @@ export default class CreateEvent extends Component {
               <ul className=" list-items">
                 {(this.state.needed_items || []).map((item, index) => {
                   return (
-                    <div key={index} className="list-div" >
+                    <div key={index} className="list-div" name='needed_items'>
                       <button
                         id="delete-button"
                         onClick={() => this.removeItemHandler(index)}
                       >
                         X
                       </button>
-                      <li name='needed_items'>{item}</li>
+                      <li name="needed_items">{item}</li>
                     </div>
                   );
                 })}
@@ -291,7 +292,7 @@ export default class CreateEvent extends Component {
                   Question
                   <input
                     id="question"
-                    
+                    name="question"
                     value={this.state.question_value}
                     onChange={this.onChangeQuestionValue}
                   ></input>
