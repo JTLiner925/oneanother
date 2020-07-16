@@ -7,6 +7,10 @@ export default class CreateEvent extends Component {
     event: "",
     group: "",
     passage: "",
+    needed_item: [],
+    item_value: "",
+    questions: [],
+    question_value: "",
   };
   setEvent = (event, group) => {
     this.setState({
@@ -113,7 +117,47 @@ export default class CreateEvent extends Component {
       });
     }
   };
+  onChangeItemValue = (event) => {
+    this.setState({ item_value: event.target.value });
+  };
+  onChangeQuestionValue = (event) => {
+    this.setState({ question_value: event.target.value });
+  };
+  addItemHandler = () => {
+    this.setState((state) => {
+      const needed_item = [...state.needed_item, state.item_value];
+
+      return {
+        needed_item,
+        item_value: "",
+      };
+    });
+  };
+  removeItemHandler = (i) => {
+    this.setState({
+      needed_item: this.state.needed_item.filter((item, j) => i !== j)
+
+      
+    });
+  };
+
+  addQuestionHandler = () => {
+    this.setState((state) => {
+      const questions = [...state.questions, state.question_value];
+
+      return {
+        questions,
+        question_value: "",
+      };
+    });
+  };
+  removeQuestionHandler = (i) => {
+    this.setState({
+      questions: this.state.questions.filter((question, j) => i !== j)
+    });
+  };
   render() {
+    console.log(this.state);
     const { userId } = this.props;
     return (
       <div className="event-body" onClick={this.navHandler}>
@@ -163,15 +207,40 @@ export default class CreateEvent extends Component {
                 ></textarea>
               </label>
             </div>
-            <div>
+            <div className="needed-input-div">
               <label htmlFor="needed-items">
                 Needed Items
-                <textarea
+                <input
                   id="needed-items"
                   name="needed_items"
-                  onChange={this.changeHandler}
-                ></textarea>
+                  type="text"
+                  value={this.state.item_value}
+                  onChange={this.onChangeItemValue}
+                ></input>
+                <button
+                  id="add-button"
+                  type="button"
+                  onClick={this.addItemHandler}
+                  disabled={!this.state.item_value}
+                >
+                  +
+                </button>
               </label>
+              <ul className=" list-items">
+                {(this.state.needed_item || []).map((item, index) => {
+                  return (
+                    <div key={index} className="list-div">
+                      <button
+                        id="delete-button"
+                        onClick={() => this.removeItemHandler(index)}
+                      >
+                        X
+                      </button>
+                      <li>{item}</li>
+                    </div>
+                  );
+                })}
+              </ul>
             </div>
             <div>
               <label htmlFor="date">
@@ -218,15 +287,39 @@ export default class CreateEvent extends Component {
             </div>
             <div>
               <h3>Questions</h3>
-              <div>
+              <div className="questions-input-div">
                 <label htmlFor="question">
                   Question
-                  <textarea
+                  <input
                     id="question"
                     name="question"
-                    onChange={this.changeHandler}
-                  ></textarea>
+                    value={this.state.question_value}
+                    onChange={this.onChangeQuestionValue}
+                  ></input>
+                  <button
+                    id="add-button"
+                    type="button"
+                    onClick={this.addQuestionHandler}
+                    disabled={!this.state.question_value}
+                  >
+                    +
+                  </button>
                 </label>
+                <ul className="list-questions">
+                  {(this.state.questions || []).map((question, index) => {
+                    return (
+                      <div key={index} className="list-div">
+                        <button
+                          id="delete-button"
+                          onClick={() => this.removeQuestionHandler(index)}
+                        >
+                          X
+                        </button>
+                        <li>{question}</li>
+                      </div>
+                    );
+                  })}
+                </ul>
               </div>
             </div>
           </div>
