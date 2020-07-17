@@ -249,6 +249,7 @@ export default class CreateEvent extends Component {
                 Event Date
                 <input
                   id="date"
+                  type="date"
                   name="event_date"
                   onChange={this.changeHandler}
                 ></input>
@@ -259,6 +260,7 @@ export default class CreateEvent extends Component {
                 Event Time
                 <input
                   id="time"
+                  type="time"
                   name="event_time"
                   onChange={this.changeHandler}
                 ></input>
