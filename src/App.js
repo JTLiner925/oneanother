@@ -6,6 +6,7 @@ import HomePage from "./HomePage/HomePage";
 import LogIn from "./LogIn/LogIn";
 import SignUp from "./SignUp/SignUp";
 import Dashboard from "./Dashboard/Dashboard";
+import config from './config'
 import "./App.css";
 
 class App extends Component {
@@ -14,7 +15,7 @@ class App extends Component {
   };
   signUp = (formData) => {
     //sign up for an account - feeds into login()
-    fetch(`https://mighty-brook-70505.herokuapp.com/api/users/signup`, {
+    fetch(`${config.HOST}/api/users/signup`, {
       headers: {
         "Content-Type": "application/json",
       },
@@ -40,7 +41,7 @@ class App extends Component {
   };
   logIn = (formData) => {
     //logs into dashboard
-    fetch(`https://mighty-brook-70505.herokuapp.com/api/users/login`, {
+    fetch(`${config.HOST}/api/users/login`, {
       headers: {
         "Content-Type": "application/json",
       },

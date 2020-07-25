@@ -21,7 +21,7 @@ export default class CreateEvent extends Component {
   };
 
   componentDidMount() {
-    fetch(`https://mighty-brook-70505.herokuapp.com/api/events`, {
+    fetch(`${config.HOST}/api/events`, {
       headers: {
         "Content-Type": "application/json",
         Authorization: `Bearer ${window.localStorage.getItem("token")}`,
@@ -137,9 +137,7 @@ export default class CreateEvent extends Component {
   };
   removeItemHandler = (i) => {
     this.setState({
-      needed_items: this.state.needed_items.filter((item, j) => i !== j)
-
-      
+      needed_items: this.state.needed_items.filter((item, j) => i !== j),
     });
   };
 
@@ -155,11 +153,10 @@ export default class CreateEvent extends Component {
   };
   removeQuestionHandler = (i) => {
     this.setState({
-      question: this.state.question.filter((question, j) => i !== j)
+      question: this.state.question.filter((question, j) => i !== j),
     });
   };
   render() {
-    console.log(this.state);
     const { userId } = this.props;
     return (
       <div className="event-body" onClick={this.navHandler}>
@@ -231,7 +228,7 @@ export default class CreateEvent extends Component {
               <ul className=" list-items">
                 {(this.state.needed_items || []).map((item, index) => {
                   return (
-                    <div key={index} className="list-div" name='needed_items'>
+                    <div key={index} className="list-div" name="needed_items">
                       <button
                         id="delete-button"
                         onClick={() => this.removeItemHandler(index)}
@@ -249,6 +246,7 @@ export default class CreateEvent extends Component {
                 Event Date
                 <input
                   id="date"
+                  type="date"
                   name="event_date"
                   onChange={this.changeHandler}
                 ></input>
@@ -259,6 +257,7 @@ export default class CreateEvent extends Component {
                 Event Time
                 <input
                   id="time"
+                  type="time"
                   name="event_time"
                   onChange={this.changeHandler}
                 ></input>
@@ -317,7 +316,7 @@ export default class CreateEvent extends Component {
                         >
                           X
                         </button>
-                        <li name='question'>{question}</li>
+                        <li name="question">{question}</li>
                       </div>
                     );
                   })}

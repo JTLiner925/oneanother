@@ -55,37 +55,62 @@ class Dashboard extends Component {
   };
 
   componentDidMount() {
+    let i = window.location.search;
+    let x = new URLSearchParams(i);
+    let eventId;
+    for (let [key, value] of x) {
+      if (key === "eventId") {
+        eventId = value;
+      }
+      this.setState({
+        [key]: value,
+      });
+    }
+
     //call api for data to display in dashboard
     this.setState({
       eventMessage: "",
     });
     Promise.all([
-      fetch(`https://mighty-brook-70505.herokuapp.com/api/users`, {
+      fetch(`${config.HOST}/api/users`, {
         headers: {
           "Content-Type": "application/json",
         },
 
         method: "GET",
       }),
-      fetch(`https://mighty-brook-70505.herokuapp.com/api/groups`, {
+      fetch(`${config.HOST}/api/groups`, {
         headers: {
           "Content-Type": "application/json",
           Authorization: `Bearer ${window.localStorage.getItem("token")}`,
         },
         method: "GET",
       }),
-      fetch(`https://mighty-brook-70505.herokuapp.com/api/events`, {
+      fetch(`${config.HOST}/api/events`, {
         headers: {
           "Content-Type": "application/json",
           Authorization: `Bearer ${window.localStorage.getItem("token")}`,
         },
         method: "GET",
+      }),
+      fetch(`${config.HOST}/api/needed`, {
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${window.localStorage.getItem("token")}`,
+        },
+        method: "POST",
+        body: JSON.stringify({ event_id: eventId }),
       }),
     ])
-      .then(([userRes, groupRes, eventRes]) => {
-        return Promise.all([userRes.json(), groupRes.json(), eventRes.json()]);
+      .then(([userRes, groupRes, eventRes, needRes]) => {
+        return Promise.all([
+          userRes.json(),
+          groupRes.json(),
+          eventRes.json(),
+          needRes.json(),
+        ]);
       })
-      .then(([users, groups, events]) => {
+      .then(([users, groups, events, needed]) => {
         let userId = users.find(
           (user) => user.first_name === window.localStorage.getItem("userName")
         );
@@ -95,6 +120,7 @@ class Dashboard extends Component {
           groups: groups,
           events: events,
           userId: userId.id,
+          needed: needed,
         });
         //maintain bible passage even if page refreshes
         this.handleBiblePassage(this.state.eventId);
@@ -102,13 +128,6 @@ class Dashboard extends Component {
       .catch((error) => {
         this.setState({ error });
       });
-    let i = window.location.search;
-    let x = new URLSearchParams(i);
-    for (let [key, value] of x) {
-      this.setState({
-        [key]: value,
-      });
-    }
   }
 
   handleBiblePassage = (eventId) => {
@@ -160,7 +179,7 @@ class Dashboard extends Component {
   };
   createGroup = (formData) => {
     //add group to api
-    fetch(`https://mighty-brook-70505.herokuapp.com/api/groups/creategroup`, {
+    fetch(`${config.HOST}/api/groups/creategroup`, {
       headers: {
         "Content-Type": "application/json",
         Authorization: `Bearer ${window.localStorage.getItem("token")}`,
@@ -186,7 +205,7 @@ class Dashboard extends Component {
   };
   joinGroup = (formData) => {
     //join current group
-    fetch(`https://mighty-brook-70505.herokuapp.com/api/groups/joingroup`, {
+    fetch(`${config.HOST}/api/groups/joingroup`, {
       headers: {
         "Content-Type": "application/json",
         Authorization: `Bearer ${window.localStorage.getItem("token")}`,
@@ -210,11 +229,28 @@ class Dashboard extends Component {
         console.log(error);
       });
   };
-
+  pushNeededItems = (id, neededItems) => {
+    fetch(`${config.HOST}/api/needed/add-item`, {
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${window.localStorage.getItem("token")}`,
+      },
+      method: "POST",
+      body: JSON.stringify({ id, neededItems }),
+    })
+      .then((res) => {
+        return res.json();
+      })
+      .then((resData) => {
+        this.props.history.push("/dashboard");
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
   createEvent = (formData) => {
-    console.log(formData)
     //add event for group
-    fetch(`https://mighty-brook-70505.herokuapp.com/api/events/createevent`, {
+    fetch(`${config.HOST}/api/events/createevent`, {
       headers: {
         "Content-Type": "application/json",
         Authorization: `Bearer ${window.localStorage.getItem("token")}`,
@@ -231,8 +267,8 @@ class Dashboard extends Component {
           return res.json();
         }
       })
-      .then(() => {
-        this.props.history.push("/dashboard");
+      .then((resData) => {
+        this.pushNeededItems(resData.eventId, formData.needed_items);
       })
       .catch((error) => {
         this.setState({ eventMessage: error.message });
@@ -309,6 +345,7 @@ class Dashboard extends Component {
                   eventId={this.state.eventId}
                   users={this.state.users}
                   userId={this.state.userId}
+                  needed={this.state.needed}
                 ></DashMain>
               );
             }}

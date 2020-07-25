@@ -41,9 +41,10 @@ margin-bottom: 10px;
   font-weight: bold;
   background-color: rgb(215, 7, 7);
   padding: 0;
-  width: 20px;
-  height: 20px;
+  width: 15px;
+  height: 15px;
   margin-right: 2px;
+  margin-left: 2px;
   align-content: center;
 }
 #delete-button:hover {

@@ -84,7 +84,7 @@ export default class DashCenter extends Component {
             {eventId ? (
               events.map((event, i) => {
                 if (event.id == eventId && event.group_event == groupId) {
-                  return <Needed key={i} item={event.needed_items} />;
+                  return <Needed key={i} users={this.props.users} userId={this.props.userId} needed={this.props.needed} />;
                 }
               })
             ) : (

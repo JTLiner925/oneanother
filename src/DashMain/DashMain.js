@@ -88,6 +88,7 @@ export default class DashMain extends Component {
                         userId={this.props.userId}
                         passage={this.props.passage}
                         navHandler={this.navHandler}
+                        needed={this.props.needed}
                       />
                     );
                   }}
