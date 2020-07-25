@@ -98,7 +98,7 @@ class Dashboard extends Component {
           "Content-Type": "application/json",
           Authorization: `Bearer ${window.localStorage.getItem("token")}`,
         },
-        method: "POST",
+        method: "GET",
         body: JSON.stringify({ event_id: eventId }),
       }),
     ])
