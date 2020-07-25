@@ -9,7 +9,7 @@ export default class Needed extends Component {
   componentDidMount() {
     let userIds = this.props.needed;
 
-    userIds.map((item, index) => {
+    userIds.forEach((item, index) => {
       if (item.user_id) {
         let eachUser = this.props.users.find((user) => {
           return user.id === item.user_id;
