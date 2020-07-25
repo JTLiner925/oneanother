@@ -57,10 +57,10 @@ class Dashboard extends Component {
   componentDidMount() {
     let i = window.location.search;
     let x = new URLSearchParams(i);
-    let eventId = null;
+    // let eventId;
     for (let [key, value] of x) {
       if (key === "eventId") {
-        eventId = new eventId(value);
+      let eventId = value;
       }
       this.setState({
         [key]: value,
