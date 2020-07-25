@@ -28,7 +28,7 @@ export default class HomePage extends Component {
           <Link className="get-started" to="/signup">
             <button className="sign-up">Get Started</button>
           </Link>
-          <p className="intro-text">For a demo of the app click below!</p>
+      <p className="intro-text">For a demo of the app click below!</p>
           <Link className="get-started" to="/login">
             <button className="sign-up">Demo Login</button>
           </Link>
