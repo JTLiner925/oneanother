@@ -60,9 +60,9 @@ class Dashboard extends Component {
     let x = new URLSearchParams(i);
     let eventId;
     for (let [key, value] of x) {
-      // if (key === "eventId") {
-      // eventId = value;
-      // }
+      if (key === "eventId") {
+      eventId = value;
+      }
       if (value !== eventId) {
         this.handleEvent(value);
       }
