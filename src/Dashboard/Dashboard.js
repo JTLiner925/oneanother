@@ -63,9 +63,7 @@ class Dashboard extends Component {
       if (key === "eventId") {
       eventId = value;
       }
-      if (value !== eventId) {
-        this.handleEvent(value);
-      }
+     
       this.setState({
         [key]: value,
       });
@@ -96,6 +94,13 @@ class Dashboard extends Component {
           Authorization: `Bearer ${window.localStorage.getItem("token")}`,
         },
         method: "GET",
+      }),
+      fetch(`${config.HOST}/api/needed`, {
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${window.localStorage.getItem("token")}`,
+        },
+        method: "GET"
       }),
       fetch(`${config.HOST}/api/needed`, {
         headers: {
