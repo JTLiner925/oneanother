@@ -100,13 +100,6 @@ class Dashboard extends Component {
           "Content-Type": "application/json",
           Authorization: `Bearer ${window.localStorage.getItem("token")}`,
         },
-        method: "GET"
-      }),
-      fetch(`${config.HOST}/api/needed`, {
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${window.localStorage.getItem("token")}`,
-        },
         method: "POST",
         body: JSON.stringify({ event_id: eventId }),
       }),
