@@ -6,23 +6,22 @@ export default class Needed extends Component {
   state = {
     selectedItems: [],
   };
-  componentDidUpdate(prevProps) {
+  componentDidMount() {
     let userIds = this.props.needed;
-    if (userIds.event_id !== prevProps.event_id) {
-      userIds.forEach((item, index) => {
-        if (item.user_id) {
-          let eachUser = this.props.users.find((user) => {
-            return user.id === item.user_id;
-          });
-          userIds[
-            index
-          ].userName = `${eachUser.first_name} ${eachUser.last_name}`;
-        }
-      });
-      this.setState({
-        checkedItems: userIds,
-      });
-    }
+
+    userIds.forEach((item, index) => {
+      if (item.user_id) {
+        let eachUser = this.props.users.find((user) => {
+          return user.id === item.user_id;
+        });
+        userIds[
+          index
+        ].userName = `${eachUser.first_name} ${eachUser.last_name}`;
+      }
+    });
+    this.setState({
+      checkedItems: userIds,
+    });
   }
   handleSelectedItems = (e) => {
     if (this.state.selectedItems.includes(e.target.name)) {
