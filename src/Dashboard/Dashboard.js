@@ -21,6 +21,7 @@ class Dashboard extends Component {
     groupId: "",
     eventId: "",
     error: null,
+    needed:[]
   };
   setPassage = (passage) => {
     this.setState({
