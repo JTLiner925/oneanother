@@ -21,7 +21,7 @@ class Dashboard extends Component {
     groupId: "",
     eventId: "",
     error: null,
-    needed:[]
+    needed: [],
   };
   setPassage = (passage) => {
     this.setState({
@@ -61,9 +61,9 @@ class Dashboard extends Component {
     let eventId;
     for (let [key, value] of x) {
       if (key === "eventId") {
-      eventId = value;
+        eventId = value;
       }
-     
+
       this.setState({
         [key]: value,
       });

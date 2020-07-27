@@ -6,6 +6,7 @@ export default class Needed extends Component {
   state = {
     selectedItems: [],
   };
+  //went back to mount now that I'm returning the event_id
   componentDidMount() {
     let userIds = this.props.needed;
 
