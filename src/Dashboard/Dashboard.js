@@ -55,10 +55,10 @@ class Dashboard extends Component {
     });
   };
 
-  componentDidMount() {
+  componentDidMount(eventId) {
     let i = window.location.search;
     let x = new URLSearchParams(i);
-    let eventId = '';
+    // let eventId = '';
     for (let [key, value] of x) {
       if (key === "eventId") {
       eventId = value;
@@ -100,7 +100,7 @@ class Dashboard extends Component {
           Authorization: `Bearer ${window.localStorage.getItem("token")}`,
         },
         method: "POST",
-        body: JSON.stringify({ eventId: eventId }),
+        body: JSON.stringify({ event_id: eventId }),
       }),
     ])
       .then(([userRes, groupRes, eventRes, needRes]) => {
