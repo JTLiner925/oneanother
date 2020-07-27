@@ -101,7 +101,7 @@ class Dashboard extends Component {
           Authorization: `Bearer ${window.localStorage.getItem("token")}`,
         },
         method: "POST",
-        body: JSON.stringify({ event_id: eventId }),
+        body: JSON.stringify(eventId),
       }),
     ])
       .then(([userRes, groupRes, eventRes, needRes]) => {
