@@ -8,9 +8,14 @@ export default class Needed extends Component {
   };
   //went back to mount now that I'm returning the event_id
   componentDidMount() {
+    console.log(this.props);
     let userIds = this.props.needed;
 
     userIds.forEach((item, index) => {
+      console.log(item);
+      // if(item.event_id === eventId){
+
+      // }
       if (item.user_id) {
         let eachUser = this.props.users.find((user) => {
           return user.id === item.user_id;
@@ -19,9 +24,9 @@ export default class Needed extends Component {
           index
         ].userName = `${eachUser.first_name} ${eachUser.last_name}`;
       }
-    });
-    this.setState({
-      checkedItems: userIds,
+      this.setState({
+        checkedItems: userIds,
+      });
     });
   }
   handleSelectedItems = (e) => {
@@ -92,7 +97,7 @@ export default class Needed extends Component {
                     type="checkbox"
                     id={item.item_name}
                     name={item.id}
-                    className="visually-hidden"
+                    // className="visually-hidden"
                     value={item.id}
                     checked={
                       item.userName ||

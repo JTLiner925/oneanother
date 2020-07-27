@@ -59,6 +59,7 @@ class Dashboard extends Component {
     let i = window.location.search;
     let x = new URLSearchParams(i);
     let eventId;
+    
     for (let [key, value] of x) {
       if (key === "eventId") {
         eventId = value;
@@ -72,6 +73,7 @@ class Dashboard extends Component {
     //call api for data to display in dashboard
     this.setState({
       eventMessage: "",
+      needed:[]
     });
     Promise.all([
       fetch(`${config.HOST}/api/users`, {
@@ -101,7 +103,7 @@ class Dashboard extends Component {
           Authorization: `Bearer ${window.localStorage.getItem("token")}`,
         },
         method: "POST",
-        body: JSON.stringify(eventId),
+        body: JSON.stringify({event_id: eventId}),
       }),
     ])
       .then(([userRes, groupRes, eventRes, needRes]) => {
@@ -113,16 +115,18 @@ class Dashboard extends Component {
         ]);
       })
       .then(([users, groups, events, needed]) => {
+        let needId = needed.filter((item) => item.event_id == this.state.eventId)
         let userId = users.find(
           (user) => user.first_name === window.localStorage.getItem("userName")
         );
-
+console.log(needId)
         this.setState({
           users: users,
           groups: groups,
           events: events,
           userId: userId.id,
-          needed: needed,
+          needed: needId,
+          
         });
         //maintain bible passage even if page refreshes
         this.handleBiblePassage(this.state.eventId);
