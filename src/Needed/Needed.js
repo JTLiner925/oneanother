@@ -8,26 +8,24 @@ export default class Needed extends Component {
   };
   //went back to mount now that I'm returning the event_id
   componentDidMount() {
+ 
     console.log(this.props);
     let userIds = this.props.needed;
 
     userIds.forEach((item, index) => {
       console.log(item);
-      // if(item.event_id === eventId){
-
-      // }
       if (item.user_id) {
-        let eachUser = this.props.users.find((user) => {
-          return user.id === item.user_id;
-        });
+        let eachUser = this.props.users.find((user) => user.id === item.user_id);
         userIds[
           index
         ].userName = `${eachUser.first_name} ${eachUser.last_name}`;
       }
       this.setState({
-        checkedItems: userIds,
+        checkedItems: userIds
       });
+      
     });
+    // this.props.eventHandler();
   }
   handleSelectedItems = (e) => {
     if (this.state.selectedItems.includes(e.target.name)) {
@@ -37,7 +35,8 @@ export default class Needed extends Component {
       this.setState({
         selectedItems: filteredItems,
       });
-    } else {
+    } 
+    else {
       let items = this.state.selectedItems;
       items.push(e.target.name);
       this.setState({
@@ -74,6 +73,14 @@ export default class Needed extends Component {
   };
   //display items needed for event
   render() {
+    let needId;
+    if(this.props.needed.length > 0 && this.props.eventId){
+      needId = this.props.needed.filter(
+        (item) => item.event_id == this.props.eventId
+      );
+        
+    }
+    console.log(needId)
     let sortedItems = { checked: [], unchecked: [] };
     this.state.checkedItems &&
       this.state.checkedItems.forEach((item) => {
@@ -89,8 +96,8 @@ export default class Needed extends Component {
         <div className="Item">
           <p>Items to bring to group</p>
 
-          {items &&
-            items.map((item, i) => {
+          {needId &&
+            needId.map((item, i) => {
               return (
                 <div key={i}>
                   <input
@@ -99,6 +106,7 @@ export default class Needed extends Component {
                     name={item.id}
                     // className="visually-hidden"
                     value={item.id}
+                    readOnly
                     checked={
                       item.userName ||
                       this.state.selectedItems.includes(item.id.toString())

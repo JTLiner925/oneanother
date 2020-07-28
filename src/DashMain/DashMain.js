@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { Route } from "react-router-dom";
 import "./DashMain.css";
-import ApiContext from "../ApiContext";
+// import ApiContext from "../ApiContext";
 import DashCenter from "../DashCenter/DashCenter";
 import DashRight from "../DashRight/DashRight";
 
@@ -11,8 +11,9 @@ export default class DashMain extends Component {
     events: "",
     users: "",
     needed:'',
+    // eventId:''
   };
-  static contextType = ApiContext;
+  // static contextType = ApiContext;
 
   changeHandler = (e) => {
     this.setState({
@@ -23,6 +24,9 @@ export default class DashMain extends Component {
   navHandler = (e) => {
     this.props.onHandleHam(this.state);
   };
+  eventHandler = () => {
+    this.props.handleEvent(this.state)
+  }
   render() {
     let i = window.location.search;
     let x = new URLSearchParams(i);
@@ -35,20 +39,20 @@ export default class DashMain extends Component {
       }
     }
     //use ternary to display placeholder text when no api call has been made
-    const { events, groupId } = this.props;
+    const { events, groupId, eventId } = this.props;
     return (
-      <ApiContext.Consumer>
-        {({ eventId }) => (
+      // <ApiContext.Consumer>
+      //   {({ eventId }) => (
           <div className="main-body">
             <div className="event-alert" onClick={this.navHandler}>
               {eventId ? (
                 events.map((event, i) => {
                   if (event.id == eventId && event.group_event == groupId) {
                     return (
-                      <>
+                      <div key={i}>
                         <h3>Announcements</h3>
-                        <p key={i}>{event.announcements}</p>
-                      </>
+                        <p >{event.announcements}</p>
+                      </div>
                     );
                   }
                 })
@@ -90,6 +94,8 @@ export default class DashMain extends Component {
                         passage={this.props.passage}
                         navHandler={this.navHandler}
                         needed={this.props.needed}
+                        handleEvent={this.eventHandler}
+                  handleBiblePassage={this.props.handleBiblePassage}
                       />
                     );
                   }}
@@ -128,8 +134,8 @@ export default class DashMain extends Component {
               ))}
             </div>
           </div>
-        )}
-      </ApiContext.Consumer>
+        // )}
+      // </ApiContext.Consumer>
     );
   }
 }

@@ -1,14 +1,14 @@
-import React from "react";
+// import React from "react";
 
-export default React.createContext({
-  users: [],
-  groups: [],
-  events: [],
-  userId: '',
-  eventId: '',
-  groupId: '',
-  addEvent: () => {},
-  addGroup: () => {},
-  deleteEvent: () => {},
-  deleteGroup: () => {},
-});
+// export default React.createContext({
+//   users: [],
+//   groups: [],
+//   events: [],
+//   userId: '',
+//   eventId: '',
+//   groupId: '',
+//   addEvent: () => {},
+//   addGroup: () => {},
+//   deleteEvent: () => {},
+//   deleteGroup: () => {},
+// });

@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import config from "../config";
-import ApiContext from "../ApiContext";
+// import ApiContext from "../ApiContext";
 import "./Bible.css";
 
 export default class DashMain extends Component {
@@ -9,7 +9,7 @@ export default class DashMain extends Component {
     search: "",
     address: "",
   };
-  static contextType = ApiContext;
+  // static contextType = ApiContext;
   //set passage based on either search term or book/chapter select
   setPassage = (passage, type) => {
     if (type === "chapter") {

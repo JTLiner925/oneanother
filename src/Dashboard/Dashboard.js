@@ -5,13 +5,18 @@ import DashSideNav from "../DashSideNav/DashSideNav";
 import DashMain from "../DashMain/DashMain";
 import Bible from "../Bible/Bible";
 import Invite from "../Invite/Invite";
-import ApiContext from "../ApiContext";
+// import ApiContext from "../ApiContext";
 import CreateGroup from "../CreateGroup/CreateGroup";
 import CreateEvent from "../CreateEvent/CreateEvent";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBars } from "@fortawesome/free-solid-svg-icons";
 import "./Dashboard.css";
 class Dashboard extends Component {
+  static defaultProps = {
+    userId: "",
+    groupId: "",
+    eventId: "",
+  };
   state = {
     passage: "",
     users: [],
@@ -29,7 +34,7 @@ class Dashboard extends Component {
       error: null,
     });
   };
-  static contextType = ApiContext;
+  // static contextType = ApiContext;
   HamNav = (e) => {
     //event handler for hamburger menu
     let elem = document.querySelector(".side-nav-body");
@@ -54,17 +59,22 @@ class Dashboard extends Component {
       error: null,
     });
   };
-
+  // setEvent = (event) => {
+  //   this.setState({
+  //     event,
+  //     error: null,
+  //   })
+  // }
   componentDidMount() {
     let i = window.location.search;
     let x = new URLSearchParams(i);
     let eventId;
-    
+
     for (let [key, value] of x) {
       if (key === "eventId") {
         eventId = value;
       }
-
+      console.log(eventId)
       this.setState({
         [key]: value,
       });
@@ -73,7 +83,7 @@ class Dashboard extends Component {
     //call api for data to display in dashboard
     this.setState({
       eventMessage: "",
-      needed:[]
+      
     });
     Promise.all([
       fetch(`${config.HOST}/api/users`, {
@@ -102,8 +112,8 @@ class Dashboard extends Component {
           "Content-Type": "application/json",
           Authorization: `Bearer ${window.localStorage.getItem("token")}`,
         },
-        method: "POST",
-        body: JSON.stringify({event_id: eventId}),
+        method: "GET",
+        // body: JSON.stringify({ event_id: eventId }),
       }),
     ])
       .then(([userRes, groupRes, eventRes, needRes]) => {
@@ -115,21 +125,25 @@ class Dashboard extends Component {
         ]);
       })
       .then(([users, groups, events, needed]) => {
-        let needId = needed.filter((item) => item.event_id == this.state.eventId)
+        console.log(needed)
+        // let needId = needed.filter(
+        //   (item) => item.event_id == this.state.eventId
+        // );
         let userId = users.find(
           (user) => user.first_name === window.localStorage.getItem("userName")
         );
-console.log(needId)
+       
         this.setState({
           users: users,
           groups: groups,
           events: events,
           userId: userId.id,
-          needed: needId,
-          
+          needed: needed,
+          eventId: eventId,
         });
         //maintain bible passage even if page refreshes
         this.handleBiblePassage(this.state.eventId);
+        
       })
       .catch((error) => {
         this.setState({ error });
@@ -352,6 +366,8 @@ console.log(needId)
                   users={this.state.users}
                   userId={this.state.userId}
                   needed={this.state.needed}
+                  handleEvent={this.handleEvent}
+                  handleBiblePassage={this.handleBiblePassage}
                 ></DashMain>
               );
             }}
@@ -425,52 +441,54 @@ console.log(needId)
         }
       }
     }
-    const value = {
-      users: this.state.users,
-      groups: this.state.groups,
-      events: this.state.events,
-      userId: this.state.userId,
-      groupId: this.state.groupId,
-      eventId: this.state.eventId,
-      addEvent: this.handleAddEvent,
-      addGroup: this.handleAddGroup,
-      handleGroup: this.handleGroup,
-      handleUser: this.handleUser,
-      handleEvent: this.handleEvent,
-    };
+    // const value = {
+    //   users: this.state.users,
+    //   groups: this.state.groups,
+    //   events: this.state.events,
+    //   userId: this.state.userId,
+    //   groupId: this.state.groupId,
+    //   eventId: this.state.eventId,
+    //   addEvent: this.handleAddEvent,
+    //   addGroup: this.handleAddGroup,
+    //   handleGroup: this.handleGroup,
+    //   handleUser: this.handleUser,
+    //   handleEvent: this.handleEvent,
+    // };
     return (
-      <ApiContext.Provider value={value}>
-        <section id="dash-body">
-          {[
-            "/dashboard",
-            "/bible",
-            "/invite",
-            "/groupinfo",
-            "/creategroup",
-            "/createevent",
-            "/prayerrequests",
-            "/dashboard/:bible_passage",
-            "/dashboard/group/:group_id",
-          ].map((path) => (
-            <Route
-              exact
-              key={path}
-              path={path}
-              render={() => {
-                return (
-                  <DashSideNav
-                    events={this.state.events}
-                    groups={this.state.groups}
-                    users={this.state.users}
-                    userId={this.state.userId}
-                  />
-                );
-              }}
-            />
-          ))}
-          <main className="Dash__main">{this.renderMainRoutes()}</main>
-        </section>
-      </ApiContext.Provider>
+      // <ApiContext.Provider value={value}>
+      <section id="dash-body">
+        {[
+          "/dashboard",
+          "/bible",
+          "/invite",
+          "/groupinfo",
+          "/creategroup",
+          "/createevent",
+          "/prayerrequests",
+          "/dashboard/:bible_passage",
+          "/dashboard/group/:group_id",
+        ].map((path) => (
+          <Route
+            exact
+            key={path}
+            path={path}
+            render={() => {
+              return (
+                <DashSideNav
+                  events={this.state.events}
+                  groups={this.state.groups}
+                  users={this.state.users}
+                  userId={this.state.userId}
+                  handleEvent={this.handleEvent}
+                  handleBiblePassage={this.handleBiblePassage}
+                />
+              );
+            }}
+          />
+        ))}
+        <main className="Dash__main">{this.renderMainRoutes()}</main>
+      </section>
+      // </ApiContext.Provider>
     );
   }
 }

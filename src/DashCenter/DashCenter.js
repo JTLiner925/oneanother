@@ -1,14 +1,17 @@
 import React, { Component } from "react";
-import ApiContext from "../ApiContext";
+// import ApiContext from "../ApiContext";
 import BibleCard from "../BibleCard/BibleCard";
 import Questions from "../Questions/Questions";
 import Needed from "../Needed/Needed";
 
 export default class DashCenter extends Component {
-  static contextType = ApiContext;
+  // static contextType = ApiContext;
   submitHandler = (e) => {
     this.props.navHandler(this.state);
   };
+  eventHandler = () => {
+    this.props.handleEvent(this.state)
+  }
   // section for event information
   render() {
     console.log(this.props)
@@ -24,7 +27,6 @@ export default class DashCenter extends Component {
     }
     const { eventId, events, groupId, needed } = this.props;
     //help to display lesson title in bible section
-  
     let lessonTitle = this.props.events.lesson_title;
     if (this.props.events.length > 0) {
       lessonTitle = this.props.events.find((event) => {
@@ -86,7 +88,15 @@ export default class DashCenter extends Component {
             {eventId ? (
               events.map((event, i) => {
                 if (event.id == eventId && event.group_event == groupId) {
-                  return <Needed key={i} users={this.props.users} userId={this.props.userId} needed={this.props.needed} />;
+                  return (
+                  <Needed key={i} 
+                  users={this.props.users} 
+                  userId={this.props.userId} 
+                  eventId={this.props.eventId}
+                  needed={this.props.needed} 
+                  handleEvent={this.eventHandler}
+                  />
+                  );
                 }
               })
             ) : (

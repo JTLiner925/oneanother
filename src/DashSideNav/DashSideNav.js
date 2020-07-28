@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { NavLink, Link } from "react-router-dom";
-import ApiContext from "../ApiContext";
+// import ApiContext from "../ApiContext";
 import "./DashSideNav.css";
 
 export default class DashSideNav extends Component {
@@ -14,7 +14,7 @@ export default class DashSideNav extends Component {
       params: {},
     },
   };
-  static contextType = ApiContext;
+  // static contextType = ApiContext;
 
   render() {
     let i = window.location.search;

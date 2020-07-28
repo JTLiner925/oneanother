@@ -109,7 +109,7 @@ class App extends Component {
           "/dashboard/:bible_passage",
           "/dashboard/group/:group_id",
         ].map((path) => (
-          <Route key={path} exact path={path} component={Dashboard} />
+          <Route key={path}  path={path} component={Dashboard} />
         ))}
         <Route path="/*" component={Footer} />
       </main>
