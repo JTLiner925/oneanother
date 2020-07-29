@@ -74,7 +74,6 @@ class Dashboard extends Component {
       if (key === "eventId") {
         eventId = value;
       }
-      console.log(eventId)
       this.setState({
         [key]: value,
       });
@@ -125,10 +124,7 @@ class Dashboard extends Component {
         ]);
       })
       .then(([users, groups, events, needed]) => {
-        console.log(needed)
-        // let needId = needed.filter(
-        //   (item) => item.event_id == this.state.eventId
-        // );
+        
         let userId = users.find(
           (user) => user.first_name === window.localStorage.getItem("userName")
         );

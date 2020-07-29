@@ -14,7 +14,6 @@ export default class DashCenter extends Component {
   }
   // section for event information
   render() {
-    console.log(this.props)
     let i = window.location.search;
     let x = new URLSearchParams(i);
     let id;

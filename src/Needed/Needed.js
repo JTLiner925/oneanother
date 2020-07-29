@@ -9,11 +9,9 @@ export default class Needed extends Component {
   //went back to mount now that I'm returning the event_id
   componentDidMount() {
  
-    console.log(this.props);
     let userIds = this.props.needed;
 
     userIds.forEach((item, index) => {
-      console.log(item);
       if (item.user_id) {
         let eachUser = this.props.users.find((user) => user.id === item.user_id);
         userIds[
@@ -65,7 +63,7 @@ export default class Needed extends Component {
         return res.json();
       })
       .then((resData) => {
-        console.log(resData);
+        // console.log(resData);
       })
       .catch((error) => {
         console.log(error);
@@ -80,7 +78,6 @@ export default class Needed extends Component {
       );
         
     }
-    console.log(needId)
     let sortedItems = { checked: [], unchecked: [] };
     this.state.checkedItems &&
       this.state.checkedItems.forEach((item) => {
